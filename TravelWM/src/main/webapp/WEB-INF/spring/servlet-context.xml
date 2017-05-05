@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<context:component-scan base-package="com.pitapany.web.controller" />
+
+	<!-- 새로운 어노테이션 처리기 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<!-- @ResponseBody로 String 처리할때 한글처리 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 리소스 폴더를 예외로 두기 위한 설정 -->
+	<mvc:resources location="/resource/" mapping="/resource/**"></mvc:resources> <!-- 어디가 resource폴더인지 알려줌 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<!-- Multipart File 지원을 위한 설정 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="10000000" />
+	</bean> <!-- multipart/form-data를 쓰는 방법 -->
+
+	<!-- 타일즈 뷰 리졸버 설정 -->
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"> <!-- 지시서를 memory에 올리는 역할 -->
+		<property name="definitions" value="/WEB-INF/tiles.xml" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<!-- 진짜 tiles -> View를 Resolver(서비스, 물건을 찾아주는 역할)함, controller가 return을 
+			통해 찾아달라고함 -->
+		<!-- Resolver는 여러 개 달 수 있다. -->
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+		<property name="order" value="1" />
+	</bean>
+
+	<!-- 리소스 뷰 리졸버 설정 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- tiles에 있는 Resolver에서 못 찾앗을 때 실행됨 -->
+		<!-- controller가 반환한 return 값으로 찾음 -->
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
+	</bean>
+
+
+</beans>

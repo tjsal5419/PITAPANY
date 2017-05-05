@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd                
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<beans:bean id="successHandler" class="com.pitapany.web.handler.PitapanySuccessHandler"/>
+	
+	<!-- id는 real name(중복불가) , name은 별칭 (별칭은 여러 개를 줄 수가 있다, 중복가능) ex) name="a b c" -->
+
+	<!-- <http auto-config="false"> true로 할 경우 모든 인증과 권한을 spring이 담당하게 하겠다. -->
+	<http use-expressions="true">
+		<form-login login-page="/joinus/login" 
+			default-target-url="/joinus/mypage" 
+			
+			/>
+			<!-- authentication-success-handler-ref="successHandler" /> -->
+		<logout logout-success-url="/index"/>
+		<intercept-url pattern="/joinus/mypage" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/customer/notice-detail" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/teacher/**" access="hasRole('ROLE_TEACHER')" /> 
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+               users-by-username-query="SELECT id userid, pwd password, 1 enabled FROM Member WHERE id=?"
+               authorities-by-username-query="SELECT memberId userid, roleId authorities FROM MemberRole WHERE memberId=?"
+               />
+
+			<!-- <user-service>
+				<user name="test" password="1111" authorities="ROLE_USER" />
+				<user name="SAKURA" password="1111" authorities="ROLE_ADMIN" />
+				<user name="dragon" password="1111" authorities="ROLE_USER, ROLE_TEACHER, ROLE_ADMIN" />
+			</user-service> -->
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>
