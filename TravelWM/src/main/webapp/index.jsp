@@ -1,6 +1,5 @@
 <html>
 <body>
-<h2>Hello World! PITAPANY</h2>
-Haha ha
+<h2>Hello PITAPANY!</h2>
 </body>
 </html>
