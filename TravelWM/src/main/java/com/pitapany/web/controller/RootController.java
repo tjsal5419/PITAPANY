@@ -17,7 +17,7 @@ public class RootController {
 		String role = "ROLE_ADMIN";
 		
 		if(role.equals("ROLE_ADMIN"))
-			return "admin/index";
+			return "admin.index";
 		else
 			return "index";
 	}
