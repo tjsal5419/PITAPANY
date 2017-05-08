@@ -2,6 +2,8 @@ package com.pitapany.web.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,7 +13,13 @@ public class JoinusController {
 	
 	@RequestMapping("login")
 	public String login() {
-		return "joinus.login";
+		return "joinus/login";
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:login";
 	}
 	
 	@RequestMapping("join")

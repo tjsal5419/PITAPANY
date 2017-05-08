@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-login했다~
+<h2>admin index다.</h2>
+
+<h3><a href="joinus/logout">로그아웃</a></h3>
+
+
 </body>
 </html>

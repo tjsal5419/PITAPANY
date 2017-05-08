@@ -13,9 +13,9 @@ public class AdminController {
 	@Autowired
 	private AdminService service;
 	
-	@RequestMapping("mypage")
-	public String index() {
-		return "admin.mypage";
+	@RequestMapping("mainpage")
+	public String mainpage() {
+		return "redirect:../admin/mainpage";
 	}
 
 }
