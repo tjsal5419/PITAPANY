@@ -8,4 +8,9 @@ import org.springframework.web.context.annotation.SessionScope;
 @RequestMapping("/member")
 public class MemberController {
 	
+	@RequestMapping("index")
+	
+	public String memberIndex(){
+		return "member.index";
+	}
 }
