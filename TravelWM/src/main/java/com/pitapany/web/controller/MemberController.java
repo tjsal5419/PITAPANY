@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.annotation.SessionScope;
 
 @Controller
-public class RootController {
+@RequestMapping("/member")
+public class MemberController {
 
 	@RequestMapping("/index")
 	public String index(Principal principal) {
 		
-		//String memberId = principal.getName();
+		String memberId = principal.getName();
 		
 		String role = "ROLE_USER";
 		
