@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <main id="main">
-<h2 class="main-title">프로필 설정</h2>
+<h2 class="main-title">개인정보 설정</h2>
 <div>
 	<h3>기본정보</h3>
 	<div>
