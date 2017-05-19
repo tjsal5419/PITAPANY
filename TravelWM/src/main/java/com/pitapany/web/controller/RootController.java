@@ -17,8 +17,8 @@ public class RootController {
 		String role = "ROLE_USER";
 		
 		if(role.equals("ROLE_USER"))
-			return "member.index";
+			return "joinus.index";
 		else
-			return "index";
+			return "joinus.login";
 	}
 }
