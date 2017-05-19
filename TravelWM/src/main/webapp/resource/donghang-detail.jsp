@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <main id="main">
 <h2 class="main-title">동행 디테일</h2>
@@ -46,7 +45,8 @@
 <div style='border-top: 2px solid;'>
 	<span>댓글수: 0</span> <span>조회수: 10</span> <span>등록시간 07:30</span>
 </div>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
+<script
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
 <script>
 	function initialize() {
 		var mapProp = {
@@ -60,5 +60,5 @@
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-<div id="googleMap" style="width:500px;height:380px;"></div>
+<div id="googleMap" style="width: 500px; height: 380px;"></div>
 </main>
