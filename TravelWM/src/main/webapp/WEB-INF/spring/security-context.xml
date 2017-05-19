@@ -14,16 +14,13 @@
 	<!-- <http auto-config="false"> true로 할 경우 모든 인증과 권한을 spring이 담당하게 하겠다. -->
 	<http use-expressions="true">
 		<form-login login-page="/joinus/login" 
-			default-target-url="/index" 
-			
-			/>
+			default-target-url="/index"/>
 			<!-- authentication-success-handler-ref="successHandler" /> -->
 		<logout logout-success-url="/joinus/login"/>
-		<intercept-url pattern="/index" access="hasRole('ROLE_USER')"/>
+<!-- 		<intercept-url pattern="/index" access="hasRole('ROLE_USER')"/> -->
 		<intercept-url pattern="/joinus/mypage" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/customer/notice-detail" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/teacher/**" access="hasRole('ROLE_TEACHER')" /> 
+		<intercept-url pattern="/member/**" access="hasRole('ROLE_USER')" /> 
 	</http>
 
 	<authentication-manager>

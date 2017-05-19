@@ -7,10 +7,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+	          href="node_modules/material-components-web/dist/material-components-web.css">      
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<link href="${root}/resource/css/login.css" type="text/css" rel="stylesheet" />
 	
-	<link href="${root}/resource/css/join/style.css" type="text/css" rel="stylesheet" />
-	<link href="${root}/resource/css/join/login.css" type="text/css" rel="stylesheet" />
 	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -19,13 +20,11 @@
 <body>
 
 	<div class="bg">
-		<div>
 		<div class="tool">
 			<div class="tool-in">	
 				<div class="logo-box">
-					<img style="background:url('${root}/resource/images/logo.png') no-repeat center;" width=50; height=50/>
+					<img style="background:url('${root}/resource/images/logo.png') no-repeat center; height=50px;"/>
 				</div>
-				
 				<div class="intro-box">
 					<div class="intro">
 					Welcome to 'Travel With Me'
@@ -62,7 +61,7 @@
 					</div>
 					
 					<div class="help">
-						<a href="joinus/join" style="text-decoration: none; ">아이디/비밀번호 찾기</a>
+						<a href="" style="text-decoration: none;">아이디/비밀번호 찾기</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="" style="text-decoration: none;">회원가입</a>
 					</div>
@@ -77,7 +76,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 	

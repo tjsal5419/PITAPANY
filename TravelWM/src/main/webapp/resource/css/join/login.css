@@ -1,63 +1,51 @@
 @CHARSET "UTF-8";
 
 .bg {
-	bottom: 0px;
-	left: 0px;
-	position: fixed;
-	right: 0px;
-	top: 0px;
-	min-width: 800px;
-}
-
-.tool  {
-	background-color: #f7f4f4;
-	border-radius: 8px;
-	height: 550px;
-	margin-top: -266px;
-	width: 400px;
-	left: 50%;
-	top: 50%;
-	position: absolute;
-	transform: translateX(-50%);
-}
-
-@media screen and (min-width: 737px) {
-	.bg {
-		min-width: 737px;
-	}
-}
-
-@media screen and (min-width: 737px) and (max-width: 1200px) {
-	.bg {
-		min-width: 790px;
-	}
-}
-
-@media screen and (max-width: 736px) {
-	.bg {
-		min-width:3px;
-	}
+	position:fixed;
+	background:url("../../images/travel_bg.jpg") no-repeat;
+	background-size:cover;
+	left:0px;
+	top:0px;
+	right:0px;
+	bottom:0px;
 	
-	.tool {
-		width: 310px;
-		height: 550px;
-	}
+}
+
+.bg>div:first-child{
+	background-color: rgba(0, 0, 0, 0.5);
+	min-height:100%;
+	min-width:100%;
+	position:absolute;
+	left: 0px;
+	top:0px;
+}
+
+.tool{
+	margin-left:25%;
+	margin-right:25%;
+	margin-top:5%;
+	height:90%;
 }
 
 .tool-in  {
-	display: inline-block;
-	height: 100%;
-	width: 100%;
-	vertical-align: top;
+	background-color: rgba(247, 244, 244, 1);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index:10;
 }
 
 .logo-box {
 	margin: 30px auto 0;
-	position: relative;
-	height: 55px;
-	width: 55px;
+	display:flex;
+	align-items:center;
+	flex-grow:1;
 }
 
+.intro-box{
+	flex-grow:1;
+}
 .intro  {
 	margin: 5px 26px 20px;
 	text-align: center;
@@ -78,6 +66,7 @@
 	margin: 0 auto;
 	position: relative;
 	text-align: center;
+	flex-grow:3;
 }
 
 .login-box-detail {
@@ -116,7 +105,7 @@
 	border-radius: 4px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	padding: 0 18px;
+	padding: 0px 18px;
 	font-size: 1em;
 	font-weight: bold;
 	outline: none;
@@ -127,7 +116,7 @@
 	margin-top: 10px;
 	vertical-align: middle;
 	text-align: center;
-	background-color: #bd081c;
+	background-color: #00BCD1;
 	color: #fff;
 	width: 100%;
 }
