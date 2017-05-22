@@ -9,7 +9,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Controller
 public class RootController {
 
-	@RequestMapping("/index")
+	@RequestMapping(value="/index")
 	public String index(Principal principal) {
 		
 		//String memberId = principal.getName();

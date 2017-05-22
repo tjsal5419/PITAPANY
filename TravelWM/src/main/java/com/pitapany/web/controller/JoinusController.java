@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.entity.Member;
@@ -39,21 +40,21 @@ public class JoinusController {
 	@RequestMapping(value="join", 
 			method=RequestMethod.POST, 
 			produces="text/plain;charset=UTF-8")
-	public String signup(String email, String pwd, String name, int sex, Date birthday, String phone){
+	public String signup(String email, String password, String name, int sex, Date birthday, String phone){
 		if(memberDao.getSizeByEmail(email)>0){
-			return "joinus.join"; //이미  가입된 경우
+			return "joinus/join"; //이미  가입된 경우
 		}
 		else{
 			Member member = new Member();
 			member.setEmail(email);
-			member.setPassword(pwd);
+			member.setPassword(password);
 			member.setName(name);
 			member.setSex(sex);
 			member.setBirthday(birthday);
 			member.setPhone(phone);
 			memberDao.add(member);
 			
-			return "index";
+			return "joinus/loginSuccess";
 		}
 	}
 	

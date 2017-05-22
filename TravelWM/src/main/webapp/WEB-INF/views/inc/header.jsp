@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="${root}/resource/css/inc/header.css" />
 <script>
 </script>
-
+<head>
+	<title> 동행이음 with PITAPANY</title>
+</head>
   <nav>
     <div class="navbar navbar-default navbar-fixed-top">
     	<div class="logo"> 로고zz </div>
