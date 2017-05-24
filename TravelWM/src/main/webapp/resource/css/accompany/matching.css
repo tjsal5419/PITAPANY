@@ -1,0 +1,25 @@
+@CHARSET "EUC-KR";
+
+/* ----------------Section-------------------- */
+.container{
+	margin-left: 5%;
+	margin-right: 5%;
+	display:flex;
+	justify-content:space-around;
+}
+
+.accompany-option-section{
+	min-height:600px;
+	min-width: 55%; 
+	background-color: rgb(247, 244, 244);
+	border-radius: 10px;
+	box-shadow:0px 0px 2px 0.5px #979797;
+}
+
+.matched-accompany-section{
+	min-height:600px;
+	min-width: 40%;
+	background-color: rgb(247, 244, 244);
+	border-radius: 10px; 
+	box-shadow:0px 0px 2px 0.5px #979797;
+}

@@ -22,7 +22,7 @@
         <div class="menu-bar">
 	        <ul class="accompany">
 	        	<li><a href="">동행찾기</a></li>
-	        	<li><a href="">동행매칭</a></li>
+	        	<li><a href="${root }/accompany/matching">동행매칭</a></li>
 	        	<li><a href="">커뮤니티</a></li>
 	        </ul>
 	        <ul class="mypage">
