@@ -1,4 +1,7 @@
 @CHARSET "EUC-KR";
+h2{
+	font-size: 25px;
+}
 
 /* ----------------Section-------------------- */
 .container{
@@ -14,6 +17,8 @@
 	background-color: rgb(247, 244, 244);
 	border-radius: 10px;
 	box-shadow:0px 0px 2px 0.5px #979797;
+	padding:10px;
+	margin-right:10px;
 }
 
 .matched-accompany-section{
@@ -23,3 +28,22 @@
 	border-radius: 10px; 
 	box-shadow:0px 0px 2px 0.5px #979797;
 }
+
+.accompany-manage{
+	display:flex;
+	flex-direction:column;
+	border:2px solid black;
+}
+.accompany-manage>div:first-child{
+	display:flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+.accompany-option{
+	diplay:flex;
+	flex-direction:column;
+	border:2px solid black;
+}
+
+/* ---------component inner section -----------*/
+
