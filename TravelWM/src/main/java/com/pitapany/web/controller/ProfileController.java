@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.annotation.SessionScope;
 
 @Controller
-@RequestMapping("/profile")
+@RequestMapping("/profile/*")
 public class ProfileController {
 	
 }

@@ -28,10 +28,8 @@
 
 <body>
 	<tiles:insertAttribute name="header"/>
-	<div class="container">
 	<%-- <tiles:insertAttribute name="aside"/> --%>
 	<tiles:insertAttribute name="main" />
-	</div>
 	<tiles:insertAttribute name="footer"/>
 </body>
 </html>

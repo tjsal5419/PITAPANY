@@ -17,8 +17,8 @@ public class RootController {
 		String role = "ROLE_USER";
 		
 		if(role.equals("ROLE_USER"))
-			return "accompany.detail";
+			return "member.index";
 		else
-			return "accompany.detail";
+			return "member.index";
 	}
 }
