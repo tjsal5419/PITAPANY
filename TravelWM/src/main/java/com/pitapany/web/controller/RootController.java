@@ -12,8 +12,8 @@ public class RootController {
 	@RequestMapping(value="/index")
 	public String index(Principal principal) {
 		
-		//String memberId = principal.getName();
-		
+		String memberId = principal.getName();
+		System.out.println(memberId);
 		String role = "ROLE_USER";
 		
 		if(role.equals("ROLE_USER"))

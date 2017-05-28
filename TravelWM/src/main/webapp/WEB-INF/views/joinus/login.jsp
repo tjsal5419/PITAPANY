@@ -63,7 +63,7 @@
 					<div class="help">
 						<a href="joinus/join" style="text-decoration: none; ">아이디/비밀번호 찾기</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="" style="text-decoration: none;">회원가입</a>
+						<a href="${root }/joinus/join" style="text-decoration: none;">회원가입</a>
 					</div>
 					
 					<div style="margin-top:15px;">
