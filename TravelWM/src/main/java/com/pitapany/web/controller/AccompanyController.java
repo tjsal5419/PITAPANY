@@ -14,4 +14,9 @@ public class AccompanyController {
 	public static String  matching(Model model){
 		return "accompany.matching";
 	}
+	
+	@RequestMapping("/accompanyBoard")
+	public static String  accompanyBoard(Model model){
+		return "accompany.accompany-board";
+	}
 }
