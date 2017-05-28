@@ -17,7 +17,7 @@ public class PitapanySuccessHandler implements AuthenticationSuccessHandler{
 			Authentication authentication) 
 		throws IOException, ServletException {
 		
-		response.sendRedirect("/TravelWM/index");
+		response.sendRedirect("/main");
 		
 	}
 
