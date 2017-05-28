@@ -3,9 +3,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <link href="${root }/resource/css/accompany/matching.css" rel="stylesheet"/>
- 
+ <script>
+ 	window.addEventListener("load",function(event){
+ 		var prevButton = document.querySelector(".prev-button");
+ 		var nextButton = document.querySelector(".next-button");
+ 		var matchedListButton = document.querySelector(".matched-list-button");
+ 		
+ 		nextButton.onclick = function(){
+ 			
+ 		};
+ 		
+ 		matchedListButton.onclick=function(){
+ 			document.getElementById("myDropdown").classList.toggle("show");
+ 		};
+
+ 		
+ 	});
+
+
+	 // Close the dropdown menu if the user clicks outside of it
+	 window.addEventListener("click",function(event) {
+	   if (!event.target.matches('.matched-list-button')) {
+	
+	     var dropdowns = document.getElementsByClassName("dropdown-content");
+	     var i;
+	     for (i = 0; i < dropdowns.length; i++) {
+	       var openDropdown = dropdowns[i];
+	       if (openDropdown.classList.contains('show')) {
+	         openDropdown.classList.remove('show');
+	       }
+	     }
+	   }
+	 });
+ </script>
 <main class="container">
-	<div class="accompany-option-section">
+	<div class="accompany-option-section Col-lg-7 Col-sm-6">
 	<form action="" method="post">
 		<h1 class="hidden"> 동행 선택 옵션 추가 </h1>
 		<div class="accompany-manage">
@@ -76,22 +108,40 @@
 		</div>
 	</form>
 	</div>
-	<div class="matched-accompany-section">
+	<div class="matched-accompany-section Col-lg-5 Col-sm-6">
 		
+		<!-- 기존에 매치되었던 동행 목록 불러오기 -->
 		<div class="matched-list">
-		 	<div><img src="${root }/resource/images/ic_more_vert_black_24dp_1x.png"/></div>
+			<div class="matched-list-box">
+				
+			</div>
+			<h3>이전 동행 목록</h3>
+			<div class="dropdown">
+			  <img class="matched-list-button" src="${root }/resource/images/ic_more_vert_black_24dp_1x.png"/>
+			  <div id="myDropdown" class="dropdown-content">
+			    <a href="#">Link 1</a>
+			    <a href="#">Link 2</a>
+			    <a href="#">Link 3</a>
+			  </div>
+			</div>
 		</div>
 		
+		<!-- 새로 매칭된 동행의 정보 보기 -->
 		<div class="matched-profile">
-			<ul class="">
-				<li><img src="${root }/resource/images/ic_keyboard_arrow_left_black_24dp_2x.png"/></li>
-				<li><img src="${root }/resource/images/ic_keyboard_arrow_left_black_24dp_2x.png"/></li>
-				<li><img src="${root }/resource/images/ic_keyboard_arrow_right_black_24dp_2x.png"/></li>
+			<div>
+				<h2>매칭된 동행</h2>
+			</div>
+			<ul class="matched-profile-img">
+				<li><img class="prev-button" src="${root }/resource/images/ic_keyboard_arrow_left_black_24dp_2x.png"/></li>
+				<li><img class="circle-img" src="${root }/resource/images/홍욱씨.jpg"/></li>
+				<li><img class="next-button" src="${root }/resource/images/ic_keyboard_arrow_right_black_24dp_2x.png"/></li>
 			</ul>
 			<div>
 				닉네임
 			</div>
-		</div>	
+		</div>
+		
+		<!-- 매치된 동행의 정보 보기 -->	
 		<div class="matched-info">
 			<div>
 				동행 장소
@@ -101,17 +151,15 @@
 				동행 날짜
 			</div>
 			
-			<div class="member-info">
-				<div>
-					성별
-				</div>
-				<div>
-					나이
-				</div>				
-				<div>
-					<button  type="button" class="btn btn-info">대화하기</button>
-				</div>
+			<div>
+				성별
 			</div>
-	</div>
+			<div>
+				나이
+			</div>				
+			<div>
+				<button  type="button" class="btn btn-info">대화하기</button>
+			</div>
+		</div>
 </div>
 </main>
