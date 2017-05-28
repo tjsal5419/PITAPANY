@@ -37,7 +37,7 @@
 					<div class="login-box-detail">
 					<form action="${root }/j_spring_security_check" method="POST">
 						<fieldset class="login-form">
-							<c:if test="${not empty vaildate && not vaildate}">
+							<c:if test="${not empty validate && not validate}">
 								<td colspan="2" style="color:red;">아이디 또는 비번이 유효하지 않습니다. </td>
 							</c:if>
 							<input type="email" aria-label="이메일을 입력하세요." autocomplete="username" 
@@ -45,7 +45,7 @@
 						</fieldset>
 						<fieldset style="position:relative;">
 							<input type="password" aria-label="비밀번호를 입력하세요." autocomplete="current-password" 
-								class="login-input" name="j_password" placeholder="비밀번호를 입력하세요." value="" checked="checked"/>
+								class="login-input" name="j_password" placeholder="비밀번호를 입력하세요." value=""  checked="checked"/>
 						</fieldset>
 						
 						<input aria-label="login" class="login-button" value="로그인" type="submit" />

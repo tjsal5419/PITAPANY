@@ -16,8 +16,9 @@ public class PitapanySuccessHandler implements AuthenticationSuccessHandler{
 			HttpServletResponse response,
 			Authentication authentication) 
 		throws IOException, ServletException {
+		System.out.println(authentication.getName());
 		
-		response.sendRedirect("/main");
+		response.sendRedirect("/member/index");
 		
 	}
 

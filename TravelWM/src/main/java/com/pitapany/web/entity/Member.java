@@ -18,6 +18,15 @@ public class Member {
 	Date lastLoginTime;
 	String pwdModifyKey;
 	String matchCount;
+	String role;
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	public String getId() {
 		return id;
