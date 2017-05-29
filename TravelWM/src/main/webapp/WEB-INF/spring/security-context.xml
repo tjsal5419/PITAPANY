@@ -39,10 +39,10 @@
 <!-- 			<user-service>
 				<user name="유저" authorities="ROLE_USER"/>
 			</user-service> -->
-<!-- 			<user-service>
+ 			<user-service>
 				<user name="test@naver.com" password="1111" authorities="ROLE_USER" />
 				<user name="SAKURA@naver.com" password="1111" authorities="ROLE_USER, ROLE_ADMIN" />
-			</user-service> -->
+			</user-service>
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>
