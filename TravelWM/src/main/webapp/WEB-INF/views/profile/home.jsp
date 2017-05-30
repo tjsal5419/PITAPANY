@@ -9,40 +9,36 @@
 	border: 2px solid;
 }
 </style>  
-<div class="img">
+<div class="back-img">
 	<div class="background">
 		<img class="background-pictures" src="${root}/resource/images/signal.jpg" alt="프로필사진">
+		<input class="setting-button" type="button" value="프로필 수정" />
 	</div>
+</div> 
+<div class="prof-img">
 	<div class="center">
 		<div class="name">프로필명</div>
+		<br/>
+		<br/>
+		<div class="thumblist">
+			<img class="prof-img-circle" src="${root}/resource/images/sakura.jpg" alt="프로필사진">
+		</div>
 	</div>
-	<br/>
-	<br/>
-	<div class="thumblist">
-		<img class="prof-img-circle" src="${root}/resource/images/sakura.jpg" alt="프로필사진">
-	</div>
-	<input id="setting-button" type="button" value="프로필 수정" />
-	
-	<div>닉네임</div>
+</div>	
+	<br />
+	<div class="center">닉네임</div>
 	<br />
 	<hr />
-</div> 
 
-<main id="">
-<div class="content-container">
+
+<main id="main">
+	<div class="content-container">
 	<h2 class="main-title"></h2>	
 		
 		<div style='display: flex;'>
-			<table border="1">
-				<tbody>
-					<tr>
-						<th>목록전환</th>		
-						<th>대화하기(게스트) / 글쓰기(주인)</th>				
-						<th>자세히</th>				
-					</tr>
-				</tbody>
-			</table>		
-			
+			<div>목록전환</div>		
+			<div>대화하기(게스트) / 글쓰기(주인)</div>				
+			<div>자세히</div>				
 		</div>
 		
 		<br />
