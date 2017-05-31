@@ -13,6 +13,7 @@ public class AccompanyController {
 		return "accompany.matching";
 	}
 	
+
 	@RequestMapping("/detail")
 	public static String  detail(Model model){
 		return "accompany.detail";
@@ -21,5 +22,6 @@ public class AccompanyController {
 	@RequestMapping("/reg")
 	public static String  reg(Model model){
 		return "accompany.reg";
+
 	}
 }

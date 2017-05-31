@@ -9,7 +9,10 @@
 	bottom:0px;
 	
 }
-
+.label{
+	white-space: inherit;
+	
+}
 .form-group{
 	margin-bottom : 5px;
 	margin-top:5px;
@@ -58,17 +61,23 @@
 	align-items: center;
 	z-index:10;
 	text-overflow: scroll;
+	justify-content:space-around;	
 }
 
 .title{
 	display:flex;
 	align-self:center;
 	flex-direction: column;
+	width:100%;
 }
 
 
 .title h3{
+	text-align:center;
+}
 
+.subtitle{
+	text-align:center;
 }
 
 #birthday{
@@ -121,5 +130,36 @@
 /* 	background-image:none;
 	background-color:#00BCD1; */
 	border-color:#00BCD1;
+}
+
+
+/*------------------- media쿼리--------------*/
+@media all and (max-width:480px){
+	.tool{
+		margin-left:5%;
+		margin-right:5%;
+		margin-top:20%;
+	}
+	
+	.label{
+		font-size:70%;
+	}
+
+}
+
+@media all and (min-width:480px) and (max-width:1024px){
+   .tool{
+   	margin-left:15%;
+   	margin-right:15%;
+   }
+}
+
+
+@media all and (min-width:1024px){
+   
+    .tool{
+   	margin-left:25%;
+   	margin-right:25%;
+   }
 }
 
