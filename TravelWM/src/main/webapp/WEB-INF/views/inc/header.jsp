@@ -33,6 +33,7 @@
 					</a></li>
 				</security:authorize>
 				
+				<li><a href="${root }/profile/home">프로필홈</a></li>
 	        	<li><a href="">동행찾기</a></li>
 	        	<li><a href="${root }/accompany/matching">동행매칭</a></li>
 	        	<li><a href="">커뮤니티</a></li>
