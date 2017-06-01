@@ -10,7 +10,7 @@ public class ProfileController {
 	
 	@RequestMapping("/home")
 	public String home() {
-		return "profile/home";
+		return "profile.home";
 	}
 	
 }

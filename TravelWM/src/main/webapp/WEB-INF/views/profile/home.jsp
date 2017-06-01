@@ -3,19 +3,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <link href="${root}/resource/css/profile/home.css" rel="stylesheet"/>
-<%-- <link href="${root}/resource/css/bootstrap.css" rel="stylesheet"/> --%>
+
+<main class="main">	
+
 
 <div>
 	<div class="back-img">
 		<div class="background">
-			<img class="background-pictures" src="${root}/resource/images/signal.jpg" alt="프로필사진">
+			<img class="background-pictures" src="${root}/resource/images/uah.jpg" alt="프로필사진">
 		</div>
 	</div> 
 </div>  
 <div class="setting-button"><button type="button" class="btn btn-info">프로필 설정</button></div>
 <div class="prof-img">
-	<div class="center">
-		<div class="name">프로필명</div>
+	<div class=>
+		<div class="center name">프로필명</div>
 		
 		<div class="thumblist">
 			<img class="prof-img-circle" src="${root}/resource/images/sakura.jpg" alt="프로필사진">
@@ -23,47 +25,36 @@
 	</div>
 	<div class="center">닉네임</div>
 </div>			
-
-<main class="home">		
+	
 
 	<div>
 		<div class="menu">
-			<div>목록전환</div>		
-			<div>대화하기(게스트) / 글쓰기(주인)</div>				
-			<div>자세히</div>				
+			<div class="list">
+				<div class="change">목록전환</div>		
+				<div class="write">대화하기(게스트) / 글쓰기(주인)</div>				
+				<div class="detail">자세히</div>
+			</div>					
 		</div>
 	</div>
 	<div class="content-container">
-	<h2 class="main-title"></h2>	
-			
+	<h2 class="main-title"></h2>			
 		<div class="box">
-			<div class="prof-box">
-				
-				<div style='display: flex;'>
+			<div class="info-box">				
+				<div class="prof-box">
 					<div class="prof-thumblist">
 						<img class="prof-small-img-circle" src="${root}/resource/images/sana01.jpg" alt="프로필사진">
 					</div>
-					<table border="1">
-						<tbody>
-							<tr>
-								<th>닉네임</th>				
-							</tr>
-							<tr>
-								<th>위치</th>				
-							</tr>
-							<tr>
-								<th>글 등록일</th>				
-							</tr>
-						</tbody>
-					</table>		
+					<div class="list">
+						<div class="nic">닉네임</div>
+						<div class="location">위치</div>
+						<div class="regi-date">글 등록일</div>
+					</div>	
 				</div>
 				
-				<div>글 내용
+				<div>					
+					<div>
 					
-					<tr>
-						<td colspan="2"><textarea rows="5" cols="60" name="content"></textarea>
-						</td>
-					</tr>
+					</div>
 				</div>
 				
 				<div>하트</div>
@@ -83,31 +74,24 @@
 		<div class="box">
 			<div class="prof-box">
 				
-				<div style='display: flex;'>
+				<div>
 					<div class="prof-thumblist">
 						<img class="prof-small-img-circle" src="${root}/resource/images/sana01.jpg" alt="프로필사진">
 					</div>
-					<table border="1">
-						<tbody>
-							<tr>
-								<th>닉네임</th>				
-							</tr>
-							<tr>
-								<th>위치</th>				
-							</tr>
-							<tr>
-								<th>글 등록일</th>				
-							</tr>
-						</tbody>
-					</table>		
+					<div class="list">
+						<div>닉네임</div>
+						<div>위치</div>
+						<div>글 등록일</div>
+					</div>
+							
 				</div>
 				
 				<div>글 내용
 					
-					<tr>
+					<!-- <tr>
 						<td colspan="2"><textarea rows="5" cols="60" name="content"></textarea>
 						</td>
-					</tr>
+					</tr> -->
 				</div>
 				
 				<div>하트</div>
@@ -120,15 +104,15 @@
 		</div>	
 	</div>
 	
-	
 	<div>
 		<div class="menu">
-			<div>동행평가</div>		
-			<div>대화하기(게스트) / 글쓰기(주인)</div>				
-			<div>홈으로</div>				
+			<div class="list">
+				<div class="change">동행평가</div>		
+				<div class="write">대화하기(게스트) / 글쓰기(주인)</div>				
+				<div class="detail">홈으포</div>
+			</div>					
 		</div>
 	</div>
-		
 					
 	<div class="content-container">		
 				

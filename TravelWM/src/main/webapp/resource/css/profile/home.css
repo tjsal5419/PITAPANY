@@ -14,13 +14,14 @@
 
 .background-pictures{
 	width: 100%;
+	max-height: 500px;
 } 
 
 .prof-img {
 	margin-top: 2%;
 	position: relative;
 	width: 100%;
-	top: -300px;
+	top: -350px;
 }
 
 .name{
@@ -30,6 +31,7 @@
 
 .center{
 	text-align: center; 
+	margin-bottom: 2%;
 }
 
 .thumblist {
@@ -43,11 +45,12 @@
 
 .thumblist .prof-img-circle {
 	position: relative;
-	height: 250px;
-	width: 250px;
+	height: 300px;
+	width: 300px;
 	border-radius: 50%;
 	/* max-width: 250px;
 	max-height: 250px; */
+	margin-bottom: 2%;
 }
 
 .setting-button {
@@ -71,15 +74,16 @@
 	top: -200px;
 } */
 
+
 .menu{
-	top: -300px;
-	display: flex;	
+	top: -350px;
+	display: flex;		
 	height: 100%;
 	position: relative;
 	justify-content: space-around;
 	margin-top: 2%;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 15%;
+	margin-right: 15%;
 	min-height: 50px;
 	/* min-width: 70%;  */
 	background-color: rgb(247, 244, 244);
@@ -87,15 +91,51 @@
 	box-shadow:0px 0px 2px 0.5px #979797;
 }
 
+.menu .list{
+	width: 100%;
+	display: flex;	
+	justify-content: space-between;
+	align-items: center;
+}
+
+.menu .list .change{
+	width: 33%;
+	height: 100%;
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+	border-right: 1px;
+	border-right-color: #979797; 
+	border-right-style: solid;
+}
+
+.menu .list .write{
+	width: 33%;
+	height: 100%;
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+	border-right: 1px;
+	border-right-color: #979797; 
+	border-right-style: solid;
+}
+.menu .list .detail{
+	width: 33%;
+	height: 100%;
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+}
+
+
 .content-container{
-	top: -300px;
+	top: -350px;
 	display: block;	
 	height: 100%;
 	position: relative;
 	justify-content: space-around;
-	margin-top: 2%;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin-left: 15%;
+	margin-right: 15%;
 	min-height: 400px;
 	/* min-width: 70%;  */
 	background-color: rgb(247, 244, 244);
@@ -103,15 +143,63 @@
 	box-shadow:0px 0px 2px 0.5px #979797;	
 }
 
-.home .prof-box{
-	margin: 20px;
+.main .box{
+	height: 400px;
+	margin: 3%;
 }
+
+.info-box{
+	padding: 3%;
+}
+
+.prof-box{
+	display: flex;
+}
+
+.prof-box .list{
+	width: 150px;
+	background-color: silver;
+	border: 1px solid black;
+	border-radius: 10px;
+	/* display: flex;	
+	flex-direction: column;	
+	align-items: center; */
+}
+
+.prof-box .list .nic{
+
+	border-bottom: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: black;
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+}
+
+.prof-box .list .location{
+
+	border-bottom: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: black;
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+}
+
+.prof-box .list .regi-date{
+
+	display: flex;	
+	justify-content: center;
+	align-items: center;
+}
+
+
+
 
 .prof-thumblist {
 	list-style: none;
 	text-align: center;
-	z-index: 100;
-	margin-bottom: 20px;	
+	z-index: 100;	
 }
 
 .prof-thumblist .prof-small-img-circle {
@@ -123,7 +211,27 @@
 }
 
 /*------------------- media쿼리--------------*/
-@media all and (max-width:560px) {
+@media all and (max-width:400px) {
+	
+	.prof-img {
+		top: -120px;
+	}
+	
+	.prof-img-circle {
+		max-width: 70px;
+		max-height: 70px;
+	}
+	
+	.menu{
+		top: -120px;
+	}
+	
+	.content-container{
+		top: -120px;
+	}
+}
+
+@media all and (min-width:400px) and (max-width:640px) {
 	
 	.prof-img {
 		top: -150px;
@@ -170,7 +278,7 @@
 	}
 }
 
-@media all and (min-width:560px) and (max-width:940px) {
+@media all and (min-width:640px) and (max-width:840px) {
 	
 	.prof-img {
 		top: -200px;
@@ -190,7 +298,7 @@
 	}
 }
 
-@media all and (min-width:940px) and (max-width:1150px) {
+@media all and (min-width:840px) and (max-width:1150px) {
 	
 	.prof-img {
 		top: -250px;
@@ -209,6 +317,27 @@
 		top: -250px;
 	}
 }
+
+@media all and (min-width:1150px) and (max-width:1350px) {
+	
+	.prof-img {
+		top: -300px;
+	}
+	
+	.prof-img-circle {
+		max-width: 250px;
+		max-height: 250px;
+	}
+	
+	.menu{
+		top: -300px;
+	}
+	
+	.content-container{
+		top: -300px;
+	}
+}
+
 
 @media all and (min-width:480px) and (max-width:1024px) {
 	/* .container {
