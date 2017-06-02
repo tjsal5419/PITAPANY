@@ -15,14 +15,11 @@
 	</div> 
 </div>  
 <div class="setting-button"><button type="button" class="btn btn-info">프로필 설정</button></div>
-<div class="prof-img">
-	<div class=>
-		<div class="center name">프로필명</div>
-		
+<div class="prof-img">	
+		<div class="name">프로필명</div>
 		<div class="thumblist">
 			<img class="prof-img-circle" src="${root}/resource/images/sakura.jpg" alt="프로필사진">
 		</div>
-	</div>
 	<div class="center">닉네임</div>
 </div>			
 	
@@ -47,21 +44,23 @@
 					<div class="list">
 						<div class="nic">닉네임</div>
 						<div class="location">위치</div>
-						<div class="regi-date">글 등록일</div>
+						<div class="write-date">글 등록일</div>
 					</div>	
 				</div>
-				
-				<div>					
-					<div>
 					
-					</div>
+				<div class="content">					
+					<div></div>
 				</div>
 				
-				<div>하트</div>
-				<div>댓글</div>
+				<div>
+					<div>하트</div>
+					<div>댓글</div>
+				</div>
 				
-				<div>하트수</div>
-				<div>댓글수</div>
+				<div class="number">
+					<div>하트수</div>
+					<div>댓글수</div>
+				</div>
 				
 			</div>
 		</div>	
