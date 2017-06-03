@@ -7,18 +7,21 @@
 <main class="main">
 		<div class="aside-hidden">
 			<div><a href="">라운지</a></div>
-			<div><a href="">게시판</a></div>
+			<div><a href="">여행 Tip</a></div>
 			<div><a href="">FAQ</a></div>
 		</div>
 		<div class="aside">
-			<div class="title"><h3>커뮤니티</h3></div>
-			<div><a href="">라운지</a></div>
-			<div><a href="">게시판</a></div>
-			<div><a href="">FAQ</a></div>
+			<div class="remote-controller">
+				<div class="title"><h3>커뮤니티</h3></div>
+				<div><a href="">라운지</a></div>
+				<div><a href="">여행 Tip</a></div>
+				<div><a href="">FAQ</a></div>
+			</div>
 		
 		</div>
 		<div class="tip-container">
 			<div class="category">
+				<div class="title"><h2>여행 Tip 게시판 </h2></div>
 				<div class="search">
 					<div>
 						<select class="select">
@@ -56,7 +59,7 @@
 					<tr>
 						<td class="num" colspan="1">번호</td>
 						<td colspan="2">카테고리</td>
-						<td colspan="4">제목</td>
+						<td colspan="3">제목</td>
 						<td colspan="2">작성자</td>
 						<td class="date" colspan="2">작성일</td>
 						<td class="hit" colspan="1">조회수</td>
@@ -65,11 +68,11 @@
 				</thead>
 				<tbody>
 	<!-- 				db서 데이터 가져와서 뿌려주는 역할 -->
-					<c:forEach var="a" begin="1" end="10">
+					<c:forEach var="a" begin="1" end="20">
 						<tr>
 							<td class="num" colspan="1">${a }</td>
 							<td colspan="2">카테고리</td>
-							<td colspan="4">어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구</td>
+							<td colspan="3">어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구</td>
 							<td colspan="2">작성자</td>
 							<td class="date" colspan="2">작성일</td>
 							<td class="hit" colspan="1">조회수</td>
