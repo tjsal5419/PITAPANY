@@ -1,0 +1,21 @@
+
+@CHARSET "UTF-8";
+
+/* ----------------------- 전체 영역 ----------------------- */
+.main{
+	margin-top:50px;
+	display:flex;
+		
+}
+
+.aside{
+	border:1px solid red;
+	height:100%;
+	width:100%;
+}
+
+.container{
+	border:1px solid black;
+	height:100%;
+	width:100%;
+}

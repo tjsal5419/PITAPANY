@@ -16,7 +16,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 <body>
-
+	<c:if test="${error eq 1}">
+		<script>
+			alert("아이디 또는 비밀번호를 확인해주세요.");
+		</script>
+	</c:if>
 	<div class="bg">
 		<div>
 		<div class="tool">

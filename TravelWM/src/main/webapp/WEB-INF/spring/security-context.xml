@@ -14,7 +14,8 @@
 	<!-- <http auto-config="false"> true로 할 경우 모든 인증과 권한을 spring이 담당하게 하겠다. -->
 	<http use-expressions="true">
 		<form-login login-page="/joinus/login" 
-			default-target-url="/member/index"/>
+			default-target-url="/member/index"
+			authentication-failure-url="/joinus/login?e=1"/>
 			<!-- authentication-success-handler-ref="successHandler" /> -->
 		<logout logout-success-url="/joinus/login"/>
 		<intercept-url pattern="/index" access="hasRole('ROLE_USER')"/>
@@ -39,10 +40,10 @@
 <!-- 			<user-service>
 				<user name="유저" authorities="ROLE_USER"/>
 			</user-service> -->
- 			<user-service>
+<!--  			<user-service>
 				<user name="test@naver.com" password="1111" authorities="ROLE_USER" />
 				<user name="SAKURA@naver.com" password="1" authorities="ROLE_USER, ROLE_ADMIN" />
-			</user-service>
+			</user-service> -->
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

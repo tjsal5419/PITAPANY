@@ -36,7 +36,7 @@
 				<li><a href="${root }/profile/home">프로필홈</a></li>
 	        	<li><a href="">동행찾기</a></li>
 	        	<li><a href="${root }/accompany/matching">동행매칭</a></li>
-	        	<li><a href="">커뮤니티</a></li>
+	        	<li><a href="${root }/community/tip">커뮤니티</a></li>
 	        </ul>
 	        <ul class="mypage">
 	        	<li><a href=""><img src="${root }/resource/images/ic_question_answer_black_24dp_1x.png"/></a></li>
