@@ -1,26 +1,180 @@
 
 @CHARSET "UTF-8";
-
-/* ----------------------- 전체 영역 ----------------------- */
-.main{
-	margin-top:50px;
-	display:flex;
-		
+/* ---------------- 공통영역 ----------------- */
+.select{
+	height:30px;
 }
+
+a{
+	color:blue;
+	
+}
+a:hover{
+ 	font-weight: bold;
+}
+
+/* -----------------메인 ----------------------- */
+.main{
+	margin-top:80px;
+	display:flex;
+	flex-wrap:wrap;
+	min-height:0px;
+}
+
+.fake{
+	max-width:10%;
+	min-width:10%;
+	flex-grow:1;
+}
+/* --------------------커뮤니티 게시판 목록 ---------*/
 
 .aside{
 	border:2px solid red;
-	height:100%;
-	max-width:200px;
-	min-width:200px;
+	max-width:15%;
+	min-width:15%;
+	padding:10px;
+	padding-top:30px;
+	flex-grow:1;
 }
 
+.aside>div{
+	margin-bottom:10px;
+}
+.aside .title{
+	font-size:20px;
+	font-weight: bold; 
+}
+.aside .title h3{
+	font-weight: bold; 
+
+}
+
+.aside-hidden{
+	display: none;
+}
+
+
+/* --------------------팁 게시판 컨테이너----------- */
 .tip-container{
-	border:2px solid black;
-	height:100%;
-	width:100%;
-	margin-right:200px;
+	flex-grow:1;
 	display:flex;
 	flex-direction:column;
+	padding:15px;
+	width:75%;
+	box-shadow : 0px 0px 2px 0.5px #979797;
+}
+
+.tip-container .category{
+	flex-grow:2;
+}
+
+.tip-container>div{
+	margin-bottom:10px;
+}
+
+
+.tip-container .table{
+	flex-grow:4;
+}
+
+.tip-container .foot{
+	flex-grow:1;
+}
+
+.table td{
+	text-align: center;
+}
+
+.search{
+	margin-bottom:5px;
+}
+.search .search-button{
+	outline: none;
+}
+.foot .page{
+	display:flex;
+	justify-content:center;
+}
+
+.foot .write{
+	display:flex;
+	justify-content:flex-end;
+}
+
+
+/* -----------------카테고리 검색-------------- */
+
+.category{
+	display:flex;
+	flex-direction:column;
+}
+
+.category .search{
+	display:flex;
+	justify-content:flex-end;
+}
+
+.category .line{
+	border-bottom:1px solid #979797;
+	margin-bottom:20px
+}
+.search>div{
+	margin-left:5px;
+	display:flex;
+	align-items:center;
+}
+
+/* ----------------미디어쿼리----------------- */
+@media all and (max-width:760px){
+	.fake{
+		display:hidden;
+	}
+	
+	.aside{
+		display:none;
+	}
+	.main{
+		flex-direction:column;
+		margin-top:80px;
+	}
+	
+	.aside-hidden{
+		display:flex;
+		position:fixed;
+		left:0px;
+		top:50px;
+		width:100%;
+		height:30px;
+		box-shadow: 0px 0px 10px #3f3f3f;
+		z-index: 1000;
+		background-color: white;
+		align-items:center;
+		justify-content: space-around;
+		
+	}
+	
+	.tip-container{
+		padding:15px;
+		margin-left:5%;
+		margin-right:5%;
+		width:100%;
+	}
+	
+	.table .date{
+		display:none;
+	}
+	
+}
+
+@media all and (max-width:480px){
+	.tip-container{
+		margin-left:0px;
+		margin-right:0px;
+	}
+	
+	.num{
+		display:none;
+	}
+	
 	
 }

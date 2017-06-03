@@ -5,52 +5,91 @@
 <link href="${root }/resource/css/community/tip.css" rel="stylesheet"/>
 
 <main class="main">
-	<div class="aside">
-		<div>라운지</div>
-		<div>게시판</div>
-		<div>FAQ</div>
-	
-	</div>
-	<div class="tip-container">
-		<div>카테고리</div>
-		<div>
-			<div>검색 범위</div>
-			<div>검색 내용</div>
-			<div>검색</div>
+		<div class="aside-hidden">
+			<div><a href="">라운지</a></div>
+			<div><a href="">게시판</a></div>
+			<div><a href="">FAQ</a></div>
 		</div>
-		<table>
-			<thead>
-				<tr>
-					<td>번호</td>
-					<td>카테고리</td>
-					<td>제목</td>
-					<td>작성자</td>
-					<td>작성일</td>
-					<td>조회수</td>
-				</tr>
-				
-			</thead>
-			<tbody>
-<!-- 				db서 데이터 가져와서 뿌려주는 역할 -->
-				<c:forEach var="a" begin="1" end="10">
-					<tr>
-						<td>${a }</td>
-						<td>카테고리</td>
-						<td>제목</td>
-						<td>작성자</td>
-						<td>작성일</td>
-						<td>조회수</td>
-					</tr>	
-				</c:forEach>				
-			</tbody>
-		</table>
-
-		<div>
-			페이지 수 			
-		</div>
+		<div class="aside">
+			<div class="title"><h3>커뮤니티</h3></div>
+			<div><a href="">라운지</a></div>
+			<div><a href="">게시판</a></div>
+			<div><a href="">FAQ</a></div>
 		
-		<div>
-			글쓰기
 		</div>
-	</div>	
+		<div class="tip-container">
+			<div class="category">
+				<div class="search">
+					<div>
+						<select class="select">
+							<option>검색</option>
+							<option>하하</option>
+							<option>하하</option>
+							<option>하하</option>
+							<option>하하</option>
+							<option>하하</option>
+							
+						</select>
+					</div>
+					<div>
+		    			<input type="text" class="form-control" placeholder="Search">
+				  	</div>
+				  	<div>
+				  		<input class="search-button" type="image" src="${root }/resource/images/ic_search_black_24dp_1x.png" alt="Submit">
+			  		</div>
+			  	</div>
+			  	<div class="line"></div>
+			  	<div class="filter">
+						<select class="select">
+							<option>카테고리선택</option>
+							<option>하하</option>
+							<option>하하</option>
+							<option>하하</option>
+							<option>하하</option>
+							<option>하하</option>		
+						</select>
+				</div>
+			  		
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<td class="num" colspan="1">번호</td>
+						<td colspan="2">카테고리</td>
+						<td colspan="4">제목</td>
+						<td colspan="2">작성자</td>
+						<td class="date" colspan="2">작성일</td>
+						<td class="hit" colspan="1">조회수</td>
+					</tr>
+					
+				</thead>
+				<tbody>
+	<!-- 				db서 데이터 가져와서 뿌려주는 역할 -->
+					<c:forEach var="a" begin="1" end="10">
+						<tr>
+							<td class="num" colspan="1">${a }</td>
+							<td colspan="2">카테고리</td>
+							<td colspan="4">어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구</td>
+							<td colspan="2">작성자</td>
+							<td class="date" colspan="2">작성일</td>
+							<td class="hit" colspan="1">조회수</td>
+						</tr>	
+					</c:forEach>				
+				</tbody>
+			</table>
+			
+			<div class="foot">
+				<div class="page">
+					페이지 수 			
+				</div>
+				
+				<div class="write">
+					<a href="">글쓰기</a>
+				</div>
+			</div>
+		</div>
+		<div class="fake">
+		
+		</div>
+			
 </main>
