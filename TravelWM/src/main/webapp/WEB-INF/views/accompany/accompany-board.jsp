@@ -13,6 +13,7 @@
 		</div>
 	</div>
 
+
 <main id="main-container">
 	
 	<div class="board-container">
@@ -260,3 +261,4 @@
 			google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 </div>
+
