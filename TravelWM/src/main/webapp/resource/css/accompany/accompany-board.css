@@ -12,8 +12,19 @@
  	border: 5px solid red;
 }
 
+#footer{
+	width: 65%;
+}
 
+.footer-container{
+	width: 100%;
+	margin: auto;
+}
  
+.footer-content-wrapper{
+	margin: 0;
+} 
+
 #map-container{
  	
  	display: inline-box;
@@ -84,20 +95,27 @@
  	
  	padding-top: 30px;
  	
+ 	box-sizing: border-box;
+ 	
  	border: 5px solid yellow;
 }
 
 .board-wrapper{
-	display: block;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 
 	width: 800px;
 	height: 970px;
 	
 	margin: auto;
+	
+	box-sizing: border-box;
 
 	border: 5px solid pink;
 	
 }
+
 
 .board-card{
 	display: block;
@@ -285,7 +303,7 @@
     flex-direction: column;
     justify-content: center;
     
-    width: 500px;
+    width: 800px;
     height: 55px;
     
     margin: auto;
@@ -297,4 +315,98 @@
 .page-info-container span{
 	text-align: center;
 	width: 100%;
+}
+
+@media all and (max-width: 1240px){
+	.board-container{
+		height: 2060px;
+		width: 100%;
+	}
+	
+	.board-wrapper{
+		width: 400px;
+		height: 1930px;
+	}
+	
+	.page-info-container{
+		width: 400px;
+	}
+
+}
+
+@media all and (max-width: 768px){
+		
+	#main-container{
+		display: block;
+		width: 100%;
+	}
+	
+	#filter-container{
+		width: 100%;
+	}
+	
+	.board-container{
+		height: 2060px;
+		width: 100%;
+	}
+	
+	.board-wrapper{
+		width: 330px;
+		height: 1930px;
+	}
+
+	.board-card{
+		width: 320px;
+		height: 320px;
+	}
+	
+	.board-bookmark{
+		width: 30px;
+		height: 30px;
+	}
+	
+	.board-detail{
+		width: 210px;
+		height: 55px;
+	}
+	
+	.board-accompany-info{
+		width: 150px;
+	}
+	
+	.board-title{
+		height: 115px;
+		margin-top: 20px;
+	}
+	
+	.board-info{
+		margin-top: 20px;
+		height: 40px;
+	}
+	
+	.board-info-item{
+		width: 40px;
+	}
+	
+	
+	#map-container{
+		display: inline-block;
+		position: relative;
+		float: left;
+		clear: both;
+		
+		padding-top: 0px;
+		height: 500px;
+		width: 100%;
+	}
+	
+	.page-info-container{
+		width: 330px;
+	}
+	
+	#footer{
+		width: 100%;
+		margin-top: 0px;
+	}
+	
 }

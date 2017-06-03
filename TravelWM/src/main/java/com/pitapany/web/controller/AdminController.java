@@ -2,6 +2,7 @@ package com.pitapany.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pitapany.web.service.AdminService;
@@ -18,4 +19,8 @@ public class AdminController {
 		return "redirect:../admin/mainpage";
 	}
 
+	@RequestMapping("/main")
+	public static String main(Model model){
+		return "admin.main";
+	}
 }
