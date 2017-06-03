@@ -9,13 +9,18 @@
 }
 
 .aside{
-	border:1px solid red;
+	border:2px solid red;
 	height:100%;
-	width:100%;
+	max-width:200px;
+	min-width:200px;
 }
 
-.container{
-	border:1px solid black;
+.tip-container{
+	border:2px solid black;
 	height:100%;
 	width:100%;
+	margin-right:200px;
+	display:flex;
+	flex-direction:column;
+	
 }
