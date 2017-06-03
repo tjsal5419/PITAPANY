@@ -16,7 +16,11 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 </head>
 <body>
-
+	<c:if test="${error eq 1}">
+		<script>
+			alert("아이디 또는 비밀번호를 확인해주세요.");
+		</script>
+	</c:if>
 	<div class="bg">
 		<div>
 		<div class="tool">
@@ -37,7 +41,7 @@
 					<div class="login-box-detail">
 					<form action="${root }/j_spring_security_check" method="POST">
 						<fieldset class="login-form">
-							<c:if test="${not empty vaildate && not vaildate}">
+							<c:if test="${not empty validate && not validate}">
 								<td colspan="2" style="color:red;">아이디 또는 비번이 유효하지 않습니다. </td>
 							</c:if>
 							<input type="email" aria-label="이메일을 입력하세요." autocomplete="username" 
@@ -45,7 +49,7 @@
 						</fieldset>
 						<fieldset style="position:relative;">
 							<input type="password" aria-label="비밀번호를 입력하세요." autocomplete="current-password" 
-								class="login-input" name="j_password" placeholder="비밀번호를 입력하세요." value="" checked="checked"/>
+								class="login-input" name="j_password" placeholder="비밀번호를 입력하세요." value=""  checked="checked"/>
 						</fieldset>
 						
 						<input aria-label="login" class="login-button" value="로그인" type="submit" />
@@ -63,7 +67,7 @@
 					<div class="help">
 						<a href="joinus/join" style="text-decoration: none; ">아이디/비밀번호 찾기</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="" style="text-decoration: none;">회원가입</a>
+						<a href="${root }/joinus/join" style="text-decoration: none;">회원가입</a>
 					</div>
 					
 					<div style="margin-top:15px;">

@@ -14,26 +14,36 @@
 	<!-- <http auto-config="false"> true로 할 경우 모든 인증과 권한을 spring이 담당하게 하겠다. -->
 	<http use-expressions="true">
 		<form-login login-page="/joinus/login" 
-			default-target-url="/index"	/>
-
+			default-target-url="/member/index"
+			authentication-failure-url="/joinus/login?e=1"/>
 			<!-- authentication-success-handler-ref="successHandler" /> -->
 		<logout logout-success-url="/joinus/login"/>
-<!-- 		<intercept-url pattern="/index" access="hasRole('ROLE_USER')"/> -->
+		<intercept-url pattern="/index" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/joinus/mypage" access="hasRole('ROLE_USER')" />
 		<!-- <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" /> -->
 		<intercept-url pattern="/member/**" access="hasRole('ROLE_USER')" /> 
+		<intercept-url pattern="/community/**" access="hasRole('ROLE_USER')" /> 
+		<intercept-url pattern="/profile/**" access="hasRole('ROLE_USER')" /> 
+        <!-- 30 분간 Session 유지함 ==============>나중에 바꿔주기 -->
+		<session-management>
+            <concurrency-control max-sessions="30" error-if-maximum-exceeded="true" />
+        </session-management>
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
-			<!-- <jdbc-user-service data-source-ref="dataSource"
-               users-by-username-query="SELECT id userid, pwd password, 1 enabled FROM Member WHERE id=?"
-               authorities-by-username-query="SELECT memberId userid, roleId authorities FROM MemberRole WHERE memberId=?"
-               /> -->
-			<user-service>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT email userid, password, 1 enabled FROM Member WHERE email=?"
+				authorities-by-username-query="SELECT email userid, role authorities FROM Member WHERE email=?"
+				
+			/>
+<!-- 			<user-service>
+				<user name="유저" authorities="ROLE_USER"/>
+			</user-service> -->
+<!--  			<user-service>
 				<user name="test@naver.com" password="1111" authorities="ROLE_USER" />
-				<user name="SAKURA@naver.com" password="1111" authorities="ROLE_USER, ROLE_ADMIN" />
-			</user-service>
+				<user name="SAKURA@naver.com" password="1" authorities="ROLE_USER, ROLE_ADMIN" />
+			</user-service> -->
 		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

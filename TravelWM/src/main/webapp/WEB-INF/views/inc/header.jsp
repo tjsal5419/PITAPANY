@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,9 +22,21 @@
 	    </form>
         <div class="menu-bar">
 	        <ul class="accompany">
+	        	<c:if test="${empty pageContext.request.userPrincipal.name }">		
+					<li><a href="${root }/joinus/login">로그인</a></li>
+					<li><a href="${root }/joinus/join">회원가입</a></li>
+				</c:if>	
+		
+				<security:authorize  access="isAuthenticated()">
+					<li><a href="${root }/j_spring_security_logout">
+						<security:authentication property="name"/>님 로그아웃
+					</a></li>
+				</security:authorize>
+				
+				<li><a href="${root }/profile/home">프로필홈</a></li>
 	        	<li><a href="">동행찾기</a></li>
 	        	<li><a href="${root }/accompany/matching">동행매칭</a></li>
-	        	<li><a href="">커뮤니티</a></li>
+	        	<li><a href="${root }/community/tip">커뮤니티</a></li>
 	        </ul>
 	        <ul class="mypage">
 	        	<li><a href=""><img src="${root }/resource/images/ic_question_answer_black_24dp_1x.png"/></a></li>

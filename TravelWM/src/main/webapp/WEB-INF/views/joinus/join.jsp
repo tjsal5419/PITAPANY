@@ -58,45 +58,60 @@
 		var month = document.forms["loginForm"]["month"].value;
 		var day = document.forms["loginForm"]["day"].value;
 		var email = document.forms["loginForm"]["email"].value;
-		//var alert = document.querySelector("#alert>span");
+		var sex = document.forms["loginForm"]["sex"].value;
+		var nicName = document.forms["loginForm"]["nicName"].value;
+
 		
 		if(email==''){
 			alert('이메일을 입력해주세요.');
 			
 			return false;
 		}
-		if(name==''){
+		
+		else if(pwd==''){
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}
+		
+		else if(pwdCh==''){
+			alert("비밀번호 확인을 입력해주세요.");
+			return false;
+		}
+
+		else if(!(pwd==pwdCh)){
+			alert("입력하신 비밀번호가 다릅니다.");
+			return false;
+		}
+		
+		else if(name==''){
 			alert("이름을 입력해주세요.");
 			return false;
 		} 
 		
-		if(!pwd.equals(pwdCh)){
-			alert("비밀번호가 다릅니다.");
+		else if(nicName==''){
+			alert("닉네임을 입력해주세요.");
 			return false;
-		}
+		} 
 		
-		if(name==''){
-			alert("이름을 입력해주세요.");
-			return false;
-		}
 		
-		if(name==''){
-			alert("이름을 입력해주세요.");
+		else if(sex==''){
+			alert("성별을 입력해주세요.");
 			return false;
 		}
 		
 
- 		if(phone!=''&& (phone)){
-			alert('핸드폰 번호에 숫자를 입력해주세요.')
+
+		else if(phone!=''&& isNaN(phone)){
+			alert('핸드폰 번호에 숫자를 입력해주세요.');
 			return false;
 		}
 		 
- 		if(year=='년도'||month=='월'||day=='일'){
-			alert('생일을 입력해주세요.')
+		else if(year==0||month==0||day==0){
+			alert('생일을 입력해주세요.');
 			return false;
 		}
  		
-		
+		return true;
 	}
 
 </script>
@@ -110,33 +125,38 @@
 			<div class="tool-in">
 				<div class="title">
 					<h3><span class="label label-default">가입하고, 동행을 추천받으세요! </span></h3>
-					<span style="font-size:10dp;">약간의 정보로 국내외 동행을 구할 수 있습니다.</span>
+					<span class="subtitle">약간의 정보로 국내외 동행을 구할 수 있습니다.</span>
 				</div>
 				
 				<form method="POST" name="loginForm" class="form" onsubmit="return validateForm()">
 				
 					<div class="form-group">
     					<label for="Email">이메일</label>
-  						 <input type="email" class="form-control" id="email" placeholder="Email">
+  						 <input type="email" class="form-control" name="email" id="email" placeholder="Email">
 					</div>
 					 <div class="form-group">
 					    <label for="password">비밀번호</label>
-					    <input type="password" class="form-control" id="password" placeholder="Password">
+					    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
 					 </div>
 					 <div class="form-group">
 					    <label for="passwordCheck">비밀번호 확인</label>
-					    <input type="password" class="form-control" id="passwordCheck" placeholder="Password">
+					    <input type="password" class="form-control" name="passwordCheck" id="passwordCheck" placeholder="Confirm Password">
 					 </div>
 					 <div class="form-group">
 					    <label for="name">이름</label>
-					    <input type="text" class="form-control" id="name" placeholder="Name">
+					    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+					 </div>
+					 
+					 <div class="form-group">
+					    <label for="nicName">닉네임</label>
+					    <input type="text" class="form-control" id="nicName" name="nicName" placeholder="nickName">
 					 </div>
 					 				 				 
 					<div class="form-group" id="sexGroup">
 					  <label for="sex">성별</label>
 					  <div class="radio">
 						  <label>
-						    <input type="radio" name="sex" id="sex" value="0" selected>
+						    <input type="radio" name="sex" id="sex" value="0" checked>
 							남성
 						  </label>					
 						  <label>
@@ -156,7 +176,7 @@
 					</div>
 					<div class="form-group">
 						<label for="phone">휴대폰 번호</label>
-						<input type="text" class="form-control" id="phone" placeholder="Phone(Option)">
+						<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone(Option)">
 					</div>
 
 					<div class="form-group">

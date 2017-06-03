@@ -8,4 +8,9 @@ import org.springframework.web.context.annotation.SessionScope;
 @RequestMapping("/profile/*")
 public class ProfileController {
 	
+	@RequestMapping("/home")
+	public String home() {
+		return "profile.home";
+	}
+	
 }
