@@ -19,8 +19,4 @@ public class AdminController {
 		return "redirect:../admin/mainpage";
 	}
 
-	@RequestMapping("/main")
-	public static String main(Model model){
-		return "admin.main";
-	}
 }

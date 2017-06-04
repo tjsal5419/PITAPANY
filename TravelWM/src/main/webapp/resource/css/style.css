@@ -21,7 +21,7 @@ body {
 
 main {
     flex: 1 0 auto;
- 	min-height: 100vh;
+ 	/* min-height: 100vh; */
 }
   
 .container{
@@ -96,7 +96,7 @@ main {
 	height: inherit;
 	
 	padding-right: 15px;
-	padding-left: 15px;
+	padding-left: 0px;
 	
 	box-sizing: border-box;
 	
@@ -123,7 +123,6 @@ main {
 	height: inherit;
 		
 	box-sizing: border-box;		
-	background: red;
 }
 
 .social-icon-item li{
@@ -176,6 +175,46 @@ main {
     transition: .5s;
     background-color: #322f30;
 }
+
+@media all and (max-width: 768px){
+	
+	#footer{
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	
+	.footer-container{
+		height: 60px;
+	}
+	
+	.footer-content-wrapper{
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		margin: auto;
+	}
+	
+	.copyright-info{
+		padding-right: 0;
+		padding-left: 0;
+		text-align: center;
+		width: 100%;
+	}
+	
+	.social-network{
+		text-align: center;
+		width: 100%;
+	}
+	
+
+	
+	.social-icon-item li{
+		float: none;
+	}
+
+}
+
+
 
 
 /*------------------- media쿼리--------------*/

@@ -24,4 +24,10 @@ public class AccompanyController {
 		return "accompany.reg";
 
 	}
+	
+	@RequestMapping("/board")
+	public static String  board(Model model){
+		return "accompany.board";
+
+	}
 }
