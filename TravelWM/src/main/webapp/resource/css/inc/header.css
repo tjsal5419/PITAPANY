@@ -8,13 +8,23 @@
 	border-bottom: 0px;
 }
 
+.a{
+	font-size:12px;
+}
+
+.form-control{
+	width:130px;	
+	
+}
+
 nav>div{
 	display:flex;
 	align-items:center;
-	padding-left:3%;
-	padding-right:3%;
-	padding-top:1%;
-	padding-bottom:1%;
+	justify-content:center;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:5px;
+	padding-bottom:5px;
 	
 	z-index: 10000;
 	
@@ -72,11 +82,11 @@ nav>div{
 .accompany li{
 	display: inline;
 	height:100%;
+	margin-right:10px;
 }
 
 .accompany li a{
 	display:inline-block;
-	margin-right:25px;
 	text-overflow: ellipsis;
 	color:white;
 	height:100%;
