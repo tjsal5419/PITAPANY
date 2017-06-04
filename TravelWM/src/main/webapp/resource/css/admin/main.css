@@ -290,7 +290,7 @@ a, a:hover, a:focus, .btn:focus {
 	flex-direction: row;
 
 	width: 100%;
-	height: 390px;
+	height: 380px;
 
 	box-sizing: border-box;
 	
@@ -312,6 +312,7 @@ a, a:hover, a:focus, .btn:focus {
 .board-wrapper{
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: middle;
 	
@@ -500,7 +501,7 @@ a, a:hover, a:focus, .btn:focus {
     display: block;
     
     width: 1250px;
-    height: 50px;
+    height: 45px;
     
     margin: auto; 
     border: 5px solid red;      
@@ -513,3 +514,36 @@ a, a:hover, a:focus, .btn:focus {
 	float: right;
 	margin-right: 15px;
 }
+
+@media all and (max-width: 1240px){
+	.service-container{
+		height: 690px;
+	}
+	
+	.board-wrapper{
+		width: 630px;
+		height: 630px;
+	}
+	
+	.page-info-container{
+		width: 630px;
+	}
+}
+
+@media all and (max-width: 768px){
+	.service-container{
+		height: 1310px;
+		width: 100%;
+	}
+	
+	.board-wrapper{
+		width: 315px;
+		height: 1250px;
+		margin: none;
+	}
+	
+	.page-info-container{
+		width: 315px;
+	}
+}
+

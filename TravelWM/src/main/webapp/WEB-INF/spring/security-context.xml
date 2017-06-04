@@ -14,7 +14,7 @@
 	<!-- <http auto-config="false"> true로 할 경우 모든 인증과 권한을 spring이 담당하게 하겠다. -->
 	<http use-expressions="true">
 		<form-login login-page="/joinus/login" 
-			default-target-url="/member/index"
+			default-target-url="/member/main"
 			authentication-failure-url="/joinus/login?e=1"/>
 			<!-- authentication-success-handler-ref="successHandler" /> -->
 		<logout logout-success-url="/joinus/login"/>
