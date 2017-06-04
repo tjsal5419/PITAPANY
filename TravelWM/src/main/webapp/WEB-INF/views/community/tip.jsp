@@ -58,7 +58,7 @@
 				<thead>
 					<tr>
 						<td class="num" colspan="1">번호</td>
-						<td colspan="2">카테고리</td>
+						<td class="category" colspan="2">카테고리</td>
 						<td colspan="3">제목</td>
 						<td colspan="2">작성자</td>
 						<td class="date" colspan="2">작성일</td>
@@ -71,8 +71,10 @@
 					<c:forEach var="a" begin="1" end="20">
 						<tr>
 							<td class="num" colspan="1">${a }</td>
-							<td colspan="2">카테고리</td>
-							<td colspan="3">어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구</td>
+							<td colspan="2" class="category">카테고리</td>
+							<td colspan="3">어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
+								
+							</td>
 							<td colspan="2">작성자</td>
 							<td class="date" colspan="2">작성일</td>
 							<td class="hit" colspan="1">조회수</td>
@@ -82,8 +84,27 @@
 			</table>
 			
 			<div class="foot">
+			<!-- ----------페이지 수 표시하는 부분----------- -->
 				<div class="page">
-					페이지 수 			
+					<nav aria-label="Page navigation">
+					  <ul class="pagination">
+					    <li>
+					      <a href="#" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    <li><a href="#">1</a></li>
+					    <li><a href="#">2</a></li>
+					    <li><a href="#">3</a></li>
+					    <li><a href="#">4</a></li>
+					    <li><a href="#">5</a></li>
+					    <li>
+					      <a href="#" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+					  </ul>
+					</nav>	
 				</div>
 				
 				<div class="write">
