@@ -1,95 +1,158 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<link rel="stylesheet" href="/TravelWM/resource/css/member/bookmark.css"
+	type="text/css" />
 
-<style>
-main {
-	flex: auto;
-	min-height: 0px;
-}
-
-table {
-	margin-top: 10px;
-	width: 60%;
-	border-collapse: collapse;
-}
-
-th, td {
-	border-top: 1px solid;
-	border-botton: 1px solid;
-	padding: 5px, 10px;
-}
-</style>
 <main id="main">
-<h2 class="main-title">북마크</h2>
-<div
-	style="border: 1px solid; width: 80%; display: flex; flex-direction: column; align-items: center;">
-	<table>
-		<thead>
-			<tr>
-				<th colspan='4'>북마크 글</th>
-			</tr>
-		</thead>
-		<tbody style="padding: 10px;">
-			<tr>
-				<td style="width: 10%;">번호</td>
-				<td style="width: 60%;">글제목</td>
-				<td style="width: 20%;">작성일</td>
-				<td style="width: 10%;">조회</td>
-			</tr>
-			<tr>
-				<td>번호</td>
-				<td>글제목</td>
-				<td>작성일</td>
-				<td>조회</td>
-			</tr>
-			<tr>
-				<td>번호</td>
-				<td>글제목</td>
-				<td>작성일</td>
-				<td>조회</td>
-			</tr>
-			<tr>
-				<td>번호</td>
-				<td>글제목</td>
-				<td>작성일</td>
-				<td>조회</td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table>
-		<thead>
-			<tr>
-				<th colspan='4'>내가 쓴 글</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td style="width: 10%;">번호</td>
-				<td style="width: 60%;">글제목</td>
-				<td style="width: 20%;">작성일</td>
-				<td style="width: 10%;">조회</td>
-			</tr>
-			<tr>
-				<td>번호</td>
-				<td>글제목</td>
-				<td>작성일</td>
-				<td>조회</td>
-			</tr>
-			<tr>
-				<td>번호</td>
-				<td>글제목</td>
-				<td>작성일</td>
-				<td>조회</td>
-			</tr>
-			<tr>
-				<td>번호</td>
-				<td>글제목</td>
-				<td>작성일</td>
-				<td>조회</td>
-			</tr>
-		</tbody>
-	</table>
+<div class="frame">
+	<div class="faside">
+		<div class="inframe">
+			<div class="left">
+				<span>프로필관리</span>
+			</div>
+			<div class="left">
+				<span>동행관리</span>
+			</div>
+			<div class="left">
+				<span>기타관리</span>
+			</div>
+			<div class="left">
+				<span>로그아웃</span>
+			</div>
+		</div>
+	</div>
+	<div class="fmain">
+		<div class="content">
+			<div class="head">
+				<div class="book">
+					<span>북마크 글</span>
+				</div>
+			</div>
+			<div class="blist">
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq">
+						<span>조회</span>
+					</div>
+				</div>
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq">
+						<span>조회</span>
+					</div>
+				</div>
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq">
+						<span>조회</span>
+					</div>
+				</div>
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq">
+						<span>조회</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="head">
+				<div class="book">
+					<span>내가 쓴 글</span>
+				</div>
+			</div>
+			<div class="blist">
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq">
+						<span>조회</span>
+					</div>
+				</div>
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq">
+						<span>조회</span>
+					</div>
+				</div>
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq sp">
+						<span>조회</span>
+					</div>
+				</div>
+				<div class="line">
+					<div class="code sp">
+						<span>번호</span>
+					</div>
+					<div class="text sp">
+						<span>제목</span>
+					</div>
+					<div class="date sp">
+						<span>작성일</span>
+					</div>
+					<div class="inq">
+						<span>조회</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 </main>

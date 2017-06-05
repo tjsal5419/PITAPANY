@@ -19,4 +19,12 @@ public class MemberController {
 	public static String main(Model model){
 		return "member.main";
 	}
+	@RequestMapping("/acc-setting")
+	public static String accSetting(Model model){
+		return "member.acc-setting";
+	}
+	@RequestMapping("/bookmark")
+	public static String bookmark(Model model){
+		return "member.bookmark";
+	}
 }

@@ -1,0 +1,170 @@
+@CHARSET "UTF-8";
+
+#main {
+	min-height: 0px;
+	padding-top: 70px;
+}
+
+.frame {
+	width: 100%;
+	display: flex;
+}
+
+.faside {
+	display: flex;
+	flex-direction: column;
+	border-right: 2px solid black;
+}
+
+.faside .inframe {
+	margin-top: 50px;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+.inframe .left {
+	width: 70px;
+	margin-bottom: 30px;
+	text-align: center;
+	border: 1px dashed black;
+	background: #D5D5D5;
+}
+
+.fmain {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+.content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: #F6F6F6;
+}
+
+.head {
+	width: 100%;
+	height: 25px;
+	text-align: center;
+	border: 1px dashed black;
+	background: #D5D5D5;
+}
+
+.spa {
+	margin-top: 20px;
+}
+
+.capa {
+	width: 100%;
+	padding: 15px; border-left : 1px dashed black;
+	border-right: 1px dashed black;
+	border-bottom: 1px dashed black;
+	border-left: 1px dashed black;
+}
+
+.first {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.sel-zone {
+	width: 70px;
+	text-align: center;
+	margin-right: 10px;
+	background: #D5D5D5;
+	border: 1px dashed black;
+}
+
+.sel-date {
+	width: 70px;
+	text-align: center;
+	margin-right: 10px; background : #D5D5D5;
+	border: 1px dashed black;
+	background: #D5D5D5;
+}
+
+.second {
+	width: 100%;
+	border: 1px dashed black;
+	background: #D5D5D5;
+	border-radius: 5px;
+}
+
+.blist {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.line {
+	width: 100%;
+	display: flex;
+	padding: 5px;
+	margin-top: 10px;
+}
+
+.acc-zone {
+	flex-grow: 5;
+	text-align: center;
+	border: 1px dashed black;
+	background: #D5D5D5;
+}
+
+.mod {
+	flex-grow: 1;
+	text-align: center;
+	border: 1px dashed black;
+	background: #D5D5D5;
+}
+
+.del {
+	flex-grow: 1;
+	text-align: center;
+	border: 1px dashed black;
+	background: #D5D5D5;
+}
+
+.sp {
+	margin-right: 5px;
+}
+
+.propic {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.pro {
+	width: 70px;
+	height: 70px;
+	border-radius: 50px;
+	border: 1px dashed black;
+	background:
+		url("/TravelWM/resource/images/accompany-detail/2017-05-31.png")
+		no-repeat center;
+}
+
+.entity {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.nic {
+	width: 50px;
+	text-align: center;
+	border: 1px dashed black;
+	background: #D5D5D5;
+}
+
+/* @media all and (max-width:910px) {
+	#main {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+} */

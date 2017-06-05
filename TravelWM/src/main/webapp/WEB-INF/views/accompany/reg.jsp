@@ -1,22 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet"
-	href="/TravelWM/resource/css/accompany/reg.css" type="text/css" />
-<link rel="stylesheet"
-	href="/TravelWM/resource/js/jquery-ui-themes-1.12.1/jquery-ui.css"
+<link rel="stylesheet" href="/TravelWM/resource/css/accompany/regi.css"
 	type="text/css" />
-<link rel="stylesheet" href="/TravelWM/resource/js/picker.css">
-<script src="/TravelWM/resource/js/jquery-3.2.1.js"
-	type="text/javascript"></script>
-<script src="/TravelWM/resource/js/jquery-ui-1.12.1/jquery-ui.js"
-	type="text/javascript"></script>
-<script type="text/javascript" src="/TravelWM/resource/js/picker.js"></script>
 
 <main id="main">
 <div class="frame">
 	<div class="content">
-		<table class="table">
+		<div class="head">
+			<div class="title-logo">
+				<span>Title</span>
+			</div>
+			<div class="title-content">
+				<textarea placeholder="제목내용"></textarea>
+			</div>
+		</div>
+		<div class="sel">
+			<div class="zone">
+				<span>동행장소</span>
+			</div>
+			<div class="date">
+				<span>동행날짜</span>
+			</div>
+		</div>
+		<div class="text">
+			<textarea placeholder="본문내용"></textarea>
+		</div>
+		<div class="select-char">
+			<span>성향선택</span>
+		</div>
+		<div class="foot">
+			<div class="insert-pic">
+				<label for="filebox"><span>사진첨부</span></label> <input type="file"
+					id="filebox">
+			</div>
+			<div class="bottun">
+				<div class="cancel">
+					<a href="">글 취소</a>
+				</div>
+				<div class="reg">
+					<a href="">글 등록</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</main>
+<!-- 
+<table class="table">
 			<tbody>
 				<tr>
 					<th>제목</th>
@@ -97,6 +128,4 @@
 				<input type="submit" value="취소" /><input type="submit" value="등록" />
 			</div>
 		</div>
-	</div>
-</div>
-</main>
+	</div> -->
