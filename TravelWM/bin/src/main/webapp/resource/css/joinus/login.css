@@ -1,0 +1,150 @@
+@CHARSET "UTF-8";
+
+.bg {
+	position:fixed;
+	background:url("../../images/travel_bg.jpg") no-repeat;
+	background-size:cover;
+	left:0px;
+	top:0px;
+	right:0px;
+	bottom:0px;
+	
+}
+
+.bg>div:first-child{
+	background-color: rgba(0, 0, 0, 0.5);
+	min-height:100%;
+	min-width:100%;
+	position:absolute;
+	left: 0px;
+	top:0px;
+}
+
+.tool{
+	margin-left:25%;
+	margin-right:25%;
+	margin-top:5%;
+	height:90%;
+}
+
+.tool-in  {
+	background-color: rgba(247, 244, 244, 1);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	z-index:10;
+}
+
+.logo-box {
+	margin: 30px auto 0;
+	display:flex;
+	align-items:center;
+	flex-grow:1;
+}
+
+.intro-box{
+	flex-grow:1;
+}
+.intro  {
+	margin: 5px 26px 20px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.3em;
+	color: #555;
+}
+
+.sub-intro {
+	margin: -10px 26px 30px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1em;
+	color: #b5b5b5;
+}
+
+.login-box {
+	margin: 0 auto;
+	position: relative;
+	text-align: center;
+	flex-grow:3;
+}
+
+.login-box-detail {
+	margin:0 auto;
+	width:268px;
+}
+
+.login-form {
+	position:relative;
+	margin-bottom:7px;
+}
+
+.login-input {
+	background-color: #f0f0f0;
+	border: 0px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	position: relative;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	border-radius: 3px;
+	font-weight: bold;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+	color: #333;
+	font-size: 1em;
+	outline: none;
+}
+
+.login-button {
+	border: 0px;
+	height: 36px;
+	display: inline-block;
+	border-radius: 4px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	padding: 0px 18px;
+	font-size: 1em;
+	font-weight: bold;
+	outline: none;
+	position: relative;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	cursor: pointer;
+	margin-top: 10px;
+	vertical-align: middle;
+	text-align: center;
+	background-color: #00BCD1;
+	color: #fff;
+	width: 100%;
+}
+
+.or {
+	margin-bottom: 3px;
+	overflow: hidden;
+	text-align: center;
+	color: #555;
+	font-weight: bold;
+}
+
+.help {
+	margin-bottom: 3px;
+	overflow: hidden;
+	text-align: center;
+	color: #555;
+	font-size: 0.8em;
+}
+
+.precautions {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-size: 0.6em;
+	font-weight: normal;
+	text-align: center;
+	-webkit-transition: opacity .2s linear;
+	transition: opacity .2s linear;
+	color: #aaa;
+	width: 224px;
+}
