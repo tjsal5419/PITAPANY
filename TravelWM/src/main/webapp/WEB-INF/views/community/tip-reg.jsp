@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<link rel="stylesheet" href="/TravelWM/resource/css/accompany/reg.css"
+<link rel="stylesheet" href="/TravelWM/resource/css/community/tip-reg.css"
 	type="text/css" />
 
 <main id="main">
@@ -16,24 +16,11 @@
 			</div>
 		</div>
 		<div class="sel">
-			<div class="zone">
-				<span>동행장소</span>
-			</div>
-			<div class="date">
-				<span>동행날짜</span>
-			</div>
 		</div>
 		<div class="text">
 			<textarea placeholder="본문내용"></textarea>
 		</div>
-		<div class="select-char">
-			<span>성향선택</span>
-		</div>
 		<div class="foot">
-			<div class="insert-pic">
-				<label for="filebox"><span>사진첨부</span></label> <input type="file"
-					id="filebox">
-			</div>
 			<div class="bottun">
 				<div class="cancel">
 					<a href=""><button class="btn btn-info chat">글 취소</button></a>

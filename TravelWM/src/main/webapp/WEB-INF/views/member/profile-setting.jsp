@@ -1,28 +1,194 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<link rel="stylesheet"
+	href="/TravelWM/resource/css/member/profile-setting.css"
+	type="text/css" />
+<script>
+	window.addEventListener("load", function() {
+		var addButton = document.querySelector("#add");
 
-<style>
-main {
-	flex: auto;
-	min-height: 0px;
-}
+		addButton.onclick = function() {
+		}
+	});
+</script>
 
-table {
-	margin-top: 10px;
-	width: 60%;
-	border-collapse: collapse;
-}
-
-th, td {
-	border-top: 1px solid;
-	border-botton: 1px solid;
-	padding: 5px, 10px;
-}
-</style>
 <main id="main">
-<h2 class="main-title">프로필 설정</h2>
-<div
+<div class="frame">
+	<div class="faside">
+		<div class="inframe">
+			<div class="left">
+				<span>프로필관리</span>
+			</div>
+			<div class="left">
+				<span>동행관리</span>
+			</div>
+			<div class="left">
+				<span>기타관리</span>
+			</div>
+			<div class="left">
+				<span>로그아웃</span>
+			</div>
+		</div>
+	</div>
+	<div class="fmain">
+		<div class="content">
+			<div class="head">
+				<div>
+					<span>프로필 기본 정보</span>
+				</div>
+			</div>
+			<div class="capa">
+				<div class="first">
+					<span>배경과 프사자리</span>
+				</div>
+				<div class="second">
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>닉네임</span>
+							</div>
+						</div>
+						<div class="t-input">
+							<input type="text" placeholder="입력란" />
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>프로필명</span>
+							</div>
+						</div>
+						<div class="t-input">
+							<input type="text" placeholder="입력란" />
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>혈액형</span>
+							</div>
+						</div>
+						<div class="t-select">
+							<select>
+								<option>A</option>
+								<option>B</option>
+								<option>O</option>
+								<option>AB</option>
+							</select>
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>직업</span>
+							</div>
+						</div>
+						<div class="t-input">
+							<input type="text" placeholder="입력란" />
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>동행유형</span>
+							</div>
+						</div>
+						<div class="t-select">
+							<select>
+								<option>유형</option>
+								<option>무형</option>
+								<option>문화재</option>
+							</select>
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>자기소개</span>
+							</div>
+						</div>
+						<div class="t-area">
+							<textarea placeholder="입력란"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="head">
+				<div>
+					<span>계 정 정 보</span>
+				</div>
+			</div>
+			<div class="capa">
+				<div class="second">
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>아이디</span>
+							</div>
+						</div>
+						<div class="t-display">
+							<span>Macboy</span>
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>비밀번호</span>
+							</div>
+						</div>
+						<div class="t-display">
+							<span>*******</span>
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>생년월일</span>
+							</div>
+						</div>
+						<div class="t-input">
+							<input type="date" />
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>휴대전화</span>
+							</div>
+						</div>
+						<div class="t-input">
+							<input type="text" placeholder="입력란" />
+						</div>
+					</div>
+					<div class="info-factor">
+						<div class="t-label">
+							<div>
+								<span>S N S</span>
+							</div>
+						</div>
+						<div class="t-input">
+							<input type="text" placeholder="입력란" />
+						</div>
+						<div class="btn-custom">
+							<button id="add" class="btn btn-info customs">추가</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</main>
+
+
+
+
+
+<!-- <div
 	style="border: 1px solid; width: 80%; display: flex; flex-direction: column; align-items: center;">
 	<table>
 		<tbody>
@@ -86,5 +252,4 @@ th, td {
 	<div style="width: 454px; display: flex; flex-direction: row-reverse;">
 		<button>추가하기</button>
 	</div>
-</div>
-</main>
+</div> -->

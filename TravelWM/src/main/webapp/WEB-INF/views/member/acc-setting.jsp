@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet"
 	href="/TravelWM/resource/css/member/acc-setting.css" type="text/css" />
@@ -25,7 +26,7 @@
 	<div class="fmain">
 		<div class="content">
 			<div class="head">
-				<div class="book">
+				<div>
 					<span>동행 정보 관리</span>
 				</div>
 			</div>
@@ -33,132 +34,54 @@
 				<div class="first">
 					<div class="sel-zone">동행장소</div>
 					<div class="sel-date">동행날짜</div>
-					<input class="regi" type="button" value="등록">
+					<button class="btn btn-info na">등록</button>
 				</div>
 				<div class="second">
 					<div class="blist">
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
+						<c:forEach var="a" begin="1" end="5">
+							<div class="line">
+								<div class="acc-zone">
+									<span>동행장소</span>
+								</div>
+								<button class="btn btn-info na">수정</button>
+								<button class="btn btn-info na">삭제</button>
 							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="content spa">
 			<div class="head">
-				<div class="book">
+				<div>
 					<span>대화 친구 목록</span>
 				</div>
 			</div>
 			<div class="capa">
 				<div class="propic">
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
+					<c:forEach var="a" begin="1" end="5">
+						<div class="entity">
+							<a href="#"><div class="pro"></div></a>
+							<div class="nic">닉네임</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 		<div class="content spa">
 			<div class="head">
-				<div class="book">
+				<div>
 					<span>매칭 친구 목록</span>
 				</div>
 			</div>
 			<div class="capa">
 				<div class="propic">
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
+					<c:forEach var="a" begin="1" end="5">
+						<div class="entity">
+							<a href="#"><div class="pro"></div></a>
+							<div class="nic">닉네임</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

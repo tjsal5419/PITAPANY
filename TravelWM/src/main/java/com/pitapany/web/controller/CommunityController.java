@@ -9,7 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/community/*")
 public class CommunityController {
 	@RequestMapping("tip")
-	public String tip(){
+	public String tip() {
 		return "community.tip";
+	}
+
+	@RequestMapping("tip-reg")
+	public String tipReg() {
+		return "community.tip-reg";
+	}
+	
+	@RequestMapping("tip-detail")
+	public String tipDetail() {
+		return "community.tip-detail";
 	}
 }

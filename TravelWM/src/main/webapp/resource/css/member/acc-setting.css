@@ -26,7 +26,8 @@
 	width: 70px;
 	margin-bottom: 30px;
 	text-align: center;
-	border: 1px dashed black;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 	background: #D5D5D5;
 }
 
@@ -34,8 +35,8 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	margin-left: 20%;
-	margin-right: 20%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .content {
@@ -50,7 +51,8 @@
 	width: 100%;
 	height: 25px;
 	text-align: center;
-	border: 1px dashed black;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 	background: #D5D5D5;
 }
 
@@ -60,10 +62,9 @@
 
 .capa {
 	width: 100%;
-	padding: 15px; border-left : 1px dashed black;
-	border-right: 1px dashed black;
-	border-bottom: 1px dashed black;
-	border-left: 1px dashed black;
+	padding: 15px;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 }
 
 .first {
@@ -72,24 +73,28 @@
 }
 
 .sel-zone {
-	width: 70px;
+	width: 150px;
 	text-align: center;
 	margin-right: 10px;
 	background: #D5D5D5;
-	border: 1px dashed black;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 }
 
 .sel-date {
-	width: 70px;
+	width: 150px;
 	text-align: center;
-	margin-right: 10px; background : #D5D5D5;
-	border: 1px dashed black;
-	background: #D5D5D5;
+	margin-right: 10px;
+	background : #D5D5D5;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
+	
 }
 
 .second {
 	width: 100%;
-	border: 1px dashed black;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 	background: #D5D5D5;
 	border-radius: 5px;
 }
@@ -110,26 +115,31 @@
 .acc-zone {
 	flex-grow: 5;
 	text-align: center;
-	border: 1px dashed black;
-	background: #D5D5D5;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
+	background: white;
 }
 
 .mod {
 	flex-grow: 1;
 	text-align: center;
-	border: 1px dashed black;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 	background: #D5D5D5;
 }
 
 .del {
 	flex-grow: 1;
 	text-align: center;
-	border: 1px dashed black;
-	background: #D5D5D5;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
+	background: white;
 }
 
-.sp {
-	margin-right: 5px;
+.na {
+	margin-left: 5px;
+	padding: 1px;
+	font-size: 12px;
 }
 
 .propic {
@@ -142,7 +152,8 @@
 	width: 70px;
 	height: 70px;
 	border-radius: 50px;
-	border: 1px dashed black;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 	background:
 		url("/TravelWM/resource/images/accompany-detail/2017-05-31.png")
 		no-repeat center;
@@ -157,14 +168,28 @@
 .nic {
 	width: 50px;
 	text-align: center;
-	border: 1px dashed black;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd;
 	background: #D5D5D5;
 }
 
-/* @media all and (max-width:910px) {
+@media all and (max-width:910px) {
 	#main {
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 	}
-} */
+	.frame {
+		width: 100%;
+		background: #F6F6F6;
+		box-shadow: 0 3px 3px 0 #e0e0e0;
+		display: flex;
+		border: 1px solid #dddddd;
+	}
+	.fmain {
+		margin: 0px;
+	}
+	.faside {
+		display: none;
+	}
+}
