@@ -5,21 +5,45 @@
 <link rel="stylesheet"
 	href="/TravelWM/resource/css/member/acc-setting.css" type="text/css" />
 
+<script>
+	window.addEventListener("load", function() {
+		var mod = document.querySelector("#mod");
+		var modAcc = documnet.querySelector("#mod-acc");
+		var accZone = documnet.querySelector("#acc-zone");
+		
+		mod.onclick = function() {
+			accZone.style.display = "none";
+			modAcc.style.display = "flex";
+		}
+	});
+</script>
+
 <main id="main">
 <div class="frame">
-	<div class="faside">
-		<div class="inframe">
-			<div class="left">
-				<span>프로필관리</span>
+	<div class="aside-hidden">
+		<div>
+			<a href="/TravelWM/member/profile-setting">프로필관리</a>
+		</div>
+		<div>
+			<a href="">동행관리</a>
+		</div>
+		<div>
+			<a href="/TravelWM/member/bookmark">기타관리</a>
+		</div>
+	</div>
+	<div class="aside">
+		<div class="remote-controller">
+			<div class="title">
+				<h3>관리페이지</h3>
 			</div>
-			<div class="left">
-				<span>동행관리</span>
+			<div>
+				<a href="/TravelWM/member/profile-setting">프로필관리</a>
 			</div>
-			<div class="left">
-				<span>기타관리</span>
+			<div>
+				<a href="">동행관리</a>
 			</div>
-			<div class="left">
-				<span>로그아웃</span>
+			<div>
+				<a href="/TravelWM/member/bookmark">기타관리</a>
 			</div>
 		</div>
 	</div>
@@ -40,10 +64,14 @@
 					<div class="blist">
 						<c:forEach var="a" begin="1" end="5">
 							<div class="line">
-								<div class="acc-zone">
+								<div id="acc-zone" class="acc-zone">
 									<span>동행장소</span>
 								</div>
-								<button class="btn btn-info na">수정</button>
+								<div id="mod-acc" class="mod-acc">
+									<div class="sel-zone">동행장소</div>
+									<div class="sel-date">동행날짜</div>
+								</div>
+								<button id="mod" class="btn btn-info na">수정</button>
 								<button class="btn btn-info na">삭제</button>
 							</div>
 						</c:forEach>

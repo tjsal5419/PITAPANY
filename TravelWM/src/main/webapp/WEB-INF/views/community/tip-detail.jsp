@@ -25,7 +25,7 @@
 			<div class="profile">
 				<div class="pic"></div>
 				<div class="info">
-					<span class="item">맥보이</span><span class="item">잡담&수다</span>
+					<span class="item">맥보이</span><span class="item">잡담 & 수다</span>
 				</div>
 			</div>
 			<div class="bookmark">

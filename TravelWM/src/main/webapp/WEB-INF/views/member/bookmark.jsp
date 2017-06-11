@@ -8,22 +8,19 @@
 
 <main id="main">
 <div class="frame">
-	<div class="faside">
-		<div class="inframe">
-			<div class="left">
-				<span>프로필관리</span>
-			</div>
-			<div class="left">
-				<span>동행관리</span>
-			</div>
-			<div class="left">
-				<span>기타관리</span>
-			</div>
-			<div class="left">
-				<span>로그아웃</span>
+	<div class="aside-hidden">
+			<div><a href="/TravelWM/member/profile-setting">프로필관리</a></div>
+			<div><a href="/TravelWM/member/acc-setting">동행관리</a></div>
+			<div><a href="">기타관리</a></div>
+		</div>
+		<div class="aside">
+			<div class="remote-controller">
+				<div class="title"><h3>관리페이지</h3></div>
+				<div><a href="/TravelWM/member/profile-setting">프로필관리</a></div>
+				<div><a href="/TravelWM/member/acc-setting">동행관리</a></div>
+				<div><a href="">기타관리</a></div>
 			</div>
 		</div>
-	</div>
 	<div class="fmain">
 		<div class="content">
 			<div class="head">

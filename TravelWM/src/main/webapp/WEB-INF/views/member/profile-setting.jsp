@@ -5,30 +5,44 @@
 <link rel="stylesheet"
 	href="/TravelWM/resource/css/member/profile-setting.css"
 	type="text/css" />
-<script>
-	window.addEventListener("load", function() {
-		var addButton = document.querySelector("#add");
 
-		addButton.onclick = function() {
-		}
-	});
+<script type="text/javascript">
+	function add() {
+		var div = document.createElement('div');
+		
+		div.innerHTML = document.getElementById('sns').innerHTML;
+		document.getElementById('clone').appendChild(div);
+
+		div.style.display = "flex";
+	}
 </script>
 
 <main id="main">
 <div class="frame">
-	<div class="faside">
-		<div class="inframe">
-			<div class="left">
-				<span>프로필관리</span>
+	<div class="aside-hidden">
+		<div>
+			<a href="">프로필관리</a>
+		</div>
+		<div>
+			<a href="/TravelWM/member/acc-setting">동행관리</a>
+		</div>
+		<div>
+			<a href="/TravelWM/member/bookmark">기타관리</a>
+		</div>
+	</div>
+	<div class="aside">
+		<div class="remote-controller">
+			<div class="title">
+				<h3>관리페이지</h3>
 			</div>
-			<div class="left">
-				<span>동행관리</span>
+			<div>
+				<a href="">프로필관리</a>
 			</div>
-			<div class="left">
-				<span>기타관리</span>
+			<div>
+				<a href="/TravelWM/member/acc-setting">동행관리</a>
 			</div>
-			<div class="left">
-				<span>로그아웃</span>
+			<div>
+				<a href="/TravelWM/member/bookmark">기타관리</a>
 			</div>
 		</div>
 	</div>
@@ -165,18 +179,23 @@
 						</div>
 					</div>
 					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>S N S</span>
+						<div id="sns" class="sns-info">
+							<div id="sns-label" class="t-label">
+								<div id="sns-label-div">
+									<span>S N S</span>
+								</div>
+							</div>
+							<div id="sns-input" class="t-input">
+								<input id="sns-input-in" type="text" placeholder="입력란" />
 							</div>
 						</div>
-						<div class="t-input">
-							<input type="text" placeholder="입력란" />
-						</div>
-						<div class="btn-custom">
-							<button id="add" class="btn btn-info customs">추가</button>
+						<div class="sns-button">
+							<div class="btn-custom">
+								<button class="btn btn-info customs" onclick="add()">추가</button>
+							</div>
 						</div>
 					</div>
+					<div id="clone" class="info-factor"></div>
 				</div>
 			</div>
 		</div>

@@ -23,10 +23,10 @@
 		<div class="foot">
 			<div class="bottun">
 				<div class="cancel">
-					<a href=""><button class="btn btn-info chat">글 취소</button></a>
+					<a href="/TravelWM/community/tip"><button class="btn btn-info chat">글 취소</button></a>
 				</div>
 				<div class="reg">
-					<button class="btn btn-info chat">글 등록</button>
+					<button class="btn btn-info chat" type ="submit">글 등록</button>
 				</div>
 			</div>
 		</div>
