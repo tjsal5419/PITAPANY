@@ -8,10 +8,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/community/*")
 public class CommunityController {
+
 	@RequestMapping("tip")
 	public String tip() {
 		return "community.tip";
 	}
+<<<<<<< HEAD
 
 	@RequestMapping("tip-reg")
 	public String tipReg() {
@@ -22,4 +24,12 @@ public class CommunityController {
 	public String tipDetail() {
 		return "community.tip-detail";
 	}
+=======
+	
+	@RequestMapping("faq")
+	public String faq(){
+		return "community.faq";
+	}
+
+>>>>>>> refs/remotes/origin/master
 }

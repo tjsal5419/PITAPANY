@@ -30,13 +30,11 @@
  	display: inline-box;
  	position: fixed;
  	
-	padding-top: 45px;
+	padding-top: 60px;
  	right: 0%;
  	width: 35%;
  	height: 100%;
- 	
- 	
- 	border: 5px solid blue;
+
  }
  
 #filter-container{
@@ -48,7 +46,7 @@
 	
 	width: 65%;
 	min-height: 65px;
-	margin-top: 50px;
+	margin-top: 60px;
 	
 	border: 5px solid green;
 }
@@ -93,7 +91,7 @@
  	width: 100%;
  	height:1100px;
  	
- 	padding-top: 30px;
+ 	padding-top: 40px;
  	
  	box-sizing: border-box;
  	
@@ -339,48 +337,57 @@
 	#main-container{
 		display: block;
 		width: 100%;
+		
 	}
 	
 	#filter-container{
 		width: 100%;
+		min-width: 320px;
 	}
 	
 	.board-container{
-		height: 2060px;
+		height: 1920px;
 		width: 100%;
+		
+
 	}
 	
 	.board-wrapper{
-		width: 330px;
-		height: 1930px;
+		width: 290px;
+		height: 1750px;
 	}
 
+	.board-content{
+		padding: 10px;
+	}
 	.board-card{
-		width: 320px;
-		height: 320px;
+		width: 280px;
+		height: 280px;
+		padding: 0px;
 	}
 	
 	.board-bookmark{
 		width: 30px;
 		height: 30px;
+		
 	}
 	
 	.board-detail{
-		width: 210px;
+		width: 200px;
 		height: 55px;
 	}
 	
 	.board-accompany-info{
-		width: 150px;
+		width: 140px;
 	}
 	
 	.board-title{
 		height: 115px;
-		margin-top: 20px;
+		margin-top: 15px;
 	}
 	
 	.board-info{
-		margin-top: 20px;
+		margin-top: 15px;
 		height: 40px;
 	}
 	
@@ -401,7 +408,7 @@
 	}
 	
 	.page-info-container{
-		width: 330px;
+		width: 300px;
 	}
 	
 	#footer{

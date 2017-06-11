@@ -5447,15 +5447,15 @@ button.list-group-item-danger.active:focus {
   margin-bottom: 0;
   line-height: 1.3;
 }
-.panel {
+/* .panel {
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-}
-.panel-body {
+} */
+/* .panel-body {
   padding: 15px;
 }
 .panel-heading {
@@ -5789,7 +5789,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-danger > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ebccd1;
-}
+} */
 .embed-responsive {
   position: relative;
   display: block;
