@@ -13,23 +13,19 @@ public class CommunityController {
 	public String tip() {
 		return "community.tip";
 	}
-<<<<<<< HEAD
 
 	@RequestMapping("tip-reg")
 	public String tipReg() {
 		return "community.tip-reg";
 	}
-	
+
 	@RequestMapping("tip-detail")
 	public String tipDetail() {
 		return "community.tip-detail";
 	}
-=======
-	
+
 	@RequestMapping("faq")
-	public String faq(){
+	public String faq() {
 		return "community.faq";
 	}
-
->>>>>>> refs/remotes/origin/master
 }
