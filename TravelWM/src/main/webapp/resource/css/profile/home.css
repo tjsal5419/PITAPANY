@@ -1,423 +1,572 @@
+
 @CHARSET "UTF-8";
 
+
 .back-img{
-	/* background-size: 100%;
-	display: block;
-	width: 100%;
-	height: 20%;
-	position: relative;	 */
+   /* background-size: 100%;
+   display: block;
+   width: 100%;
+   height: 20%;
+   position: relative;    */
 } 
 
 .background{
-	margin-top: 50px;
+   margin-top: 50px;
 }
 
 .background-pictures{
-	width: 100%;
-	max-height: 500px;
-	z-index: 100; 
+   width: 100%;
+   max-height: 500px;
+   z-index: 100; 
 } 
 
 .prof-img {
-	margin-top: 2%;
-	position: relative;
-	width: 100%;
-	top: -350px;
+   margin-top: 20px;
+   position: relative;
+   width: 100%;
+   top: -350px;
 }
 
 .name {
-	font-size: 20px;
-	color: yellow;
-	font-weight: bold;
-	z-index: 102;
-	position: relative;
-	text-align: center;
-	padding-bottom: 4%; 
+   font-size: 20px;
+   color: yellow;
+   font-weight: bold;
+   z-index: 102;
+   position: relative;
+   text-align: center;
+   padding-bottom: 4%; 
 }
 
 .center{
-	text-align: center; 
-	margin-bottom: 2%;
+   text-align: center; 
+   margin-bottom: 20px;
 }
 
 .thumblist {
-	padding: 0;
-	margin: 0;
-	list-style: none;
-	text-align: center;
-	z-index: 100; 
-	width: 100%;
+   padding: 0;
+   margin: 0;
+   list-style: none;
+   text-align: center;
+   z-index: 100; 
+   width: 100%;
 }
 
 .thumblist .prof-img-circle {
-	position: relative;
-	height: 300px;
-	width: 300px;
-	border-radius: 50%;
-	/* max-width: 250px;
-	max-height: 250px; */
-	margin-bottom: 2%;
+   position: relative;
+   height: 300px;
+   width: 300px;
+   border-radius: 50%;
+   /* max-width: 250px;
+   max-height: 250px; */
+   margin-bottom: 20px;
 }
 
 .setting-button {
-	z-index: 102;
-	position: relative;
-	top: -50px;
-	text-align: right;
-	right: 30px;
+   z-index: 102;
+   position: relative;
+   top: -50px;
+   text-align: right;
+   right: 30px;
 }
 
 /* --- main -------------------------------------------- */
 
 /* .content-container {
-	width: 960px;
-	margin-left: 10%;
-	margin-right: 10%;
-	min-height: 500px; 콘텐트에 맞게 블럭이 늘어나게 해주는 min-.
-	height: 100%;
-	position: relative; 컨테이너 안에 콘텐트 배치하고 싶은 경우
-	justify-content:space-around;
-	top: -200px;
+   width: 960px;
+   margin-left: 10%;
+   margin-right: 10%;
+   min-height: 500px; 콘텐트에 맞게 블럭이 늘어나게 해주는 min-.
+   
+   position: relative; 컨테이너 안에 콘텐트 배치하고 싶은 경우
+   justify-content:space-around;
+   top: -200px;
 } */
 .menu{
-	top: -350px;
-	display: flex;		
-	height: 100%;
-	position: relative;
-	justify-content: space-around;
-	margin-top: 2%;
-	margin-left: 15%;
-	margin-right: 15%;
-	min-height: 50px;
-	/* min-width: 70%;  */
-	background-color: rgb(247, 244, 244);
-	border-radius: 10px;
-	box-shadow:0px 0px 2px 0.5px #979797;
+   top: -350px;
+   display: flex;      
+   
+   position: relative;
+   justify-content: space-around;
+   margin-top: 20px;
+   margin-left: 15%;
+   margin-right: 15%;
+   min-height: 50px;
+   /* min-width: 70%;  */
+   border-radius: 10px;
+   background-color: #ffffff;
+   box-shadow: 0 3px 3px 0 #e0e0e0;
+   border: 1px solid #dddddd;
 }
 
 .menu .list{
-	width: 100%;
-	display: flex;	
-	justify-content: space-between;
-	align-items: center;
+   width: 100%;
+   display: flex;   
+   justify-content: space-between;
+   align-items: center;
 }
 
 .menu .list .change{
-	width: 33%;
-	height: 100%;
-	display: flex;	
-	justify-content: center;
-	align-items: center;
-	border-right: 1px;
-	border-right-color: #979797; 
-	border-right-style: solid;
+   width: 33%;
+   
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   border-right: 1px solid #dddddd;
 }
 
 .menu .list .write{
-	width: 33%;
-	height: 100%;
-	display: flex;	
-	justify-content: center;
-	align-items: center;
-	border-right: 1px;
-	border-right-color: #979797; 
-	border-right-style: solid;
+   width: 33%;
+   
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   border-right: 1px solid #dddddd;
+   
 }
 .menu .list .detail{
-	width: 33%;
-	height: 100%;
-	display: flex;	
-	justify-content: center;
-	align-items: center;
+   width: 33%;
+   
+   display: flex;   
+   justify-content: center;
+   align-items: center;
 }
 
-
 .content-container{
-	top: -350px;
-	display: block;	
-	height: 100%;
-	position: relative;
-	justify-content: space-around;
-	margin-left: 15%;
-	margin-right: 15%;
-	min-height: 400px;
-	/* min-width: 70%;  */
-	background-color: rgb(247, 244, 244);
-	border-radius: 10px;
-	box-shadow:0px 0px 2px 0.5px #979797;	
+   top: -350px;
+   display: block;   
+   
+   position: relative;
+   justify-content: space-around;
+   margin-top: 20px;
+   margin-left: 15%;
+   margin-right: 15%;
+   min-height: 400px;
+   /* min-width: 70%;  */
+   border-radius: 10px;
+   background-color: #ffffff;
+   box-shadow: 0 3px 3px 0 #e0e0e0;
+   border: 1px solid #dddddd;
 }
 
 .main .box{
-	height: 400px;
-	margin: 3%;
+   min-height: 400px;
+   margin: 20px;
 }
 
 .info-box{
-	padding: 3%;
 }
 
 .prof-box{
-	display: flex;
-	margin-bottom: 4%;
+   display: flex;
+   margin-bottom: 20px;
 }
 
 .prof-thumblist {
-	list-style: none;
-	text-align: center;
-	z-index: 100;	
+   list-style: none;
+   text-align: center;
+   z-index: 100;   
 }
 
 .prof-thumblist .prof-small-img-circle {
-	margin-right: 20px;
-	position: relative;
-	height: 100px;
-	width: 100px;
-	border-radius: 50%;
+   margin-right: 20px;
+   position: relative;
+   height: 100px;
+   width: 100px;
+   border-radius: 50%;
 }
 
 .prof-box .list{
-	width: 150px;
-	height: 100px;
-	background-color: silver;
-	border: 1px solid black;
-	border-radius: 10px;
-	display: flex;	
-	flex-direction: column;	
+   width: 150px;
+   height: 100px;
+   background-color: #ffffff;
+   box-shadow: 0 3px 3px 0 #e0e0e0;
+   border: 1px solid #dddddd;
+   border-radius: 10px;
+   display: flex;   
+   flex-direction: column;   
 }
 
 .prof-box .list .nic{
-	height: 33px;
-	border-bottom: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: black;
-	display: flex;	
-	justify-content: center;
-	align-items: center;
+   height: 33px;
+   border-bottom: 1px solid #dddddd;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
 }
 
 .prof-box .list .location{
-	height: 34px;
-	border-bottom: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: black;
-	display: flex;	
-	justify-content: center;
-	align-items: center;
+   height: 34px;
+   border-bottom: 1px solid #dddddd;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
 }
 
-.prof-box .list .write-date{	
-	height: 33px;
-	display: flex;	
-	justify-content: center;
-	align-items: center;
+.prof-box .list .write-date{   
+   height: 33px;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
 }
 
 .content {
-	height: 100%;
-	position: relative;
-	justify-content: space-around;
-	padding: 3%;
-	min-height: 200px;
-	/* min-width: 70%;  */
-	background-color: white;
-	border-radius: 10px;
-	box-shadow:0px 0px 2px 0.5px #979797;
+   
+   position: relative;
+   justify-content: space-around;
+   padding: 20px;
+   min-height: 200px;
+   /* min-width: 70%;  */
+   background-color: white;
+   border-radius: 10px;
+   box-shadow:0px 0px 2px 0.5px #979797;
+   margin-top: 10px;
+   margin-bottom: 10px;
 }
 
+.icon-box{
+   min-height: 100px;
+   padding-top: 20px;
+}
+
+.box .icon {
+   display: flex;
+   padding-bottom: 20px;
+   border-bottom: 1px solid black;   
+}
+
+.box .icon .heart {
+   margin-right: 20px;
+}
+
+.box .number {
+   display: flex;
+   padding-top: 20px;
+}
+
+.number-of-Heart {   
+   margin-right: 10px;
+}
+
+.number-of-Comment{
+   
+}
+
+/* ===================================================== */
+
+.profile-box{
+   min-height: 350px;
+   margin: 20px;
+}
+
+.prof-info {
+   display: flex;   
+   justify-content: space-between;
+}
+
+.revision {
+   
+}
+
+.self-prof-box {
+   display: flex;
+   min-height: 250px;
+   margin-top: 20px;
+   margin-bottom: 10px;
+   
+   position: relative;   
+   padding: 10px;
+}
+
+.prof-info-box {
+   width: 65%;
+   border: 1px solid red;
+   padding: 10px;
+   padding-bottom: 0px;
+}
+
+
+.value-box {
+   display: flex;
+   height: 25%;
+   width: 100%;   
+}
+
+
+.prof-info-box .age{
+   height: 40px;
+   width: 60px;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   background-color: pink;
+}
+
+.prof-info-box .gender{
+   height: 40px;
+   width: 60px;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   background-color: pink;
+}
+
+.prof-info-box .blood{
+   height: 40px;
+   width: 60px;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   background-color: pink;
+}
+
+.prof-info-box .job{
+   height: 40px;
+   width: 60px;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   background-color: pink;
+}
+
+.prof-info-box .value{
+   height: 40px;
+   width: 100%;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   background-color: aqua;
+}
+
+.self-intro-box{
+   width: 35%;
+   border: 1px solid green;
+   padding: 10px;
+}
+
+.accompany-type{
+   height: 25%;
+   display: flex;   
+   justify-content: center;
+   align-items: center;
+   background-color: pink;
+   
+}
+
+.self-intro{
+   height: 75%;
+   background-color: aqua;
+}
+
+.sns-button {
+   position: relative;
+   text-align: right;
+}
+
+/* ------------------------------------------------------ */
+
+#googleMap {
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+
+.summary {
+   position: relative;
+   text-align: right;
+}
 
 
 /*------------------- media쿼리--------------*/
 @media all and (max-width:400px) {
-	
-	.prof-img {
-		top: -120px;
-	}
-	
-	.prof-img-circle {
-		max-width: 70px;
-		max-height: 70px;
-	}
-	
-	.menu{
-		top: -120px;
-	}
-	
-	.content-container{
-		top: -120px;
-	}
+   
+   .prof-img {
+      top: -120px;
+   }
+   
+   .prof-img-circle {
+      max-width: 70px;
+      max-height: 70px;
+   }
+   
+   .menu{
+      top: -120px;
+   }
+   
+   .content-container{
+      top: -120px;
+   }
 }
 
 @media all and (min-width:400px) and (max-width:640px) {
-	
-	.prof-img {
-		top: -150px;
-	}
-	
-	.prof-img-circle {
-		max-width: 100px;
-		max-height: 100px;
-	}
-	
-	.menu{
-		top: -150px;
-	}
-	
-	.content-container{
-		top: -150px;
-	}
-	/* .container {
-		margin-left: 0px;
-		margin-right: 0px;
-		flex-wrap: wrap;
-	}
-	.accompany-option-section {
-		margin: 0px;
-		margin-bottom: 5%;
-	} */
-	.Col-sm-1 {
-		width: 16.66666666%;
-	}
-	.Col-sm-2 {
-		width: 33.33333333%;
-	}
-	.Col-sm-3 {
-		width: 50%;
-	}
-	.Col-sm-4 {
-		width: 66.66666666%;
-	}
-	.Col-sm-5 {
-		width: 83.33333333%;
-	}
-	.Col-sm-6 {
-		width: 100%;
-	}
+   
+   .prof-img {
+      top: -150px;
+   }
+   
+   .prof-img-circle {
+      max-width: 100px;
+      max-height: 100px;
+   }
+   
+   .menu{
+      top: -150px;
+   }
+   
+   .content-container{
+      top: -150px;
+   }
+   /* .container {
+      margin-left: 0px;
+      margin-right: 0px;
+      flex-wrap: wrap;
+   }
+   .accompany-option-section {
+      margin: 0px;
+      margin-bottom: 5%;
+   } */
+   .Col-sm-1 {
+      width: 16.66666666%;
+   }
+   .Col-sm-2 {
+      width: 33.33333333%;
+   }
+   .Col-sm-3 {
+      width: 50%;
+   }
+   .Col-sm-4 {
+      width: 66.66666666%;
+   }
+   .Col-sm-5 {
+      width: 83.33333333%;
+   }
+   .Col-sm-6 {
+      width: 100%;
+   }
 }
 
 @media all and (min-width:640px) and (max-width:840px) {
-	
-	.prof-img {
-		top: -200px;
-	}
-	
-	.prof-img-circle {
-		max-width: 150px;
-		max-height: 150px;
-	}
-	
-	.menu{
-		top: -200px;
-	}
-	
-	.content-container{
-		top: -200px;
-	}
+   
+   .prof-img {
+      top: -200px;
+   }
+   
+   .prof-img-circle {
+      max-width: 150px;
+      max-height: 150px;
+   }
+   
+   .menu{
+      top: -200px;
+   }
+   
+   .content-container{
+      top: -200px;
+   }
 }
 
 @media all and (min-width:840px) and (max-width:1150px) {
-	
-	.prof-img {
-		top: -250px;
-	}
-	
-	.prof-img-circle {
-		max-width: 200px;
-		max-height: 200px;
-	}
-	
-	.menu{
-		top: -250px;
-	}
-	
-	.content-container{
-		top: -250px;
-	}
+   
+   .prof-img {
+      top: -250px;
+   }
+   
+   .prof-img-circle {
+      max-width: 200px;
+      max-height: 200px;
+   }
+   
+   .menu{
+      top: -250px;
+   }
+   
+   .content-container{
+      top: -250px;
+   }
 }
 
 @media all and (min-width:1150px) and (max-width:1350px) {
-	
-	.prof-img {
-		top: -300px;
-	}
-	
-	.prof-img-circle {
-		max-width: 250px;
-		max-height: 250px;
-	}
-	
-	.menu{
-		top: -300px;
-	}
-	
-	.content-container{
-		top: -300px;
-	}
+   
+   .prof-img {
+      top: -300px;
+   }
+   
+   .prof-img-circle {
+      max-width: 250px;
+      max-height: 250px;
+   }
+   
+   .menu{
+      top: -300px;
+   }
+   
+   .content-container{
+      top: -300px;
+   }
 }
 
 
 @media all and (min-width:480px) and (max-width:1024px) {
-	/* .container {
-		flex-wrap: wrap;
-	}
-	.accompany-option-section {
-		margin: 0px;
-		margin-bottom: 2%;
-	} */
-	.Col-sm-1 {
-		width: 16.66666666%;
-	}
-	.Col-sm-2 {
-		width: 33.33333333%;
-	}
-	.Col-sm-3 {
-		width: 50%;
-	}
-	.Col-sm-4 {
-		width: 66.66666666%;
-	}
-	.Col-sm-5 {
-		width: 83.33333333%;
-	}
-	.Col-sm-6 {
-		width: 100%;
-	}
+   /* .container {
+      flex-wrap: wrap;
+   }
+   .accompany-option-section {
+      margin: 0px;
+      margin-bottom: 20px;
+   } */
+   .Col-sm-1 {
+      width: 16.66666666%;
+   }
+   .Col-sm-2 {
+      width: 33.33333333%;
+   }
+   .Col-sm-3 {
+      width: 50%;
+   }
+   .Col-sm-4 {
+      width: 66.66666666%;
+   }
+   .Col-sm-5 {
+      width: 83.33333333%;
+   }
+   .Col-sm-6 {
+      width: 100%;
+   }
 }
 
 @media all and (min-width:1024px) {
-	.Col-lg-1 {
-		width: 8.333333%;
-	}
-	.Col-lg-2 {
-		width: 16.666666;
-	}
-	.Col-lg-3 {
-		width: 24.999999%;
-	}
-	.Col-lg-4 {
-		width: 33.333333%;
-	}
-	.Col-lg-5 {
-		width: 41.666666%;
-	}
-	.Col-lg-6 {
-		width: 49.999999%;
-	}
-	.Col-lg-7 {
-		width: 57.333333%;
-	}
-	.Col-lg-8 {
-		width: 65.666666%;
-	}
-	.Col-lg-9 {
-		width: 73.999999%;
-	}
-	.Col-lg-10 {
-		width: 80.333333%;
-	}
-	.Col-lg-11 {
-		width: 88.666666%;
-	}
-	.Col-lg-12 {
-		width: 100%;
-	}
+   .Col-lg-1 {
+      width: 8.333333%;
+   }
+   .Col-lg-2 {
+      width: 16.666666;
+   }
+   .Col-lg-3 {
+      width: 24.999999%;
+   }
+   .Col-lg-4 {
+      width: 33.333333%;
+   }
+   .Col-lg-5 {
+      width: 41.666666%;
+   }
+   .Col-lg-6 {
+      width: 49.999999%;
+   }
+   .Col-lg-7 {
+      width: 57.333333%;
+   }
+   .Col-lg-8 {
+      width: 65.666666%;
+   }
+   .Col-lg-9 {
+      width: 73.999999%;
+   }
+   .Col-lg-10 {
+      width: 80.333333%;
+   }
+   .Col-lg-11 {
+      width: 88.666666%;
+   }
+   .Col-lg-12 {
+      width: 100%;
+   }
 }
