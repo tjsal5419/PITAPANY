@@ -22,7 +22,7 @@ import com.pitapany.web.entity.Member;
 public class JoinusController {
 
 	@Autowired
-	MemberDao memberDao;
+	private MemberDao memberDao;
 	
 	@RequestMapping("login")
 	public String login(Model model, @RequestParam(value="e", defaultValue="0")String error) {
