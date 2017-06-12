@@ -2,6 +2,11 @@
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
+
+.navbar{
+	height:60px;
+}
+
 .navbar-default{
 	display: flex;
 	flex-direction: row;
@@ -23,55 +28,51 @@
 
 .search-bar{
 	order: 2;
-	
-	display: table;
-	table-layout: fixed;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	
 	height: 100%;
 	width: 400px;
 
-
 	align-items:center;
+}
+
+.search-bar-container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 }
 
 .form-control{
-	display: table-cell;
-	vertical-align: middle;
+	
 }
 
 .form-control-header{
+	
+	display: block;
+		
 	width: 180px !important;
+
+	border: none;
+	border-radius: 0;
 }
 
+.search-bar-container>input:first-child{
+	border-right: 1px solid #e4e4e4;
+}
 
-nav>div{
-	display:flex;
-	align-items:center;
-	justify-content:center;
-
+.search-button{
+	width: 40px;
+	height: 34px;
 	
-	z-index: 10000;
-	
-}
-.navbar{
-	height:60px;
-}
+	border: 0 none;
+	cursor: pointer;
 
-
-
-.search-bar input{
-	margin-right:1.5%;
+    background: #76d3de url(../../images/ic_search_white_36dp_1x.png) center no-repeat;
+    background-size: 24px 24px;
 }
 
-.search-bar>input:last-child{
-	outline: none;
-}
-
-/* .btn{
-	background-color: #00BCD1;
-	color:white;
-	height:34px;
-} */
 
 .menu-bar{
 	order:99;
@@ -86,37 +87,34 @@ nav>div{
 	display:flex;
 	order:4;
 	height:inherit;
+	padding-right: 10px;
 }
-
-.accoompany>ul>li{
-	display:flex;
-	display-direction:column;
-	align-items:center;
-}
-
 
 .accompany li{
 	display: flex;
-	height:100%;
-	margin-right:10px;
-	justify-content:center;
+	height:initial;
+	
+	margin-left:25px;
 	align-items:center;
+	
+	font-size:13px;
+	color:#d0ECEA;
+	
+	white-space: nowrap;
+	overflow: hidden;
+	
+	margin-top:5px;
 }
 
 .accompany li:hover{
 	cursor: pointer;
-	border-bottom: 2px solid #d0ECEA;
+	border-bottom: 2px solid #fff;
+	color:#fff;
 	text-decoration:none;
 	background:transparent;
-	margin-top:2px;
+	margin-top:7px;
 }
-.accompany li{
-	display:flex;
-	text-overflow: ellipsis;
-	height:initial;
-	font-size:14px;
-	color:#d0ECEA;
-}
+
 
 .accompany li a{
 	font-size:12px;
@@ -137,11 +135,32 @@ nav>div{
 
 .mypage{
 	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	
+	width: 130px;
+	
+	heigth: 100%;
+	
+	font-size: 12px !important;
+	
 	order:99;
 }
 
 .mypage li{
 	margin-left:20px;
+
 }
 
+.fa{
+	font-size: 17px !important;
+	color: #fff !important;
+}
 
+.fa:hover{
+	color: #008e9e !important;
+}
+
+.body{
+	font-size: 13px;
+}

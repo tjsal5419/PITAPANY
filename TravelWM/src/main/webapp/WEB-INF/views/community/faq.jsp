@@ -5,12 +5,10 @@
 <link href="${root }/resource/css/community/faq.css" rel="stylesheet"/>
 
 
-
-
-
 <main class="main">
 		<%@ include file="inc/aside.jsp" %>
 		
+
 		<div class="main-container">
 			<div class="qna-container">
 				<div class="qna-title">
@@ -85,7 +83,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" name="InputName" placeholder="Name" class="form-control" autofocus="autofocus" required>
+                                <input type="text" name="InputName" placeholder="Name" class="form-control" required>
                             </div>
                         </div>
                         <div class="form-group">
