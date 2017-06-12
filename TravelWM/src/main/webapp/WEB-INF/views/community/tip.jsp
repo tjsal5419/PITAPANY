@@ -5,20 +5,7 @@
 <link href="${root }/resource/css/community/tip.css" rel="stylesheet"/>
 
 <main class="main">
-		<div class="aside-hidden">
-			<div><a href="">라운지</a></div>
-			<div><a href="">여행 Tip</a></div>
-			<div><a href="">FAQ</a></div>
-		</div>
-		<div class="aside">
-			<div class="remote-controller">
-				<div class="title"><h3>커뮤니티</h3></div>
-				<div><a href="">라운지</a></div>
-				<div><a href="">여행 Tip</a></div>
-				<div><a href="">FAQ</a></div>
-			</div>
-		
-		</div>
+		<%@ include file="inc/aside.jsp" %>
 		<div class="tip-container">
 			<div class="category">
 				<div class="title"><h2>여행 Tip 게시판 </h2></div>

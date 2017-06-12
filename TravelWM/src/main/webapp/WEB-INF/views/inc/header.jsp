@@ -3,6 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
+
+<!-- ---------------- 개인정보 taglib로 설정 ------------- -->
+<c:set var="userId" value="${sessionScope.user.id }"/>
+<c:set var="userEmail" value="${sessionScope.user.email }"/>
+<c:set var="userName" value="${sessionScope.user.name }"/>
+<c:set var="userNicName" value="${sessionScope.user.nicName }"/>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,13 +38,14 @@
 				<security:authorize  access="isAuthenticated()">
 					<li class="except-li">
 					<a class="a" href="${root }/j_spring_security_logout">
-						<security:authentication property="name"/>님 로그아웃
+						${userNicName }님 로그아웃
+	
 					</a>
 					</li>
 				</security:authorize>
 				
 				<li onclick="location.href='${root }/profile/home';">프로필홈</li>
-	        	<li onclick="location.href='';">동행찾기</li>
+	        	<li onclick="location.href='${root}/accompany/board';">동행찾기</li>
 	        	<li onclick="location.href='${root }/accompany/matching';">동행매칭</li>
 	        	<li onclick="location.href='${root }/community/tip';">커뮤니티</li>
 	        </ul>

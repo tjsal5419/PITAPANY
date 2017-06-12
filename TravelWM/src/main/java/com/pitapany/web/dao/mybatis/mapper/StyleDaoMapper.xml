@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pitapany.web.dao.StyleDao">
+	<select id="getList" resultType="com.pitapany.web.entity.Style">
+		SELECT * 
+		FROM `pitapanydb`.`Style`
+	</select>
+	
+	<select id="get" resultType="com.pitapany.web.entity.Style">
+		SELECT * 
+		FROM `pitapanydb`.`Style`
+		WHERE id=#{id}
+	</select>
+
+	
+	<insert id="add" parameterType="com.pitapany.web.entity.Style">
+		<selectKey order="BEFORE" keyProperty="id" resultType="String">
+			select max(cast(id as unsigned))+1 id from Style
+		</selectKey>
+			INSERT INTO `pitapanydb`.`Style`
+			(
+			`id`,
+			`type`,
+			`img`
+			)
+			VALUES
+			(
+			#{id},
+			#{tyle},
+			#{img}
+			)
+	</insert>
+	
+	<update id="update" parameterType="com.pitapany.web.entity.Style">
+			UPDATE `pitapanydb`.`Style`
+			SET
+			`id` = #{id},
+			`type` = #{type},
+			`img` = #{img}
+			WHERE `id` = #{id}
+	</update>
+	
+	<delete id="delete">
+		  DELETE `pitapanydb`.`Style`
+    	  WHERE id=#{id}
+	</delete>
+	
+</mapper>

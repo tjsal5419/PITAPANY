@@ -11,7 +11,7 @@ import com.pitapany.web.entity.Member;
 public class MybatisMemberDao implements MemberDao {
 
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
 	
 	public Member get(String id) {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);

@@ -67,7 +67,7 @@
 			</div>
 			<div class="age">
 				<label>나이</label>
-				<select id="age-select">
+				<select id="age-select" required>
 					<option value="default">나이선택</option>	
 					<option value="20_22">20~22세</option>
 					<option value="23_25">23~25세</option>
@@ -85,7 +85,7 @@
 			<div class="distance">
 				<div>
 					<label>거리</label>
-					<select id="distance-select">
+					<select id="distance-select" required>
 						<option value="500m" selected>거리선택</option>
 						<option value="300m">300m 이내</option>
 						<option value="500m">500m 이내</option>
@@ -99,7 +99,9 @@
 				<label>스타일</label>
 				<select id="style-select">
 					<option value="default" selected> </option>
-					<option value="default" selected>DB서 가져오자...</option>
+					<c:forEach items="${styles }" var="i">
+						<option value="${i.id }" selected>${i.type }</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div>
