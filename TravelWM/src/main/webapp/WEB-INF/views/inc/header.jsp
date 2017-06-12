@@ -4,12 +4,7 @@
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <c:set var="root" value="${pageContext.request.contextPath }" />
 
-<!-- ---------------- 개인정보 taglib로 설정 ------------- -->
-<c:set var="userId" value="${sessionScope.user.id }"/>
-<c:set var="userEmail" value="${sessionScope.user.email }"/>
-<c:set var="userName" value="${sessionScope.user.name }"/>
-<c:set var="userNicName" value="${sessionScope.user.nicName }"/>
-
+<%@ include file="userInfo.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -38,7 +33,7 @@
 				</c:if>	
 		
 				<security:authorize  access="isAuthenticated()">
-					<li class="except-li">
+					<li>
 					<a class="a" href="${root }/j_spring_security_logout">
 						${userNicName }님 로그아웃
 	

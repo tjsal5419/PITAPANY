@@ -19,7 +19,7 @@
 	
 	<insert id="add" parameterType="com.pitapany.web.entity.Style">
 		<selectKey order="BEFORE" keyProperty="id" resultType="String">
-			select max(cast(id as unsigned))+1 id from Style
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM Style
 		</selectKey>
 			INSERT INTO `pitapanydb`.`Style`
 			(

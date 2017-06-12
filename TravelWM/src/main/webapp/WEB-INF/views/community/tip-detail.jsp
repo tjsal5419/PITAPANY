@@ -25,7 +25,7 @@
 			<div class="profile">
 				<div class="pic"></div>
 				<div class="info">
-					<span class="item">맥보이</span><span class="item">잡담 & 수다</span>
+					<span class="item">${tipView.nicName }</span><span class="item">${tipView.category }</span>
 				</div>
 			</div>
 			<div class="bookmark">
@@ -34,21 +34,21 @@
 			</div>
 		</div>
 		<div class="detail-title">
-			<span>남극에 가는데 잠바는 몇개나 챙겨야 하나요?</span>
+			<span>${tipView.title }</span>
 		</div>
 		<div class="text">
-			<span>으 겁나 춥겠닼ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</span>
+			<span>${tipView.content }</span>
 		</div>
 		<div class="foot"></div>
 		<div class="reply">
 			<div class="left">
 				<!-- <button id="re" class="btn btn-info">댓글</button> -->
 				<div class="view">
-					<span>조회수: 30</span>
+					<span>조회수: ${tipView.hits }</span>
 				</div>
 			</div>
 			<div class="right">
-				<span>등록시간: 2017-10-11 18:54</span>
+				<span>등록시간: ${tipView.regDate }</span>
 			</div>
 		</div>
 		<div id="rep" class="rep">

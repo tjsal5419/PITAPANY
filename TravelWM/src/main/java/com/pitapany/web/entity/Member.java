@@ -3,22 +3,22 @@ package com.pitapany.web.entity;
 import java.sql.Date;
 
 public class Member {
-	String id;
-	String email;
-	String password;
-	String name;
-	int sex;
-	Date birthday;
-	Date regDate;
-	int matchedTimes;
-	String phone;
-	int age;
-	String nicName;
-	String lastLoginIp;
-	Date lastLoginTime;
-	String pwdModifyKey;
-	String matchCount;
-	String role;
+	private String id;
+	private String email;
+	private String password;
+	private String name;
+	private int sex;
+	private Date birthday;
+	private Date regDate;
+	private int matchedTimes;
+	private String phone;
+	private int age;
+	private String nicName;
+	private String lastLoginIp;
+	private Date lastLoginTime;
+	private String pwdModifyKey;
+	private String matchCount;
+	private String role;
 
 	public String getRole() {
 		return role;
