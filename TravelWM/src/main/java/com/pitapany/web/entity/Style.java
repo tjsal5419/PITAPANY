@@ -3,9 +3,9 @@ package com.pitapany.web.entity;
 import java.sql.Date;
 
 public class Style {
-	String id;
-	String type;
-	String img;
+	private String id;
+	private String type;
+	private String img;
 	
 	public String getId() {
 		return id;

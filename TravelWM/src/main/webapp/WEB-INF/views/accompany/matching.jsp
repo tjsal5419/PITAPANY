@@ -43,7 +43,7 @@
 		<div class="accompany-manage">
 			<div class="accom-info-title">
 				<h2>나의 동행 정보</h2>
-				<a href="">나의 동행 관리</a>
+				<div class="manage-page"><a href="">나의 동행 관리</a></div>
 			</div>
 			<div>
 				<c:forEach var="i" begin="0" end="3">

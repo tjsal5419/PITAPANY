@@ -31,40 +31,6 @@ a:hover{
 	min-width:5%;
 	flex-grow:1;
 }
-/* --------------------커뮤니티 게시판 목록 ---------*/
-
-.aside{
-	max-width:15%;
-	min-width:15%;
-	flex-grow: 1;
-	
-	padding:10px;
-	padding-top:30px;
-	position:relative;
-	border-right: 1px solid #979797;
-	
-	
-}
-
-.aside .remote-controller>div{
-	margin-bottom:10px;
-}
-.aside .title{
-	font-size:20px;
-	font-weight: bold; 
-}
-.aside .title h3{
-	font-weight: bold; 
-
-}
-
-.aside-hidden{
-	display: none;
-}
-
-.aside .remote-controller{
-	position:fixed;
-}
 
 
 /* --------------------팁 게시판 컨테이너----------- */

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pitapany.web.dao.ChattingDetailDao">
+	<select id="get" resultType="com.pitapany.web.entity.ChattingDetail">
+		SELECT `ChattingDetail`.`id`,
+    	`ChattingDetail`.`regDate`,
+   		 `ChattingDetail`.`isRead`,
+   		 `ChattingDetail`.`ChattingId`,
+  	  	`ChattingDetail`.`content`
+		FROM `pitapanydb`.`ChattingDetail`
+		ORDER BY cast(id as unsigned)
+		
+	</select>
+
+
+	<select id="getList" resultType="com.pitapany.web.entity.ChattingDetail">
+			SELECT `ChattingDetail`.`id`,
+	    	`ChattingDetail`.`regDate`,
+	   		 `ChattingDetail`.`isRead`,
+	   		 `ChattingDetail`.`ChattingId`,
+	  	  	`ChattingDetail`.`content`
+			FROM `pitapanydb`.`ChattingDetail`
+			ORDER BY cast(id as unsigned)
+	</select>
+	
+	<insert id="add" parameterType="com.pitapany.web.entity.ChattingDetail">
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM ChattingDetail
+		</selectKey>
+			INSERT INTO `pitapanydb`.`ChattingDetail`
+			(
+			`id`,
+			`regDate`,
+			`isRead`,
+			`ChattingId`,
+			`content`)
+			VALUES
+			(
+			#{id},
+			#{regDate},
+			#{isRead},
+			#{ChattingId},
+			#{content}
+			)
+			
+	</insert>
+	
+	<delete id="delete" parameterType="com.pitapany.web.entity.ChattingDetail">
+		DELETE FROM `pitapanydb`.`ChattingDetail`
+		WHERE #{id}
+	</delete>
+	
+</mapper>
