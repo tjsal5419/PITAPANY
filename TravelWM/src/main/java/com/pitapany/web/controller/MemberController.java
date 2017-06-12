@@ -14,7 +14,6 @@ public class MemberController {
 	public String memberIndex(){
 		return "member.index";
 	}
-	
 	@RequestMapping("/main")
 	public String main(Model model){
 		
@@ -27,5 +26,9 @@ public class MemberController {
 	@RequestMapping("/bookmark")
 	public String bookmark(Model model){
 		return "member.bookmark";
+	}
+	@RequestMapping("/profile-setting")
+	public static String profileSetting(Model model){
+		return "member.profile-setting";
 	}
 }

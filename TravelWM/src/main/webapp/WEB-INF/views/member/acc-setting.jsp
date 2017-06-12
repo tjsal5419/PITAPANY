@@ -1,31 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet"
 	href="/TravelWM/resource/css/member/acc-setting.css" type="text/css" />
 
+<script>
+	window.addEventListener("load", function() {
+		var mod = document.querySelector("#mod");
+		var modAcc = documnet.querySelector("#mod-acc");
+		var accZone = documnet.querySelector("#acc-zone");
+		
+		mod.onclick = function() {
+			accZone.style.display = "none";
+			modAcc.style.display = "flex";
+		}
+	});
+</script>
+
 <main id="main">
 <div class="frame">
-	<div class="faside">
-		<div class="inframe">
-			<div class="left">
-				<span>프로필관리</span>
+	<div class="aside-hidden">
+		<div>
+			<a href="/TravelWM/member/profile-setting">프로필관리</a>
+		</div>
+		<div>
+			<a href="">동행관리</a>
+		</div>
+		<div>
+			<a href="/TravelWM/member/bookmark">기타관리</a>
+		</div>
+	</div>
+	<div class="aside">
+		<div class="remote-controller">
+			<div class="title">
+				<h3>관리페이지</h3>
 			</div>
-			<div class="left">
-				<span>동행관리</span>
+			<div>
+				<a href="/TravelWM/member/profile-setting">프로필관리</a>
 			</div>
-			<div class="left">
-				<span>기타관리</span>
+			<div>
+				<a href="">동행관리</a>
 			</div>
-			<div class="left">
-				<span>로그아웃</span>
+			<div>
+				<a href="/TravelWM/member/bookmark">기타관리</a>
 			</div>
 		</div>
 	</div>
 	<div class="fmain">
 		<div class="content">
 			<div class="head">
-				<div class="book">
+				<div>
 					<span>동행 정보 관리</span>
 				</div>
 			</div>
@@ -33,132 +58,58 @@
 				<div class="first">
 					<div class="sel-zone">동행장소</div>
 					<div class="sel-date">동행날짜</div>
-					<input class="regi" type="button" value="등록">
+					<button class="btn btn-info na">등록</button>
 				</div>
 				<div class="second">
 					<div class="blist">
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
+						<c:forEach var="a" begin="1" end="5">
+							<div class="line">
+								<div id="acc-zone" class="acc-zone">
+									<span>동행장소</span>
+								</div>
+								<div id="mod-acc" class="mod-acc">
+									<div class="sel-zone">동행장소</div>
+									<div class="sel-date">동행날짜</div>
+								</div>
+								<button id="mod" class="btn btn-info na">수정</button>
+								<button class="btn btn-info na">삭제</button>
 							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
-						<div class="line">
-							<div class="acc-zone sp">
-								<span>동행장소</span>
-							</div>
-							<div class="mod sp">
-								<span>수정</span>
-							</div>
-							<div class="del">
-								<span>삭제</span>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="content spa">
 			<div class="head">
-				<div class="book">
+				<div>
 					<span>대화 친구 목록</span>
 				</div>
 			</div>
 			<div class="capa">
 				<div class="propic">
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
+					<c:forEach var="a" begin="1" end="5">
+						<div class="entity">
+							<a href="#"><div class="pro"></div></a>
+							<div class="nic">닉네임</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 		<div class="content spa">
 			<div class="head">
-				<div class="book">
+				<div>
 					<span>매칭 친구 목록</span>
 				</div>
 			</div>
 			<div class="capa">
 				<div class="propic">
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
-
-					<div class="entity">
-						<div class="pro"></div>
-						<div class="nic">닉네임</div>
-					</div>
+					<c:forEach var="a" begin="1" end="5">
+						<div class="entity">
+							<a href="#"><div class="pro"></div></a>
+							<div class="nic">닉네임</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
