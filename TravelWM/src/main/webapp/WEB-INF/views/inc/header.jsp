@@ -14,37 +14,39 @@
 </head>
   <nav>
     <div class="navbar navbar-default navbar-fixed-top">
-    	<div class="logo"> 로고zz </div>
-    	<form class="search-bar" action="" method="get" class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-    	  <input type="text" class="form-control" placeholder="Search">
-		  <input type="image" src="${root }/resource/images/ic_search_black_24dp_1x.png" alt="Submit">
-	    </form>
-        <div class="menu-bar">
-	        <ul class="accompany">
-	        	<c:if test="${empty pageContext.request.userPrincipal.name }">		
-					<li class="except-li"><a href="${root }/joinus/login">로그인</a></li>
-					<li class="except-li"><a href="${root }/joinus/join">회원가입</a></li>
-				</c:if>	
-		
-				<security:authorize  access="isAuthenticated()">
-					<li class="except-li">
-					<a class="a" href="${root }/j_spring_security_logout">
-						<security:authentication property="name"/>님 로그아웃
-					</a>
-					</li>
-				</security:authorize>
-				
-				<li onclick="location.href='${root }/profile/home';">프로필홈</li>
-	        	<li onclick="location.href='';">동행찾기</li>
-	        	<li onclick="location.href='${root }/accompany/matching';">동행매칭</li>
-	        	<li onclick="location.href='${root }/community/tip';">커뮤니티</li>
-	        </ul>
-	        <ul class="mypage">
-	        	<li><a href=""><img src="${root }/resource/images/ic_question_answer_black_24dp_1x.png"/></a></li>
-	        	<li><a href=""><img src="${root }/resource/images/ic_announcement_black_24dp_1x.png"/></a></li>
-	        	<li><a href=""><img src="${root }/resource/images/ic_account_circle_black_24dp_1x.png"/></a></li>
-	        </ul>
-        </div>
+	   
+	    	<div class="logo"> 로고zz </div>
+	    	<form class="search-bar" action="" method="get" class="form-group">
+	          <td><input type="text" class="form-control form-control-header" placeholder="Search"></td>
+	    	  <td><input type="text" class="form-control form-control-header" placeholder="Search"></td>
+			  <input type="image" src="${root }/resource/images/ic_search_black_24dp_1x.png" alt="Submit">
+		    </form>
+	        <div class="menu-bar">
+		        <ul class="accompany">
+		        	<c:if test="${empty pageContext.request.userPrincipal.name }">		
+						<li class="except-li"><a href="${root }/joinus/login">로그인</a></li>
+						<li class="except-li"><a href="${root }/joinus/join">회원가입</a></li>
+					</c:if>	
+			
+					<security:authorize  access="isAuthenticated()">
+						<li class="except-li">
+						<a class="a" href="${root }/j_spring_security_logout">
+							<security:authentication property="name"/>님 로그아웃
+						</a>
+						</li>
+					</security:authorize>
+					
+					<li onclick="location.href='${root }/profile/home';">프로필홈</li>
+		        	<li onclick="location.href='';">동행찾기</li>
+		        	<li onclick="location.href='${root }/accompany/matching';">동행매칭</li>
+		        	<li onclick="location.href='${root }/community/tip';">커뮤니티</li>
+		        </ul>
+		        <ul class="mypage">
+		        	<li><a href=""><img src="${root }/resource/images/ic_question_answer_black_24dp_1x.png"/></a></li>
+		        	<li><a href=""><img src="${root }/resource/images/ic_announcement_black_24dp_1x.png"/></a></li>
+		        	<li><a href=""><img src="${root }/resource/images/ic_account_circle_black_24dp_1x.png"/></a></li>
+		        </ul>
+	        </div>
+
     </div>
   </nav>
