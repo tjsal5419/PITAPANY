@@ -8,8 +8,8 @@
 <script>
 	window.addEventListener("load", function() {
 		var mod = document.querySelector("#mod");
-		var modAcc = documnet.querySelector("#mod-acc");
-		var accZone = documnet.querySelector("#acc-zone");
+		var modAcc = document.querySelector("#mod-acc");
+		var accZone = document.querySelector("#acc-zone");
 		
 		mod.onclick = function() {
 			accZone.style.display = "none";
