@@ -3,22 +3,52 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
 .navbar-default{
-	background-color: rgba(0, 188, 209, 0.9);
-	box-shadow: 0px 0px 5px #3f3f3f;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	
+	background-color: rgba(0, 188, 209, 1);
+	box-shadow: ;
 	border-bottom: 0px;
 }
 
-.form-control{
-	width:130px;	
+.logo{
+	order: 1;
 	
+	height: 100%;
+	width: 100px;
+	
+	text-align: center;
 }
+
+.search-bar{
+	order: 2;
+	
+	display: table;
+	table-layout: fixed;
+	
+	height: 100%;
+	width: 400px;
+
+
+	align-items:center;
+}
+
+.form-control{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.form-control-header{
+	width: 180px !important;
+}
+
 
 nav>div{
 	display:flex;
 	align-items:center;
 	justify-content:center;
-	padding-left:10px;
-	padding-right:10px;
+
 	
 	z-index: 10000;
 	
@@ -27,16 +57,7 @@ nav>div{
 	height:60px;
 }
 
-.logo{
-	order:1;
-	margin-right:2%;
-}
 
-.search-bar{
-	display:flex;
-	order:2;
-	align-items:center;
-}
 
 .search-bar input{
 	margin-right:1.5%;

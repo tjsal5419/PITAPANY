@@ -15,15 +15,16 @@ public class MemberController {
 		return "member.index";
 	}
 	@RequestMapping("/main")
-	public static String main(Model model){
+	public String main(Model model){
+		
 		return "member.main";
 	}
 	@RequestMapping("/acc-setting")
-	public static String accSetting(Model model){
+	public String accSetting(Model model){
 		return "member.acc-setting";
 	}
 	@RequestMapping("/bookmark")
-	public static String bookmark(Model model){
+	public String bookmark(Model model){
 		return "member.bookmark";
 	}
 	@RequestMapping("/profile-setting")

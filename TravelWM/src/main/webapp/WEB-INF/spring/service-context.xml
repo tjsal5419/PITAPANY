@@ -30,6 +30,10 @@
 
 	<!-- MySQL -> MyBatis로 변경 -->
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisStyleDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisCommunityTipDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisChattingDetailDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisTipCategoryDao" />
 
 	<context:annotation-config /> <!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.pitapany.web.service.AdminService" />

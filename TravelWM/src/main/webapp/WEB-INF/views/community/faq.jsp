@@ -9,20 +9,7 @@
 
 
 <main class="main">
-		<div class="aside-hidden">
-			<div><a href="">라운지</a></div>
-			<div><a href="">여행 Tip</a></div>
-			<div><a href="">FAQ</a></div>
-		</div>
-		<div class="aside">
-			<div class="remote-controller">
-				<div class="title"><h3>커뮤니티</h3></div>
-				<div><a href="">라운지</a></div>
-				<div><a href="">여행 Tip</a></div>
-				<div><a href="">FAQ</a></div>
-			</div>
-		
-		</div>
+		<%@ include file="inc/aside.jsp" %>
 		
 		<div class="main-container">
 			<div class="qna-container">
@@ -114,7 +101,7 @@
                             </div>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group">	
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
                                 <textarea name="InputMessage" rows="6" class="form-control" type="text" required></textarea>

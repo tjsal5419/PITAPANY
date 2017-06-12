@@ -1,37 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet" href="/TravelWM/resource/css/community/tip-reg.css"
 	type="text/css" />
 
-<main id="main">
-<div class="frame">
+<main class="main">
+<%@ include file="inc/aside.jsp" %>
+<form class="frame" method="post">
 	<div class="content">
+		<div class="title">
+			<h2>팁 작성 페이지</h2>
+		</div>			
 		<div class="head">
 			<div class="title-logo">
 				<span>Title</span>
 			</div>
 			<div class="title-content">
-				<input class="ti" type="text" placeholder="제목내용" />
+				<input class="ti" name="title" type="text" placeholder="제목내용" />
 			</div>
 		</div>
-		<div class="sel">
+		<div class="category">
+			<select name="categoryId">
+				<c:forEach var="l" items="${categoryList }">
+					<option value="${l.id}">${l.category } </option>	
+				</c:forEach>
+			</select>
+		
 		</div>
 		<div class="text">
-			<textarea placeholder="본문내용"></textarea>
+			<textarea name="content" placeholder="본문내용"></textarea>
 		</div>
+		
 		<div class="foot">
 			<div class="bottun">
 				<div class="cancel">
-					<a href="/TravelWM/community/tip"><button class="btn btn-info chat">글 취소</button></a>
+					<button type="reset" onclick="location.href='${root}/community/tip'" class="btn btn-info chat">글 취소</button>
 				</div>
 				<div class="reg">
-					<button class="btn btn-info chat" type ="submit">글 등록</button>
+					<button class="btn btn-info chat"  type ="submit">글 등록</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</form>
 </main>
 <!-- 
 <table class="table">

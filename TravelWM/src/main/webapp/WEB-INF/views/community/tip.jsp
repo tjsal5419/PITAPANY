@@ -5,33 +5,16 @@
 <link href="${root }/resource/css/community/tip.css" rel="stylesheet"/>
 
 <main class="main">
-		<div class="aside-hidden">
-			<div><a href="">라운지</a></div>
-			<div><a href="">여행 Tip</a></div>
-			<div><a href="">FAQ</a></div>
-		</div>
-		<div class="aside">
-			<div class="remote-controller">
-				<div class="title"><h3>커뮤니티</h3></div>
-				<div><a href="">라운지</a></div>
-				<div><a href="">여행 Tip</a></div>
-				<div><a href="">FAQ</a></div>
-			</div>
-		
-		</div>
+		<%@ include file="inc/aside.jsp" %>
 		<div class="tip-container">
 			<div class="category">
 				<div class="title"><h2>여행 Tip 게시판 </h2></div>
 				<div class="search">
 					<div>
-						<select class="select">
-							<option>검색</option>
-							<option>하하</option>
-							<option>하하</option>
-							<option>하하</option>
-							<option>하하</option>
-							<option>하하</option>
-							
+						<select class="select" name="search-option">
+							<option value="title">제목</option>
+							<option value="nicName">작성자</option>
+				
 						</select>
 					</div>
 					<div>
@@ -43,13 +26,10 @@
 			  	</div>
 			  	<div class="line"></div>
 			  	<div class="filter">
-						<select class="select">
-							<option>카테고리선택</option>
-							<option>하하</option>
-							<option>하하</option>
-							<option>하하</option>
-							<option>하하</option>
-							<option>하하</option>		
+						<select class="select" name="tipCategoryId">	
+							<c:forEach items="${categoryList}" var="li">
+								<option value="${li.id }">${li.category }</option>								
+							</c:forEach>
 						</select>
 				</div>
 			  		
@@ -68,16 +48,14 @@
 				</thead>
 				<tbody>
 	<!-- 				db서 데이터 가져와서 뿌려주는 역할 -->
-					<c:forEach var="a" begin="1" end="20">
+					<c:forEach var="t" items="${tipList }">
 						<tr>
-							<td class="num" colspan="1">${a }</td>
-							<td colspan="2" class="category">카테고리</td>
-							<td colspan="3">어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구어쩌구저쩌구
-								
-							</td>
-							<td colspan="2">작성자</td>
-							<td class="date" colspan="2">작성일</td>
-							<td class="hit" colspan="1">조회수</td>
+							<td class="num" colspan="1">${t.id}</td>
+							<td colspan="2" class="category">${t.category }</td>
+							<td colspan="3"><a href="${root }/community/tip-detail?id=${t.id}">${t.title }</a></td>
+							<td colspan="2">${t.nicName}</td>
+							<td class="date" colspan="2">${t.regDate}</td>
+							<td class="hit" colspan="1">${t.hits }</td>
 						</tr>	
 					</c:forEach>				
 				</tbody>
@@ -108,7 +86,7 @@
 				</div>
 				
 				<div class="write">
-					<a href="">글쓰기</a>
+					<a href="${root }/community/tip-reg">글쓰기</a>
 				</div>
 			</div>
 		</div>
