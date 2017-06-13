@@ -37,6 +37,10 @@
 	justify-content:center;
 }
 
+.category .select{
+	width:100%
+}
+
 .frame .content .title{
 	font-size: 20px;
 	margin-bottom:20px;
@@ -46,6 +50,7 @@
 .head {
 	display: flex;
 	width: 100%;
+	margin-bottom:10px;
 }
 
 .title-logo {
@@ -127,5 +132,4 @@
 		margin-bottom:0px;
 	}
 	
-	.conten
 }

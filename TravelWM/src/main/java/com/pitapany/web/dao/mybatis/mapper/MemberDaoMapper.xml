@@ -34,7 +34,8 @@
 		</selectKey>
 			INSERT 
 			INTO `pitapanydb`.`Member`
-			(`id`,
+			(
+			`id`,
 			`email`,
 			`password`,
 			`name`,
@@ -68,7 +69,7 @@
 		`phone` = #{phone},
 		`age` =#{age},
 		`nicName` = #{nicName},
-		WHERE `id` = #{expr}
+		WHERE `id` = #{id}
 		
 	</update>
 	

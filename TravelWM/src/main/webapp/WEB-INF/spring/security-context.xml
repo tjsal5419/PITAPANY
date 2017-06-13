@@ -23,6 +23,8 @@
 		<intercept-url pattern="/member/**" access="hasRole('ROLE_USER')" /> 
 		<intercept-url pattern="/community/**" access="hasRole('ROLE_USER')" /> 
 		<intercept-url pattern="/profile/**" access="hasRole('ROLE_USER')" /> 
+		<intercept-url pattern="/accompany/**" access="hasRole('ROLE_USER')" /> 
+
         <!-- 30 분간 Session 유지함 ==============>나중에 바꿔주기 -->
 		<session-management>
             <concurrency-control max-sessions="30" error-if-maximum-exceeded="true" />
