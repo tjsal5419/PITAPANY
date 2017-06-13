@@ -1,9 +1,9 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <link href="${root}/resource/css/profile/home.css" rel="stylesheet"/>
-
 
 <div>
    <div class="back-img">
@@ -157,10 +157,10 @@
       <div class="box">
             <div class="prof-info">
                <div>여행현황</div>
-               <input class="btn btn-info" type="button" value="추 가 버튼" />
+               <input class="btn btn-info" type="button" value="추가 버튼" />
             </div>
          <script
-            src="http://maps.googleapis.com/maps/api/js? key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
          <script>
             function initialize() {
                var mapProp = {
