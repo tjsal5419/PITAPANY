@@ -9,6 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="${root}/resource/css/inc/header.css" />
 <script>
 </script>
@@ -21,9 +22,11 @@
 
     	<div class="logo"> 로고zz </div>
     	<form class="search-bar" action="" method="get" class="form-group">
-          <input type="text" class="form-control form-control-header" placeholder="Search">
-    	  <input type="text" class="form-control form-control-header" placeholder="Search">
-		  <input type="image" src="${root }/resource/images/ic_search_black_24dp_1x.png" alt="Submit">
+    		<div class="search-bar-container">
+          		<input type="text" class="form-control form-control-header" placeholder="Search">
+    	  		<input type="text" class="form-control form-control-header" placeholder="Search">
+		  		<input type="button" class="search-button"  alt="Submit">
+	    	</div>
 	    </form>
         <div class="menu-bar">
 	        <ul class="accompany">
@@ -47,9 +50,9 @@
 	        	<li onclick="location.href='${root }/community/tip';">커뮤니티</li>
 	        </ul>
 	        <ul class="mypage">
-	        	<li><a href=""><img src="${root }/resource/images/ic_question_answer_black_24dp_1x.png"/></a></li>
-	        	<li><a href=""><img src="${root }/resource/images/ic_announcement_black_24dp_1x.png"/></a></li>
-	        	<li><a href=""><img src="${root }/resource/images/ic_account_circle_black_24dp_1x.png"/></a></li>
+	        	<li><a href=""><i class="fa fa-envelope"></i></a></li>
+	        	<li><a href=""><i class="fa fa-bell"></i></a></li>
+	        	<li><a href=""><i class="fa fa-user"></i></a></li>
 	        </ul>
         </div>
     </div>
