@@ -6,27 +6,54 @@
 
 <mapper namespace="com.pitapany.web.dao.AccompanyBoardReplyDao">
 	<select id="getList" resultType="com.pitapany.web.entity.AccompanyBoardReply">
-		SELECT * 
-		FROM `pitapanydb`.`AccompanyBoardReply`
+		SELECT *
+		FROM
+		`pitapanydb`.`AccompanyBoardReply`
 	</select>
-	
+
 	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoardReply">
-		SELECT * 
-		FROM `pitapanydb`.`AccompanyBoardReply`
+		SELECT *
+		FROM
+		`pitapanydb`.`AccompanyBoardReply`
 		WHERE id=#{id}
 	</select>
-	
+
 	<insert id="add" parameterType="com.pitapany.web.entity.AccompanyBoardReply">
-		
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM AccompanyBoardReply
+		</selectKey>
+		INSERT INTO
+		`pitapanydb`.`AccompanyBoardReply`
+		(
+		`id`,
+		`reply`,
+		`isSecret`,
+		`accompanyBoardId`
+		)
+		VALUES
+		(
+		#{id},
+		#{reply},
+		#{isSecret},
+		#{accompanyBoardId}
+		);
 	</insert>
-	
+
 	<update id="update" parameterType="com.pitapany.web.entity.AccompanyBoardReply">
-		
+		UPDATE
+		`pitapanydb`.`AccompanyBoardReply`
+		SET
+		`id` = #{id},
+		`memberId` = #{memberId},
+		`reply` = #{reply},
+		`isSecret` = #{isSecret},
+		`accompanyBoardId` = #{accompanyBoardId}
+		WHERE `id` = #{id};
 	</update>
-	
+
 	<delete id="delete">
-	  DELETE FROM AccompanyBoardReply
-      WHERE id=#{id}
+		DELETE FROM AccompanyBoardReply
+		WHERE id=#{id}
 	</delete>
-	
+
 </mapper>

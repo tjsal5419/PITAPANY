@@ -6,27 +6,64 @@
 
 <mapper namespace="com.pitapany.web.dao.AccompanyBoardDao">
 	<select id="getList" resultType="com.pitapany.web.entity.AccompanyBoard">
-		SELECT * 
-		FROM `pitapanydb`.`AccompanyBoard`
+		SELECT *
+		FROM
+		`pitapanydb`.`AccompanyBoard`
 	</select>
-	
+
 	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoard">
-		SELECT * 
-		FROM `pitapanydb`.`AccompanyBoard`
-		WHERE id=#{id}
+		SELECT *
+		FROM
+		`pitapanydb`.`AccompanyBoard`
+		WHERE id = #{id}
 	</select>
-	
+
 	<insert id="add" parameterType="com.pitapany.web.entity.AccompanyBoard">
-		
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM AccompanyBoard
+		</selectKey>
+		INSERT INTO
+		`pitapanydb`.`AccompanyBoard`
+		(
+		`id`,
+		`startDate`,
+		`endDate`,
+		`title`,
+		`context`,
+		`memberId`,
+		`latitude`,
+		`longitude`
+		)
+		VALUES
+		(
+		#{id},
+		#{startDate},
+		#{endDate},
+		#{title},
+		#{context},
+		#{memberId},
+		#{latitude},
+		#{longitude}
+		);
 	</insert>
-	
+
 	<update id="update" parameterType="com.pitapany.web.entity.AccompanyBoard">
-		
+		UPDATE
+		`pitapanydb`.`AccompanyBoard`
+		SET
+		`startDate` = #{startDate},
+		`endDate` =	#{endDate},
+		`title` = #{title},
+		`context` = #{context},
+		`memberId` = #{memberId},
+		`latitude` = #{latitude},
+		`longitude` = #{longitude}
+		WHERE `id` = #{id};
 	</update>
-	
+
 	<delete id="delete">
-	  DELETE FROM AccompanyBoard
-      WHERE id=#{id}
+		DELETE FROM AccompanyBoard
+		WHERE id = #{id}
 	</delete>
-	
+
 </mapper>
