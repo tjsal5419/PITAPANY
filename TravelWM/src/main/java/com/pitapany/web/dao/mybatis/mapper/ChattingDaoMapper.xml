@@ -6,27 +6,48 @@
 
 <mapper namespace="com.pitapany.web.dao.ChattingDao">
 	<select id="getList" resultType="com.pitapany.web.entity.Chatting">
-		SELECT * 
-		FROM `pitapanydb`.`Chatting`
+		SELECT *
+		FROM
+		`pitapanydb`.`Chatting`
 	</select>
-	
+
 	<select id="get" resultType="com.pitapany.web.entity.Chatting">
-		SELECT * 
+		SELECT *
 		FROM `pitapanydb`.`Chatting`
 		WHERE id=#{id}
 	</select>
-	
+
 	<insert id="add" parameterType="com.pitapany.web.entity.Chatting">
-		
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM Chatting
+		</selectKey>
+		INSERT INTO
+		`pitapanydb`.`Chatting`
+		(
+		`id`,
+		`senderId`,
+		`receiverId`
+		)
+		VALUES
+		(
+		#{id},
+		#{senderId},
+		#{receiverId}
+		);
 	</insert>
-	
+
 	<update id="update" parameterType="com.pitapany.web.entity.Chatting">
-		
+		UPDATE `pitapanydb`.`Chatting`
+		SET
+		`id` = #{id},
+		`senderId` = #{senderId},
+		`receiverId` = #{receiverId}
+		WHERE `id` = #{id};
 	</update>
-	
+
 	<delete id="delete">
-	  DELETE FROM Chatting
-      WHERE id=#{id}
+		DELETE FROM Chatting
+		WHERE id=#{id}
 	</delete>
-	
+
 </mapper>

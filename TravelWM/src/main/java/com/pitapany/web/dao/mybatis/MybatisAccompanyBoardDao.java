@@ -2,39 +2,45 @@ package com.pitapany.web.dao.mybatis;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.entity.AccompanyBoard;
 
-public class MybatisAccompanyBoardDao implements AccompanyBoardDao{
+public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
+
+	@Autowired
+	SqlSession sqlSession;
 
 	@Override
 	public AccompanyBoard get(String id) {
-		// TODO Auto-generated method stub
-		return null;
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.get(id);
 	}
 
 	@Override
 	public List<AccompanyBoard> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.getList();
 	}
 
 	@Override
 	public int delete(String id) {
-		// TODO Auto-generated method stub
-		return 0;
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.delete(id);
 	}
 
 	@Override
 	public int add(AccompanyBoard accompanyBoard) {
-		// TODO Auto-generated method stub
-		return 0;
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.add(accompanyBoard);
 	}
 
 	@Override
 	public int update(AccompanyBoard accompanyBoard) {
-		// TODO Auto-generated method stub
-		return 0;
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.update(accompanyBoard);
 	}
 
 }

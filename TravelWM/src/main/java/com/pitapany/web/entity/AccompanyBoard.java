@@ -3,10 +3,10 @@ package com.pitapany.web.entity;
 import java.util.Date;
 
 public class AccompanyBoard {
-	private String code;
+	private String id;
 	private Date startDate;
 	private Date endDate;
-	private Date regDate;
+	private	Date regDate;
 	private String hits;
 	private String title;
 	private String context;
@@ -14,12 +14,12 @@ public class AccompanyBoard {
 	private String latitude;
 	private String longitude;
 
-	public String getCode() {
-		return code;
+	public String getId() {
+		return id;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public Date getStartDate() {
