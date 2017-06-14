@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="${root}/resource/css/inc/header.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="${root}/resource/css/admin/main.css" rel="stylesheet"/>
 
 
@@ -95,7 +96,7 @@
 			
 			
 			<div class="board-card">
-				<div class="board-content">
+				<div class="board-content w3-card-4">
 					
 					<div class="board-detail">
 						<div class="board-detail-wrapper">
@@ -129,7 +130,7 @@
 			</div>
 			
 			<div class="board-card">
-				<div class="board-content">
+				<div class="board-content w3-card-4">
 					
 					<div class="board-detail">
 						<div class="board-detail-wrapper">
@@ -163,7 +164,7 @@
 			</div>
 			
 			<div class="board-card">
-				<div class="board-content">
+				<div class="board-content w3-card-4">
 					
 					<div class="board-detail">
 						<div class="board-detail-wrapper">
@@ -197,7 +198,7 @@
 			</div>
 			
 			<div class="board-card">
-				<div class="board-content">
+				<div class="board-content w3-card-4">
 					
 					<div class="board-detail">
 						<div class="board-detail-wrapper">

@@ -16,11 +16,17 @@
 <head>
 	<title> 동행이음 with PITAPANY</title>
 </head>
-  <nav>
+
+<nav>
     <div class="navbar navbar-default navbar-fixed-top">
-
-
+    	
+    	<div class = "menu-button-mobile"><i class="fa fa-bars"></i></div>
     	<div class="logo"> 로고zz </div>
+    	<div class = "search-button-mobile"><i class="fa fa-search"></i></div>
+    	
+    	
+    	
+    	
     	<form class="search-bar" action="" method="get" class="form-group">
     		<div class="search-bar-container">
           		<input type="text" class="form-control form-control-header" placeholder="Search">
@@ -38,22 +44,105 @@
 				<security:authorize  access="isAuthenticated()">
 					<li>
 					<a class="a" href="${root }/j_spring_security_logout">
-						${userNicName }님 로그아웃
-	
+						${userNicName}님 로그아웃
 					</a>
 					</li>
 				</security:authorize>
 				
-				<li onclick="location.href='${root }/profile/home';">프로필홈</li>
+				<li onclick="location.href='${root}/profile/home';">프로필홈</li>
 	        	<li onclick="location.href='${root}/accompany/board';">동행찾기</li>
-	        	<li onclick="location.href='${root }/accompany/matching';">동행매칭</li>
-	        	<li onclick="location.href='${root }/community/tip';">커뮤니티</li>
+	        	<li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
+	        	<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
 	        </ul>
 	        <ul class="mypage">
-	        	<li><a href=""><i class="fa fa-envelope"></i></a></li>
-	        	<li><a href=""><i class="fa fa-bell"></i></a></li>
-	        	<li><a href=""><i class="fa fa-user"></i></a></li>
+	        	<li><i class="fa fa-envelope message-item"></i></li>
+	        	<li><i class="fa fa-bell alarm-item"></i></li>
+	        	<li><i class="fa fa-user account-item"></i></li>
 	        </ul>
+        	<div id="message-content"><p>message</p></div>
+        	<div id="alarm-content"><p>alarm</p></div>
+        	<div id="account-content"><p>account</p></div>
         </div>
     </div>
-  </nav>
+    
+    <div class='menu-mobile'>
+	  <ul>
+	    <li onclick="location.href='${root}/accompany/board';">동행찾기</li>
+	  </ul>
+	  <ul>  
+	    <li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
+	  </ul>
+	  <ul>	
+	  	<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
+	  </ul>
+	</div>
+	
+	<div class="search-mobile">
+		<input type="text" class="form-control form-control-header form-control-mobile" placeholder="Search">
+    	<input type="text" class="form-control form-control-header form-control-mobile" placeholder="Search">
+		<input type="button" class="search-button search-button-mobile2"  alt="Submit">
+	</div>
+
+</nav>
+  
+<script>
+  
+$(document).on("click", function(e){
+	if($(e.target).is(".message-item")){
+		$("#message-content").show();
+    }else{
+        $("#message-content").hide();
+    }
+});
+
+$(document).on("click", function(e){
+	if($(e.target).is(".alarm-item")){
+		$("#alarm-content").show();
+    }else{
+        $("#alarm-content").hide();
+    }
+});
+
+$(document).on("click", function(e){
+	if($(e.target).is(".account-item")){
+		$("#account-content").show();
+    }else{
+        $("#account-content").hide();
+    }
+});
+  
+</script>
+
+<script>
+
+
+$('.menu-button-mobile').click(function(event){
+	
+	event.stopPropagation();
+    $('.menu-mobile').toggleClass('down');
+    $('.search-mobile').removeClass('down');
+});
+
+
+$('.search-button-mobile').click(function(event){
+	
+	event.stopPropagation();
+    $('.search-mobile').toggleClass('down');
+    $('.menu-mobile').removeClass('down');
+});
+
+$('body').click(function(e){
+	
+	
+	if($(e.target).is(".search-mobile, .search-mobile>input")) {
+		
+	} else {
+		$('.menu-mobile').removeClass('down');
+		$('.search-mobile').removeClass('down');
+	}
+});
+
+</script>
+
+
+

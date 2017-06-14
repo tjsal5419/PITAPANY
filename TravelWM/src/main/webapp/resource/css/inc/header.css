@@ -73,6 +73,10 @@
     background-size: 24px 24px;
 }
 
+.search-button:hover{
+	background: #019daf url(../../images/ic_search_white_36dp_1x.png) center no-repeat;	
+	background-size: 24px 24px;
+}
 
 .menu-bar{
 	order:99;
@@ -94,7 +98,7 @@
 	display: flex;
 	height:initial;
 	
-	margin-left:25px;
+	margin-left:30px;
 	align-items:center;
 	
 	font-size:13px;
@@ -158,9 +162,195 @@
 }
 
 .fa:hover{
-	color: #008e9e !important;
+	cursor: pointer;
+	color: #019daf !important;
 }
 
 .body{
 	font-size: 13px;
+}
+
+#message-content{
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 50px;
+    padding: 12px 16px;
+    z-index: 1;
+    
+    right: 92px;
+}
+
+#alarm-content{
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 50px;
+    padding: 12px 16px;
+    z-index: 1;
+    
+    right: 55px;
+}
+
+#account-content{
+	display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 50px;
+    padding: 12px 16px;
+    z-index: 1;
+    
+    right: 22px;
+}
+
+.menu-button-mobile, .search-button-mobile, .search-mobile, .menu-mobile{
+	display: none;
+}
+
+@media all and (max-width: 890px){
+
+	.search-bar{
+		display: none;
+	}
+
+	.menu-bar{
+		display: none;
+	}
+		
+	.navbar{
+		justify-content: space-between;
+		z-index: 2001;
+	}
+	
+	.navbar:before, .navbar:after{
+		display: none;
+		content: none;
+	}
+	
+	.menu-button-mobile{
+	 	order: 1;
+	 	
+	 	display: table;
+		width: 60px;
+		height: 60px;
+	
+		border: 0 none;
+		cursor: pointer; 
+	}
+	
+	.fa-bars{
+		display: table-cell;
+		font-size: 25px !important;
+		
+	}
+	
+	.menu-mobile{
+		display: block;
+		position: fixed;
+		background: #fff;
+		width: 100%;
+		height: ;
+		
+		top: -100%;
+		margin-top: 50px;
+		z-index: 2000;
+		transition-timing: 1s;
+		transition-duration: 0.5s;
+		box-shadow: 0 0 10px #000;
+		padding-top: 15px;
+		line-height: 55px;
+	}
+	
+	.menu-mobile ul{
+		display: table;
+		width: 100%;
+	}
+	
+	.menu-mobile li{
+	
+		display: table-cell;
+		cursor: pointer;
+	
+		width: 100%;
+		height: 50px;
+		
+		color: rgba(0, 188, 209, 1);
+		
+		padding-left: 15px;
+		vertical-align: middle ;
+	}
+	
+	.menu-mobile li:hover{
+		background: #d0ECEA;
+	}
+	
+	
+	
+	
+	
+	
+	
+	.logo{
+		order: 2;
+	}
+
+	.search-button-mobile{
+		order: 3;
+		
+		display: table;
+		width: 60px;
+		height: 60px;
+	
+		border: 0 none;
+		cursor: pointer;
+	}		
+	
+	.fa-search{
+		display: table-cell;
+		font-size: 25px !important;	
+	}
+	
+	.search-mobile{
+		display: flex;
+		flex-direction: column;
+		
+		position: fixed;
+		background: #fff;
+		width: 100%;
+		height: ;
+		
+		top: -100%;
+		margin-top: 65px;
+		z-index: 2000;
+		transition-timing: 1s;
+		transition-duration: 0.5s;
+		box-shadow: 0 0 10px #000;
+		padding: 15px;
+		line-height: 75px;
+		
+		align-items: flex-end;
+	}
+	
+	.form-control-mobile{
+		width: 100% !important;
+		margin-bottom: 15px;
+		background: #edfcff;
+		border-radius: 3px;
+		border: 2px solid rgba(0, 188, 209, 1);
+	}
+	
+	.search-button-mobile2{
+		width: 70px !important;
+		border-radius: 3px;		
+	}
+	
+	.down {
+  		top: -5px;
+	}
 }
