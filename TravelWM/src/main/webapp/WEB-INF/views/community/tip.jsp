@@ -40,7 +40,7 @@ function changeFunc(){
 			  	</div>
 			  	<div class="line"></div>
 			  	<div class="filter">
-						<select id="select-box" class="select-box" onclick="changeFunc()" name="tipCategoryId">
+						<select id="select-box" class="select-box" onchange="changeFunc()" name="tipCategoryId">
 							<option value="default" selected>카테고리 선택</option>
 							<c:forEach items="${categoryList}" var="li">
 								<option value="${li.id }">${li.category }</option>								
@@ -91,7 +91,7 @@ function changeFunc(){
 						</c:if>
 					    
 					    <c:forEach begin="${prev }" end="${next }" var="p" >
-					    	<li><a href="${root 	}/community/tip?p=${p }&c=${category}">${p }</a></li>
+					    	<li><a href="${root }/community/tip?p=${p }&c=${category}">${p }</a></li>
 					    </c:forEach>
 					    
 					    <c:if test="${page != pageCount}">
