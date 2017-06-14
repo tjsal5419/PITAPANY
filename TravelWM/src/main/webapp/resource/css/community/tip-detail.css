@@ -1,19 +1,33 @@
 @CHARSET "UTF-8";
-
-#main {
-	min-height: 0px;
-	padding-top: 70px;
+.hidden{
+	display:none;
+}
+.main{
+	margin-top:60px;
+	display:flex;
+	flex-wrap:wrap;
+	min-height:0px;
 }
 
+.fake{
+	max-width:5%;
+	min-width:5%;
+	flex-grow:1;
+}
+
+
 .frame {
-	min-width: 365px;
-	margin-left: 20%;
-	margin-right: 20%;
+	margin-left: 10%;
+	margin-right: 10%;
 	background: #F6F6F6;
 	box-shadow: 0 3px 3px 0 #e0e0e0;
 	display: flex;
 	border: 1px solid #dddddd;
+	flex-grow:2;
+	margin-top:30px;
+	margin-bottom:30px;
 }
+
 
 .content {
 	width: 100%;
@@ -61,6 +75,9 @@
 	box-shadow: 0 3px 3px 0 #e0e0e0;
 	flex-grow: 1;
 	border: 1px solid #dddddd;
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }
 
 .bookmark {
@@ -71,6 +88,7 @@
 
 .bookmark a {
 	margin-right: 10px;
+	height:24px;
 }
 
 .detail-title {
@@ -82,11 +100,14 @@
 	box-shadow: 0 3px 3px 0 #e0e0e0;
 	background: #D5D5D5;
 	border: 1px solid #dddddd;
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
 .text {
 	width: 100%;
-	min-height: 200px;
+	min-height: 400px;
 	padding: 10px;
 	box-shadow: 0 3px 3px 0 #e0e0e0;
 	background: #D5D5D5;
@@ -133,6 +154,12 @@
 	border: 1px solid #dddddd;
 }
 
+.content .delete-tip{
+	width:100%;
+	display:flex;
+	justify-content:flex-end;
+	margin-top:10px;
+}
 .void  {
 	width: 100%;
 	height: 100%;
@@ -225,17 +252,24 @@
 	border: 1px solid #dddddd;
 }
 
-@media all and (max-width:600px) {
-	#main {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-	}
+@media all and (min-width:480px) and (max-width:760px) {
+
 	.frame {
-		width: 100%;
 		background: #F6F6F6;
 		box-shadow: 0 3px 3px 0 #e0e0e0;
 		display: flex;
 		border: 1px solid #dddddd;
+		margin-left:5%;
+		margin-right:5%;
 	}
+	
+}
+@media all and (max-width:480px) {
+
+	.frame {
+		margin-top:10px;
+		margin-bottom:0px;
+		margin-left:0px;
+		margin-right:0px;
+	}	
 }

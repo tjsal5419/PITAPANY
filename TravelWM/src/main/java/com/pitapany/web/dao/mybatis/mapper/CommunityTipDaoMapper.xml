@@ -10,16 +10,21 @@
 			FROM CommunityTipView
 			WHERE id=#{id}
 			ORDER BY cast(id as unsigned)
-			
 	</select>
-
 
 	<select id="getList" resultType="com.pitapany.web.entity.CommunityTipView">
 			SELECT *
 			FROM CommunityTipView
+			WHERE BINARY ${param2} LIKE '%${param3}%' AND tipCategoryId LIKE '${param4}'
 			ORDER BY cast(id as unsigned)
+	        LIMIT  ${(param1-1)*10},10
 	</select>
 
+	<select id="count" resultType="Integer">
+			SELECT count(*) AS count
+			FROM CommunityTipView
+			WHERE BINARY ${param1} LIKE '%${param2}%' AND tipCategoryId LIKE '${param3}'
+	</select>
 	
 	<insert id="add" parameterType="com.pitapany.web.entity.CommunityTip">
 		<selectKey keyProperty="id" order="BEFORE" resultType="String">
@@ -48,15 +53,21 @@
 		SET
 		`title` = #{title},
 		`content` = #{content},
-		`content` = #{content}
 		`tipCategoryId` = #{tipCategoryId}
 		WHERE `id` = #{id}
 	
 	</update>
+
+
+	<update id="addHits">
+		UPDATE CommunityTip 
+		SET hits = cast(hits as unsigned)+1 
+		where id=#{id}
+	</update>	
 	
 	<delete id="delete" parameterType="com.pitapany.web.entity.CommunityTip">
 		DELETE FROM `pitapanydb`.`CommunityTip`
-		WHERE #{id}
+		WHERE id=#{id}
 	</delete>
 	
 </mapper>

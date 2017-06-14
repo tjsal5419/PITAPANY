@@ -22,7 +22,7 @@
 			</div>
 		</div>
 		<div class="category">
-			<select name="categoryId">
+			<select class="select" name="tipCategoryId">
 				<c:forEach var="l" items="${categoryList }">
 					<option value="${l.id}">${l.category } </option>	
 				</c:forEach>
@@ -32,7 +32,7 @@
 		<div class="text">
 			<textarea name="content" placeholder="본문내용"></textarea>
 		</div>
-		
+		<input type="text" name="id" value="${tipView.id }" class="hidden"/>
 		<div class="foot">
 			<div class="bottun">
 				<div class="cancel">
