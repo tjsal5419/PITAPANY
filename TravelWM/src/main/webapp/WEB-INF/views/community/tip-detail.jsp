@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="root" value="${pageContext.request.contextPath }" />
+<link href="${root }/resource/css/community/tip.css" rel="stylesheet"/>
+
 <link rel="stylesheet"
 	href="/TravelWM/resource/css/community/tip-detail.css" type="text/css" />
 <script
@@ -18,7 +23,10 @@
 		}
 	});
 </script>
-<main id="main">
+
+<%@ include file="../inc/userInfo.jsp" %>
+<main class="main">
+<%@ include file="inc/aside.jsp" %>
 <div class="frame">
 	<div class="content">
 		<div class="head">
@@ -78,6 +86,14 @@
 				</div>
 			</div>
 		</div>
+		
+		<div class="delete-tip">
+			<c:if test="${tipView.memberId eq userId }">
+				<div class="delete"><a href="${root }/community/tip-delete?id=${tipView.id }">삭제하기</a></div>
+				<div class="update"><a href="${root }/community/tip-update?id=${tipView.id }">수정</a></div>
+			</c:if>
+				<div class="prev-button"><a href="${root }/community/tip?id=${tipView.id }">목록으로</a></div>
+		</div>			
 	</div>
 </div>
 </main>

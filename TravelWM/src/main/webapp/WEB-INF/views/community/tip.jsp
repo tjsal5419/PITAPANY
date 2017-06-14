@@ -4,6 +4,20 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <link href="${root }/resource/css/community/tip.css" rel="stylesheet"/>
 
+<script>
+
+function changeFunc(){
+    var tipCategoryId = document.querySelector("#select-box");
+    
+    var category = tipCategoryId.options[tipCategoryId.selectedIndex].value;
+    
+    
+    if(category!=="default"){
+    	window.location.href = 'tip?c='+category;
+    }
+}
+</script>
+
 <main class="main">
 		<%@ include file="inc/aside.jsp" %>
 		<div class="tip-container">
@@ -26,7 +40,8 @@
 			  	</div>
 			  	<div class="line"></div>
 			  	<div class="filter">
-						<select class="select" name="tipCategoryId">	
+						<select id="select-box" class="select-box" onclick="changeFunc()" name="tipCategoryId">
+							<option value="default" selected>카테고리 선택</option>
 							<c:forEach items="${categoryList}" var="li">
 								<option value="${li.id }">${li.category }</option>								
 							</c:forEach>
@@ -66,21 +81,27 @@
 				<div class="page">
 					<nav aria-label="Page navigation">
 					  <ul class="pagination">
-					    <li>
-					      <a href="#" aria-label="Previous">
-					        <span aria-hidden="true">&laquo;</span>
-					      </a>
-					    </li>
-					    <li><a href="#">1</a></li>
-					    <li><a href="#">2</a></li>
-					    <li><a href="#">3</a></li>
-					    <li><a href="#">4</a></li>
-					    <li><a href="#">5</a></li>
-					    <li>
-					      <a href="#" aria-label="Next">
-					        <span aria-hidden="true">&raquo;</span>
-					      </a>
-					    </li>
+					  	 
+						<c:if test="${page!=1 }">
+						    <li>
+						      <a href="${root}/community/tip?p=${page-1 }&c=${category}" aria-label="Previous">
+							     <span aria-hidden="true">&laquo;</span>
+							  </a>
+							</li>
+						</c:if>
+					    
+					    <c:forEach begin="${prev }" end="${next }" var="p" >
+					    	<li><a href="${root 	}/community/tip?p=${p }&c=${category}">${p }</a></li>
+					    </c:forEach>
+					    
+					    <c:if test="${page != pageCount}">
+						    <li>
+						      <a href="${root}/community/tip?p=${page+1 }&c=${category}" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+					    </c:if>
+					    
 					  </ul>
 					</nav>	
 				</div>

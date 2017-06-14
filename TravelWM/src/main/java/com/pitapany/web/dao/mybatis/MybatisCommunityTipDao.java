@@ -26,11 +26,7 @@ public class MybatisCommunityTipDao implements CommunityTipDao {
 		return tipDao.get(id);
 	}
 
-	@Override
-	public List<CommunityTipView> getList() {
-		CommunityTipDao tipDao = sqlSession.getMapper(CommunityTipDao.class);
-		return tipDao.getList();
-	}
+
 
 	@Override
 	public int delete(String id) {
@@ -49,6 +45,29 @@ public class MybatisCommunityTipDao implements CommunityTipDao {
 		CommunityTipDao tipDao = sqlSession.getMapper(CommunityTipDao.class);
 		return tipDao.update(communityTip);
 	}
+
+	@Override
+	public int addHits(String id) {
+		CommunityTipDao tipDao = sqlSession.getMapper(CommunityTipDao.class);
+		return tipDao.addHits(id);
+	}
+
+
+
+	@Override
+	public List<CommunityTipView> getList(int page, String field, String query, String category) {
+		CommunityTipDao tipDao = sqlSession.getMapper(CommunityTipDao.class);
+		return tipDao.getList(page,field,query,category);
+	}
+
+
+
+	@Override
+	public int count(String field, String query, String category) {
+		CommunityTipDao tipDao = sqlSession.getMapper(CommunityTipDao.class);
+		return tipDao.count(field,query,category);
+	}
+
 	
 	
 	

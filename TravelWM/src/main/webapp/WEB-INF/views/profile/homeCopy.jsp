@@ -3,24 +3,29 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
-<link href="${root}/resource/css/profile/home.css" rel="stylesheet"/>
+<link href="${root}/resource/css/profile/homeCopy.css" rel="stylesheet"/>
 
-<div>
-   <div class="back-img">
-      <div class="background">
-         <img class="background-pictures"  src="${root}/resource/images/uah.jpg" alt="프로필사진">
-      </div>
-   </div> 
-</div>  
-<div class="setting-button"><button type="button" class="btn btn-info">프로필  설정</button></div>
-<div class="prof-img">   
-      <div class="name">프로필명</div>
-      <div class="thumblist">
-         <img class="prof-img-circle"  src="${root}/resource/images/sakura.jpg" alt="프로필사진">
-      </div>
-   <div class="center">닉네임</div>
+<div class="visual">
+	<div class="back-img">
+	      <%-- <div class="background">
+	         <img class="background-pictures"  src="${root}/resource/images/uah.jpg" alt="프로필사진">
+	      </div> --%>
+	</div> 
+	
+	<div class="setting-button">
+		<button type="button" class="btn btn-info">프로필  설정</button>
+	</div>
+	<div class="name">프로필명</div>
+	<div class="prof-img">   
+	      <div class="thumblist">
+	         <img class="prof-img-circle"  src="${root}/resource/images/sakura.jpg" alt="프로필사진">
+	      </div>
+	   <div class="center">닉네임</div>
+	</div>
+<div class="empty-container">
+
 </div>         
-   
+</div> 
 
 <main class="main">   
    <div>

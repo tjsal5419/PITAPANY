@@ -1,44 +1,54 @@
 @CHARSET "UTF-8";
 
+.visual{
+	margin-top:60px;
+	border:1px solid red;
+	position:relative;
+}
+
+.empty-container{
+	min-height:160px;
+}
 .back-img {
 	/* background-size: 100%;
    display: block;
    width: 100%;
    height: 20%;
    position: relative;    */
-	
+	background: url('../../images/uah.jpg') no-repeat center;
+	background-size: cover;
+	height:350px;
 }
 
-.background {
-	margin-top: 50px;
+.visual .background {
+	/* margin-top: 50px; */
 }
 
 .background-pictures {
 	width: 100%;
-	max-height: 500px;
+	height:350px;
 	z-index: 100;
 }
 
 .prof-img {
-	margin-top: 20px;
-	position: relative;
+	position: absolute;
 	width: 100%;
-	top: -350px;
+	top: 250px;
 }
 
 .name {
-	font-size: 20px;
-	color: yellow;
+	font-size: 30px;
+	color: blue;
 	font-weight: bold;
 	z-index: 102;
-	position: relative;
-	text-align: center;
-	padding-bottom: 4%;
+	position: absolute;
+	width:100%;
+	text-align:center;
+	top:185px;
 }
 
 .center {
 	text-align: center;
-	margin-bottom: 20px;
 }
 
 .thumblist {
@@ -52,8 +62,8 @@
 
 .thumblist .prof-img-circle {
 	position: relative;
-	height: 300px;
-	width: 300px;
+	height: 200px;
+	width: 200px;
 	border-radius: 50%;
 	/* max-width: 250px;
    max-height: 250px; */
@@ -62,8 +72,8 @@
 
 .setting-button {
 	z-index: 102;
-	position: relative;
-	top: -50px;
+	position: absolute;
+	top: 300px;
 	text-align: right;
 	right: 30px;
 }
@@ -80,14 +90,19 @@
    justify-content:space-around;
    top: -200px;
 } */
+
+.main{
+	border:1px solid black;
+	display:flex;
+	flex-direction:column;
+	margin-left: 10%;
+	margin-right: 10%;
+}
 .menu {
-	top: -350px;
 	display: flex;
-	position: relative;
+	/* position: relative; */
 	justify-content: space-around;
 	margin-top: 20px;
-	margin-left: 15%;
-	margin-right: 15%;
 	min-height: 50px;
 	/* min-width: 70%;  */
 	border-radius: 10px;
@@ -129,11 +144,11 @@
 .content-container {
 	top: -350px;
 	display: block;
-	position: relative;
+	/* position: relative; */
 	justify-content: space-around;
 	margin-top: 20px;
-	margin-left: 15%;
-	margin-right: 15%;
+/* 	margin-left: 15%;
+	margin-right: 15%; */
 	min-height: 400px;
 	/* min-width: 70%;  */
 	border-radius: 10px;
@@ -365,11 +380,11 @@
 /*------------------- media荑쇰━--------------*/
 @media all and (max-width:400px) {
 	.prof-img {
-		top: -120px;
+	/* 	top: -120px; */
 	}
 	.prof-img-circle {
-		max-width: 70px;
-		max-height: 70px;
+/* 		max-width: 70px;
+		max-height: 70px; */
 	}
 	.menu {
 		top: -120px;
@@ -381,11 +396,11 @@
 
 @media all and (min-width:400px) and (max-width:640px) {
 	.prof-img {
-		top: -150px;
+	/* 	top: -150px; */
 	}
 	.prof-img-circle {
-		max-width: 100px;
-		max-height: 100px;
+/* 		max-width: 100px;
+		max-height: 100px; */
 	}
 	.menu {
 		top: -150px;
@@ -424,11 +439,11 @@
 
 @media all and (min-width:640px) and (max-width:840px) {
 	.prof-img {
-		top: -200px;
+	/* top: -200px; */
 	}
 	.prof-img-circle {
-		max-width: 150px;
-		max-height: 150px;
+/* 		max-width: 150px;
+		max-height: 150px; */
 	}
 	.menu {
 		top: -200px;
@@ -440,11 +455,11 @@
 
 @media all and (min-width:840px) and (max-width:1150px) {
 	.prof-img {
-		top: -250px;
+		/* top: -250px; */
 	}
 	.prof-img-circle {
-		max-width: 200px;
-		max-height: 200px;
+/* 		max-width: 200px;
+		max-height: 200px; */
 	}
 	.menu {
 		top: -250px;
@@ -456,11 +471,11 @@
 
 @media all and (min-width:1150px) and (max-width:1350px) {
 	.prof-img {
-		top: -300px;
+		/* top: -300px; */
 	}
 	.prof-img-circle {
-		max-width: 250px;
-		max-height: 250px;
+/* 		max-width: 250px;
+		max-height: 250px; */
 	}
 	.menu {
 		top: -300px;
