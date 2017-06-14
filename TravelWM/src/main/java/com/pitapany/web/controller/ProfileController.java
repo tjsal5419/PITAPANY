@@ -13,4 +13,9 @@ public class ProfileController {
 		return "profile.home";
 	}
 	
+	@RequestMapping("/homeCopy")
+	public String homeCopy() {
+		return "profile.homeCopy";
+	}
+	
 }
