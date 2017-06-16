@@ -134,7 +134,7 @@ $('.search-button-mobile').click(function(event){
 $('body').click(function(e){
 	
 	
-	if($(e.target).is(".search-mobile, .search-mobile>input")) {
+	if($(e.target).is(".menu-mobile, .menu-mobile ul, .menu-mobile li, .search-mobile, .search-mobile>input")) {
 		
 	} else {
 		$('.menu-mobile').removeClass('down');
