@@ -52,13 +52,22 @@
 		`pitapanydb`.`AccompanyBoard`
 		SET
 		`startDate` = #{startDate},
-		`endDate` =	#{endDate},
+		`endDate` =
+		#{endDate},
 		`title` = #{title},
 		`context` = #{context},
-		`memberId` = #{memberId},
+		`memberId` =
+		#{memberId},
 		`latitude` = #{latitude},
 		`longitude` = #{longitude}
-		WHERE `id` = #{id};
+		WHERE
+		`id` = #{id};
+	</update>
+
+	<update id="addHits">
+		UPDATE AccompanyBoard
+		SET hits = cast(hits as unsigned)+1
+		where id=#{id}
 	</update>
 
 	<delete id="delete">
