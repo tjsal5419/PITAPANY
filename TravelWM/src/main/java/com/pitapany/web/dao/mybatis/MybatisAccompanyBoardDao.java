@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pitapany.web.dao.AccompanyBoardDao;
+import com.pitapany.web.dao.CommunityTipDao;
 import com.pitapany.web.entity.AccompanyBoard;
 
 public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
@@ -41,6 +42,12 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 	public int update(AccompanyBoard accompanyBoard) {
 		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
 		return accBoardDao.update(accompanyBoard);
+	}
+
+	@Override
+	public int addHits(String id) {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.addHits(id);
 	}
 
 }
