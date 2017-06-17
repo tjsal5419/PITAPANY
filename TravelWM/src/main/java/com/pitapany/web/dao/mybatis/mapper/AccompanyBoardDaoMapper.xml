@@ -32,7 +32,10 @@
 		`context`,
 		`memberId`,
 		`latitude`,
-		`longitude`
+		`longitude`,
+		`styleId`,
+		`img`,
+		`placeId`
 		)
 		VALUES
 		(
@@ -43,8 +46,11 @@
 		#{context},
 		#{memberId},
 		#{latitude},
-		#{longitude}
-		);
+		#{longitude},
+		#{styleId},
+		#{img},
+		#{placeId}
+		)
 	</insert>
 
 	<update id="update" parameterType="com.pitapany.web.entity.AccompanyBoard">
@@ -55,9 +61,11 @@
 		`endDate` =	#{endDate},
 		`title` = #{title},
 		`context` = #{context},
-		`memberId` = #{memberId},
 		`latitude` = #{latitude},
-		`longitude` = #{longitude}
+		`longitude` = #{longitude},
+		`styleId` = #{styleId},
+		`img` = #{img},
+		`placeId` = #{placeId}
 		WHERE `id` = #{id};
 	</update>
 

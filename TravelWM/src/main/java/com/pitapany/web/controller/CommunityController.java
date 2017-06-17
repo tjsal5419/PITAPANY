@@ -49,9 +49,12 @@ public class CommunityController {
 		List<CommunityTipView>	list = communitytipDao.getList(page,field, query, category);
 		model.addAttribute("tipList", list);
 
+		model.addAttribute("field",field);
+		model.addAttribute("query", query);
 		model.addAttribute("category",category);
 		model.addAttribute("page", page);
 		int count = communitytipDao.count(field, query,category);
+		model.addAttribute("count", count);
 		int pageCount=0;
 		
 		if(count%10==0)
@@ -80,7 +83,6 @@ public class CommunityController {
 		}
 		else
 			next = pageCount;
-
 		
 		/*System.out.println("page:"+page+"prev"+prev+"next:"+next);*/
 		model.addAttribute("prev",prev);

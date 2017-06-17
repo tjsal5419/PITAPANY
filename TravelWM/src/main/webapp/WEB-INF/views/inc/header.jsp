@@ -42,7 +42,7 @@
 				</c:if>	
 		
 				<security:authorize  access="isAuthenticated()">
-					<li>
+					<li class="except-li">
 					<a class="a" href="${root }/j_spring_security_logout">
 						${userNicName}님 로그아웃
 					</a>

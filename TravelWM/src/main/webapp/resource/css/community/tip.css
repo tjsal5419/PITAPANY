@@ -53,6 +53,20 @@ a:hover{
 	flex-grow:2;
 }
 
+.tip-container .category .filter{
+	display:flex;
+	justify-content: space-between;
+}
+
+.tip-container .category .filter .select-box{
+	height:30px;
+}
+
+
+.tip-container .category .filter .search-result{
+	font-size:12px;
+}
+
 .tip-container>div{
 	margin-bottom:10px;
 }
@@ -60,6 +74,19 @@ a:hover{
 
 .tip-container .table{
 	flex-grow:4;
+}
+
+.tip-container .table a{
+	color:black;
+}
+
+.tip-container .table a:hover{
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.tip-container .table td{
+	height:33px;
 }
 
 .tip-container .foot{
@@ -88,6 +115,23 @@ a:hover{
 	justify-content:flex-end;
 }
 
+.foot a{
+	color:#00BCD1;
+}
+
+.active>#move-page-button{
+	background-color: #00BCD1;
+	border-color:#00BCD1;
+}
+
+#move-page-button-number{
+	color:#00BCD1;
+}
+.search-button,.search-button:hover{
+	background:none;
+	width:20px;
+	height:20px;
+}
 
 /* -----------------카테고리 검색-------------- */
 

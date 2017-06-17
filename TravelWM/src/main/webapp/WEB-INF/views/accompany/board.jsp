@@ -9,7 +9,7 @@
 			<button type="button" class="btn btn-filter">성별</button>
 			<button type="button" class="btn btn-filter">나이</button>
 			<button type="button" class="btn btn-filter">성향</button>
-			<button type="button" class="btn btn-write">글쓰기</button>
+			<button type="button" class="btn btn-write" onclick="window.location.href='${root}/accompany/reg'">글쓰기</button>
 		</div>
 	</div>
 

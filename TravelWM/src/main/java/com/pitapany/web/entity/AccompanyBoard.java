@@ -4,15 +4,19 @@ import java.util.Date;
 
 public class AccompanyBoard {
 	private String id;
-	private Date startDate;
-	private Date endDate;
-	private	Date regDate;
+	private String startDate;
+	private String endDate;
+	private	String regDate;
 	private String hits;
 	private String title;
 	private String context;
 	private String memberId;
-	private String latitude;
-	private String longitude;
+	private String styleId;
+	private String img;
+	private String placeId;
+	
+	private float latitude;
+	private float longitude;
 
 	public String getId() {
 		return id;
@@ -22,27 +26,27 @@ public class AccompanyBoard {
 		this.id = id;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 
@@ -78,19 +82,46 @@ public class AccompanyBoard {
 		this.memberId = memberId;
 	}
 
-	public String getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(String latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(String longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
+
+	public String getStyleId() {
+		return styleId;
+	}
+
+	public void setStyleId(String styleId) {
+		this.styleId = styleId;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
+	}
+	
+	
+	
 }

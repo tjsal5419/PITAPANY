@@ -26,7 +26,7 @@
 				<span>Title</span>
 			</div>
 			<div class="title-content">
-				<input class="ti" name="title" type="text" placeholder="" value=${tipView.title }/>
+				<input class="ti form-control" name="title" type="text" placeholder="" value=${tipView.title }/>
 			</div>
 		</div>
 		<div class="category">
@@ -47,7 +47,7 @@
 		
 		</div>
 		<div class="text">
-			<textarea name="content" placeholder="" >${tipView.content }</textarea>
+			<textarea name="content" class="form-control" placeholder="" >${tipView.content }</textarea>
 		</div>
 		
 		<div class="foot">
