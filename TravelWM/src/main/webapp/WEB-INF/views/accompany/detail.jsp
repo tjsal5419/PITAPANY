@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="root" value="${pageContext.request.contextPath }" />
 <link rel="stylesheet"
-	href="/TravelWM/resource/css/accompany/detail.css" type="text/css" />
+	href="${root}/resource/css/accompany/detail.css" type="text/css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
@@ -25,8 +28,9 @@
 			<div class="profile">
 				<div class="pic"></div>
 				<div class="info">
-					<span class="item">맥보이</span><span class="item">베를린(독일)</span><span
-						class="item">2017.07.01~2017.07.31</span>
+					<span class="item">${accDetail.memberId}</span>
+					<span class="item">베를린(독일)</span>
+					<span class="item"><fmt:formatDate value="${accDetail.startDate}" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${accDetail.endDate}" pattern="yyyy-MM-dd" /></span>
 				</div>
 			</div>
 			<div class="bookmark">
@@ -35,17 +39,10 @@
 			</div>
 		</div>
 		<div class="detail-title">
-			<span>여행가기 딱 좋은 날입니다.</span>
+			<span>${accDetail.title}</span>
 		</div>
 		<div class="text">
-			<span>The HTML Certificate documents your knowledge of HTML.
-				The CSS Certificate documents your knowledge of advanced CSS. The
-				JavaScript Certificate documents your knowledge of JavaScript and
-				HTML DOM. The jQuery Certificate documents your knowledge of jQuery.
-				The PHP Certificate documents your knowledge of PHP and SQL (MySQL).
-				The XML Certificate documents your knowledge of XML, XML DOM and
-				XSLT. The Bootstrap Certificate documents your knowledge of the
-				Bootstrap framework.</span>
+			<span>${accDetail.context}</span>
 		</div>
 		<div class="foot">
 			<div class="char">
@@ -59,11 +56,11 @@
 			<div class="left">
 				<button id="re" class="btn btn-info">댓글</button>
 				<div class="view">
-					<span>조회수: 30</span>
+					<span>조회수: ${accDetail.hits}</span>
 				</div>
 			</div>
 			<div class="right">
-				<span>등록시간: 2017-10-11 18:54</span>
+				<span>등록시간: <fmt:formatDate value="${accDetail.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></span>
 			</div>
 		</div>
 		<div id="rep" class="rep" style="display: none;">
@@ -83,7 +80,7 @@
 					<div class = "list-content">
 						<div class="list-pic"></div>
 						<div class="list-text">
-							<span>죄다 영어로 써놔서 뭔 소린지 모르겠네...</span>
+							<span>52.50056, 13.39889</span>
 						</div>
 					</div>
 				</div>
@@ -96,7 +93,7 @@
 <script>
 	function initialize() {
 		var mapProp = {
-			center : new google.maps.LatLng(52.50056, 13.39889),
+			center : new google.maps.LatLng(${accDetail.latitude}, ${accDetail.longitude}),
 			zoom : 5,
 			mapTypeId : google.maps.MapTypeId.ROADMAP
 		};

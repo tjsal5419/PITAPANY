@@ -8,6 +8,7 @@ public interface AccompanyBoardDao {
 	AccompanyBoard get(String id);
 	List<AccompanyBoard> getList();
 	
+	int addHits(String id);
 	int delete(String id);
 	int add(AccompanyBoard accompanyBoard);
 	int update(AccompanyBoard accompanyBoard);

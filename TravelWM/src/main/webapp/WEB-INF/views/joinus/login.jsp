@@ -2,102 +2,303 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link type="text/css" rel="stylesheet" href="${root }/resource/css/bootstrap.css"  media="screen,projection"/>
-	<title> 동행이음 with PITAPANY</title>
+  	<title>Flat Login Form 3.0</title>
+  
+  	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>	
+	<link href="${root}/resource/css/joinus/login.css" rel="stylesheet" />
 	
-	<link href="${root}/resource/css/joinus/style.css" type="text/css" rel="stylesheet" />
-	<link href="${root}/resource/css/joinus/login.css" type="text/css" rel="stylesheet" />
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	
 </head>
+
 <body>
 	<c:if test="${error eq 1}">
 		<script>
 			alert("아이디 또는 비밀번호를 확인해주세요.");
 		</script>
 	</c:if>
-	<div class="bg">
-		<div>
-		<div class="tool">
-			<div class="tool-in">	
-				<div class="logo-box">
-					<img style="background:url('${root}/resource/images/logo.png') no-repeat center;" width=50; height=50/>
+
+	<c:if test="${error eq 2}">
+		<script>
+			alert("이미 등록된 아이디입니다");
+		</script>
+	</c:if>
+<!-- Form Module-->
+
+<div class="login-container">
+<div>
+	<div class="module form-module">
+
+
+		<div class="toggle">
+			<span>회원가입</span><i class="fa fa-times"></i>
+		</div>
+
+
+		<div class="form">
+			<div class="login-logo">
+			</div>
+			<h2>Login to your account</h2>
+			<form action="${root }/j_spring_security_check" method="POST">
+				<fieldset class="login-form">
+					<c:if test="${not empty validate && not validate}">
+						<td colspan="2" style="color:red;">아이디 또는 비번이 유효하지 않습니다. </td>
+					</c:if>
+					<input type="email" aria-label="이메일을 입력하세요." autocomplete="username" placeholder="Username" class="login-input" name="j_username" autofocus />
+				</fieldset>
+				<fieldset style="position:relative;">
+				<input type="password" placeholder="Password" aria-label="비밀번호를 입력하세요." autocomplete="current-password" 
+								class="login-input" name="j_password"/>
+				<button aria-label="login" class="login-button" type="submit">Login</button>
+				</fieldset>
+			</form>
+		</div>
+
+
+		<div class="form">
+			
+			<h2>Create an account</h2>
+			<form method="POST" name="loginForm"
+				onsubmit="return validateForm()">
+				<div class="form-group">
+					<input type="email" class="form-control" name="email" id="email"
+						placeholder="Email"/>
+				</div>
+				<div class="form-group">
+			
+				    <input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
+				 </div>
+				 <div class="form-group">				   
+				    <input type="password" class="form-control" name="passwordCheck" id="passwordCheck" placeholder="Confirm Password"/>
+				 </div>
+				 <div class="form-group">
+				    <input type="text" class="form-control" id="name" name="name" placeholder="Name"/>
+				 </div>
+				 
+				 <div class="form-group">
+				    <input type="text" class="form-control" id="nicName" name="nicName" placeholder="nickName"/>
+				 </div>
+				 				 				 
+				<div class="form-group" id="sexGroup">
+				  	<div class="radio">
+						<div class="gender gender-male">
+							<input type="radio" name="sex" id="sex" value="0"/>
+							<label>남성</label>					
+						</div>
+						<div class="gender gender-female">
+							<input type="radio" name="sex" id="sex" value="1"/>
+							<label>여성</label>
+						</div>
+				 	 </div>
 				</div>
 				
-				<div class="intro-box">
-					<div class="intro">
-					Welcome to 'Travel With Me'
-					</div>
-					<div class="sub-intro">
-					함께 여행할 사람을 찾아요
-					</div>
-				</div>
-				<div data-test-signup="true" class="login-box">
-					<div class="login-box-detail">
-					<form action="${root }/j_spring_security_check" method="POST">
-						<fieldset class="login-form">
-							<c:if test="${not empty validate && not validate}">
-								<td colspan="2" style="color:red;">아이디 또는 비번이 유효하지 않습니다. </td>
-							</c:if>
-							<input type="email" aria-label="이메일을 입력하세요." autocomplete="username" 
-								class="login-input" name="j_username" placeholder="이메일" value="test@naver.com" checked="checked"/>
-						</fieldset>
-						<fieldset style="position:relative;">
-							<input type="password" aria-label="비밀번호를 입력하세요." autocomplete="current-password" 
-								class="login-input" name="j_password" placeholder="비밀번호를 입력하세요." value="12345"  checked="checked"/>
-						</fieldset>
+				<div class="form-group" id="birthday">
+						<div class="birthday-label">
+						<label for="birthday">생년월일</label>
+						</div>
 						
-						<input aria-label="login" class="login-button" value="로그인" type="submit" />
-					</form>
-					<p class="or">또는</p>
-					<div style="position:relative; background-color: blue;">
-						<div style="height:50px;">
-							<div class="fb-login-button" 
-							data-scope="public_profile,email,user_likes,user_about_me,user_birthday,user_friends" 
-							onlogin="checkLoginState">
-							</div>
+						<div class="select_style select_style_year">
+						<select id="year" name="year" ></select>
+						<div class="select__arrow"></div>
+						</div>
+						
+						<div class="select_style select_style_month">
+						<select id="month" name="month"></select>
+						<div class="select__arrow"></div>
+						</div>
+						
+						<div class="select_style select_style_day">
+						<select id="day" name="day"></select>
+						<div class="select__arrow"></div>
 						</div>
 					</div>
-					
-					<div class="help">
-						<a href="joinus/join" style="text-decoration: none; ">아이디/비밀번호 찾기</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<a href="${root }/joinus/join" style="text-decoration: none;">회원가입</a>
+					<div class="form-group">
+						<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone(Option)"/>
 					</div>
-					
-					<div style="margin-top:15px;">
-						<span class="precautions">
-						<span data-reactid="34">계정을 만들면 Travel With Me의 <a href="/_/_/about/terms-service/" target="_blank" >서비스 약관
-							</a> 및 <a href="/_/_/about/privacy/plain.html" target="_blank">개인정보 보호정책</a>에 동의하는 것으로 간주합니다.
-						</span>
-						</span>
-					</div>
-					</div>
+
+				
+				
+				<div class="form-group">
+				<button type="submit">Register</button>  
 				</div>
-			</div>
+			</form>
 		</div>
+
+
+		<div class="cta">
+			<a href="">Need any help?</a>
 		</div>
+
+
 	</div>
+	<div class="login-footer">
+	<a href="/_/_/about/terms-service/" target="_blank" >회사 소개</a>
+	<a href="/_/_/about/terms-service/" target="_blank" >서비스 약관</a>
+	<a href="/_/_/about/privacy/plain.html" target="_blank">개인정보 보호정책</a>
+	<a href="/_/_/about/privacy/plain.html" target="_blank">iPhone 앱</a>
+	<a href="/_/_/about/privacy/plain.html" target="_blank">Android 앱</a>
+	</div>
+</div>
+</div>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<script>
+$("#year").on("mouseover", function () {
+	$(".select_style_year").css({"border-color": "#33b5e5"})
+});
+$("#year").on("mouseleave", function () {
+	$(".select_style_year").css({"border-color": "#dcdcdc"})
+});
+
+$("#month").on("mouseover", function () {
+	$(".select_style_month").css({"border-color": "#33b5e5"})
+});
+$("#month").on("mouseleave", function () {
+	$(".select_style_month").css({"border-color": "#dcdcdc"})
+});
+
+$("#day").on("mouseover", function () {
+	$(".select_style_day").css({"border-color": "#33b5e5"})
+});
+$("#day").on("mouseleave", function () {
+	$(".select_style_day").css({"border-color": "#dcdcdc"})
+});
+</script>
+
+<script>
+$('.gender-male>label').click(function(){
+	$('.gender-male>input').prop('checked', true);
+
+});
+
+$('.gender-female>label').click(function(){
+	$('.gender-female>input').prop('checked', true);
+});
+</script>
+
+<script>
+$('.toggle').click(function(){
+	  // Switches the Icon
+	if($('.toggle>span').is(':visible')) {
+		$(".toggle>span").hide();
+		$(".toggle>i").show();
+	} else {
+		$(".toggle>span").show();
+		$(".toggle>i").hide();
+	}
+	  
+	  // Switches the forms  
+	  $('.form').animate({
+	    height: "toggle",
+	    'padding-top': 'toggle',
+	    'padding-bottom': 'toggle',
+	    opacity: "toggle"
+	  }, "slow");
+	});
+</script>
+
+<script>
+function validateForm(){ 		
+	var pwd = document.forms["loginForm"]["password"].value;
+	var pwdCh = document.forms["loginForm"]["passwordCheck"].value;
+		var name = document.forms["loginForm"]["name"].value;
+		var phone = document.forms["loginForm"]["phone"].value;
+	var year = document.forms["loginForm"]["year"].value;
+	var month = document.forms["loginForm"]["month"].value;
+	var day = document.forms["loginForm"]["day"].value;
+	var email = document.forms["loginForm"]["email"].value;
+	var sex = document.forms["loginForm"]["sex"].value;
+	var nicName = document.forms["loginForm"]["nicName"].value;
+
+	
+	if(email==''){
+		alert('이메일을 입력해주세요.');
+		
+		return false;
+	}
+	
+	else if(pwd==''){
+		alert("비밀번호를 입력해주세요.");
+		return false;
+	}
+	
+	else if(pwdCh==''){
+		alert("비밀번호 확인을 입력해주세요.");
+		return false;
+	}
+
+	else if(!(pwd==pwdCh)){
+		alert("입력하신 비밀번호가 다릅니다.");
+		return false;
+	}
+	
+	else if(name==''){
+		alert("이름을 입력해주세요.");
+		return false;
+	} 
+	
+	else if(nicName==''){
+		alert("닉네임을 입력해주세요.");
+		return false;
+	} 
+	
+	
+	else if(sex==''){
+		alert("성별을 입력해주세요.");
+		return false;
+	}
 	
 
 
-	<%-- <header>
-		<a href="../index.html">메인 페이지</a>
-		<c:if test="${empty sessionScope.id}">
-			<a href="joinus/login">로그인</a>
-		</c:if>
-		<c:if test="${not empty sessionScope.id}">
-			<a href="joinus/logout">${sessionScope.id}님 로그아웃</a>
-			<!-- get요청 -->
-		</c:if>
-		<a href="">회원가입</a> <a href="customer/notice">고객센터</a>
-	</header>
-	<h1>홈페이지 환영</h1> --%>
+	else if(phone!=''&& isNaN(phone)){
+		alert('핸드폰 번호에 숫자를 입력해주세요.');
+		return false;
+	}
+	 
+	else if(year==0||month==0||day==0){
+		alert('생일을 입력해주세요.');
+		return false;
+	}
+		
+	return true;
+}
+</script>
+
+<script>
+	window.addEventListener("load",function(){
+/* ------------------------생년월일 날짜 추가 자바스크립트----------------------------------- */
+		var year = document.querySelector("#year, #year-span");
+		var month = document.querySelector("#month");
+		var day = document.querySelector("#day");
+		var yearStr = "<option value=0 selected>년도</option>";
+		var monthStr = "<option value=0 selected>월</option>";
+		var dayStr = "<option value=0 selected>일</option>";
+		
+		for(var i=1960;i<=2017;i++){
+			yearStr += "<option value="+i+">"+i+"</option>";
+		}
+		
+		for(var j=1;j<=12;j++){
+			monthStr += "<option value="+j+">"+j+"</option>";
+		}
+		
+		for(var k=1;k<=31;k++){
+			dayStr += "<option value="+k+">"+k+"</option>";
+		}
+		
+		year.innerHTML = yearStr;
+		month.innerHTML = monthStr;
+		day.innerHTML = dayStr;
+	});	
+</script>
+
+
 
 </body>
 </html>

@@ -24,8 +24,9 @@ public class JoinusController {
 	@Autowired
 	private MemberDao memberDao;
 	
-	@RequestMapping("login")
-	public String login(Model model, @RequestParam(value="e", defaultValue="0")String error) {
+	@RequestMapping(value="login", 
+			method=RequestMethod.GET)
+	public String login2(Model model, @RequestParam(value="e", defaultValue="0")String error) {
 		model.addAttribute("error",error);
 		return "joinus/login";
 	}
@@ -41,12 +42,12 @@ public class JoinusController {
 		return "joinus/join";
 	}
 	
-	@RequestMapping(value="join", 
+	@RequestMapping(value="login", 
 			method=RequestMethod.POST, 
 			produces="text/plain;charset=UTF-8")
 	public String signup(String email, String password, String name, int sex, String year, String month, String day, String phone,String nicName) throws ParseException{
 		if(memberDao.getSizeByEmail(email)>0){
-			return "joinus/join"; //ÀÌ¹Ì  °¡ÀÔµÈ °æ¿ì
+			return "redirect:joinus/login?e=2"; //ï¿½Ì¹ï¿½  ï¿½ï¿½ï¿½Ôµï¿½ ï¿½ï¿½ï¿½
 		}
 		else{
 			String date = year+"-"+month+"-"+day;
@@ -62,8 +63,9 @@ public class JoinusController {
 			member.setPhone(phone);
 			member.setNicName(nicName);
 			memberDao.add(member);
-			
-			return "joinus/loginSuccess";
+		    System.out.print(name);
+		    System.out.print("join success");
+			return "redirect:login";
 		}
 	}
 	

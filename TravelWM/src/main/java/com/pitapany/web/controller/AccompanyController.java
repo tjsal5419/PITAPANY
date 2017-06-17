@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
@@ -23,33 +22,38 @@ import com.pitapany.web.entity.Style;
 @Controller
 @RequestMapping("/accompany/*")
 public class AccompanyController {
-	
+
+	@Autowired
+	private AccompanyBoardDao accompanyBoardDao;
+
 	@Autowired
 	private StyleDao styleDao;
 
-	@Autowired
-	private AccompanyBoardDao accompanyDao;
-	
+
 	@RequestMapping("/matching")
-	public String  matching(Model model){
+	public String matching(Model model) {
 		List<Style> list = styleDao.getList();
 		model.addAttribute("styles", list);
 		return "accompany.matching";
 	}
-	
 
-	@RequestMapping("/detail")
-	public String  detail(Model model){
+	@RequestMapping(value = "detail", method = RequestMethod.GET)
+	public String detail(Model model, String id) {
+		accompanyBoardDao.addHits(id);
+
+		AccompanyBoard accompanyBoard = accompanyBoardDao.get(id);
+		
+		model.addAttribute("accDetail", accompanyBoard);
+
 		return "accompany.detail";
 	}
-	
+
 	@RequestMapping(value="/reg",
 			method=RequestMethod.GET)
 	public String  reg(Model model){
 		List<Style> stlyeList = styleDao.getList();
 		model.addAttribute(stlyeList);
 		return "accompany.reg";
-
 	}
 
 	@RequestMapping(value="/reg",
@@ -84,7 +88,7 @@ public class AccompanyController {
 		if(!img.equals(""))
 			accompanyBoard.setImg(img);
 		
-		accompanyDao.add(accompanyBoard);
+		accompanyBoardDao.add(accompanyBoard);
 		
 		
 		model.addAttribute("url","accompany/board");
@@ -96,8 +100,9 @@ public class AccompanyController {
 		return "inc/redirect";
 	}
 	
+
 	@RequestMapping("/board")
-	public String  board(Model model){
+	public String board(Model model) {
 		return "accompany.board";
 
 	}
