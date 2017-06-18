@@ -34,6 +34,7 @@ public class AccompanyController {
 	public String matching(Model model) {
 		List<Style> list = styleDao.getList();
 		model.addAttribute("styles", list);
+		
 		return "accompany.matching";
 	}
 
@@ -52,6 +53,7 @@ public class AccompanyController {
 			method=RequestMethod.GET)
 	public String  reg(Model model){
 		List<Style> stlyeList = styleDao.getList();
+
 		model.addAttribute(stlyeList);
 		return "accompany.reg";
 	}
@@ -64,7 +66,9 @@ public class AccompanyController {
 			@RequestParam(value="lng",defaultValue="0.0")float lng,
 			@RequestParam(value="content",defaultValue="")String content,
 			@RequestParam(value="style",defaultValue="")String styleId,
-			@RequestParam(value="img", defaultValue="")String img){		
+			@RequestParam(value="img", defaultValue="")String img,
+			@RequestParam(value="placeId", defaultValue="")String placeId,
+			@RequestParam(value="address", defaultValue="")String address){		
 /*
 		System.out.println("하하");
 		HttpSession session = request.getSession();
@@ -88,21 +92,42 @@ public class AccompanyController {
 		if(!img.equals(""))
 			accompanyBoard.setImg(img);
 		
+		accompanyBoard.setPlaceId(placeId);
+		accompanyBoard.setAddress(address);
 		accompanyBoardDao.add(accompanyBoard);
 		
 		
 		model.addAttribute("url","accompany/board");
 		model.addAttribute("msg","성공적으로 동행등록이 와...와...완료...");
 		
-		System.out.println("등록완료");
 		
 		
 		return "inc/redirect";
 	}
 	
 
-	@RequestMapping("/board")
-	public String board(Model model) {
+	@RequestMapping(value="/board",
+			method=RequestMethod.GET)
+	public String board(Model model,
+			@RequestParam(value="p", defaultValue="1")int page) {
+		
+		page =  (page-1)*6;
+		int max = accompanyBoardDao.count();
+		int pageCount = 1;
+		
+		if(max%6!=0)
+			pageCount = max/6+1;
+		else if(max%6==0)
+			pageCount = max/6;
+
+		List<AccompanyBoard> accompanyBoardList = accompanyBoardDao.getList(page);
+		
+		model.addAttribute("page",page);
+		model.addAttribute("pageCount",pageCount);
+		model.addAttribute("accompanyBoardlist",accompanyBoardList);
+		
+		
+		
 		return "accompany.board";
 
 	}

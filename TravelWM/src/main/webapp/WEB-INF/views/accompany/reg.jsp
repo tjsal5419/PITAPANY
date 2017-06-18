@@ -37,6 +37,7 @@ $(":file").filestyle();
 			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
 			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
 			    <input class="hidden" type="text" value="" name="placeId" id="placeId"/>  
+			    <input class="hidden" type="text" value="" name="address" id="address"/>  
 			    
   				<!-- -------- 달력 ------ -->
     	  		<input type="text" class="form-control" placeholder="Search" required>
@@ -67,7 +68,7 @@ $(":file").filestyle();
 			</div>
 			<div class="bottun">
 				<div class="cancel">
-					<a href="/TravelWM/accompany/board"><button class="btn btn-info chat">글 취소</button></a>
+					<button onclick="window.location.href='${root}/accompany/board'" class="btn btn-info chat">글 취소</button>	
 				</div>
 				<div class="reg">
 					<button class="btn btn-info chat" id="submit" type ="submit">글 등록</button>
@@ -121,18 +122,24 @@ $(":file").filestyle();
           function getLocation(){
         	  var place = autocomplete.getPlace();
         	  var latitude = place.geometry.location.lat();
-        	  var langitude = place.geometry.location.lng();
+        	  var longitude = place.geometry.location.lng();
         	  var place_Id = place.place_id;
+        	  var fotmattedAdress = place.formatted_address;
         	  
-        	  alert(place.geometry.location.lat());
-        	  alert(place.geometry.location.lng());
+        	  alert("위도"+latitude);
+        	  alert("경도"+longitude);
         	  alert(place.place_id);
+        	  alert(place.vicinity);
+        	  alert(place.name);
+        	  alert(fotmattedAdress);
         	  var lng = document.querySelector("#lng");
         	  var lat = document.querySelector("#lat");
         	  var placeId = document.querySelector("#placeId");
-        	  lng.value = latitude;
-        	  lat.value = langitude;
+        	  var address = document.querySelector("#address");
+        	  lng.value = longitude;
+        	  lat.value = latitude;
         	  placeId.value= place_Id;
+        	  address.value = fotmattedAdress;
         	  
           }
 

@@ -14,6 +14,7 @@ public class AccompanyBoard {
 	private String styleId;
 	private String img;
 	private String placeId;
+	private String address;
 	
 	private float latitude;
 	private float longitude;
@@ -120,6 +121,14 @@ public class AccompanyBoard {
 
 	public void setPlaceId(String placeId) {
 		this.placeId = placeId;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	

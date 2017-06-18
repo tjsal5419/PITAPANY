@@ -6,9 +6,10 @@
 
 <mapper namespace="com.pitapany.web.dao.AccompanyBoardDao">
 	<select id="getList" resultType="com.pitapany.web.entity.AccompanyBoard">
-		SELECT *
-		FROM
-		`pitapanydb`.`AccompanyBoard`
+		SELECT * 
+		FROM AccompanyBoard 
+		order by cast(id as unsigned) desc 
+		limit #{page},6
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoard">
@@ -18,6 +19,12 @@
 		WHERE id = #{id}
 	</select>
 
+	<select id="count" resultType="Integer">
+		SELECT count(*) count
+		FROM
+		`pitapanydb`.`AccompanyBoard`
+	</select>
+	
 	<insert id="add" parameterType="com.pitapany.web.entity.AccompanyBoard">
 		<selectKey keyProperty="id" order="BEFORE" resultType="String">
 			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM AccompanyBoard
@@ -35,7 +42,8 @@
 		`longitude`,
 		`styleId`,
 		`img`,
-		`placeId`
+		`placeId`,
+		`address`
 		)
 		VALUES
 		(
@@ -49,7 +57,8 @@
 		#{longitude},
 		#{styleId},
 		#{img},
-		#{placeId}
+		#{placeId},
+		#{address}
 		)
 	</insert>
 
@@ -67,6 +76,7 @@
 		`styleId` = #{styleId},
 		`img` = #{img},
 		`placeId` = #{placeId}
+		`address` = #{address}
 		WHERE `id` = #{id};
 	</update>
 

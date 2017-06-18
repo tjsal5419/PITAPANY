@@ -21,9 +21,9 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 	}
 
 	@Override
-	public List<AccompanyBoard> getList() {
+	public List<AccompanyBoard> getList(int page) {
 		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
-		return accBoardDao.getList();
+		return accBoardDao.getList(page);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 	public int addHits(String id) {
 		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
 		return accBoardDao.addHits(id);
+	}
+
+	@Override
+	public int count() {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.count();
 	}
 
 }
