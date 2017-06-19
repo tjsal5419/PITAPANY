@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class AccompanyBoard {
 	private String id;
-	private String startDate;
-	private String endDate;
-	private	String regDate;
+	private Date startDate;
+	private Date endDate;
+	private	Date regDate;
 	private String hits;
 	private String title;
 	private String context;
@@ -14,7 +14,9 @@ public class AccompanyBoard {
 	private String styleId;
 	private String img;
 	private String placeId;
-	private String address;
+	private String locality;
+	private String country;
+
 	
 	private float latitude;
 	private float longitude;
@@ -27,27 +29,27 @@ public class AccompanyBoard {
 		this.id = id;
 	}
 
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
-	public String getRegDate() {
+	public Date getRegDate() {
 		return regDate;
 	}
 
-	public void setRegDate(String regDate) {
+	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 
@@ -123,13 +125,22 @@ public class AccompanyBoard {
 		this.placeId = placeId;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getLocality() {
+		return locality;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setLocality(String locality) {
+		this.locality = locality;
 	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
 	
 	
 	
