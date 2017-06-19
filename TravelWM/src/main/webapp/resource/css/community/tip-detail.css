@@ -28,7 +28,9 @@
 	margin-bottom:30px;
 }
 
-
+.frame .delete-tip>div{
+	margin-left:5px;
+}
 .content {
 	width: 100%;
 	display: flex;

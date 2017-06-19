@@ -21,4 +21,5 @@ public class RootController {
 		else
 			return "profile.home";
 	}
+	
 }

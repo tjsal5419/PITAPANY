@@ -6,8 +6,9 @@ import com.pitapany.web.entity.AccompanyBoard;
 
 public interface AccompanyBoardDao {
 	AccompanyBoard get(String id);
-	List<AccompanyBoard> getList();
+	List<AccompanyBoard> getList(int page);
 	
+	int count();
 	int addHits(String id);
 	int delete(String id);
 	int add(AccompanyBoard accompanyBoard);

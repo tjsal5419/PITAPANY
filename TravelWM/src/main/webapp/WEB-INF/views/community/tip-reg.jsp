@@ -18,7 +18,7 @@
 				<span>Title</span>
 			</div>
 			<div class="title-content">
-				<input class="ti" name="title" type="text" placeholder="제목내용" />
+				<input class="ti form-control" name="title" type="text" placeholder="제목내용" />
 			</div>
 		</div>
 		<div class="category">
@@ -30,7 +30,7 @@
 		
 		</div>
 		<div class="text">
-			<textarea name="content" placeholder="본문내용"></textarea>
+			<textarea name="content" class="form-control" placeholder="본문내용"></textarea>
 		</div>
 		<input type="text" name="id" value="${tipView.id }" class="hidden"/>
 		<div class="foot">

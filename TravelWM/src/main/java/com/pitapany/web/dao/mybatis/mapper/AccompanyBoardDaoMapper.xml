@@ -6,9 +6,10 @@
 
 <mapper namespace="com.pitapany.web.dao.AccompanyBoardDao">
 	<select id="getList" resultType="com.pitapany.web.entity.AccompanyBoard">
-		SELECT *
-		FROM
-		`pitapanydb`.`AccompanyBoard`
+		SELECT * 
+		FROM AccompanyBoard 
+		order by cast(id as unsigned) desc 
+		limit #{page},6
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoard">
@@ -18,6 +19,12 @@
 		WHERE id = #{id}
 	</select>
 
+	<select id="count" resultType="Integer">
+		SELECT count(*) count
+		FROM
+		`pitapanydb`.`AccompanyBoard`
+	</select>
+	
 	<insert id="add" parameterType="com.pitapany.web.entity.AccompanyBoard">
 		<selectKey keyProperty="id" order="BEFORE" resultType="String">
 			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM AccompanyBoard
@@ -32,7 +39,11 @@
 		`context`,
 		`memberId`,
 		`latitude`,
-		`longitude`
+		`longitude`,
+		`styleId`,
+		`img`,
+		`placeId`,
+		`address`
 		)
 		VALUES
 		(
@@ -43,8 +54,12 @@
 		#{context},
 		#{memberId},
 		#{latitude},
-		#{longitude}
-		);
+		#{longitude},
+		#{styleId},
+		#{img},
+		#{placeId},
+		#{address}
+		)
 	</insert>
 
 	<update id="update" parameterType="com.pitapany.web.entity.AccompanyBoard">
@@ -52,16 +67,17 @@
 		`pitapanydb`.`AccompanyBoard`
 		SET
 		`startDate` = #{startDate},
-		`endDate` =
-		#{endDate},
+		`endDate` = #{endDate},
 		`title` = #{title},
 		`context` = #{context},
-		`memberId` =
-		#{memberId},
+		`memberId` = #{memberId},
 		`latitude` = #{latitude},
-		`longitude` = #{longitude}
-		WHERE
-		`id` = #{id};
+		`longitude` = #{longitude},
+		`styleId` = #{styleId},
+		`img` = #{img},
+		`placeId` = #{placeId}
+		`address` = #{address}
+		WHERE `id` = #{id};
 	</update>
 
 	<update id="addHits">

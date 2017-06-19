@@ -2,20 +2,38 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="root" value="${pageContext.request.contextPath }" />
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <link href="${root }/resource/css/community/tip.css" rel="stylesheet"/>
 
 <script>
-
 function changeFunc(){
-    var tipCategoryId = document.querySelector("#select-box");
-    
+    var tipCategoryId = document.querySelector("#select-box");   
     var category = tipCategoryId.options[tipCategoryId.selectedIndex].value;
     
     
-    if(category!=="default"){
-    	window.location.href = 'tip?c='+category;
-    }
+    if(category!=="default")
+ 		   	window.location.href = 'tip?c='+category+'&f=${field}&q=${query}';
+ 	else
+		window.location.href = 'tip';
+	
 }
+
+window.addEventListener("load",function(){
+	var searchBtn = document.querySelector("#search-button");
+
+	searchBtn.onclick = function(){
+    
+		var field = document.querySelector(".search-option");
+		var query = document.querySelector("#query").value;
+		var selectedField = field.options[field.selectedIndex].value;
+
+			window.location.href='tip?f='+selectedField+'&q='+query;
+
+	};
+	
+});
+
 </script>
 
 <main class="main">
@@ -25,27 +43,36 @@ function changeFunc(){
 				<div class="title"><h2>여행 Tip 게시판 </h2></div>
 				<div class="search">
 					<div>
-						<select class="select" name="search-option">
+						<select class="select search-option" name="search-option">
 							<option value="title">제목</option>
 							<option value="nicName">작성자</option>
 				
 						</select>
 					</div>
 					<div>
-		    			<input type="text" class="form-control" placeholder="Search">
+		    			<input type="text" id="query" class="form-control" placeholder="전체 카테고리 검색">
 				  	</div>
 				  	<div>
-				  		<input class="search-button" type="image" src="${root }/resource/images/ic_search_black_24dp_1x.png" alt="Submit">
+				  		<input class="search-button" id="search-button" type="image" src="${root }/resource/images/ic_search_black_24dp_1x.png" alt="Submit">
 			  		</div>
 			  	</div>
 			  	<div class="line"></div>
 			  	<div class="filter">
-						<select id="select-box" class="select-box" onclick="changeFunc()" name="tipCategoryId">
-							<option value="default" selected>카테고리 선택</option>
+						<select id="select-box" class="select-box" onchange="changeFunc()" name="tipCategoryId">
+							<option value="default" selected>전체 카테고리</option>
 							<c:forEach items="${categoryList}" var="li">
-								<option value="${li.id }">${li.category }</option>								
+								<c:choose>	
+									<c:when test="${li.id eq category}">
+										<option value="${li.id }" selected>${li.category }</option>
+									</c:when>
+									<c:otherwise>
+										<option value="${li.id }">${li.category }</option>	
+									</c:otherwise>
+								</c:choose>							
 							</c:forEach>
+							
 						</select>
+						<div class="search-result">검색 결과 : ${count }건</div>
 				</div>
 			  		
 			</div>
@@ -69,9 +96,11 @@ function changeFunc(){
 							<td colspan="2" class="category">${t.category }</td>
 							<td colspan="3"><a href="${root }/community/tip-detail?id=${t.id}">${t.title }</a></td>
 							<td colspan="2">${t.nicName}</td>
-							<td class="date" colspan="2">${t.regDate}</td>
+							<td class="date" colspan="2">
+								<fmt:formatDate value="${t.regDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+							</td>
 							<td class="hit" colspan="1">${t.hits }</td>
-						</tr>	
+						</tr>
 					</c:forEach>				
 				</tbody>
 			</table>
@@ -82,24 +111,42 @@ function changeFunc(){
 					<nav aria-label="Page navigation">
 					  <ul class="pagination">
 					  	 
-						<c:if test="${page!=1 }">
+						<c:if test="${page!=1 && page!=0}">
 						    <li>
-						      <a href="${root}/community/tip?p=${page-1 }&c=${category}" aria-label="Previous">
+						      <a id="move-page-button-number" href="${root}/community/tip?p=${page-1 }&c=${category}" aria-label="Previous">
 							     <span aria-hidden="true">&laquo;</span>
 							  </a>
 							</li>
 						</c:if>
 					    
 					    <c:forEach begin="${prev }" end="${next }" var="p" >
-					    	<li><a href="${root 	}/community/tip?p=${p }&c=${category}">${p }</a></li>
+					    	
+					    	<c:choose>
+					    	<c:when test="${p== page }">
+						    	<li class="active">
+						    	<a id="move-page-button" href="${root }/community/tip?p=${p }&c=${category}">${p }</a>
+						    	</li>
+					    	</c:when>
+					    	
+					    	<c:otherwise>
+						    	<li>
+						    	<a id="move-page-button-number" href="${root }/community/tip?p=${p }&c=${category}">${p }</a>
+						    	</li>
+					    	</c:otherwise>
+					    	
+					    	</c:choose>
 					    </c:forEach>
 					    
-					    <c:if test="${page != pageCount}">
+					    <c:if test="${page != pageCount && count!=0}">
 						    <li>
-						      <a href="${root}/community/tip?p=${page+1 }&c=${category}" aria-label="Next">
+						      <a  id="move-page-button-number" href="${root}/community/tip?p=${page+1 }&c=${category}" aria-label="Next">
 						        <span aria-hidden="true">&raquo;</span>
 						      </a>
 						    </li>
+					    </c:if>
+					    
+					    <c:if test="${count==0 }">
+					    	<div>'${query }' 로 검색된 결과가 없습니다.</div>
 					    </c:if>
 					    
 					  </ul>
@@ -107,7 +154,7 @@ function changeFunc(){
 				</div>
 				
 				<div class="write">
-					<a href="${root }/community/tip-reg">글쓰기</a>
+					<a href="${root }/community/tip-reg">팁 작성하기</a>
 				</div>
 			</div>
 		</div>

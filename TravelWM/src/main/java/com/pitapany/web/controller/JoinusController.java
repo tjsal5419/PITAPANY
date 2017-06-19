@@ -80,4 +80,9 @@ public class JoinusController {
 		else
 			return "redirect:/member/mainpage";	
 	}
+	
+	@RequestMapping("duplicated-login")
+	public String duplicated(){
+		return "joinus/login-duplicate";
+	}
 }
