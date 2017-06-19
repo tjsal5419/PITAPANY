@@ -62,11 +62,13 @@ body {
 }
 
 .login-logo{
+	background: url("../../images/tripconn-logo/tripconn-logo-final-blue.png") no-repeat center;
+	background-size: 110px;
+	background-position-y: -10px;
 	width: 100px;
-	height: 40px;
+	height: 60px;
 	margin: auto;
-	margin-bottom: 20px;
-	border: 1px solid #33b5e5;
+	margin-bottom: 10px;
 }
 
 /* Form Module */
@@ -113,7 +115,7 @@ body {
   display: block;
 }
 .form-module h2 {
-  margin: 0 0 20px;
+  margin: 0 0 10px;
   color: #33b5e5;
   font-size: 18px;
   font-weight: 400;
