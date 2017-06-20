@@ -1,5 +1,15 @@
  @CHARSET "UTF-8";
  
+/* 페이지 이동 버튼 */
+#move-page-button{
+	background-color: #00BCD1;
+	border-color:#00BCD1;
+}
+
+#move-page-button-number{
+	color:#00BCD1;
+}
+
 #main-container{
  	display: flex;
  	flex-direction: row;
@@ -304,7 +314,7 @@
     width: 800px;
     height: 55px;
     
-    margin: auto;
+    margin: auto;	
     margin-top: 30px;
     
     border: 3px solid red;      
@@ -313,6 +323,12 @@
 .page-info-container span{
 	text-align: center;
 	width: 100%;
+}
+
+.page-info-container .page{
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
 @media all and (max-width: 1240px){

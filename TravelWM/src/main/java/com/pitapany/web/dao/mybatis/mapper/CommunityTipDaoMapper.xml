@@ -9,14 +9,14 @@
 			SELECT *
 			FROM CommunityTipView
 			WHERE id=#{id}
-			ORDER BY cast(id as unsigned)
+			ORDER BY regDate DESC
 	</select>
 
 	<select id="getList" resultType="com.pitapany.web.entity.CommunityTipView">
 			SELECT *
 			FROM CommunityTipView
 			WHERE BINARY ${param2} LIKE '%${param3}%' AND tipCategoryId LIKE '${param4}'
-			ORDER BY cast(id as unsigned)
+			ORDER BY regDate DESC
 	        LIMIT  ${(param1-1)*10},10
 	</select>
 

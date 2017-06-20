@@ -11,8 +11,15 @@ public class AccompanyBoard {
 	private String title;
 	private String context;
 	private String memberId;
-	private String latitude;
-	private String longitude;
+	private String styleId;
+	private String img;
+	private String placeId;
+	private String locality;
+	private String country;
+
+	
+	private float latitude;
+	private float longitude;
 
 	public String getId() {
 		return id;
@@ -78,19 +85,63 @@ public class AccompanyBoard {
 		this.memberId = memberId;
 	}
 
-	public String getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(String latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(String longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
+
+	public String getStyleId() {
+		return styleId;
+	}
+
+	public void setStyleId(String styleId) {
+		this.styleId = styleId;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	public String getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(String placeId) {
+		this.placeId = placeId;
+	}
+
+	public String getLocality() {
+		return locality;
+	}
+
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	
+	
+	
 }

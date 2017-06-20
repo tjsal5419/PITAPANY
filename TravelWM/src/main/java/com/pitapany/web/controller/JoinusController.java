@@ -47,7 +47,7 @@ public class JoinusController {
 			produces="text/plain;charset=UTF-8")
 	public String signup(String email, String password, String name, int sex, String year, String month, String day, String phone,String nicName) throws ParseException{
 		if(memberDao.getSizeByEmail(email)>0){
-			return "redirect:joinus/login?e=2"; //�̹�  ���Ե� ���
+			return "redirect:joinus/login?e=2"; //占싱뱄옙  占쏙옙占쌉듸옙 占쏙옙占�
 		}
 		else{
 			String date = year+"-"+month+"-"+day;
@@ -80,4 +80,14 @@ public class JoinusController {
 		else
 			return "redirect:/member/mainpage";	
 	}
+	
+	@RequestMapping("duplicated-login")
+	public String duplicated(){
+		return "joinus/login-duplicate";
+	}
+	
+	@RequestMapping("expiredLogin")
+	public String expiredLogin(){
+		return "joinus/expiredLogin";
+	}	
 }
