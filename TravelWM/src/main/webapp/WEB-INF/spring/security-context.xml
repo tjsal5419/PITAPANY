@@ -26,9 +26,10 @@
 		<intercept-url pattern="/accompany/**" access="hasRole('ROLE_USER')" /> 
 
         <!-- 30 분간 Session 유지함 ==============>나중에 바꿔주기 -->
-		<session-management>
+		<!-- <session-management  invalid-session-url="/joinus/expiredLogin"> -->
 			<!-- max-sessions : 중복 로그인 지정 -->
-            <concurrency-control max-sessions="1" expired-url="/joinus/duplicated-login" error-if-maximum-exceeded="true" />
+		<session-management>
+            <concurrency-control max-sessions="1"  expired-url="/joinus/duplicated-login" error-if-maximum-exceeded="true" />
         	
         </session-management>
 	</http>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <link href="${root}/resource/css/accompany/accompany-board.css" rel="stylesheet"/>
 
@@ -21,226 +22,108 @@
 	
 		<div class="board-wrapper">
 		
-			<div class="board-card">
-				<div class="board-content">
-					<div class="board-bookmark">
-					</div>
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
+		<!-- ----------동행 게시글 6개씩 반복하는 구간 ------------ -->
+			<c:forEach items="${accompanyBoardlist }" var="li">
+				<div class="board-card">
+					<div class="board-content">
+						<div class="board-bookmark">
+						</div>
+						
+						<div class="board-detail">
+							<div class="board-detail-wrapper">
+								<div class="board-profile-pic">
+								</div>
+								<div class="board-accompany-info">
+									<div class="info-item item-nickname">${li.writerNicName }</div>
+									<div class="info-item item-country">${li.country }</div>
+									<div class="info-item item-date">
+										<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
+										~
+										<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />
+									</div>
+								</div>
 							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
+						</div>
+						
+						<div class="board-title">
+							<div class="board-title-detail">
+								<span>${li.title }</span>
 							</div>
 						</div>
+						
+						<div class="board-info">
+							<div class="board-info-wrapper">
+								<div class="board-info-item item-gender">
+									<c:choose>
+										<c:when test="${li.writerSex==1 }">
+											여성
+										</c:when>
+										<c:otherwise>
+											남성
+										</c:otherwise>
+									</c:choose>
+								</div>
+								<div class="board-info-item item-age">${li.writerAge }</div>
+								<div class="board-info-item item-style">${li.styleType }</div>
+							</div>
+							<div class="board-registration-time">
+								<span><fmt:formatDate value="${li.regDate }" pattern="yyyy-MM-dd" /></span>
+							</div>
+						</div>		
 					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
 				</div>
-			</div>
-			
-			<div class="board-card">
-				<div class="board-content">
-					<div class="board-bookmark">
-					</div>
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
-			
-			<div class="board-card">
-				<div class="board-content">
-					<div class="board-bookmark">
-					</div>
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
-			
-			<div class="board-card">
-				<div class="board-content">
-					<div class="board-bookmark">
-					</div>
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
-			
-			<div class="board-card">
-				<div class="board-content">
-					<div class="board-bookmark">
-					</div>
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
-			
-			<div class="board-card">
-				<div class="board-content">
-					<div class="board-bookmark">
-					</div>
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
+			</c:forEach>
+
 
 		</div>
 
 		<div class="page-info-container">
-			<span>페이지 1, 2, 3, 4</span>
+						<!-- ----------페이지 수 표시하는 부분----------- -->
+				<div class="page" class="move-page">
+					<nav aria-label="Page navigation">
+					  <ul class="pagination">
+					  	 
+						<c:if test="${page!=1 && page!=0}">
+						    <li>
+						      <a id="move-page-button-number" href="${root}/accompany/board?p=${page-1 }" aria-label="Previous">
+							     <span aria-hidden="true">&laquo;</span>
+							  </a>
+							</li>
+						</c:if>
+					    
+					    <c:forEach begin="${prev }" end="${next }" var="p" >
+					    	
+					    	<c:choose>
+					    	<c:when test="${p== page }">
+						    	<li class="active">
+						    	<a id="move-page-button" href="${root }/accompany/board?p=${p }">${p }</a>
+						    	</li>
+					    	</c:when>
+					    	
+					    	<c:otherwise>
+						    	<li>
+						    	<a id="move-page-button-number" href="${root }/accompany/board?p=${p }">${p }</a>
+						    	</li>
+					    	</c:otherwise>
+					    	
+					    	</c:choose>
+					    </c:forEach>
+					    
+					    <c:if test="${page!=pageCount && count!=0}">
+						    <li>
+						      <a  id="move-page-button-number" href="${root}/accompany/board?p=${page+1 }" aria-label="Next">
+						        <span aria-hidden="true">&raquo;</span>
+						      </a>
+						    </li>
+					    </c:if>
+					    
+					    <c:if test="${count==0 }">
+					    	<div>결과가 없습니다.</div>
+					    </c:if>
+					    
+					  </ul>
+					</nav>	
+				</div>
 		</div>
 
 	</div>
@@ -269,10 +152,10 @@
         
 		
 		<c:forEach items="${accompanyBoardlist}" var="li">
-			var marker${li.id} = new google.maps.Marker({
+			var marker${li.id } = new google.maps.Marker({
 	            // The below line is equivalent to writing:
 	            // position: new google.maps.LatLng(-34.397, 150.644)
-	            position: {lat: ${li.latitude}, lng: ${li.longitude}},
+	            position: {lat: ${li.latitude }, lng: ${li.longitude }},
 	            map: map
 	         });
 		</c:forEach>
