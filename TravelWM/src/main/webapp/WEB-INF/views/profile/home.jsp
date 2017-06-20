@@ -7,6 +7,7 @@
 <link rel="stylesheet"
 	href="${root}/resource/css/accompany/detail.css" type="text/css" />
 <script>
+
 	window.addEventListener("load", function(event) {
 		var detail = document.querySelector(".detail");
 		var change = document.querySelector(".change");
