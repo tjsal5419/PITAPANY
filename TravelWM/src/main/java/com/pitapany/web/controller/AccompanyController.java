@@ -71,7 +71,7 @@ public class AccompanyController {
 			@RequestParam(value="content",defaultValue="")String content,
 			@RequestParam(value="style",defaultValue="")String styleId,
 			@RequestParam(value="img", defaultValue="")String img,
-			@RequestParam(value="placeId", defaultValue="")String placeId,
+			@RequestParam(value="place", defaultValue="")String place,
 			@RequestParam(value="locality", defaultValue="")String locality,
 			@RequestParam(value="country", defaultValue="")String country) throws ParseException{		
 
@@ -99,7 +99,7 @@ public class AccompanyController {
 		if(!img.equals(""))
 			accompanyBoard.setImg(img);
 		
-		accompanyBoard.setPlaceId(placeId);
+		accompanyBoard.setPlace(place);
 		accompanyBoard.setLocality(locality);
 		accompanyBoard.setCountry(country);
 		

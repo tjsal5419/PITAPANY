@@ -42,7 +42,7 @@
 		`longitude`,
 		`styleId`,
 		`img`,
-		`placeId`,
+		`place`,
 		`locality`,
 		`country`
 		)
@@ -58,7 +58,7 @@
 		#{longitude},
 		#{styleId},
 		#{img},
-		#{placeId},
+		#{place},
 		#{locality},
 		#{country}
 		)
@@ -77,7 +77,7 @@
 		`longitude` = #{longitude},
 		`styleId` = #{styleId},
 		`img` = #{img},
-		`placeId` = #{placeId},
+		`place` = #{place},
 		`locality` = #{locality},
 		`country` = #{country}
 		WHERE `id` = #{id}
