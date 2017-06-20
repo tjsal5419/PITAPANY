@@ -10,12 +10,12 @@ public class ProfileController {
 	
 	@RequestMapping("/home")
 	public String home() {
-		return "profile.home";
+		return "profile.homeCopy";
 	}
 	
 	@RequestMapping("/homeCopy")
 	public String homeCopy() {
-		return "profile.homeCopy";
+		return "profile.home";
 	}
 	
 }

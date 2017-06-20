@@ -17,8 +17,8 @@ public class RootController {
 		String role = "ROLE_USER";
 		
 		if(role.equals("ROLE_USER"))
-			return "profile.home";
+			return "member.main";
 		else
-			return "profile.home";
+			return "member.main";
 	}
 }

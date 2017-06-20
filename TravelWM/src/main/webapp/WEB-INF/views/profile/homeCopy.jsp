@@ -4,25 +4,57 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <link href="${root}/resource/css/profile/homeCopy.css" rel="stylesheet"/>
+<link rel="stylesheet"
+	href="${root}/resource/css/accompany/detail.css" type="text/css" />
 <script>
 	window.addEventListener("load", function(event) {
 		var detail = document.querySelector(".detail");
 		var change = document.querySelector(".change");
 		var profTable = document.querySelector(".prof-table");
 		var infoTable = document.querySelector(".info-table");
+		var imgTable = document.querySelector(".img-table");
+		
+		var re = document.querySelector("#re");
+		var rep = document.querySelector("#rep");
+		
 		infoTable.style.display = "none"; /* 초기값을 줘야 바로 작동함 */
+		imgTable.style.display = "none";
 
 		detail.onclick = function() {
 			if (infoTable.style.display === "none") {
 				profTable.style.display = "none";
 				infoTable.style.display = "block";
+				imgTable.style.display = "none";
 				detail.innerHTML = "홈으로";
 				change.innerHTML = "동행평가";
 			} else {
 				profTable.style.display = "block";
 				infoTable.style.display = "none";
+				imgTable.style.display = "none";
 				detail.innerHTML = "자세히";
 				change.innerHTML = "목록전환";
+			}
+		};
+		
+		change.onclick = function() {
+			if (imgTable.style.display === "none") {
+				imgTable.style.display = "block";
+				profTable.style.display = "none";
+				infoTable.style.display = "none";
+				change.innerHTML = "동행평가";
+			} else {
+				imgTable.style.display = "none";
+				profTable.style.display = "block";
+				infoTable.style.display = "none";
+				change.innerHTML = "목록전환";
+			}
+		};
+		
+		re.onclick = function() {
+			if (rep.style.display != "none") {
+				rep.style.display = "none";
+			} else if (rep.style.display == "none") {
+				rep.style.display = "flex";
 			}
 		};
 
@@ -52,15 +84,17 @@
 </div>
 
 <main class="main">
+
 <div>
 	<div class="menu">
 		<div class="list">
-			<div class="change">목록전환</div>
+			<div class="change cursor">목록전환</div>
 			<div class="write">대화하기(게스트) / 글쓰기(주인)</div>
-			<div class="detail">자세히</div>
+			<div class="detail cursor">자세히</div>
 		</div>
 	</div>
 </div>
+
 <div class="prof-table">
 	<div class="content-container">
 		<div class="box">
@@ -82,20 +116,47 @@
 				</div>
 
 				<div class="icon-box">
-					<div class="icon">
-						<div class="heart">
-							<img class="heart-icon"
-								src="${root  }/resource/images/ic_favorite_border_black_24dp_1x.png" />
+						<div class="icon">
+							<div class="heart">
+								<img class="heart-icon cursor"
+									src="${root  }/resource/images/ic_favorite_border_black_24dp_1x.png" />
+							</div>
+							<div class="comment">
+								<img id="re" class="heart-icon cursor"
+									src="${root  }/resource/images/ic_comment_black_24dp_1x.png" />
+							</div>
 						</div>
-						<div class="comment">
-							<img class="heart-icon"
-								src="${root  }/resource/images/ic_comment_black_24dp_1x.png" />
+						<div id="rep" class="rep" style="display: none;">
+							<div class="void">
+								<div class="re-pic"></div>
+								<div class="re-text">
+									<textarea></textarea>
+								</div>
+								<button class="btn btn-info">등록</button>
+							</div>
+							<div class="re-list">
+								<div class="list-void">
+									<div class="id-date">
+										<div class="re-id">
+											<span>MacJo</span>
+										</div>
+										<div class="re-date">
+											<span>11-03-02 09:10</span>
+										</div>
+									</div>
+									<div class="list-content">
+										<div class="list-pic"></div>
+										<div class="list-text">
+											<span>52.50056, 13.39889</span>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-					</div>
 
-					<div class="number">
-						<div class="number-of-Heart">하트수</div>
-						<div class="number-of-Comment">댓글수</div>
+						<div class="number">
+						<div class="number-of-Heart cursor">하트수</div>
+						<div class="number-of-Comment cursor">댓글수</div>
 					</div>
 				</div>
 			</div>
@@ -210,4 +271,37 @@
 		</div>
 	</div>
 </div>
+<div class="main-list">
+<div class="img-table">
+	<div class="img-content-container">
+		<div class="img-box">			
+			<div class="img-content">
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/gong.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/gong2.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/minatozaki.jpg"></div>
+			</div>
+			<div class="img-content">
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/gong2.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/minatozaki.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/STD.jpg"></div>
+			</div>
+				<%-- <div class="img-small item"><img class="img-responsive" id="img-small" src="${root}/resource/images/gong.jpg"></div>
+				<div class="img-small item"><img class="img-responsive" id="img-small" src="${root}/resource/images/gong2.jpg"></div>
+				<div class="img-small item"><img class="img-responsive" id="img-small" src="${root}/resource/images/minatozaki.jpg"></div> --%>
+				<%-- <div class="img-small item"><img id="img-small" src="${root}/resource/images/STD.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/gong.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/gong2.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/minatozaki.jpg"></div>
+				<div class="img-small item"><img id="img-small" src="${root}/resource/images/STD.jpg"></div> --%>	
+			
+			<!-- <div class="img-content">
+				<div></div>
+			</div> -->
+			
+		</div>
+	</div>
+</div>
+	
+</div>
+
 </main>
