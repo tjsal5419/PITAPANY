@@ -5,9 +5,9 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.pitapany.web.dao.AccompanyBoardDao">
-	<select id="getList" resultType="com.pitapany.web.entity.AccompanyBoard">
+	<select id="getList" resultType="com.pitapany.web.entity.AccompanyBoardView">
 		SELECT * 
-		FROM AccompanyBoard 
+		FROM AccompanyBoardView 
 		order by cast(id as unsigned) desc 
 		limit #{page},6
 	</select>
@@ -43,7 +43,8 @@
 		`styleId`,
 		`img`,
 		`placeId`,
-		`address`
+		`locality`,
+		`country`
 		)
 		VALUES
 		(
@@ -58,7 +59,8 @@
 		#{styleId},
 		#{img},
 		#{placeId},
-		#{address}
+		#{locality},
+		#{country}
 		)
 	</insert>
 
@@ -75,9 +77,10 @@
 		`longitude` = #{longitude},
 		`styleId` = #{styleId},
 		`img` = #{img},
-		`placeId` = #{placeId}
-		`address` = #{address}
-		WHERE `id` = #{id};
+		`placeId` = #{placeId},
+		`locality` = #{locality},
+		`country` = #{country}
+		WHERE `id` = #{id}
 	</update>
 
 	<update id="addHits">

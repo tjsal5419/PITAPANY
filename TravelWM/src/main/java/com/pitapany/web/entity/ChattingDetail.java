@@ -8,7 +8,7 @@ public class ChattingDetail {
 	private String content;
 	private Date regDate;
 	private int isRead;
-	private String ChattingId;
+	private String chattingId;
 	
 	public String getId() {
 		return id;
@@ -35,10 +35,10 @@ public class ChattingDetail {
 		this.isRead = isRead;
 	}
 	public String getChattingId() {
-		return ChattingId;
+		return chattingId;
 	}
 	public void setChattingId(String chattingId) {
-		ChattingId = chattingId;
+		this.chattingId = chattingId;
 	}
 
 }

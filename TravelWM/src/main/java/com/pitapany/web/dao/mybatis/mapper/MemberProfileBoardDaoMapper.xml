@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pitapany.web.dao.MemberProfileBoardDao">
+	<select id="getList" resultType="com.pitapany.web.entity.MemberProfileBoard">
+		SELECT *
+		FROM MemberProfileBoard
+		order by cast(id as unsigned) desc
+		limit #{page},6
+	</select>
+
+	<select id="get" resultType="com.pitapany.web.entity.MemberProfileBoard">
+		SELECT *
+		FROM
+		`pitapanydb`.`MemberProfileBoard`
+		WHERE id = #{id}
+	</select>
+
+	<insert id="add" parameterType="com.pitapany.web.entity.MemberProfileBoard">
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM
+			MemberProfileBoard
+		</selectKey>
+		INSERT INTO `pitapanydb`.`MemberProfileBoard`
+		(
+		`id`,
+		`content`,
+		`img`,
+		`like`,
+		`latitude`,
+		`longitude`,
+		`locality`,
+		`country`,
+		`place`,
+		`memberProfileId`
+		)
+		VALUES
+		(
+		#{id},
+		#{content},
+		#{img},
+		#{like},
+		#{latitude},
+		#{longitude},
+		#{locality},
+		#{country},
+		#{place},
+		#{memberProfileId}
+		);
+
+	</insert>
+
+	<update id="update" parameterType="com.pitapany.web.entity.MemberProfileBoard">
+		UPDATE
+		`pitapanydb`.`MemberProfileBoard`
+		SET
+		`content` =	#{content},
+		`img` = #{img},
+		`like` = #{like},
+		`latitude` = #{latitude},
+		`longitude` = #{longitude},
+		`locality` = #{locality},
+		`country` =	#{country},
+		`place` = #{place},
+		`memberProfileId` = #{memberProfileId}
+		WHERE `id` = #{id};
+	</update>
+
+	<delete id="delete">
+		DELETE FROM MemberProfileBoard
+		WHERE id = #{id}
+	</delete>
+
+</mapper>

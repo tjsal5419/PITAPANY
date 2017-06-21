@@ -33,11 +33,12 @@ $(":file").filestyle();
 			<div class="search-bar-container-accom">
 			
 				<!-- -------- 구글 지도 검색창 ------ -->
-			    <input class="form-control" id="autocomplete" placeholder="Enter your address" type="text" required/>
+			    <input class="form-control" id="autocomplete" name="form" placeholder="Enter your address" type="text" required/>
 			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
 			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
 			    <input class="hidden" type="text" value="" name="placeId" id="placeId"/>  
-			    <input class="hidden" type="text" value="" name="address" id="address"/>  
+			    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
+			    <input class="hidden" type="text" value="" name="country" id="country"/>  
 			    
   				<!-- -------- 달력 ------ -->
     	  		<input type="text" class="form-control" name="datefilter" value="" placeholder="Search" required />
@@ -95,7 +96,17 @@ $(":file").filestyle();
  */    	     
           var placeSearch, autocomplete;
           var location;
-/*           
+          var componentForm = {
+        	        street_number: 'short_name',
+        	        route: 'long_name',
+        	        locality: 'long_name',
+        	        administrative_area_level_1: 'short_name',
+        	        country: 'long_name',
+        	        postal_code: 'short_name'
+        	};
+          
+
+/*          
           var defaultBounds = new google.maps.LatLngBounds(
         		  new google.maps.LatLng(-33.8902, 151.1759),
         		  new google.maps.LatLng(-33.8474, 151.2631));
@@ -125,21 +136,47 @@ $(":file").filestyle();
         	  var longitude = place.geometry.location.lng();
         	  var place_Id = place.place_id;
         	  var fotmattedAdress = place.formatted_address;
-        	  
+/*         	  
         	  alert("위도"+latitude);
         	  alert("경도"+longitude);
         	  alert(place.place_id);
         	  alert(place.vicinity);
+        	  alert(place.name); */
         	  alert(place.name);
-        	  alert(fotmattedAdress);
         	  var lng = document.querySelector("#lng");
         	  var lat = document.querySelector("#lat");
         	  var placeId = document.querySelector("#placeId");
-        	  var address = document.querySelector("#address");
+        	  var localityText = document.querySelector("#locality");
+        	  var countryText = document.querySelector("#country");
+			  var locality = '';
+			  var country = '';
+        	  
         	  lng.value = longitude;
         	  lat.value = latitude;
         	  placeId.value= place_Id;
-        	  address.value = fotmattedAdress;
+        	  
+        	  /* address.value = fotmattedAdress;
+        	   */
+              for (var i = 0; i < place.address_components.length; i++) {
+                  var addressType = place.address_components[i].types[0];
+                  
+                  if (addressType=='country') {
+                    country = place.address_components[i][componentForm[addressType]];
+                   
+                   // alert(country);
+                  }
+                  
+                  else if(addressType == 'locality'){
+                	  locality = place.address_components[i][componentForm[addressType]];
+                	  
+                	 // alert(locality);
+                  }
+             
+              }
+        	   
+        	   countryText.value = country;
+              localityText.value = locality;
+              
         	  
           }
 
@@ -163,3 +200,15 @@ $(":file").filestyle();
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
+        
+     <!-- ------엔터 클릭 시 전송되는것 막기--- -->
+    <script type="text/javascript">
+    window.addEventListener('keydown', function(e) {
+        if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
+            if (e.target.nodeName == 'form' && e.target.type == 'text') {
+                e.preventDefault();
+                return false;
+            }
+        }
+    }, true);
+	</script>

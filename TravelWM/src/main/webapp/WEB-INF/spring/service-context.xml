@@ -24,7 +24,7 @@
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
- 		<property name="mapperLocations"
+		<property name="mapperLocations"
 			value="classpath:com/pitapany/web/dao/mybatis/mapper/*.xml" />
 	</bean>
 
@@ -35,10 +35,11 @@
 	<bean class="com.pitapany.web.dao.mybatis.MybatisChattingDetailDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisTipCategoryDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileDao" />
 
 	<context:annotation-config /> <!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.pitapany.web.service.AdminService" />
 
 
-	
+
 </beans>
