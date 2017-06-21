@@ -49,5 +49,11 @@ public class MybatisMemberDao implements MemberDao {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		return memberDao.getSizeByEmail(email);
 	}
+
+	@Override
+	public Member getMember(String id) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getMember(id);
+	}
 	
 }
