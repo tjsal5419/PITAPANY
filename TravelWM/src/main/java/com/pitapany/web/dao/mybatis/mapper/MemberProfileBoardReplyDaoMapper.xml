@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pitapany.web.dao.MemberProfileBoardReplyDao">
+	<select id="getList" resultType="com.pitapany.web.entity.MemberProfileBoardReply">
+		SELECT *
+		FROM
+		`pitapanydb`.`MemberProfileBoardReply`
+	</select>
+
+	<select id="get" resultType="com.pitapany.web.entity.MemberProfileBoardReply">
+		SELECT *
+		FROM
+		`pitapanydb`.`MemberProfileBoardReply`
+		WHERE id=#{id}
+	</select>
+
+	<insert id="add" parameterType="com.pitapany.web.entity.MemberProfileBoardReply">
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM
+			MemberProfileBoardReply
+		</selectKey>
+		INSERT INTO `pitapanydb`.`MemberProfileBoardReply`
+		(
+		`id`,
+		`reply`,
+		`isSecret`,
+		`writerNicName`,
+		`memberProfileBoardId`
+		)
+		VALUES
+		(
+		#{id},
+		#{reply},
+		#{isSecret},
+		#{writerNicName},
+		#{memberProfileBoardId}
+		);
+
+	</insert>
+
+	<update id="update" parameterType="com.pitapany.web.entity.MemberProfileBoardReply">
+		UPDATE
+		`pitapanydb`.`MemberProfileBoardReply`
+		SET
+		`reply` = #{reply},
+		`isSecret` = #{isSecret},
+		`writerNicName` = #{writerNicName},
+		`memberProfileBoardId` = #{memberProfileBoardId}
+		WHERE `id` = #{id};
+
+	</update>
+
+	<delete id="delete">
+		DELETE FROM MemberProfileBoardReply
+		WHERE id=#{id}
+	</delete>
+
+</mapper>
