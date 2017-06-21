@@ -30,11 +30,7 @@ public class MemberController {
 			method=RequestMethod.GET)
 	public String main(Model model){	
 		List<AccompanyBoardView> accomBoardMainList = accompanyBoardDao.getMainList();
-		
-		for(int i=0;i<accomBoardMainList.size();i++){
-		System.out.println("´Ð³×ÀÓ"+accomBoardMainList.get(i).getWriterNicName());
-		
-		}
+	
 		model.addAttribute("accomBoardMainList", accomBoardMainList);
 		
 		return "member.main";

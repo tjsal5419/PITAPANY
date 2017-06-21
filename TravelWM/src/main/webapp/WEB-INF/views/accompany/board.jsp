@@ -23,7 +23,7 @@
 		<div class="board-wrapper">
 		
 		<!-- ----------동행 게시글 6개씩 반복하는 구간 ------------ -->
-			<c:forEach items="${accompanyBoardlist }" var="li">
+			<c:forEach items="${accompanyBoardList }" var="li">
 				<div class="board-card">
 					<div class="board-content">
 						<div class="board-bookmark">
@@ -134,12 +134,20 @@
 	<div id="map-wrapper"></div>
 </div>
 
+<!-- ----------지도에 x버튼 없애기------------- -->
+<style>
+	.gm-style-iw + div {display: none;}
+</style>
+
+<!-- 	-----------구글 맵 API이용하기--------------- -->
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
 <script>
-		
+
 	function initialize() {
-		var lat = parseFloat('${accompanyBoardlist.get(0).latitude}');
-		var lng = parseFloat('${accompanyBoardlist.get(0).longitude}');
+	
+		/* -----------지도 초기 위치 지정하기------------- */
+		var lat = parseFloat('${accompanyBoardList.get(0).latitude}');
+		var lng = parseFloat('${accompanyBoardList.get(0).longitude}');
 
 		var mapPosition = {
 							center: {lat: lat, lng: lng},
@@ -151,30 +159,49 @@
 		/* -----------지도에 마커 추가하기------------- */
         
 		
-		<c:forEach items="${accompanyBoardlist }" var="li">
+		<c:forEach items="${accompanyBoardList }" var="li">
 			var marker${li.id } = new google.maps.Marker({
 	            // The below line is equivalent to writing:
 	            // position: new google.maps.LatLng(-34.397, 150.644)
 	            position: {lat: ${li.latitude }, lng: ${li.longitude }},
-	            map: map
+	            map: map,
+	            icon:'${root}/resource/images/marker/marker5.png'
 	         });
+			
+			var initContent = "<div style=\"display:flex; justify-content:center; align-items:center;\">"+
+			"<div style=\"background-image: url('${root }/resource/images/Cat.jpg'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+		
+			"<div onclick='window.location.href=\"${root }/accompany/detail?p=${li.id }\"' style=\"margin-left:10px; cursor:pointer;\">${li.writerNicName }</div></div>";
+			
 	        /* -----------마커 눌렀을 때 발생하는 이벤트------------- */
-/*      	     var infowindow${li.id } = new google.maps.InfoWindow({
-        	    content: '${li.title }'
+       	     var infowindow${li.id } = new google.maps.InfoWindow({
+        	    content: initContent,
+        	    maxWidth:500,
+        	    maxHeight:300,
+        	    disableAutoPan: true
          	 });
 
-    	     infowindow${li.id }.open(map, marker${li.id });
-    	 */     
+       	     /* -----------마커 클릭 시, 정보 창 열고 닫아주기-------------- */
+       	     var prevInfoWindow${li.id } = false;
+       	     
           	google.maps.event.addListener(marker${li.id }, 'click', function() {
-           	 	window.location.href="${root }/accompany/detail?p=${li.id }";
+          		if(!prevInfoWindow${li.id }){
+              		infowindow${li.id }.open(map, marker${li.id });
+              		prevInfoWindow${li.id } = true;
+          		}
+              	else{
+              		infowindow${li.id }.close();
+              		prevInfoWindow${li.id } = false;
+              	}
          	}); 
-		</c:forEach>
-		
-
-           
-        
-	}
-			
+          	
+          	google.maps.event.addListener(marker${li.id }, 'mouseover', function() {
+           	 	
+         	});
+          	
+          	
+        </c:forEach>
+       
+	}	
 	google.maps.event.addDomListener(window, 'load', initialize);
-		
+	
 </script>

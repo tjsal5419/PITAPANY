@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pitapany.web.dao.AccompanyBoardDao;
+import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.AccompanyBoardView;
@@ -32,9 +36,18 @@ public class AccompanyController {
    @Autowired
    private StyleDao styleDao;
 
+   @Autowired
+   private MemberDao memberDao;
 
    @RequestMapping("/matching")
    public String matching(Model model) {
+	   
+	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	  String name = auth.getName(); //get logged in username
+	  String id = memberDao.getIdByEmail(name);
+	  System.out.println("아이디입니다"+id);
+	  
+	  
       List<Style> list = styleDao.getList();
       model.addAttribute("styles", list);
       
@@ -160,11 +173,11 @@ public class AccompanyController {
       
       List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
       
+
       model.addAttribute("page",page);
       model.addAttribute("pageCount",pageCount);
-      model.addAttribute("accompanyBoardlist",accompanyBoardList);
-      
-   
+      model.addAttribute("accompanyBoardList",accompanyBoardList);
+
       return "accompany.board";
 
    }
