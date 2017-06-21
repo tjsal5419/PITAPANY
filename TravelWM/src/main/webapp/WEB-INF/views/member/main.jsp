@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -86,16 +87,14 @@
 
 
 
-
-
-
 <div class="service-container">
 
 	<div class="board-container">
 		<div class="board-wrapper">
 			
-			
+			<c:forEach items="${accomBoardMainList }" var="li">
 			<div class="board-card">
+			
 				<div class="board-content w3-card-4">
 					
 					<div class="board-detail">
@@ -103,138 +102,51 @@
 							<div class="board-profile-pic">
 							</div>
 							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
+								<div class="info-item item-nickname">${li.writerNicName }</div>
+								<div class="info-item item-country">${li.country }</div>
+								<div class="info-item item-date">
+									<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
+									~
+									<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />
+
+								</div>
 							</div>
 						</div>
 					</div>
 					
 					<div class="board-title">
 						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
+							<span>${li.title }</span>
 						</div>
 					</div>
 					
 					<div class="board-info">
 						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
+							<div class="board-info-item item-gender">
+								<c:choose>
+									<c:when test="${li.writerSex==1 }">
+										여성
+									</c:when>
+									<c:otherwise>
+										남성
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<div class="board-info-item item-age">${li.writerAge }</div>
+							<div class="board-info-item item-style">${li.styleType }</div>
 						</div>
 						<div class="board-registration-time">
-							<span>등록시간</span>
+							<span><fmt:formatDate value="${li.regDate }" pattern="yyyy-MM-dd" /></span>
 						</div>
 					</div>		
 				</div>
 			</div>
-			
-			<div class="board-card">
-				<div class="board-content w3-card-4">
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
-			
-			<div class="board-card">
-				<div class="board-content w3-card-4">
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
-			
-			<div class="board-card">
-				<div class="board-content w3-card-4">
-					
-					<div class="board-detail">
-						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
-							</div>
-							<div class="board-accompany-info">
-								<div class="info-item item-nickname">닉네임</div>
-								<div class="info-item item-country">동행국가</div>
-								<div class="info-item item-date">동행날짜</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="board-title">
-						<div class="board-title-detail">
-							<span>나랑 함께 동행할 사람 손 gdsgasdfeawdfsadfasfjefie!</span>
-						</div>
-					</div>
-					
-					<div class="board-info">
-						<div class="board-info-wrapper">
-							<div class="board-info-item item-gender">성별</div>
-							<div class="board-info-item item-age">나이</div>
-							<div class="board-info-item item-style">성향</div>
-						</div>
-						<div class="board-registration-time">
-							<span>등록시간</span>
-						</div>
-					</div>		
-				</div>
-			</div>
+			</c:forEach>
 			
 		</div>
 		
 		<div class="page-info-container">
-			<button type="button" class="btn-more">더보기</button>
+			<button type="button" class="btn-more" onclick="window.location.href='${root }/accompany/board'" alt="더보기">더보기</button>
 		</div>
 	</div>
 </div>

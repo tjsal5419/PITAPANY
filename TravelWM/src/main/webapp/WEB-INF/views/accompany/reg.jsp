@@ -36,12 +36,12 @@ $(":file").filestyle();
 			    <input class="form-control" id="autocomplete" name="form" placeholder="Enter your address" type="text" required/>
 			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
 			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
-			    <input class="hidden" type="text" value="" name="placeId" id="placeId"/>  
+			    <input class="hidden" type="text" value="" name="place" id="place"/>  
 			    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
 			    <input class="hidden" type="text" value="" name="country" id="country"/>  
 			    
   				<!-- -------- 달력 ------ -->
-    	  		<input type="text" class="form-control" placeholder="Search" required>
+    	  		<input type="text" class="form-control" name="datefilter" value="" placeholder="Search" required />
 	    	</div>
 		</div>
 		<div class="text">
@@ -134,7 +134,7 @@ $(":file").filestyle();
         	  var place = autocomplete.getPlace();
         	  var latitude = place.geometry.location.lat();
         	  var longitude = place.geometry.location.lng();
-        	  var place_Id = place.place_id;
+        	  var place = place.name;
         	  var fotmattedAdress = place.formatted_address;
 /*         	  
         	  alert("위도"+latitude);
@@ -142,10 +142,10 @@ $(":file").filestyle();
         	  alert(place.place_id);
         	  alert(place.vicinity);
         	  alert(place.name); */
-        	  alert(place.name);
+        	  alert(place);
         	  var lng = document.querySelector("#lng");
         	  var lat = document.querySelector("#lat");
-        	  var placeId = document.querySelector("#placeId");
+        	  var placeForm = document.querySelector("#place");
         	  var localityText = document.querySelector("#locality");
         	  var countryText = document.querySelector("#country");
 			  var locality = '';
@@ -153,7 +153,7 @@ $(":file").filestyle();
         	  
         	  lng.value = longitude;
         	  lat.value = latitude;
-        	  placeId.value= place_Id;
+        	  placeForm.value= place;
         	  
         	  /* address.value = fotmattedAdress;
         	   */

@@ -41,7 +41,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
     	
     	<div class = "menu-button-mobile"><i class="fa fa-bars"></i></div>
-    	<div class="logo"></div>
+    	<a href="${root}/member/main" class="logo"></a>
     	<div class = "search-button-mobile"><i class="fa fa-search"></i></div>
     	
     	

@@ -13,7 +13,8 @@ public class AccompanyBoard {
 	private String memberId;
 	private String styleId;
 	private String img;
-	private String placeId;
+	private String place;
+
 	private String locality;
 	private String country;
 
@@ -117,13 +118,6 @@ public class AccompanyBoard {
 		this.img = img;
 	}
 
-	public String getPlaceId() {
-		return placeId;
-	}
-
-	public void setPlaceId(String placeId) {
-		this.placeId = placeId;
-	}
 
 	public String getLocality() {
 		return locality;
@@ -141,7 +135,15 @@ public class AccompanyBoard {
 		this.country = country;
 	}
 
+
 	
+	public String getPlace() {
+		return place;
+	}
+	
+	public void setPlace(String place) {
+		this.place = place;
+	}
 	
 	
 }
