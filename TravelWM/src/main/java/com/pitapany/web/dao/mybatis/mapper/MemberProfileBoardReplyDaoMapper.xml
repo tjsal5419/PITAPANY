@@ -9,6 +9,7 @@
 		SELECT *
 		FROM
 		`pitapanydb`.`MemberProfileBoardReply`
+		WHERE memberProfileBoardId = #{memberProfileBoardId}
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.MemberProfileBoardReply">

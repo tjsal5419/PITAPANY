@@ -6,6 +6,7 @@ import com.pitapany.web.entity.Member;
 
 public interface MemberDao {
 	Member get(String id);
+	Member getMember(String id);
 	List<Member> getList();
 	String getIdByEmail(String email);
 	int getSizeByEmail(String email);

@@ -8,9 +8,27 @@
 	<select id="getList" resultType="com.pitapany.web.entity.MemberProfileBoard">
 		SELECT *
 		FROM MemberProfileBoard
-		order by cast(id as unsigned) desc
-		limit #{page},6
+        where memberProfileId = #{memberProfileId}
+		order by cast(id as unsigned) desc;
 	</select>
+	
+	<select id="getPage" resultType="com.pitapany.web.entity.MemberProfileBoard">
+		SELECT *
+		FROM MemberProfileBoard
+		order by regDate desc
+		limit ${page},5
+	</select>
+	
+	<select id="count" resultType="Integer">
+		SELECT count(*) count
+		FROM
+		`pitapanydb`.`MemberProfileBoard`
+	</select>
+	
+<!-- 			SELECT *
+		FROM MemberProfileBoard
+		order by cast(id as unsigned) desc
+		limit #{page},6 -->
 
 	<select id="get" resultType="com.pitapany.web.entity.MemberProfileBoard">
 		SELECT *
@@ -35,6 +53,7 @@
 		`locality`,
 		`country`,
 		`place`,
+		'regDate',
 		`memberProfileId`
 		)
 		VALUES
@@ -48,6 +67,7 @@
 		#{locality},
 		#{country},
 		#{place},
+		#{regDate},
 		#{memberProfileId}
 		);
 
