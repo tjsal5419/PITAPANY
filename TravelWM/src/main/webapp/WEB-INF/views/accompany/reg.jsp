@@ -40,7 +40,7 @@ $(":file").filestyle();
 			    <input class="hidden" type="text" value="" name="address" id="address"/>  
 			    
   				<!-- -------- 달력 ------ -->
-    	  		<input type="text" class="form-control" placeholder="Search" required>
+    	  		<input type="text" class="form-control" name="datefilter" value="" placeholder="Search" required />
 	    	</div>
 		</div>
 		<div class="text">

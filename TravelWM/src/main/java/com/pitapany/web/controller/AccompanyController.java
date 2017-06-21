@@ -70,7 +70,7 @@ public class AccompanyController {
 			@RequestParam(value="placeId", defaultValue="")String placeId,
 			@RequestParam(value="address", defaultValue="")String address){		
 /*
-		System.out.println("ÇÏÇÏ");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		HttpSession session = request.getSession();
 		Member member = (Member) session.getAttribute("user");
 		String memberId = member.getId();	
@@ -98,7 +98,7 @@ public class AccompanyController {
 		
 		
 		model.addAttribute("url","accompany/board");
-		model.addAttribute("msg","¼º°øÀûÀ¸·Î µ¿Çàµî·ÏÀÌ ¿Í...¿Í...¿Ï·á...");
+		model.addAttribute("msg","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½...ï¿½ï¿½...ï¿½Ï·ï¿½...");
 		
 		
 		
