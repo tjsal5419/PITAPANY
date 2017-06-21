@@ -147,18 +147,37 @@ public class AccompanyController {
       
        /*5개 단위의 페이지로 보여줌 1/2/3/4/5*/
       int prev = 0;
-      if(pageCount >0 && pageCount <=5)
-         prev=1;
-      /*6페이지 이상부터*/
+      int next=0;
+
+      
+      if(pageCount%5!=0)
+          prev=(page/5)*5+1;
       else
-      {
-         if(pageCount%5!=0)
-            prev=(pageCount/5)*5;
-         else
-            prev=(pageCount/5-1)*5;
+          prev=(page/5-1)*5+1;
+      
+      if(pageCount%5!=0){
+    	  if((pageCount/5)*5+1==prev){
+    		  next = pageCount;
+    	  }
+    	  else
+    		  next = prev+4;
       }
       
-      int next = pageCount;
+      else{
+    	  if((pageCount/5-1)*5+1==prev)
+    		  next = pageCount;
+    	  else
+    		  next = next+4;
+      }
+      
+      
+      
+      next = pageCount;
+      
+      
+      
+      
+      System.out.println("prev"+prev+"next"+next);
       
       
       /*System.out.println("page:"+page+"prev"+prev+"next:"+next);*/

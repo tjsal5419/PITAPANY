@@ -134,7 +134,7 @@ $(":file").filestyle();
         	  var place = autocomplete.getPlace();
         	  var latitude = place.geometry.location.lat();
         	  var longitude = place.geometry.location.lng();
-        	  var place = place.name;
+        	  var placeName = place.name;
         	  var fotmattedAdress = place.formatted_address;
 /*         	  
         	  alert("위도"+latitude);
@@ -142,7 +142,7 @@ $(":file").filestyle();
         	  alert(place.place_id);
         	  alert(place.vicinity);
         	  alert(place.name); */
-        	  alert(place);
+        	  
         	  var lng = document.querySelector("#lng");
         	  var lat = document.querySelector("#lat");
         	  var placeForm = document.querySelector("#place");
@@ -151,12 +151,7 @@ $(":file").filestyle();
 			  var locality = '';
 			  var country = '';
         	  
-        	  lng.value = longitude;
-        	  lat.value = latitude;
-        	  placeForm.value= place;
         	  
-        	  /* address.value = fotmattedAdress;
-        	   */
               for (var i = 0; i < place.address_components.length; i++) {
                   var addressType = place.address_components[i].types[0];
                   
@@ -173,9 +168,17 @@ $(":file").filestyle();
                   }
              
               }
-        	   
-        	   countryText.value = country;
+              
+             alert(country);
+             alert(locality);
+             alert(placeName);
+              lng.value = longitude;
+        	  lat.value = latitude;
+        	  placeForm.value= placeName;
+        	  countryText.value = country;
               localityText.value = locality;
+        	  /* address.value = fotmattedAdress;
+        	   */
               
         	  
           }

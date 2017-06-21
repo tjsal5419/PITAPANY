@@ -20,7 +20,7 @@ import com.pitapany.web.entity.ProfHomeList;
 @Controller
 @RequestMapping("/profile/*")
 public class ProfileController {
-	
+/*	
 	@Autowired
 	private SqlSession sqlsession;
 	
@@ -36,7 +36,7 @@ public class ProfileController {
 	@Autowired
 	private MemberProfileBoardDao memberProfileBoardDao;
 	
-	/*@RequestMapping("home")
+	@RequestMapping("home")
 	public String home(Model model, String id,
 			@RequestParam(value="p", defaultValue="1")Integer page) {
 
@@ -74,7 +74,7 @@ public class ProfileController {
 		System.out.println(count);
 		System.out.println(page);
 		return "profile.home";
-	}*/
+	}
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public String home(Model model, String id) {
@@ -83,19 +83,19 @@ public class ProfileController {
 		List<ProfHomeList> proLists = null;
 		
 		// 포 이치 문 돌리고
-		 /*안에서 그 보드의 아이디로 댓글을 리스트로 가져와서
-		 멤버프로필보드 , 그 안의 댓글 리스트를 새로운 엔티티에담아준다.*/
+		 안에서 그 보드의 아이디로 댓글을 리스트로 가져와서
+		 멤버프로필보드 , 그 안의 댓글 리스트를 새로운 엔티티에담아준다.
        
 		
 		proLists.add(null);
 		
-		/*MemberProfile memberProfile = memberProfileDao.get(id);
+		MemberProfile memberProfile = memberProfileDao.get(id);
 		List<MemberProfileBoard> memberProfileBoard = memberProfileBoardDao.getList(memberProfileId);
 	    List<MemberProfileBoardReply> memberProfileBoardReply = memberProfileBoardReplyDao.getList(memberProfileBoardId);
 		
 		model.addAttribute("profData", memberProfile);
 	    model.addAttribute("profBoard", memberProfileBoard);
-	    model.addAttribute("profBoardReply", memberProfileBoardReply);*/
+	    model.addAttribute("profBoardReply", memberProfileBoardReply);
 		
 	    return "profile.home";
 	}
@@ -104,5 +104,5 @@ public class ProfileController {
 	public String home(Model model) {
 
 		return "profile.home";
-	}
+	}*/
 }
