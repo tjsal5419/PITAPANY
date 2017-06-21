@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.CommunityTipDao;
 import com.pitapany.web.entity.AccompanyBoard;
+import com.pitapany.web.entity.AccompanyBoardView;
 
 public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 
@@ -21,7 +22,7 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 	}
 
 	@Override
-	public List<AccompanyBoard> getList(int page) {
+	public List<AccompanyBoardView> getList(int page) {
 		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
 		return accBoardDao.getList(page);
 	}
@@ -54,6 +55,12 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 	public int count() {
 		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
 		return accBoardDao.count();
+	}
+
+	@Override
+	public List<AccompanyBoardView> getMainList() {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.getMainList();
 	}
 
 }

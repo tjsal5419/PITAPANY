@@ -2,6 +2,13 @@
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
+html,body{
+	line-height: inherit;
+	font-size:13px;
+	font-family:inherit;
+	
+}
+
 
 .navbar{
 	height:60px;

@@ -12,6 +12,13 @@
 		limit #{page},6
 	</select>
 
+	<select id="getMainList" resultType="com.pitapany.web.entity.AccompanyBoardView">
+		SELECT * 
+		FROM AccompanyBoardView 
+		order by cast(id as unsigned) desc 
+		limit 0,4
+	</select>
+
 	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoard">
 		SELECT *
 		FROM

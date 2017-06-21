@@ -151,41 +151,27 @@
 		/* -----------지도에 마커 추가하기------------- */
         
 		
-		<c:forEach items="${accompanyBoardlist}" var="li">
+		<c:forEach items="${accompanyBoardlist }" var="li">
 			var marker${li.id } = new google.maps.Marker({
 	            // The below line is equivalent to writing:
 	            // position: new google.maps.LatLng(-34.397, 150.644)
 	            position: {lat: ${li.latitude }, lng: ${li.longitude }},
 	            map: map
 	         });
+	        /* -----------마커 눌렀을 때 발생하는 이벤트------------- */
+/*      	     var infowindow${li.id } = new google.maps.InfoWindow({
+        	    content: '${li.title }'
+         	 });
+
+    	     infowindow${li.id }.open(map, marker${li.id });
+    	 */     
+          	google.maps.event.addListener(marker${li.id }, 'click', function() {
+           	 	window.location.href="${root }/accompany/detail?p=${li.id }";
+         	}); 
 		</c:forEach>
 		
-/* 
-		var marker = new google.maps.Marker({
-            // The below line is equivalent to writing:
-            // position: new google.maps.LatLng(-34.397, 150.644)
-            position: {lat:  lat, lng: lng},
-            map: map
-         });
-		
-		
-        var marker1 = new google.maps.Marker({
-            // The below line is equivalent to writing:
-            // position: new google.maps.LatLng(-34.397, 150.644)
-            position: {lat: 15, lng: 40},
-            map: map
-         });
-*/
 
-        /* -----------마커 눌렀을 때 발생하는 이벤트------------- */
-/*         var infowindow = new google.maps.InfoWindow({
-            content: '<p>Marker Location:' + marker.getPosition() + '</p>'
-          });
-
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-         });
-           */
+           
         
 	}
 			

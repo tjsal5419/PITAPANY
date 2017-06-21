@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
+import com.pitapany.web.entity.AccompanyBoardView;
 import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.Style;
 
@@ -107,7 +108,7 @@ public class AccompanyController {
 		
 		
 		model.addAttribute("url","accompany/board");
-		model.addAttribute("msg","성공적으로 동행등록이 와...와...완료...");
+		model.addAttribute("msg","성공적으로 동행등록이 완료되었습니다.");
 		
 		
 		
@@ -157,16 +158,13 @@ public class AccompanyController {
 		/*page는 현재 요청 page를 뜻함*/
 		
 		
-		List<AccompanyBoard> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
+		List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
 		
 		model.addAttribute("page",page);
 		model.addAttribute("pageCount",pageCount);
 		model.addAttribute("accompanyBoardlist",accompanyBoardList);
 		
-		System.out.println(pageCount);
-		System.out.println(next);
-		System.out.println(count);
-		System.out.println(page);
+	
 		return "accompany.board";
 
 	}
