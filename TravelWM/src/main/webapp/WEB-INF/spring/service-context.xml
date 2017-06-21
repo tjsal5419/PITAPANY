@@ -36,6 +36,7 @@
 	<bean class="com.pitapany.web.dao.mybatis.MybatisTipCategoryDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardDao" />
 
 	<context:annotation-config /> <!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.pitapany.web.service.AdminService" />

@@ -2,10 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <link href="${root}/resource/css/profile/homeCopy.css" rel="stylesheet"/>
 <link rel="stylesheet"
 	href="${root}/resource/css/accompany/detail.css" type="text/css" />
+
+
 <script>
 
 	window.addEventListener("load", function(event) {
@@ -70,7 +73,7 @@
 	</div> 
 	
 	<div class="setting-button">
-		<button type="button" class="btn btn-info">프로필  설정</button>
+		<button type="button" class="btn btn-info" onclick="location.href='${root}/member/profile-setting';">프로필  설정</button>
 	</div>
 	<div class="name">프로필명</div>
 	<div class="prof-img">   
@@ -97,6 +100,7 @@
 </div>
 
 <div class="prof-table">
+<c:forEach var="f" items="${profileBoard }">
 	<div class="content-container">
 		<div class="box">
 			<div class="info-box">
@@ -106,14 +110,15 @@
 							src="${root}/resource/images/sana01.jpg" alt="프로필사진">
 					</div>
 					<div class="list">
-						<div class="nic">닉네임</div>
-						<div class="location">위치</div>
-						<div class="write-date">글 등록일</div>
+						<div class="nic">${f.id }</div>
+						<div class="location">${f.place }</div>
+						<div class="write-date"><fmt:formatDate value="${f.regDate }"
+                     pattern="yyyy-MM-dd" /></div>
 					</div>
 				</div>
-
+	
 				<div class="content">
-					<div></div>
+					<div>${f.content }</div>
 				</div>
 
 				<div class="icon-box">
@@ -163,44 +168,59 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="content-container">
-		<div class="box">
-			<div class="info-box">
-				<div class="prof-box">
-					<div class="prof-thumblist">
-						<img class="prof-small-img-circle"
-							src="${root}/resource/images/sana01.jpg" alt="프로필사진">
-					</div>
-					<div class="list">
-						<div class="nic">닉네임</div>
-						<div class="location">위치</div>
-						<div class="write-date">글 등록일</div>
-					</div>
-				</div>
-
-				<div class="content">
-					<div></div>
-				</div>
-
-				<div class="icon-box">
-					<div class="icon">
-						<div class="heart">
-							<img class="heart-icon"
-								src="${root  }/resource/images/ic_favorite_border_black_24dp_1x.png" />
-						</div>
-						<div class="comment">
-							<img class="heart-icon"
-								src="${root  }/resource/images/ic_comment_black_24dp_1x.png" />
-						</div>
-					</div>
-
-					<div class="number">
-						<div class="number-of-Heart">하트수</div>
-						<div class="number-of-Comment">댓글수</div>
-					</div>
-				</div>
-			</div>
+</c:forEach>
+	<div class="page-info-container">
+		<div class="page" class="move-page">
+			<nav aria-label="Page navigation">
+				<ul class="pagination">
+	   <c:forEach var="i" begin="${(listPerFive*5) + 1 }" end="${checkLast }">
+	    <c:choose>
+         <c:when test="${i eq param.p or empty param.p and i eq '1'}">
+            <li class="waves-effect  active"><a
+               href="?p=${i }">${i}</a></li>
+         </c:when>
+         <c:otherwise>
+            <li class="waves-effect "><a
+               href="?p=${i }">${i}</a></li>
+         </c:otherwise>
+      </c:choose>
+   </c:forEach>
+					<%-- <c:if test="${page!=1 && page!=0}">
+						<li><a id="move-page-button-number"
+							href="${root}/profile/home?p=${page-1 }" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+						</a></li>
+					</c:if>
+	
+					<c:forEach begin="${prev }" end="${next }" var="p">
+	
+						<c:choose>
+							<c:when test="${p== page }">
+								<li class="active"><a id="move-page-button"
+									href="${root }/profile/home?p=${p }">${p }</a></li>
+							</c:when>
+	
+							<c:otherwise>
+								<li><a id="move-page-button-number"
+									href="${root }/profile/home?p=${p }">${p }</a></li>
+							</c:otherwise>
+	
+						</c:choose>
+					</c:forEach>
+	
+					<c:if test="${page!=pageCount && count!=0}">
+						<li><a id="move-page-button-number"
+							href="${root}/profile/home?p=${page+1 }" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+						</a></li>
+					</c:if>
+	
+					<c:if test="${count==0 }">
+						<div>결과가 없습니다.</div>
+					</c:if> --%>
+	
+				</ul>
+			</nav>
 		</div>
 	</div>
 </div>
@@ -216,11 +236,11 @@
 				<div class="prof-info-box">
 					<div class="value-box">
 						<div class="age">나이</div>
-						<div class="value">표시란</div>
+						<div class="value">${member.age }</div>
 					</div>
 					<div class="value-box">
 						<div class="gender">성별</div>
-						<div class="value">표시란</div>
+						<div class="value">${member.sex }</div>
 					</div>
 					<div class="value-box">
 						<div class="blood">혈액형</div>
