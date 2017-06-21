@@ -8,8 +8,8 @@
 	<select id="getList" resultType="com.pitapany.web.entity.MemberProfileBoard">
 		SELECT *
 		FROM MemberProfileBoard
-		order by cast(id as unsigned) desc
-		limit #{page},6
+        where memberProfileId = #{memberProfileId}
+		order by cast(id as unsigned) desc;
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.MemberProfileBoard">

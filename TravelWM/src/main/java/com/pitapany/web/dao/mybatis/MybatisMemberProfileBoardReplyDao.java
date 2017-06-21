@@ -20,9 +20,9 @@ public class MybatisMemberProfileBoardReplyDao implements MemberProfileBoardRepl
 	}
 
 	@Override
-	public List<MemberProfileBoardReply> getList() {
+	public List<MemberProfileBoardReply> getList(String memberProfileBoardId) {
 		MemberProfileBoardReplyDao memberProfileBoardReplyDao = sqlSession.getMapper(MemberProfileBoardReplyDao.class);
-		return memberProfileBoardReplyDao.getList();
+		return memberProfileBoardReplyDao.getList(memberProfileBoardId);
 	}
 
 	@Override

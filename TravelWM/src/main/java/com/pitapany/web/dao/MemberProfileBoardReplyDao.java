@@ -7,7 +7,7 @@ import com.pitapany.web.entity.MemberProfileBoardReply;
 public interface MemberProfileBoardReplyDao {
 	MemberProfileBoardReply get(String id);
 
-	List<MemberProfileBoardReply> getList();
+	List<MemberProfileBoardReply> getList(String memberProfileBoardId);
 
 	int count();
 

@@ -7,7 +7,7 @@ import com.pitapany.web.entity.MemberProfileBoard;
 public interface MemberProfileBoardDao {
 	MemberProfileBoard get(String id);
 
-	List<MemberProfileBoard> getList(int page);
+	List<MemberProfileBoard> getList(String memberProfileId);
 
 	int addLike(String id);
 
