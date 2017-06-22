@@ -234,7 +234,7 @@
 						
 						<div class="board-title">
 							<div class="board-title-detail">
-								<span>${li.title }</span>
+								<div><a href="${root }/accompany/detail?p=${li.id }">${li.title }</a></div>
 							</div>
 						</div>
 						
@@ -327,7 +327,11 @@
 </style>
 
 <!-- 	-----------구글 맵 API이용하기--------------- -->
+
+
 <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
+
+
 <script>
 
 	function initialize() {
@@ -389,6 +393,7 @@
         </c:forEach>
        
 	}	
+	
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
 </script>

@@ -7,8 +7,8 @@ public class MemberProfileBoard {
 	private String content;
 	private String img;
 	private String like;
-	private String latitude;
-	private String longitude;
+	private float latitude;
+	private float longitude;
 	private String locality;
 	private String country;
 	private String place;
@@ -47,19 +47,19 @@ public class MemberProfileBoard {
 		this.like = like;
 	}
 
-	public String getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(String latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 
-	public String getLongitude() {
+	public float getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(String longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 

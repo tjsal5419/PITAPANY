@@ -13,7 +13,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-<%@ include file="../inc/userInfo.jsp" %>
 <main class="main">
 <%@ include file="inc/aside.jsp" %>
 <form class="frame" method="post">

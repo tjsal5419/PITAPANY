@@ -12,7 +12,6 @@ public class AccompanyBoard {
 	private String context;
 	private String memberId;
 	private String styleId;
-	private String img;
 	private String place;
 
 	private String locality;
@@ -108,14 +107,6 @@ public class AccompanyBoard {
 
 	public void setStyleId(String styleId) {
 		this.styleId = styleId;
-	}
-
-	public String getImg() {
-		return img;
-	}
-
-	public void setImg(String img) {
-		this.img = img;
 	}
 
 

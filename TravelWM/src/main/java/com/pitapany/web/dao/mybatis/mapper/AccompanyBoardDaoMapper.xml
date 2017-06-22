@@ -48,7 +48,6 @@
 		`latitude`,
 		`longitude`,
 		`styleId`,
-		`img`,
 		`place`,
 		`locality`,
 		`country`
@@ -64,7 +63,6 @@
 		#{latitude},
 		#{longitude},
 		#{styleId},
-		#{img},
 		#{place},
 		#{locality},
 		#{country}
@@ -83,7 +81,6 @@
 		`latitude` = #{latitude},
 		`longitude` = #{longitude},
 		`styleId` = #{styleId},
-		`img` = #{img},
 		`place` = #{place},
 		`locality` = #{locality},
 		`country` = #{country}
