@@ -20,11 +20,8 @@ $(":file").filestyle();
 <div class="frame">
 	<div class="content">
 	
-<<<<<<< HEAD
-	<form class="form" method="post" enctype="multipart/form-data">
-=======
-	<form class="form" method="post" onsubmit="return false;">
->>>>>>> refs/remotes/origin/master
+	<form class="form" method="post" enctype="multipart/form-data" onsubmit="return false;">
+
 		<div class="head">
 			<div class="title-logo">
 				<span>Title</span>

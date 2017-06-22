@@ -219,15 +219,6 @@
 }
 }
 
-
-@media all and (max-width: 890px) {
-	.daterangepicker.dropdown-menu{
-		position: fixed;
-		width: 100%;
-		margin-top: -111px !important;
-	}
-}
-
 /* --파일업로드----------- */
 
 .js .inputfile {

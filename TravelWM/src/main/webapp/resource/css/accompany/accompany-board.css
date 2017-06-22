@@ -58,7 +58,7 @@
 	min-height: 65px;
 	margin-top: 60px;
 	
-	z-index:9999;
+	z-index:1995;
 	/* border: 5px solid green; */
 }
 
@@ -372,8 +372,9 @@
 	}
 	
 	.board-wrapper{
-		width: 290px;
+		width: 280px;
 		height: 1750px;
+		margin: auto;
 	}
 
 	.board-content{

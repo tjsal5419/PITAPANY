@@ -371,7 +371,7 @@ html,body{
 /* ---CALENDAR---------------------------------------------------------------------- */
 
 .daterangepicker {
-  position: fixed;
+  position:;
   color: inherit;
   background-color: #fff;
   border-radius: 4px;
@@ -598,7 +598,8 @@ html,body{
 	.daterangepicker.dropdown-menu{
 		position: fixed;
 		width: 100%;
-		margin-top: -97px;
+		margin-top: 60px;
+		top: 0px !important;
 		z-index: 2000;
 	}
 	
