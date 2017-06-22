@@ -19,7 +19,7 @@
  
  	margin-top: 115px;
  	
- 	border: 5px solid red;
+ 	/* border: 5px solid red; */
 }
 
 #footer{
@@ -58,8 +58,8 @@
 	min-height: 65px;
 	margin-top: 60px;
 	
-	border: 5px solid green;
 	z-index:9999;
+	/* border: 5px solid green; */
 }
 
 
@@ -79,7 +79,9 @@
 	align-items: center;
 	
 	background: white;
-	border: 5px solid gold;
+	
+	border-bottom: 1px solid #eee;
+	/* border: 5px solid gold; */
 	z-index: 9999;
 }
 
@@ -106,7 +108,7 @@
  	
  	box-sizing: border-box;
  	
- 	border: 5px solid yellow;
+ 	/* border: 5px solid yellow; */
 }
 
 .board-wrapper{
@@ -121,7 +123,7 @@
 	
 	box-sizing: border-box;
 
-	border: 5px solid pink;
+	/* border: 5px solid pink; */
 	
 }
 
@@ -137,7 +139,7 @@
 
 	padding: 10px;
 	
-	border: 5px solid green;
+	/* border: 5px solid green; */
 }
 
 .board-content {
@@ -147,15 +149,15 @@
 	
 	width: 100%;
 	height: 100%;
-	background: silver;
+	background: #fff;
 	
 	padding: 15px;
 
 	
 	float: left;
-	box-shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.18);
+
 	
-	border: 5px solid red;
+	/* border: 5px solid red; */
 }
 
 .board-bookmark{
@@ -316,9 +318,9 @@
     height: 55px;
     
     margin: auto;	
-    margin-top: 30px;
+    margin-top: 15px;
     
-    border: 3px solid red;      
+    /* border: 3px solid red;    */   
 }
 
 .page-info-container span{

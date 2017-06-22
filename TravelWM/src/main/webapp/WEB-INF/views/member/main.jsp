@@ -32,10 +32,8 @@
 				
 					<div class="carousel-caption">
 						<div class="caption-content">
-							<h2 class="animated fadeInDown">BLUE Onepage HTML5 Template</h2>
-							<span class="animated fadeInDown">Clean and Professional
-								one page Template</span> <a href="#" class="btn btn-blue btn-effect">Join
-								US</a>
+							<h2 class="animated fadeInDown">당신과 당신의 여행이 만나는 곳</h2>
+							<span class="animated fadeInDown">동행 등록을 하시고 보다 편리하게 이용하세요</span> <a href="#" class="btn btn-blue btn-effect">동행 등록</a>
 						</div>
 					</div>
 					
@@ -45,7 +43,7 @@
 					style="background-image: url('${root}/resource/images/Austria.jpg')">
 					<div class="carousel-caption">
 						<div class="caption-content">
-							<h2 class="animated fadeInDown">BLUE Onepage HTML5 Template</h2>
+							<h2 class="animated fadeInDown">별e 빛ㄴr는 밤</h2>
 							<span class="animated fadeInDown">Clean and Professional
 								one page Template</span> <a href="#" class="btn btn-blue btn-effect">Join
 								US</a>
@@ -146,7 +144,7 @@
 		</div>
 		
 		<div class="page-info-container">
-			<button type="button" class="btn-more" onclick="window.location.href='${root }/accompany/board'" alt="더보기">더보기</button>
+			<a href="${root }/accompany/board" class="btn-more">More</a>
 		</div>
 	</div>
 </div>

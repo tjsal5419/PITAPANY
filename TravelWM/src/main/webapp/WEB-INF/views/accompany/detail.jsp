@@ -42,6 +42,11 @@
 			<span>${accDetail.title}</span>
 		</div>
 		<div class="text">
+			<div>
+				<c:if test="${file.src != null}">
+					<img src="${root}${file.src}${file.name}" style="width:70%;"/>
+				</c:if>
+			</div>
 			<span>${accDetail.context}</span>
 		</div>
 		<div class="foot">

@@ -1,8 +1,13 @@
 package com.pitapany.web.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,10 +19,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.pitapany.web.dao.AccompanyBoardDao;
+import com.pitapany.web.dao.AccompanyBoardFileDao;
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
+import com.pitapany.web.entity.AccompanyBoardFile;
 import com.pitapany.web.entity.AccompanyBoardView;
 import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.Style;
@@ -31,8 +39,11 @@ public class AccompanyController {
 
    @Autowired
    private StyleDao styleDao;
+   
+   @Autowired
+   private AccompanyBoardFileDao accompanyBoardFileDao;
 
-
+   
    @RequestMapping("/matching")
    public String matching(Model model) {
       List<Style> list = styleDao.getList();
@@ -46,7 +57,9 @@ public class AccompanyController {
       accompanyBoardDao.addHits(id);
 
       AccompanyBoard accompanyBoard = accompanyBoardDao.get(id);
-      
+      AccompanyBoardFile file = accompanyBoardFileDao.get(id);
+    		  
+      model.addAttribute("file", file);
       model.addAttribute("accDetail", accompanyBoard);
 
       return "accompany.detail";
@@ -66,12 +79,13 @@ public class AccompanyController {
    public String regPost(Model model,
          HttpServletRequest request, 
          HttpServletResponse response,
+         AccompanyBoardFile accompanyBoardFile,
          @RequestParam(value="title",defaultValue="")String title,
          @RequestParam(value="lat",defaultValue="0.0")float lat,
          @RequestParam(value="lng",defaultValue="0.0")float lng,
          @RequestParam(value="content",defaultValue="")String content,
          @RequestParam(value="style",defaultValue="")String styleId,
-         @RequestParam(value="img", defaultValue="")String img,
+         @RequestParam(value="file", defaultValue="null") MultipartFile file,
          @RequestParam(value="place", defaultValue="")String place,
          @RequestParam(value="locality", defaultValue="")String locality,
          @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
@@ -97,9 +111,6 @@ public class AccompanyController {
       accompanyBoard.setStyleId(styleId);
       accompanyBoard.setMemberId(memberId);
       
-      if(!img.equals(""))
-         accompanyBoard.setImg(img);
-      
       accompanyBoard.setPlace(place);
       accompanyBoard.setLocality(locality);
       accompanyBoard.setCountry(country);
@@ -108,13 +119,64 @@ public class AccompanyController {
       
       
       model.addAttribute("url","accompany/board");
-      model.addAttribute("msg","¼º°øÀûÀ¸·Î µ¿Çàµî·ÏÀÌ ¿Í...¿Í...¿Ï·á...");
+      model.addAttribute("msg","ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½...ï¿½ï¿½...ï¿½Ï·ï¿½...");
       
       
+      
+      if(!file.isEmpty()){
+          String path = request.getSession().getServletContext().getRealPath("/resource/upload");
+          
+          /*String path = "WiynPrj\\resources\\upload";*/
+          
+          File d = new File(path);
+          if(!d.exists())//ê²½ë¡œê°€ ì¡´ìž¬í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´
+             d.mkdir();
+       
+          String originalFilename = file.getOriginalFilename(); // fileName.jpg
+           String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+           String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
+          
+           String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
+           String fullPath = path + "/" + rename;
+           
+           if (!file.isEmpty()) {
+               try {
+                   byte[] bytes = file.getBytes();
+                   BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
+                   stream.write(bytes);
+                   stream.close();
+                   //model.addAttribute("resultMsg", "íŒŒì¼ì„ ì—…ë¡œë“œ ì„±ê³µ!");
+                   System.out.println("ì—…ë¡œë“œ ì„±ê³µ");
+               } catch (Exception e) {
+                   //model.addAttribute("resultMsg", "íŒŒì¼ì„ ì—…ë¡œë“œí•˜ëŠ” ë°ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+                  System.out.println("ì—…ë¡œë“œ ì‹¤íŒ¨");
+               }
+           } else {
+               //model.addAttribute("resultMsg", "ì—…ë¡œë“œí•  íŒŒì¼ì„ ì„ íƒí•´ì£¼ì‹œê¸° ë°”ëžë‹ˆë‹¤.");
+              System.out.println("ì—…ë¡œë“œ íŒŒì¼ x");
+           }
+           
+           String viewPath = "/resource/upload/";
+
+           accompanyBoardFile.setName(rename);
+           accompanyBoardFile.setAccompanyBoardId(accompanyBoard.getId());
+           accompanyBoardFile.setSrc(viewPath);
+           
+           accompanyBoardFileDao.add(accompanyBoardFile);
+           
+           System.out.println(fullPath);
+      }       
       
       return "inc/redirect";
    }
+  
    
+   public String getCurrentDayTime(){
+       long time = System.currentTimeMillis();
+       SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
+       return dayTime.format(new Date(time));
+   }
+  
 
    @RequestMapping(value="/board",
          method=RequestMethod.GET)
@@ -132,11 +194,11 @@ public class AccompanyController {
       else if(count%6==0)
          pageCount = count/6;
       
-       /*5°³ ´ÜÀ§ÀÇ ÆäÀÌÁö·Î º¸¿©ÁÜ 1/2/3/4/5*/
+       /*5ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1/2/3/4/5*/
       int prev = 0;
       if(pageCount >0 && pageCount <=5)
          prev=1;
-      /*6ÆäÀÌÁö ÀÌ»óºÎÅÍ*/
+      /*6ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ï¿½*/
       else
       {
          if(pageCount%5!=0)
@@ -152,10 +214,10 @@ public class AccompanyController {
       model.addAttribute("prev",prev);
       model.addAttribute("next",next);
       
-      /* DBÀÇ min-Limit ¼³Á¤À» À§ÇÑ querypage°ª*/
+      /* DBï¿½ï¿½ min-Limit ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ querypageï¿½ï¿½*/
       int minLimitPage = (page-1)*6;
       
-      /*page´Â ÇöÀç ¿äÃ» page¸¦ ¶æÇÔ*/
+      /*pageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã» pageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½*/
       
       
       List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);

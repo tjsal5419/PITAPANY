@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pitapany.web.dao.AccompanyBoardFileDao">
+	<select id="getList" resultType="com.pitapany.web.entity.AccompanyBoardFile">
+		SELECT * 
+		FROM AccompanyBoardFile 
+		order by cast(id as unsigned) desc
+	</select>
+
+	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoardFile">
+		SELECT *
+		FROM
+		`pitapanydb`.`AccompanyBoardFile`
+		WHERE accompanyBoardId = #{accompanyBoardId}
+	</select>
+	
+	<insert id="add" parameterType="com.pitapany.web.entity.AccompanyBoardFile">
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM AccompanyBoardFile
+		</selectKey>
+		INSERT INTO
+		`pitapanydb`.`AccompanyBoardFile`
+		(
+		`id`,
+		`src`,
+		`name`,
+		`accompanyBoardId`
+		)
+		VALUES
+		(
+		#{id},
+		#{src},
+		#{name},
+		#{accompanyBoardId}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.pitapany.web.entity.AccompanyBoardFile">
+		UPDATE
+		`pitapanydb`.`AccompanyBoardFile`
+		SET
+		`id` = #{id},
+		`src` = #{src},
+		`name` = #{name},
+		`accompanyBoardId` = #{accompanyBoardId},
+		WHERE `id` = #{id}
+	</update>
+
+</mapper>

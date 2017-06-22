@@ -25,7 +25,7 @@
 		<!-- ----------동행 게시글 6개씩 반복하는 구간 ------------ -->
 			<c:forEach items="${accompanyBoardlist }" var="li">
 				<div class="board-card">
-					<div class="board-content">
+					<div class="board-content w3-card-4">
 						<div class="board-bookmark">
 						</div>
 						
