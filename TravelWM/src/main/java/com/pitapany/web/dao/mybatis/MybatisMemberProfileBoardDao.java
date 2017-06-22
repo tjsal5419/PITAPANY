@@ -18,11 +18,11 @@ public class MybatisMemberProfileBoardDao implements MemberProfileBoardDao {
 		MemberProfileBoardDao memberProfileBoardDao = sqlSession.getMapper(MemberProfileBoardDao.class);
 		return memberProfileBoardDao.get(id);
 	}
-
+	
 	@Override
-	public List<MemberProfileBoard> getList(int page) {
+	public List<MemberProfileBoard> getList(String memberProfileId) {
 		MemberProfileBoardDao memberProfileBoardDao = sqlSession.getMapper(MemberProfileBoardDao.class);
-		return memberProfileBoardDao.getList(page);
+		return memberProfileBoardDao.getList(memberProfileId);
 	}
 
 	@Override
@@ -49,4 +49,11 @@ public class MybatisMemberProfileBoardDao implements MemberProfileBoardDao {
 		return memberProfileBoardDao.update(memberProfileBoard);
 	}
 
+	@Override
+	public int count() {
+		MemberProfileBoardDao memberProfileBoardDao = sqlSession.getMapper(MemberProfileBoardDao.class);
+		return memberProfileBoardDao.count();
+	}
+
+	
 }

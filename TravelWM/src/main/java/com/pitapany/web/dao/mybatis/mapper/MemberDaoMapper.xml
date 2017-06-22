@@ -5,6 +5,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.pitapany.web.dao.MemberDao">
+	<select id="getMember" resultType="com.pitapany.web.entity.Member">
+		SELECT * 
+		FROM `pitapanydb`.`Member`
+		WHERE id=#{id}
+	</select>
+	
 	<select id="getList" resultType="com.pitapany.web.entity.Member">
 		SELECT * 
 		FROM `pitapanydb`.`Member`

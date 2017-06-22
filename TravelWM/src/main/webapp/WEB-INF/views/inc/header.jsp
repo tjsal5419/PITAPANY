@@ -60,11 +60,11 @@
 					<li class="except-li"><a href="${root }/joinus/login">로그인</a></li>
 					<li class="except-li"><a href="${root }/joinus/join">회원가입</a></li>
 				</c:if>	
-		
+				
 				<security:authorize  access="isAuthenticated()">
 					<li class="except-li">
 					<a class="a" href="${root }/j_spring_security_logout">
-						${userNicName}님 로그아웃
+						${m.nicName }님 로그아웃
 					</a>
 					</li>
 				</security:authorize>

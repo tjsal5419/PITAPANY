@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.AccompanyBoardFileDao;
+import com.pitapany.web.dao.MemberDao;
+
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.AccompanyBoardFile;
@@ -43,9 +48,19 @@ public class AccompanyController {
    @Autowired
    private AccompanyBoardFileDao accompanyBoardFileDao;
 
-   
+
+   @Autowired
+   private MemberDao memberDao;
+
    @RequestMapping("/matching")
    public String matching(Model model) {
+	   
+	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	  String name = auth.getName(); //get logged in username
+	  String id = memberDao.getIdByEmail(name);
+	  System.out.println("���̵��Դϴ�"+id);
+	  
+	  
       List<Style> list = styleDao.getList();
       model.addAttribute("styles", list);
       
@@ -91,8 +106,7 @@ public class AccompanyController {
          @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
 
       
-      HttpSession session = request.getSession();
-      Member member = (Member) session.getAttribute("user");
+      Member member = (Member) request.getAttribute("m");
       String memberId = member.getId();   
       
       AccompanyBoard accompanyBoard = new AccompanyBoard();
@@ -194,20 +208,23 @@ public class AccompanyController {
       else if(count%6==0)
          pageCount = count/6;
       
-       /*5�� ������ �������� ������ 1/2/3/4/5*/
-      int prev = 0;
-      if(pageCount >0 && pageCount <=5)
-         prev=1;
-      /*6������ �̻����*/
-      else
-      {
-         if(pageCount%5!=0)
-            prev=(pageCount/5)*5;
-         else
-            prev=(pageCount/5-1)*5;
-      }
+      // prev: Start index
+      // next : end index
       
-      int next = pageCount;
+      int prev = 0;
+      int next=0;
+
+      
+      if(page%5!=0)
+          prev=(page/5)*5+1;
+      else
+          prev=(page/5-1)*5+1;
+      
+      if(pageCount-prev<5 && pageCount-prev>=0)
+    	  next=pageCount;
+      else{
+          next=prev+4;
+      }
       
       
       /*System.out.println("page:"+page+"prev"+prev+"next:"+next);*/
@@ -222,11 +239,11 @@ public class AccompanyController {
       
       List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
       
+
       model.addAttribute("page",page);
       model.addAttribute("pageCount",pageCount);
-      model.addAttribute("accompanyBoardlist",accompanyBoardList);
-      
-   
+      model.addAttribute("accompanyBoardList",accompanyBoardList);
+
       return "accompany.board";
 
    }

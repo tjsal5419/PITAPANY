@@ -24,8 +24,8 @@
 		<intercept-url pattern="/community/**" access="hasRole('ROLE_USER')" /> 
 		<intercept-url pattern="/profile/**" access="hasRole('ROLE_USER')" /> 
 		<intercept-url pattern="/accompany/**" access="hasRole('ROLE_USER')" /> 
-
-        <!-- 30 분간 Session 유지함 ==============>나중에 바꿔주기 -->
+<!--  		<intercept-url pattern="/**" access="isAuthenticated()" />
+ -->        <!-- 30 분간 Session 유지함 ==============>나중에 바꿔주기 -->
 		<!-- <session-management  invalid-session-url="/joinus/expiredLogin"> -->
 			<!-- max-sessions : 중복 로그인 지정 -->
 		<session-management>
@@ -45,7 +45,7 @@
 				<user name="유저" authorities="ROLE_USER"/>
 			</user-service> -->
 <!--  			<user-service>
-				<user name="test@naver.com" password="1111" authorities="ROLE_USER" />
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          		<user name="test@naver.com" password="1111" authorities="ROLE_USER" />
 				<user name="SAKURA@naver.com" password="1" authorities="ROLE_USER, ROLE_ADMIN" />
 			</user-service> -->
 		</authentication-provider>

@@ -9,4 +9,3 @@
 <c:set var="userEmail" value="${sessionScope.user.email }"/>
 <c:set var="userName" value="${sessionScope.user.name }"/>
 <c:set var="userNicName" value="${sessionScope.user.nicName }"/>
-

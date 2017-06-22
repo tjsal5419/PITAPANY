@@ -41,6 +41,8 @@
 	<!-- 타일즈 뷰 리졸버 설정 -->
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"> <!-- 지시서를 memory에 올리는 역할 -->
 		<property name="definitions" value="/WEB-INF/tiles.xml" />
+		<property name="preparerFactoryClass"
+			value="org.springframework.web.servlet.view.tiles3.SimpleSpringPreparerFactory"/>
 	</bean>
 
 	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
