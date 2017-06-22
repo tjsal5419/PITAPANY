@@ -20,7 +20,7 @@ $(":file").filestyle();
 <div class="frame">
 	<div class="content">
 	
-	<form class="form" method="post">
+	<form class="form" method="post" onsubmit="return false;">
 		<div class="head">
 			<div class="title-logo">
 				<span>Title</span>
@@ -33,7 +33,7 @@ $(":file").filestyle();
 			<div class="search-bar-container-accom">
 			
 				<!-- -------- 구글 지도 검색창 ------ -->
-			    <input class="form-control" id="autocomplete" name="form" placeholder="Enter your address" type="text" required/>
+			    <input class="form-control" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
 			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
 			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
 			    <input class="hidden" type="text" value="" name="place" id="place"/>  
@@ -127,7 +127,7 @@ $(":file").filestyle();
 	
 	     // When the user selects an address from the dropdown, populate the address
 	     // fields in the form.
-	     autocomplete.addListener('place_changed', getLocation);
+
 	   }
  
           function getLocation(){
@@ -136,6 +136,16 @@ $(":file").filestyle();
         	  var longitude = place.geometry.location.lng();
         	  var placeName = place.name;
         	  var fotmattedAdress = place.formatted_address;
+        	  
+        	   /* ---------검색 바에서 엔터키 기능 막기---------- */
+			   var input = document.getElementById('autocomplete');
+			  google.maps.event.addDomListener(input, 'keydown', function(event) { 
+			    if (event.keyCode === 13) { 
+			        event.preventDefault(); 
+			    }
+			  }); 
+    	      
+    	      /* ---------------------------------------- */
 /*         	  
         	  alert("위도"+latitude);
         	  alert("경도"+longitude);
@@ -169,9 +179,7 @@ $(":file").filestyle();
              
               }
               
-             alert(country);
-             alert(locality);
-             alert(placeName);
+             alert(placeName+'가 선택되었습니다.');
               lng.value = longitude;
         	  lat.value = latitude;
         	  placeForm.value= placeName;
@@ -200,18 +208,12 @@ $(":file").filestyle();
 	          });
 	        }
 	      }
+          
+	      $('#autocomplete').keydown(function (e) {
+	    	  if (e.which == 13 && $('.pac-container:visible').length) return false;
+	    	});
+          
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
         
-     <!-- ------엔터 클릭 시 전송되는것 막기--- -->
-    <script type="text/javascript">
-    window.addEventListener('keydown', function(e) {
-        if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
-            if (e.target.nodeName == 'form' && e.target.type == 'text') {
-                e.preventDefault();
-                return false;
-            }
-        }
-    }, true);
-	</script>
