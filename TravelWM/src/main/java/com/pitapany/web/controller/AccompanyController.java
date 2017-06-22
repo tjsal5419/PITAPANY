@@ -90,8 +90,7 @@ public class AccompanyController {
          @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
 
       
-      HttpSession session = request.getSession();
-      Member member = (Member) session.getAttribute("user");
+      Member member = (Member) request.getAttribute("m");
       String memberId = member.getId();   
       
       AccompanyBoard accompanyBoard = new AccompanyBoard();
@@ -146,38 +145,24 @@ public class AccompanyController {
          pageCount = count/6;
       
        /*5개 단위의 페이지로 보여줌 1/2/3/4/5*/
+      
+      // prev: Start index
+      // next : end index
+      
       int prev = 0;
       int next=0;
 
       
-      if(pageCount%5!=0)
+      if(page%5!=0)
           prev=(page/5)*5+1;
       else
           prev=(page/5-1)*5+1;
       
-      if(pageCount%5!=0){
-    	  if((pageCount/5)*5+1==prev){
-    		  next = pageCount;
-    	  }
-    	  else
-    		  next = prev+4;
-      }
-      
+      if(pageCount-prev<5 && pageCount-prev>=0)
+    	  next=pageCount;
       else{
-    	  if((pageCount/5-1)*5+1==prev)
-    		  next = pageCount;
-    	  else
-    		  next = next+4;
+          next=prev+4;
       }
-      
-      
-      
-      next = pageCount;
-      
-      
-      
-      
-      System.out.println("prev"+prev+"next"+next);
       
       
       /*System.out.println("page:"+page+"prev"+prev+"next:"+next);*/

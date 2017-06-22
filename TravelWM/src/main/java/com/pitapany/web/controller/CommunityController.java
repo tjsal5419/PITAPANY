@@ -67,23 +67,25 @@ public class CommunityController {
 		
 		model.addAttribute("pageCount",pageCount);
 		
-		int prev = (page/10)*10;
-		int next = 0;
-		
-		if(page<10)
-			prev = 1;
-	
-		int pageBarCount = pageCount/10;
-		
-		if(page/10!=pageBarCount){
-			if(prev/10==0)
-				next = 9;
-			else 
-				next = prev+9;
-		}
-		else
-			next = pageCount;
-		
+	  
+	      int prev = 0;
+	      int next=0;
+
+	       /*10개 단위의 페이지로 보여줌 1/2/3/4/5....*/
+	      
+	      // prev: Start index
+	      // next : end index
+	      if(page%10!=0)
+	          prev=(page/10)*10+1;
+	      else
+	          prev=(page/10-1)*10+1;
+	      
+	      if(pageCount-prev<10 && pageCount-prev>=0)
+	    	  next=pageCount;
+	      else{
+	          next=prev+9;
+	      }
+	      
 		/*System.out.println("page:"+page+"prev"+prev+"next:"+next);*/
 		model.addAttribute("prev",prev);
 		model.addAttribute("next",next);
