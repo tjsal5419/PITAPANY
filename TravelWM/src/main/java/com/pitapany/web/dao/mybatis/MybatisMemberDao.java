@@ -40,6 +40,7 @@ public class MybatisMemberDao implements MemberDao {
 		return memberDao.update(member);
 	}
 
+	
 	public String getIdByEmail(String email) {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		return memberDao.getIdByEmail(email);

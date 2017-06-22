@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,7 @@ import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.AccompanyBoardView;
 import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.Style;
+import com.pitapany.web.security.CustomWebAuthenticationDetails;
 
 @Controller
 @RequestMapping("/accompany/*")
@@ -42,11 +45,8 @@ public class AccompanyController {
    @RequestMapping("/matching")
    public String matching(Model model) {
 	   
-	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	  String name = auth.getName(); //get logged in username
-	  String id = memberDao.getIdByEmail(name);
-	  System.out.println("¾ÆÀÌµğÀÔ´Ï´Ù"+id);
-	  
+	  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+	  String id = member.getId();
 	  
       List<Style> list = styleDao.getList();
       model.addAttribute("styles", list);
@@ -84,21 +84,21 @@ public class AccompanyController {
          @RequestParam(value="lng",defaultValue="0.0")float lng,
          @RequestParam(value="content",defaultValue="")String content,
          @RequestParam(value="style",defaultValue="")String styleId,
-         @RequestParam(value="img", defaultValue="")String img,
          @RequestParam(value="place", defaultValue="")String place,
          @RequestParam(value="locality", defaultValue="")String locality,
          @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
 
-      
-      Member member = (Member) request.getAttribute("m");
-      String memberId = member.getId();   
-      
+	   
+	   
+	  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+	  String memberId = member.getId();
+	  
       AccompanyBoard accompanyBoard = new AccompanyBoard();
       accompanyBoard.setContext(content);
       accompanyBoard.setLatitude(lat);
       accompanyBoard.setLongitude(lng);
       accompanyBoard.setTitle(title);
-
+      
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-mm");
       java.sql.Date startDate = new java.sql.Date(sdf.parse("2017-11-11").getTime());
       java.sql.Date endDate = new java.sql.Date(sdf.parse("2018-11-11").getTime());
@@ -109,9 +109,6 @@ public class AccompanyController {
       accompanyBoard.setStyleId(styleId);
       accompanyBoard.setMemberId(memberId);
       
-      if(!img.equals(""))
-         accompanyBoard.setImg(img);
-      
       accompanyBoard.setPlace(place);
       accompanyBoard.setLocality(locality);
       accompanyBoard.setCountry(country);
@@ -120,7 +117,7 @@ public class AccompanyController {
       
       
       model.addAttribute("url","accompany/board");
-      model.addAttribute("msg","¼º°øÀûÀ¸·Î µ¿Çàµî·ÏÀÌ ¿Í...¿Í...¿Ï·á...");
+      model.addAttribute("msg","ì„±ê³µì ìœ¼ë¡œ ë™í–‰ë“±ë¡ì´ ì™€...ì™€...ì™„ë£Œ...");
       
       
       
@@ -144,7 +141,7 @@ public class AccompanyController {
       else if(count%6==0)
          pageCount = count/6;
       
-       /*5°³ ´ÜÀ§ÀÇ ÆäÀÌÁö·Î º¸¿©ÁÜ 1/2/3/4/5*/
+       /*5ê°œ ë‹¨ìœ„ì˜ í˜ì´ì§€ë¡œ ë³´ì—¬ì¤Œ 1/2/3/4/5*/
       
       // prev: Start index
       // next : end index
@@ -169,10 +166,10 @@ public class AccompanyController {
       model.addAttribute("prev",prev);
       model.addAttribute("next",next);
       
-      /* DBÀÇ min-Limit ¼³Á¤À» À§ÇÑ querypage°ª*/
+      /* DBì˜ min-Limit ì„¤ì •ì„ ìœ„í•œ querypageê°’*/
       int minLimitPage = (page-1)*6;
       
-      /*page´Â ÇöÀç ¿äÃ» page¸¦ ¶æÇÔ*/
+      /*pageëŠ” í˜„ì¬ ìš”ì²­ pageë¥¼ ëœ»í•¨*/
       
       
       List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);

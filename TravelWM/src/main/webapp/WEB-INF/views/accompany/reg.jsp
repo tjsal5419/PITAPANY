@@ -20,7 +20,7 @@ $(":file").filestyle();
 <div class="frame">
 	<div class="content">
 	
-	<form class="form" method="post" onsubmit="return false;">
+	<form class="form" method="post">
 		<div class="head">
 			<div class="title-logo">
 				<span>Title</span>
@@ -41,7 +41,7 @@ $(":file").filestyle();
 			    <input class="hidden" type="text" value="" name="country" id="country"/>  
 			    
   				<!-- -------- 달력 ------ -->
-    	  		<input type="text" class="form-control" name="datefilter" value="" placeholder="Search" required />
+    	  		<input type="text" class="form-control"value="" placeholder="Search" required />
 	    	</div>
 		</div>
 		<div class="text">
@@ -82,16 +82,15 @@ $(":file").filestyle();
 </div>
 
 </main>
-        
+
+<!-- ------------google map API------------------- -->
     
 <script>
       // This example displays an address form, using the autocomplete feature
       // of the Google Places API to help users fill in the information.
-
       // This example requires the Places library. Include the libraries=places
       // parameter when you first load the API. For example:
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
 /*  window.addEventListener("load",function(event){
  */    	     
           var placeSearch, autocomplete;
@@ -105,14 +104,11 @@ $(":file").filestyle();
         	        postal_code: 'short_name'
         	};
           
-
 /*          
           var defaultBounds = new google.maps.LatLngBounds(
         		  new google.maps.LatLng(-33.8902, 151.1759),
         		  new google.maps.LatLng(-33.8474, 151.2631));
-
     	  var input = document.getElementById('autocomplete');
-
           var searchBox = new google.maps.places.SearchBox(input, {
         		  bounds: defaultBounds
           });
@@ -125,8 +121,7 @@ $(":file").filestyle();
 	         /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
 	         {types: ['geocode']});
 	
-	     // When the user selects an address from the dropdown, populate the address
-	     // fields in the form.
+	     autocomplete.addListener('place_changed', getLocation);
 
 	   }
  
@@ -137,13 +132,6 @@ $(":file").filestyle();
         	  var placeName = place.name;
         	  var fotmattedAdress = place.formatted_address;
         	  
-        	   /* ---------검색 바에서 엔터키 기능 막기---------- */
-			   var input = document.getElementById('autocomplete');
-			  google.maps.event.addDomListener(input, 'keydown', function(event) { 
-			    if (event.keyCode === 13) { 
-			        event.preventDefault(); 
-			    }
-			  }); 
     	      
     	      /* ---------------------------------------- */
 /*         	  
@@ -180,6 +168,7 @@ $(":file").filestyle();
               }
               
              alert(placeName+'가 선택되었습니다.');
+             alert(country);
               lng.value = longitude;
         	  lat.value = latitude;
         	  placeForm.value= placeName;
@@ -190,7 +179,6 @@ $(":file").filestyle();
               
         	  
           }
-
           // Bias the autocomplete object to the user's geographical location,
           // as supplied by the browser's 'navigator.geolocation' object.
 	      function geolocate() {
@@ -209,7 +197,7 @@ $(":file").filestyle();
 	        }
 	      }
           
-	      $('#autocomplete').keydown(function (e) {
+ 	      $('#autocomplete').keydown(function (e) {
 	    	  if (e.which == 13 && $('.pac-container:visible').length) return false;
 	    	});
           
