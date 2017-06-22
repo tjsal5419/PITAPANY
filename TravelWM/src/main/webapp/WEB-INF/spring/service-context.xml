@@ -36,13 +36,12 @@
 	<bean class="com.pitapany.web.dao.mybatis.MybatisTipCategoryDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileDao" />
-<<<<<<< HEAD
+
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardFileDao" />
 
-=======
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardReplyDao" />
->>>>>>> refs/remotes/origin/master
+
 	<context:annotation-config /> <!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.pitapany.web.service.AdminService" />
 
