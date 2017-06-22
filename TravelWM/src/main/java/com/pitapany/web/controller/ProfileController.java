@@ -1,7 +1,12 @@
 package com.pitapany.web.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +20,12 @@ import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.dao.MemberProfileBoardDao;
 import com.pitapany.web.dao.MemberProfileBoardReplyDao;
 import com.pitapany.web.dao.MemberProfileDao;
-import com.pitapany.web.entity.Member;
+import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.MemberProfile;
 import com.pitapany.web.entity.MemberProfileBoard;
 import com.pitapany.web.entity.MemberProfileBoardReply;
 import com.pitapany.web.entity.ProfHomeBoardAndReply;
+import com.pitapany.web.entity.Style;
 
 @Controller
 @RequestMapping("/profile/*")
@@ -125,11 +131,58 @@ public class ProfileController {
 	    return "profile.home";
 	}
 
+	@RequestMapping(value="reg",
+	         method=RequestMethod.GET)
+	   public String  reg(Model model){
+	      
+	      return "profile.reg";
+	   }
+	
 	@RequestMapping(value = "home", method = RequestMethod.POST)
 	public String home(Model model) {
 
 		return "profile.home";
 	}
-	
+
+	   @RequestMapping(value="reg",
+	         method=RequestMethod.POST)
+	   public String regPost(Model model,
+	         HttpServletRequest request, 
+	         HttpServletResponse response,
+	         @RequestParam(value="lat",defaultValue="0.0")float lat,
+	         @RequestParam(value="lng",defaultValue="0.0")float lng,
+	         @RequestParam(value="content",defaultValue="")String content,
+	         @RequestParam(value="style",defaultValue="")String styleId,
+	         @RequestParam(value="img", defaultValue="")String img,
+	         @RequestParam(value="place", defaultValue="")String place,
+	         @RequestParam(value="locality", defaultValue="")String locality,
+	         @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
+
+	      
+	      
+	      MemberProfileBoard memberProfileBoard = new MemberProfileBoard();
+	      memberProfileBoard.setContent(content);
+	      memberProfileBoard.setLatitude(lat);
+	      memberProfileBoard.setLongitude(lng);
+
+	      memberProfileBoard.setMemberProfileId("1");
+	      
+	      if(!img.equals(""))
+	    	  memberProfileBoard.setImg(img);
+	      
+	      memberProfileBoard.setPlace(place);
+	      memberProfileBoard.setLocality(locality);
+	      memberProfileBoard.setCountry(country);
+	      
+	      memberProfileBoardDao.add(memberProfileBoard);
+	      
+	      
+	      model.addAttribute("url","profile/home");
+	      model.addAttribute("msg","성공적으로 프로필SNS등록이 와...와...완료...");
+	      
+	      
+	      
+	      return "inc/redirect";
+	   }
 	
 }

@@ -10,48 +10,60 @@
 <main id="main">
 <div class="frame">
 	<div class="content">
-	<form class="form" method="post">
-		<div class="head">
-			<div class="title-logo">
-				<span>Title</span>
+		<form class="form" method="post">
+			<div class="sel">
+				<div class="search-bar-container-accom">
+
+					<!-- -------- 구글 지도 검색창 ------ -->
+					<input class="form-control" id="autocomplete" name="form"
+						placeholder="Enter your address" type="text" required /> <input
+						class="hidden" type="text" value="" name="lat" id="lat" /> <input
+						class="hidden" type="text" value="" name="lng" id="lng" /> <input
+						class="hidden" type="text" value="" name="place" id="place" /> <input
+						class="hidden" type="text" value="" name="locality" id="locality" />
+					<input class="hidden" type="text" value="" name="country"
+						id="country" />
+
+				</div>
 			</div>
-			<div class="title-content">
-				<input class="ti form-control" type="text" name="title" placeholder="제목내용" required/>
+			<div class="text">
+				<textarea name="content" class="form-control" placeholder="본문내용"
+					required></textarea>
 			</div>
-		</div>
-		<div class="sel">
-			<div class="search-bar-container-accom">
-			
-				<!-- -------- 구글 지도 검색창 ------ -->
-			    <input class="form-control" id="autocomplete" name="form" placeholder="Enter your address" type="text" required/>
-			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
-			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
-			    <input class="hidden" type="text" value="" name="place" id="place"/>  
-			    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
-			    <input class="hidden" type="text" value="" name="country" id="country"/>  
-			    
-	    	</div>
-		</div>
-		<div class="text">
-			<textarea name="content"  class="form-control" placeholder="본문내용" required></textarea>
-		</div>
-			<div class="bottun" style="margin-top:10px;">
+			<div class="foot">
+				<div class="insert-pic">
+					<div>
+						<input class="form-control img-input-box"
+							placeholder="첨부된 파일이 없습니다." type="text" readonly />
+					</div>
+					<div>
+						<label class="btn btn-default" for="filebox">첨부</label> <input
+							type="file" name="img" id="filebox" />
+					</div>
+				</div>
+
+
+
+			</div>
+			<div class="bottun">
 				<div class="cancel">
-					<button onclick="window.location.href='${root}/profile/home'" class="btn btn-info chat">글 취소</button>	
+					<button onclick="window.location.href='${root}/profile/home'"
+						class="btn btn-info chat">글 취소</button>
 				</div>
 				<div class="reg">
-					<button class="btn btn-info chat" id="submit" type ="submit">글 등록</button>
+					<button class="btn btn-info chat" id="submit" type="submit">글
+						등록</button>
 				</div>
 			</div>
-	
-	</form>
+
+		</form>
 	</div>
-	
+
 </div>
 
 </main>
-        
-    
+
+
 <script>
       // This example displays an address form, using the autocomplete feature
       // of the Google Places API to help users fill in the information.
@@ -169,11 +181,12 @@
 	        }
 	      }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
-        async defer></script>
-        
-     <!-- ------엔터 클릭 시 전송되는것 막기--- -->
-    <script type="text/javascript">
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
+	async defer></script>
+
+<!-- ------엔터 클릭 시 전송되는것 막기--- -->
+<script type="text/javascript">
     window.addEventListener('keydown', function(e) {
         if (e.keyIdentifier == 'U+000A' || e.keyIdentifier == 'Enter' || e.keyCode == 13) {
             if (e.target.nodeName == 'form' && e.target.type == 'text') {
