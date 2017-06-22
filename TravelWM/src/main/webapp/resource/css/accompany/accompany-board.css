@@ -2,12 +2,12 @@
  
 /* 페이지 이동 버튼 */
 #move-page-button{
-	background-color: #00BCD1;
-	border-color:#00BCD1;
+	background-color: #33b5e5;
+	border-color:#33b5e5;
 }
 
 #move-page-button-number{
-	color:#00BCD1;
+	color:#33b5e5;
 }
 
 #main-container{
@@ -15,7 +15,7 @@
  	flex-direction: row;
  	
  	width: 65%;
- 	height:100%;
+ 	height:;
  
  	margin-top: 115px;
  	
