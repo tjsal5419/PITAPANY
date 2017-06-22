@@ -47,7 +47,7 @@
 
 }
 .carousel-indicators .active {
-	background-color: rgba(0,188,209, 0.78);
+	background-color: rgba(51, 181, 229, 0.78);
 	border: 0;
 }
 
@@ -167,7 +167,7 @@ a, a:hover, a:focus, .btn:focus {
 
 
 .btn-blue {
-    background-color: rgba(0,188,209, 0.78);
+    background-color: rgba(51, 181, 229, 0.78);
     box-shadow: 0 -2px 0 rgba(0, 0, 0, 0.15) inset;
     padding: 15px 55px;
     color: #fff;
@@ -285,7 +285,7 @@ a, a:hover, a:focus, .btn:focus {
 }
 
 #nav-arrows > a.sl-prev:hover {
-    background-color: rgba(0,188,209, 0.78);
+    background-color: rgba(51, 181, 229, 0.78);
     border-color: rgba(0,188,209, 0.78);
     color: #fff;
 }
@@ -305,8 +305,8 @@ a, a:hover, a:focus, .btn:focus {
 }
 
 #nav-arrows > a.sl-next:hover {
-    background-color: rgba(0,188,209, 0.78);
-    border-color: rgba(0,188,209, 0.78);
+    background-color: rgba(51, 181, 229, 0.78);
+    border-color: rgba(51, 181, 229, 0.78);
     color: #fff;
 }
 
@@ -320,7 +320,7 @@ a, a:hover, a:focus, .btn:focus {
 	margin-top: 30px;
 	box-sizing: border-box;
 	
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 
 .board-container{
@@ -332,7 +332,7 @@ a, a:hover, a:focus, .btn:focus {
 	
 	box-sizing: border-box;
 	
-	border: 1px solid yellow;
+	/* border: 1px solid yellow; */
 }
 
 .board-wrapper{
@@ -350,7 +350,7 @@ a, a:hover, a:focus, .btn:focus {
 	
 	box-sizing: border-box;
 	
-	border: 5px solid blue;	
+	/* border: 5px solid blue; */	
 }
 
 .board-card{
@@ -364,7 +364,7 @@ a, a:hover, a:focus, .btn:focus {
 
 	padding: 10px;
 	
-	border: 5px solid green;
+	/* border: 5px solid green; */
 }
 
 .board-content {
@@ -530,15 +530,25 @@ a, a:hover, a:focus, .btn:focus {
     height: 45px;
     
     margin: auto; 
-    border: 5px solid red;      
+    /* border: 5px solid red;  */     
 }
 
 .btn-more{
 	display: block;
-	border: 5px solid blue;
-	
 	float: right;
+
+	color: #33b5e5;
+	background-color: transparent;
+	text-decoration: none;
+	transition: 0.5s ease;
+	
+	line-height: 1.8;
+	font-size: 15px;
+	font-weight: 350;
+			
 	margin-right: 15px;
+	
+	/* border: 5px solid blue; */
 }
 
 @media all and (max-width: 1240px){
