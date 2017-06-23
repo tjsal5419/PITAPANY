@@ -47,7 +47,7 @@
 						
 						<div class="board-title">
 							<div class="board-title-detail">
-								<div><a href="${root }/accompany/detail?p=${li.id }">${li.title }</a></div>
+								<div><a href="${root }/accompany/detail?id=${li.id }">${li.title }</a></div>
 							</div>
 						</div>
 						
