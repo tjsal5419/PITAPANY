@@ -44,7 +44,7 @@
     	
     	<form class="search-bar" action="" method="get" class="form-group">
     		<div class="search-bar-container">
-			    <input class="form-control" id="autocomplete1" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
+			    <input class="form-control form-control-header" id="autocomplete1" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
 
 <!-- 			    <input class="" type="text" value="" name="lat" id="lat"/>			           
 			    <input class="" type="text" value="" name="lng" id="lng"/>  
