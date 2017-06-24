@@ -39,15 +39,13 @@
 			
 			<button type="button" class="btn btn-filter" id="btn-style">성향</button>
 			<div id="style-content">
-			<ul>
-				<li>러브어페어</li>
-			</ul>
-			<ul>
-				<li>급만남</li>
-			</ul>
-			<ul>
-				<li>술술</li>
-			</ul>
+			
+			<c:forEach items="${styleList }" var="li">
+				<ul>
+					<li onclick="window.location.href='${root }/accompany/board?s=${li.id }'">${li.type }</li>
+				</ul>
+			</c:forEach>
+			
 			</div>
 			
 			<button type="button" class="btn btn-write" id="btn-write" onclick="window.location.href='${root}/accompany/reg'">글쓰기</button>
@@ -232,9 +230,9 @@
 							</div>
 						</div>
 						
-						<div class="board-title">
+						<div class="board-title" onclick="window.location.href='${root }/accompany/detail?id=${li.id }'">
 							<div class="board-title-detail">
-								<div><a href="${root }/accompany/detail?id=${li.id }">${li.title }</a></div>
+								<div>${li.title }</div>
 							</div>
 						</div>
 						
@@ -333,7 +331,7 @@
 
 
 <script>
-
+	var map;
 	function initialize() {
 	
 		/* -----------지도 초기 위치 지정하기------------- */
@@ -345,7 +343,7 @@
 							zoom : 13,
 							mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
-		var map = new google.maps.Map(document.getElementById("map-wrapper"), mapPosition);
+		map = new google.maps.Map(document.getElementById("map-wrapper"), mapPosition);
 	
 		/* -----------지도에 마커 추가하기------------- */
         
@@ -360,7 +358,7 @@
 	         });
 			
 			var initContent = "<div style=\"display:flex; justify-content:center; align-items:center;\">"+
-			"<div style=\"background-image: url('${root }/resource/images/Cat.jpg'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+		
+			"<div style=\"align-self:center; background-image: url('${root }/resource/images/Cat.jpg'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+		
 			"<div onclick='window.location.href=\"${root }/accompany/detail?p=${li.id }\"' style=\"margin-left:10px; cursor:pointer;\">${li.writerNicName }</div></div>";
 			
 	        /* -----------마커 눌렀을 때 발생하는 이벤트------------- */
@@ -396,4 +394,13 @@
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
+	map.setCenter({lat: -34, lng: 151});
+
+/* 	function moveCenter() = {
+		map.setCenter({lat: -34, lng: 151});
+	};
+	
+	document.addEventListener("load",function(){
+		var 
+	}); */
 </script>

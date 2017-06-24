@@ -2,6 +2,10 @@
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
+a:hover{
+	text-decoration: none;	
+}
+
 html,body{
 	line-height: inherit;
 	font-size:13px;

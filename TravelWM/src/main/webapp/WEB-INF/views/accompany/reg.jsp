@@ -6,15 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet" href="/TravelWM/resource/css/accompany/reg.css"
 	type="text/css" />
-	
-<!-- <script>
 
-$("#submit").click(function(){
-	alert("전송합니다");
-});
-$(":file").filestyle();
-</script>
- -->
 
 <main id="main">
 <div class="frame">
@@ -43,6 +35,8 @@ $(":file").filestyle();
 			    
   				<!-- -------- 달력 ------ -->
     	  		<input type="text" class="form-control" name="datefilter" value="" placeholder="Search" required />
+    	  		<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" required />
+    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" required />
 	    	</div>
 		</div>
 		<div class="text">
@@ -213,7 +207,6 @@ $(":file").filestyle();
               }
               
              alert(placeName+'가 선택되었습니다.');
-             alert(country);
               lng.value = longitude;
         	  lat.value = latitude;
         	  placeForm.value= placeName;
@@ -250,3 +243,26 @@ $(":file").filestyle();
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
         
+<script>
+$(function() {
+
+	  $('input[name="datefilter"]').daterangepicker({
+	      autoUpdateInput: false,
+	      locale: {
+	          cancelLabel: 'Clear'
+	      }
+	  });
+
+	  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+	      $(this).val(picker.startDate.format('MMM DD') + ' - ' + picker.endDate.format('MMM DD'));
+	      $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
+	      $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
+	      
+	  });
+
+	  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+	      $(this).val('');
+	  });
+
+});
+</script>

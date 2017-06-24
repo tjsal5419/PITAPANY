@@ -46,12 +46,12 @@
     		<div class="search-bar-container">
 			    <input class="form-control form-control-header" id="autocomplete1" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
 
-<!-- 			    <input class="" type="text" value="" name="lat" id="lat"/>			           
-			    <input class="" type="text" value="" name="lng" id="lng"/>  
-			    <input class="" type="text" value="" name="place" id="place"/>  
-			    <input class="" type="text" value="" name="locality" id="locality"/>  
- 			    <input class="" type="text" value="" name="country" id="country"/>  
- -->	
+ 			    <input class="hidden" type="text" value="" name="lat1" id="lat1"/>			           
+			    <input class="hidden" type="text" value="" name="lng1" id="lng1"/>  
+			    <input class="hidden" type="text" value="" name="place1" id="place1"/>  
+			    <input class="hidden" type="text" value="" name="locality1" id="locality1"/>  
+ 			    <input class="hidden" type="text" value="" name="country1" id="country1"/>  
+ 	
    	    	  	<input class="form-control form-control-header" type="text" name="datefilter" value="" placeholder="동행 날짜 입력"/>
 		  		<input type="button" class="search-button" alt="Submit"/>
 		  	</div>

@@ -28,8 +28,8 @@
 			<div class="profile">
 				<div class="pic"></div>
 				<div class="info">
-					<span class="item">${accDetail.memberId}</span>
-					<span class="item">베를린(독일)</span>
+					<span class="item"><a href="${root }/accompany/profile?id=${accDetail.memberId }">${accDetail.writerNicName}</a></span>
+					<span class="item">${accDetail.country }</span>
 					<span class="item"><fmt:formatDate value="${accDetail.startDate}" pattern="yyyy-MM-dd" />~<fmt:formatDate value="${accDetail.endDate}" pattern="yyyy-MM-dd" /></span>
 				</div>
 			</div>
@@ -93,20 +93,57 @@
 		</div>
 	</div>
 </div>
-<script
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
-<script>
-	function initialize() {
-		var mapProp = {
-			center : new google.maps.LatLng(${accDetail.latitude}, ${accDetail.longitude}),
-			zoom : 5,
-			mapTypeId : google.maps.MapTypeId.ROADMAP
-		};
-		var map = new google.maps.Map(document.getElementById("googleMap"),
-				mapProp);
-	}
-
-	google.maps.event.addDomListener(window, 'load', initialize);
-</script>
-<div id="googleMap" class="map-container"></div>
+<div id="map-wrapper" class="map-container"></div>
 </main>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
+
+
+<script>
+
+	function initialize() {
+	
+		/* -----------지도 초기 위치 지정하기------------- */
+		var lat = parseFloat('${accDetail.latitude }');
+		var lng = parseFloat('${accDetail.longitude }');
+
+		var mapPosition = {
+							center: {lat: lat, lng: lng},
+							zoom : 13,
+							mapTypeId : google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map-wrapper"), mapPosition);
+	
+		/* -----------지도에 마커 추가하기------------- */
+        
+
+			var marker = new google.maps.Marker({
+	            position: {lat: lat, lng: lng},
+	            map: map,
+	            icon:'${root}/resource/images/marker/marker5.png'
+	         });
+			
+			var initContent ="<div style=\"display:flex;\">"+
+			"<div style=\"align-self:center; background-image: url('${root }/resource/images/Cat.jpg'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+
+			"<div style=\"display:flex; flex-direction:column; margin-left:10px;\">"+
+			"<div>${accDetail.country }</div>"+
+			"<div>${accDetail.locality }</div>"+
+			"<div>${accDetail.place }</div>"+
+			"</div>"+
+			"</div>";
+			
+	        /* -----------마커 눌렀을 때 발생하는 이벤트------------- */
+       	     var infowindow = new google.maps.InfoWindow({
+        	    content: initContent,
+        	    maxWidth:500,
+        	    maxHeight:300,
+        	    disableAutoPan: true
+         	 });
+
+       	  infowindow.open(map, marker); 
+          
+	}	
+	
+	google.maps.event.addDomListener(window, 'load', initialize);
+	
+</script>
+

@@ -20,7 +20,7 @@ public class CustomWebAuthenticationDetails extends WebAuthenticationDetails {
 
     @Autowired
     private MemberDao memberDao;
-    
+   
     
     public CustomWebAuthenticationDetails(HttpServletRequest request) {
         super(request);
@@ -32,7 +32,7 @@ public class CustomWebAuthenticationDetails extends WebAuthenticationDetails {
         System.out.println("아이디는"+memberDao.getIdByEmail(email));
         
         Member member = memberDao.get(memberDao.getIdByEmail(email));
-        
+        memberDao.updateAgeAll();
         this.member = member;
         
 
