@@ -42,7 +42,7 @@ $(":file").filestyle();
 			    <input class="hidden" type="text" value="" name="country" id="country"/>  
 			    
   				<!-- -------- 달력 ------ -->
-    	  		<input type="text" class="form-control" name="datefilter" value="" placeholder="Search" required />
+    	  		<input type="text" class="form-control calendar-reg" name="datefilter-reg" value="" placeholder="Search" required />
 	    	</div>
 		</div>
 		<div class="text">
@@ -249,4 +249,40 @@ $(":file").filestyle();
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
+
+<script>
+	$('.calendar-reg').on("click", function(){
+		$('.daterangepicker').css({'position':'absolute'});
+		$('.daterangepicker').css({'top':'170px'});
+	});
+	
+	$('body').on("click", function(e){
+		
+		if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
+		} else {
+			$('.daterangepicker').css({'position':'fixed'});
+			/* $('.daterangepicker').css({'top':'-500px'}); */
+		}
+	});
+</script>
         
+<script>
+	$(function() {
+	  
+		$('input[name="datefilter-reg"]').daterangepicker({
+	      autoUpdateInput: false,
+	      locale: {
+	          cancelLabel: 'Clear'
+	      }
+	  });
+		
+	  $('input[name="datefilter-reg"]').on('apply.daterangepicker', function(ev, picker) {
+	      $(this).val(picker.startDate.format('MMM DD') + ' - ' + picker.endDate.format('MMM DD'));
+	  });
+	
+	  $('input[name="datefilter-reg"]').on('cancel.daterangepicker', function(ev, picker) {
+	      $(this).val('');
+	  });
+	
+	});
+</script>

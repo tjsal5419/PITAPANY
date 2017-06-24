@@ -371,14 +371,14 @@ html,body{
 /* ---CALENDAR---------------------------------------------------------------------- */
 
 .daterangepicker {
-  position:;
+  position: fixed;
   color: inherit;
   background-color: #fff;
   border-radius: 4px;
   width: 278px;
   padding: 4px;
   margin-top: 1px;
-  top: 100px;
+  top: ;
   left: 20px;
   /* Calendars */ }
   .daterangepicker:before, .daterangepicker:after {
@@ -593,6 +593,10 @@ html,body{
 .daterangepicker_input{
 	display: none;
 }
+
+element.style{
+		top: 45px;
+	}
 
 @media all and (max-width: 890px) {
 	.daterangepicker.dropdown-menu{

@@ -229,6 +229,23 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
         
+<script>
+$('input[name="datefilter"]').on("click", function(){
+		
+		$('.daterangepicker').css({'top':'45px'});
+});
+
+
+$('body').on("click", function(e){
+	
+	if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
+	} else {
+		$('.daterangepicker').css({'top':'-500px'});
+	}
+});
+
+</script>
+        
 <script type="text/javascript">
 $(function() {
 
@@ -249,7 +266,6 @@ $(function() {
 
 });
 </script>
-  
   
   <!-- Toggle Down ---------------------------------------------------------------- -->
 <script>
@@ -1359,7 +1375,7 @@ $('body').click(function(e){
 
         move: function() {
             var parentOffset = { top: 0, left: 0 },
-                containerTop;
+                containerTop = { top: -500};
             var parentRightEdge = $(window).width();
             if (!this.parentEl.is('body')) {
                 parentOffset = {
@@ -1370,14 +1386,14 @@ $('body').click(function(e){
             }
 
             if (this.drops == 'up')
-                containerTop = this.element.offset().top - this.container.outerHeight() - parentOffset.top;
+                containerTop = '-500px';
             else
-                containerTop = this.element.offset().top + this.element.outerHeight() - parentOffset.top;
+                containerTop = '-500px';
             this.container[this.drops == 'up' ? 'addClass' : 'removeClass']('dropup');
 
             if (this.opens == 'left') {
                 this.container.css({
-                    top: containerTop,
+
                     right: parentRightEdge - this.element.offset().left - this.element.outerWidth(),
                     left: 'auto'
                 });
@@ -1389,7 +1405,7 @@ $('body').click(function(e){
                 }
             } else if (this.opens == 'center') {
                 this.container.css({
-                    top: containerTop,
+   
                     left: this.element.offset().left - parentOffset.left + this.element.outerWidth() / 2
                             - this.container.outerWidth() / 2,
                     right: 'auto'
@@ -1402,7 +1418,7 @@ $('body').click(function(e){
                 }
             } else {
                 this.container.css({
-                    top: containerTop,
+          
                     left: this.element.offset().left - parentOffset.left,
                     right: 'auto'
                 });
