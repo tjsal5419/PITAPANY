@@ -27,6 +27,7 @@
 			
 				<!-- -------- 구글 지도 검색창 ------ -->
 			    <input class="form-control" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
+
 			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
 			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
 			    <input class="hidden" type="text" value="" name="place" id="place"/>  
@@ -121,9 +122,8 @@
 </div>
 
 </main>
-
 <!-- ------------google map API------------------- -->
-    
+<!--     
 <script>
       // This example displays an address form, using the autocomplete feature
       // of the Google Places API to help users fill in the information.
@@ -240,9 +240,237 @@
 	    	});
           
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
-        async defer></script>
+     -->
+    
+ <!--      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
+        async defer></script> -->
+         
+
+<script>
+        var placeSearch, autocomplete;
+        var location;
+        var componentForm = {
+        	        street_number: 'short_name',
+        	        route: 'long_name',
+        	        locality: 'long_name',
+        	        administrative_area_level_1: 'short_name',
+        	        country: 'long_name',
+        	        postal_code: 'short_name'
+        };
+          
+
+		var acInputs =  document.querySelectorAll("#autocomplete");
+ 		var input = document.querySelector("#autocomplete");
+		var autocomplete = [];
+		
+ 		function initAutocomplete() {
+	     // Create the autocomplete object, restricting the search to geographical
+	     // location types.
+
+	    	for(var i=0; i < acInputs.length ; i++){   
+		    	autocomplete[i] = new google.maps.places.Autocomplete(
+		    		 acInputs[i],
+			         {types: ['geocode']}
+			     );
+		    	autocomplete[i].addListener('place_changed', eval('getLocation'+i)); 
+		     }
+	     
+	  	 }
+ 		
+ 		
+ 		function getLocation0(){
+ 		          	  var place = autocomplete[0].getPlace();
+ 		  	          var latitude = place.geometry.location.lat();
+ 		  	          var longitude = place.geometry.location.lng();
+ 		  	          var placeName = place.name;
+ 		  	/*         	  var fotmattedAdress = place.formatted_address;
+ 		  	 */        	  
+ 		  	    	               	  
+ 		  	        	  alert("위도"+latitude);
+ 		  	        	  alert("경도"+longitude);
+ 		  	        	  alert(placeName);
+ 		  	
+ 		  	        	  
+ 		  	         	  var lng = document.querySelector("#lng1");
+ 		  	        	  var lat = document.querySelector("#lat1");
+ 		  	        	  var placeForm = document.querySelector("#place1");
+ 		  	        	  var localityText = document.querySelector("#locality1");
+ 		  	        	  var countryText = document.querySelector("#country1");
+ 		  				  var locality = '';
+ 		  				  var country = '';   	  
+ 		  		          
+ 		  	              for (var i = 0; i < place.address_components.length; i++) {
+ 		  	                  var addressType = place.address_components[i].types[0];
+ 		  	                  
+ 		  	                  if (addressType=='country') {
+ 		  	                    country = place.address_components[i][componentForm[addressType]];
+ 		  	                   
+ 		  	                   // alert(country);
+ 		  	                  }
+ 		  	                  
+ 		  	                  else if(addressType == 'locality'){
+ 		  	                	  locality = place.address_components[i][componentForm[addressType]];
+ 		  	                	  
+ 		  	                	 //	 alert(locality);
+ 		  	                  }
+ 		  	             
+ 		  	              }
+ 		  	              
+ 		  	           lat.value=latitude;
+ 		  	           lng.value=longitude;
+ 		  	           placeForm.value=placeName;
+ 		  	           localityText.value = locality;
+ 		  	           countryText.value = country;
+ 		  	            	  
+ 		  		          alert(country);
+ 		  		          alert(locality);
+ 		
+ 		}
+
+ 		function getLocation1(){
+         	  var place = autocomplete[1].getPlace();
+ 	          var latitude = place.geometry.location.lat();
+ 	          var longitude = place.geometry.location.lng();
+ 	          var placeName = place.name;
+ 	/*         	  var fotmattedAdress = place.formatted_address;
+ 	 */        	  
+ 	    	/*                	  
+ 	        	  alert("위도"+latitude);
+ 	        	  alert("경도"+longitude);
+ 	        	  alert(placeName);
+ 	 */
+ 	        	  
+ 	         	  var lng = document.querySelector("#lng");
+ 	        	  var lat = document.querySelector("#lat");
+ 	        	  var placeForm = document.querySelector("#place");
+ 	        	  var localityText = document.querySelector("#locality");
+ 	        	  var countryText = document.querySelector("#country");
+ 				  var locality = '';
+ 				  var country = '';   	  
+ 		          
+ 	              for (var i = 0; i < place.address_components.length; i++) {
+ 	                  var addressType = place.address_components[i].types[0];
+ 	                  
+ 	                  if (addressType=='country') {
+ 	                    country = place.address_components[i][componentForm[addressType]];
+ 	                   
+ 	                   // alert(country);
+ 	                  }
+ 	                  
+ 	                  else if(addressType == 'locality'){
+ 	                	  locality = place.address_components[i][componentForm[addressType]];
+ 	                	  
+ 	                	 //	 alert(locality);
+ 	                  }
+ 	             
+ 	              }
+	  	             
+           
+           
+			      lat.value=latitude;
+			      lng.value=longitude;
+			      placeForm.value=placeName;
+			      localityText.value = locality;
+			      countryText.value = country;
+			        
+ 		          /* alert(country);
+ 		          alert(locality);
+ 		           */
+ 		         alert(country+'의'+placeName+'이 선택되었습니다.');
+
+		}
+ 		
+		function getLocation2(){
+       	  var place = autocomplete[2].getPlace();
+	          var latitude = place.geometry.location.lat();
+	          var longitude = place.geometry.location.lng();
+	          var placeName = place.name;
+	/*         	  var fotmattedAdress = place.formatted_address;
+	 */        	  
+	    	/*                	  
+	        	  alert("위도"+latitude);
+	        	  alert("경도"+longitude);
+	        	  alert(placeName);
+	 */
+	        	  
+	         	  var lng = document.querySelector("#lng");
+	        	  var lat = document.querySelector("#lat");
+	        	  var placeForm = document.querySelector("#place");
+	        	  var localityText = document.querySelector("#locality");
+	        	  var countryText = document.querySelector("#country");
+				  var locality = '';
+				  var country = '';      	  
+		          
+	              for (var i = 0; i < place.address_components.length; i++) {
+	                  var addressType = place.address_components[i].types[0];
+	                  
+	                  if (addressType=='country') {
+	                    country = place.address_components[i][componentForm[addressType]];
+	                   
+	                   // alert(country);
+	                  }
+	                  
+	                  else if(addressType == 'locality'){
+	                	  locality = place.address_components[i][componentForm[addressType]];
+	                	  
+	                	 //	 alert(locality);
+	                  }
+	             
+	              }
+	              
+	  	             
+           
+           
+			      lat.value=latitude;
+			      lng.value=longitude;
+			      placeForm.value=placeName;
+			      localityText.value = locality;
+			      countryText.value = country;
         
+		          alert(country+'의'+placeName+'이 선택되었습니다.');
+
+		}
+ 		
+          
+          // Bias the autocomplete object to the user's geographical location,
+          // as supplied by the browser's 'navigator.geolocation' object.
+	      function geolocate() {
+	        if (navigator.geolocation) {
+	          navigator.geolocation.getCurrentPosition(function(position) {
+	            var geolocation = {
+	              lat: position.coords.latitude,
+	              lng: position.coords.longitude
+	            };
+	            var circle = new google.maps.Circle({
+	              center: geolocation,
+	              radius: position.coords.accuracy
+	            });
+	            for(var i=0 ; i<acInputs.length ; i++){
+	            	autocomplete[i].setBounds(circle.getBounds());
+	            }
+	          });
+	        }
+	      }
+          
+ 	      $('#autocomplete').keydown(function (e) {
+	    	  if (e.which == 13 && $('.pac-container:visible').length) return false;
+	    	});
+ 	      
+ 	      /* -----------구글 맵 검색 창 z-index 위로 올리기----------- */
+ 		 var autoComplete1 = document.querySelector('#autocomplete');
+ 	     var isAutoComplete1Opend = false;
+ 	     if(!isAutoComplete1Opend){
+ 			 autoComplete1.onclick = function(){	
+	 	     var searchResultBox = document.querySelector('.pac-container');
+ 	    	 searchResultBox.style.zIndex = '10000'; 
+ 			 }
+ 		}  
+
+
+</script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
 <script>
 $(function() {
 
