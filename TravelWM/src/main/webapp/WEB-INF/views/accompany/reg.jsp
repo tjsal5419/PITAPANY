@@ -6,15 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet" href="/TravelWM/resource/css/accompany/reg.css"
 	type="text/css" />
-	
-<!-- <script>
 
-$("#submit").click(function(){
-	alert("전송합니다");
-});
-$(":file").filestyle();
-</script>
- -->
 
 <main id="main">
 <div class="frame">
@@ -32,7 +24,6 @@ $(":file").filestyle();
 		</div>
 		<div class="sel">
 			<div class="search-bar-container-accom">
-			
 				<!-- -------- 구글 지도 검색창 ------ -->
 			    <input class="form-control" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
 			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
@@ -42,7 +33,10 @@ $(":file").filestyle();
 			    <input class="hidden" type="text" value="" name="country" id="country"/>  
 			    
   				<!-- -------- 달력 ------ -->
+
     	  		<input type="text" class="form-control calendar-reg" name="datefilter-reg" value="" placeholder="Search" required />
+    	  		<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" required />
+    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" required />
 	    	</div>
 		</div>
 		<div class="text">
@@ -213,7 +207,6 @@ $(":file").filestyle();
               }
               
              alert(placeName+'가 선택되었습니다.');
-             alert(country);
               lng.value = longitude;
         	  lat.value = latitude;
         	  placeForm.value= placeName;
@@ -261,7 +254,6 @@ $(":file").filestyle();
 		if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
 		} else {
 			$('.daterangepicker').css({'position':'fixed'});
-			/* $('.daterangepicker').css({'top':'-500px'}); */
 		}
 	});
 </script>
@@ -278,6 +270,8 @@ $(":file").filestyle();
 		
 	  $('input[name="datefilter-reg"]').on('apply.daterangepicker', function(ev, picker) {
 	      $(this).val(picker.startDate.format('MMM DD') + ' - ' + picker.endDate.format('MMM DD'));
+	      $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
+	      $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
 	  });
 	
 	  $('input[name="datefilter-reg"]').on('cancel.daterangepicker', function(ev, picker) {

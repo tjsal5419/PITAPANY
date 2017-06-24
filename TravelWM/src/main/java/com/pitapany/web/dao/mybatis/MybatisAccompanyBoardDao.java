@@ -63,4 +63,10 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 		return accBoardDao.getMainList();
 	}
 
+	@Override
+	public AccompanyBoardView getView(String id) {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.getView(id);
+	}
+
 }

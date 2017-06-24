@@ -160,6 +160,7 @@
 	/* border: 5px solid red; */
 }
 
+
 .board-bookmark{
 	display: block;
 	position: ;
@@ -240,6 +241,11 @@
 	margin-top: 10px;
 		
 	border: 1px solid blue;
+	
+}
+
+.board-title:hover{
+	cursor: pointer;
 }
 
 .board-title-detail {

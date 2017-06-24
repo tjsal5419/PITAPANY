@@ -33,6 +33,8 @@ import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.Style;
 import com.pitapany.web.security.CustomWebAuthenticationDetails;
 
+import javafx.css.Styleable;
+
 @Controller
 @RequestMapping("/accompany/*")
 public class AccompanyController {
@@ -66,7 +68,7 @@ public class AccompanyController {
    public String detail(Model model, String id) {
       accompanyBoardDao.addHits(id);
 
-      AccompanyBoard accompanyBoard = accompanyBoardDao.get(id);
+      AccompanyBoardView accompanyBoard = accompanyBoardDao.getView(id);
       AccompanyBoardFile file = accompanyBoardFileDao.get(id);
     		  
       model.addAttribute("file", file);
@@ -90,16 +92,17 @@ public class AccompanyController {
          HttpServletRequest request, 
          HttpServletResponse response,
          AccompanyBoardFile accompanyBoardFile,
-         @RequestParam(value="title",defaultValue="")String title,
+         @RequestParam(value="title",defaultValue=" ")String title,
          @RequestParam(value="lat",defaultValue="0.0")float lat,
          @RequestParam(value="lng",defaultValue="0.0")float lng,
-         @RequestParam(value="content",defaultValue="")String content,
-         @RequestParam(value="style",defaultValue="")String styleId,
+         @RequestParam(value="content",defaultValue="작성된 내용이 없습니다.")String content,
+         @RequestParam(value="style",defaultValue="1")String styleId,
          @RequestParam(value="file", defaultValue="null") MultipartFile file,
-         @RequestParam(value="place", defaultValue="")String place,
-         @RequestParam(value="locality", defaultValue="")String locality,
-         @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
-
+         @RequestParam(value="place", defaultValue="미등록장소")String place,
+         @RequestParam(value="locality", defaultValue="미등록지역")String locality,
+         @RequestParam(value="country", defaultValue="미등록나라")String country,
+         @RequestParam(value="startDate", defaultValue="0000-00-00")String sD,
+         @RequestParam(value="endDate", defaultValue="0000-00-00")String eD) throws ParseException{      
 	   
 	   
 	  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
@@ -112,8 +115,8 @@ public class AccompanyController {
       accompanyBoard.setTitle(title);
       
       SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-mm");
-      java.sql.Date startDate = new java.sql.Date(sdf.parse("2017-11-11").getTime());
-      java.sql.Date endDate = new java.sql.Date(sdf.parse("2018-11-11").getTime());
+      java.sql.Date startDate = new java.sql.Date(sdf.parse(sD).getTime());
+      java.sql.Date endDate = new java.sql.Date(sdf.parse(eD).getTime());
       
       accompanyBoard.setStartDate(startDate);
       accompanyBoard.setEndDate(endDate);
@@ -174,7 +177,6 @@ public class AccompanyController {
            
            accompanyBoardFileDao.add(accompanyBoardFile);
            
-           System.out.println(fullPath);
       }       
       
       return "inc/redirect";
@@ -240,6 +242,10 @@ public class AccompanyController {
       model.addAttribute("pageCount",pageCount);
       model.addAttribute("accompanyBoardList",accompanyBoardList);
 
+	  List<Style> stlyeList = styleDao.getList();
+	  model.addAttribute("styleList",stlyeList);
+	
+	  
       return "accompany.board";
 
    }
