@@ -9,7 +9,6 @@
 		SELECT * 
 		FROM MemberAccompanyInfo 
 		order by cast(id as unsigned) desc 
-		limit #{page},6
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.MemberAccompanyInfo">
