@@ -88,7 +88,7 @@
 							</div>
 						</div>
 						
-						<div class="board-title" onclick="window.location.href='${root }/accompany/detail?id=${li.id }'">
+						<div class="board-title bt${li.id }" onclick="window.location.href='${root }/accompany/detail?id=${li.id }'">
 							<div class="board-title-detail">
 								<div>${li.title }</div>
 							</div>
@@ -185,8 +185,8 @@
 <!-- 	-----------구글 맵 API이용하기--------------- -->
 
 
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
-
+<!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
+ -->
 
 <script>
 	var map;
@@ -241,26 +241,19 @@
               	}
          	}); 
           	
-          	google.maps.event.addListener(marker${li.id }, 'mouseover', function() {
-           	 	
-         	});
+          	var bt${li.id} = document.querySelector('.bt${li.id}');
+          	
+          	bt${li.id }.onmouseover = function(){
+          		map.setCenter(new google.maps.LatLng(${li.latitude }, ${li.longitude }));
+          	}
+
           	
           	
         </c:forEach>
-       
 	}	
 	
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
-	map.setCenter({lat: -34, lng: 151});
-
-/* 	function moveCenter() = {
-		map.setCenter({lat: -34, lng: 151});
-	};
-	
-	document.addEventListener("load",function(){
-		var 
-	}); */
 </script>
 
 <script>

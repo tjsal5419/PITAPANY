@@ -113,11 +113,10 @@ public class AccompanyController {
       accompanyBoard.setLatitude(lat);
       accompanyBoard.setLongitude(lng);
       accompanyBoard.setTitle(title);
-      
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-mm");
-      java.sql.Date startDate = new java.sql.Date(sdf.parse(sD).getTime());
-      java.sql.Date endDate = new java.sql.Date(sdf.parse(eD).getTime());
-      
+
+      java.sql.Date startDate = java.sql.Date.valueOf(sD);
+      java.sql.Date endDate = java.sql.Date.valueOf(eD);
+
       accompanyBoard.setStartDate(startDate);
       accompanyBoard.setEndDate(endDate);
 

@@ -1,7 +1,6 @@
 package com.pitapany.web.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,12 +20,11 @@ import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.dao.MemberProfileBoardDao;
 import com.pitapany.web.dao.MemberProfileBoardReplyDao;
 import com.pitapany.web.dao.MemberProfileDao;
-import com.pitapany.web.entity.AccompanyBoard;
+import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.MemberProfile;
 import com.pitapany.web.entity.MemberProfileBoard;
 import com.pitapany.web.entity.MemberProfileBoardReply;
 import com.pitapany.web.entity.ProfHomeBoardAndReply;
-import com.pitapany.web.entity.Style;
 
 @Controller
 @RequestMapping("/profile/*")
@@ -45,48 +44,7 @@ public class ProfileController {
 	
 	@Autowired
 	private MemberProfileBoardReplyDao memberProfileBoardReplayDao;
-/*	
-	@RequestMapping("home")
-	public String home(Model model, String id,
-			@RequestParam(value="p", defaultValue="1")Integer page) {
 
-		int count = memberProfileBoardDao.count();
-		int listPerFive = (page-1)/5;
-        int checkLast = (listPerFive*5) + 5;
-        
-        if(count % 5 == 0)
-            count = count/5;
-        else
-            count = (count/5)+1;
-        
-        if(checkLast > count)
-            checkLast = count;
-        model.addAttribute("listPerFive", listPerFive);
-        model.addAttribute("checkLast", checkLast);
-        model.addAttribute("cnt", count);
-		
-		
-		
-		System.out.println("page:"+page+"prev"+prev+"next:"+next);
-		model.addAttribute("prev",prev);
-		model.addAttribute("next",next);
-		
-		 DB의 min-Limit 설정을 위한 querypage값
-		int minLimitPage = (page-1)*6;
-		
-		List<MemberProfileBoard> profilePage = sqlsession.getMapper(MemberProfileBoardDao.class).getPage(minLimitPage);
-		Member member = sqlsession.getMapper(MemberDao.class).getMember(id);
-		
-	
-		model.addAttribute("profileBoard", profilePage);
-		model.addAttribute("member", member);
-		
-		System.out.println(count);
-		System.out.println(page);
-		return "profile.home";
-	}
-	*/
-	
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public String home(Model model, String id) {
@@ -131,58 +89,52 @@ public class ProfileController {
 	    return "profile.home";
 	}
 
-	@RequestMapping(value="reg",
-	         method=RequestMethod.GET)
-	   public String  reg(Model model){
-	      
-	      return "profile.reg";
-	   }
-	
 	@RequestMapping(value = "home", method = RequestMethod.POST)
 	public String home(Model model) {
 
 		return "profile.home";
 	}
 
-	   @RequestMapping(value="reg",
-	         method=RequestMethod.POST)
-	   public String regPost(Model model,
-	         HttpServletRequest request, 
-	         HttpServletResponse response,
-	         @RequestParam(value="lat",defaultValue="0.0")float lat,
-	         @RequestParam(value="lng",defaultValue="0.0")float lng,
-	         @RequestParam(value="content",defaultValue="")String content,
-	         @RequestParam(value="style",defaultValue="")String styleId,
-	         @RequestParam(value="img", defaultValue="")String img,
-	         @RequestParam(value="place", defaultValue="")String place,
-	         @RequestParam(value="locality", defaultValue="")String locality,
-	         @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
+	@RequestMapping(value = "reg", method = RequestMethod.GET)
+	public String reg(Model model) {
 
-	      
-	      
-	      MemberProfileBoard memberProfileBoard = new MemberProfileBoard();
-	      memberProfileBoard.setContent(content);
-	      memberProfileBoard.setLatitude(lat);
-	      memberProfileBoard.setLongitude(lng);
+		return "profile.reg";
+	}
 
-	      memberProfileBoard.setMemberProfileId("1");
-	      
-	      if(!img.equals(""))
-	    	  memberProfileBoard.setImg(img);
-	      
-	      memberProfileBoard.setPlace(place);
-	      memberProfileBoard.setLocality(locality);
-	      memberProfileBoard.setCountry(country);
-	      
-	      memberProfileBoardDao.add(memberProfileBoard);
-	      
-	      
-	      model.addAttribute("url","profile/home");
-	      model.addAttribute("msg","성공적으로 프로필SNS등록이 와...와...완료...");
-	      
-	      
-	      
-	      return "inc/redirect";
-	   }
-	
+	@RequestMapping(value = "reg", method = RequestMethod.POST)
+	public String regPost(Model model, HttpServletRequest request, HttpServletResponse response,
+			@RequestParam(value = "lat", defaultValue = "0.0") float lat,
+			@RequestParam(value = "lng", defaultValue = "0.0") float lng,
+			@RequestParam(value = "content", defaultValue = "") String content,
+			@RequestParam(value = "style", defaultValue = "") String styleId,
+			@RequestParam(value = "img", defaultValue = "") String img,
+			@RequestParam(value = "place", defaultValue = "") String place,
+			@RequestParam(value = "locality", defaultValue = "") String locality,
+			@RequestParam(value = "country", defaultValue = "") String country) throws ParseException {
+
+		MemberProfileBoard memberProfileBoard = new MemberProfileBoard();
+		memberProfileBoard.setContent(content);
+		memberProfileBoard.setLatitude(lat);
+		memberProfileBoard.setLongitude(lng);
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+		memberProfileBoard.setMemberProfileId(member);
+
+		if (!img.equals(""))
+			memberProfileBoard.setImg(img);
+
+		memberProfileBoard.setPlace(place);
+		memberProfileBoard.setLocality(locality);
+		memberProfileBoard.setCountry(country);
+
+		memberProfileBoardDao.add(memberProfileBoard);
+
+		model.addAttribute("url", "profile/home");
+		model.addAttribute("msg", "성공적으로 프로필SNS등록이 와...와...완료...");
+
+		return "inc/redirect";
+	}
+
 }
