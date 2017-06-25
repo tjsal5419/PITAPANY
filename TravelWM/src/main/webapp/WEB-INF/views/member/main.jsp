@@ -9,7 +9,7 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-<link href="${root}/resource/css/admin/main.css" rel="stylesheet"/>
+<link href="${root}/resource/css/member/main.css" rel="stylesheet"/>
 
 
 <main class="main-container">
@@ -33,7 +33,7 @@
 					<div class="carousel-caption">
 						<div class="caption-content">
 							<h2 class="animated fadeInDown">당신과 당신의 여행이 만나는 곳</h2>
-							<span class="animated fadeInDown">동행 등록을 하시고 보다 편리하게 이용하세요</span> <a href="#" class="btn btn-blue btn-effect">동행 등록</a>
+							<span class="animated fadeInDown">동행 등록을 하시면 보다 편리한 이용이 가능합니다</span> <a href="#" class="btn btn-blue btn-effect">동행 등록</a>
 						</div>
 					</div>
 					
@@ -43,10 +43,8 @@
 					style="background-image: url('${root}/resource/images/Austria.jpg')">
 					<div class="carousel-caption">
 						<div class="caption-content">
-							<h2 class="animated fadeInDown">별e 빛ㄴr는 밤</h2>
-							<span class="animated fadeInDown">Clean and Professional
-								one page Template</span> <a href="#" class="btn btn-blue btn-effect">Join
-								US</a>
+							<h2 class="animated fadeInDown">여행이란 익숙한 것과의 작별, 낯선 것과의 설레는 만남</h2>
+							<span class="animated fadeInDown">여몽(如夢)</span> 
 						</div>
 					</div>
 				</div>
@@ -56,10 +54,8 @@
 					style="background-image: url('${root}/resource/images/London.jpg')">
 					<div class="carousel-caption">
 						<div class="caption-content">
-							<h2 class="animated fadeInDown">BLUE Onepage HTML5 Template</h2>
-							<span class="animated fadeInDown">Clean and Professional
-								one page Template</span> <a href="#" class="btn btn-blue btn-effect">Join
-								US</a>
+							<h2 class="animated fadeInDown">만남은 인연이고 관계는 노력이다</h2>
+							<span class="animated fadeInDown">양광모, 비상 中에서</span>
 						</div>
 					</div>
 				</div>
@@ -112,7 +108,7 @@
 						</div>
 					</div>
 					
-					<div class="board-title">
+					<div class="board-title" onclick="window.location.href='${root }/accompany/detail?id=${li.id }'">
 						<div class="board-title-detail">
 							<span>${li.title }</span>
 						</div>

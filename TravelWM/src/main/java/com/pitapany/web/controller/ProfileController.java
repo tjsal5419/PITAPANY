@@ -123,11 +123,12 @@ public class ProfileController {
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getDetails()).getMember();
 		String memberId = member.getId();
-		
+
 		//멤버 아이디를 이용 해 프로필아이디를 받아오기
 		memberProfile.setMemberId(memberId);
 		String memberProfileId = memberProfile.getId();
 		memberProfileBoard.setMemberProfileId(memberProfileId);
+
 
 		if (!img.equals(""))
 			memberProfileBoard.setImg(img);

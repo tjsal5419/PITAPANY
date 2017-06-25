@@ -52,7 +52,8 @@ public class AccompanyController {
    @Autowired
    private MemberDao memberDao;
 
-   @RequestMapping("/matching")
+   @RequestMapping(value = "matching",
+		   method = RequestMethod.GET)
    public String matching(Model model) {
 	   
 	  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();

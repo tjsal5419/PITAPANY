@@ -29,17 +29,19 @@
 
 			<button type="button" class="btn btn-filter" id="btn-age">나이</button>
 			<div id="age-content">
-				<div id="age-content-wrapper">
-					<p>
-						<input type="text" id="min-age" readonly/>
-					</p>
-					<div id="slider-range"></div>
-					<p>
-						<input type="text" id="max-age" readonly/>
-					</p>
+				<div id="age-content-container">
+					<div id="age-content-wrapper">
+						<p>
+							<input type="text" id="min-age" readonly/>
+						</p>
+						<div id="slider-range"></div>
+						<p>
+							<input type="text" id="max-age" readonly/>
+						</p>
+					</div>
+					<button type="submit" class="age-search">확인</button>
 				</div>
 			</div>
-			
 			
 			<button type="button" class="btn btn-filter" id="btn-style">성향</button>
 			<div id="style-content">
@@ -259,8 +261,8 @@ $( function() {
 	$( "#slider-range" ).slider({
 		range: true,
 		min: 15,
-		max: 80,
-		values: [ 30, 65 ],
+		max: 45,
+		values: [ 25, 35 ],
 		slide: function( event, ui ) {
 			$( "#min-age" ).val(ui.values[ 0 ] + " 세");
 			$( "#max-age" ).val(ui.values[ 1 ] + " 세");

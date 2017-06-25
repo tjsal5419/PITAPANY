@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet"
 	href="/TravelWM/resource/css/member/acc-setting.css" type="text/css" />
+<c:set var="root" value="${pageContext.request.contextPath }"/>
 
 <script>
 	window.addEventListener("load", function() {
@@ -22,13 +23,13 @@
 <div class="frame">
 	<div class="aside-hidden">
 		<div>
-			<a href="/TravelWM/member/profile-setting">프로필관리</a>
+			<a href="${root }/member/profile-setting">프로필관리</a>
 		</div>
 		<div>
 			<a href="">동행관리</a>
 		</div>
 		<div>
-			<a href="/TravelWM/member/bookmark">기타관리</a>
+			<a href="${root }/member/bookmark">기타관리</a>
 		</div>
 	</div>
 	<div class="aside">
@@ -37,13 +38,13 @@
 				<h3>관리페이지</h3>
 			</div>
 			<div>
-				<a href="/TravelWM/member/profile-setting">프로필관리</a>
+				<a href="${root }/member/profile-setting">프로필관리</a>
 			</div>
 			<div>
 				<a href="">동행관리</a>
 			</div>
 			<div>
-				<a href="/TravelWM/member/bookmark">기타관리</a>
+				<a href="${root }/member/bookmark">기타관리</a>
 			</div>
 		</div>
 	</div>

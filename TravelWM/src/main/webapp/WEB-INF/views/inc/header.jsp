@@ -18,14 +18,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
  
-<!-- Include Date Range Picker -->
-
-
-
+<!-- 네모 테두리 디자인 -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-
-
 
 <link rel="stylesheet" href="${root}/resource/css/inc/header.css" />
 
@@ -298,14 +292,13 @@ function initAutocomplete() {
 </c:if>
         
 <script>
-$('input[name="datefilter"]').on("click", function(){
-		
+$('input[name="datefilter"]').on("mousedown", function(){
+		$('.daterangepicker').css({'position':'fixed'});
 		$('.daterangepicker').css({'top':'45px'});
 });
 
 
 $('body').on("click", function(e){
-	
 	if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
 	} else {
 		$('.daterangepicker').css({'top':'-500px'});

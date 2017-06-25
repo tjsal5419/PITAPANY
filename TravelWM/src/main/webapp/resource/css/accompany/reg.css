@@ -6,6 +6,9 @@
 #main {
 	min-height: 0px;
 	padding-top: 60px;
+	display:flex;
+	justify-content:center;
+	align-items:center;
 }
 
 .search-bar-container-accom{
@@ -22,8 +25,7 @@
 	box-shadow: 0 3px 3px 0 #e0e0e0;
 	border: 1px solid #dddddd;
 	display: flex;
-	margin-top:10px;
-	margin-bottom:10px;
+	width:100%;
 }
 
 .content {
@@ -215,8 +217,12 @@
 		box-shadow: 0 3px 3px 0 #e0e0e0;
 		border: 1px solid #dddddd;
 		display: flex;
+		align-items:center;
 	}
 	
+	#main{
+		align-items:inherit;
+	}
 	
 .sel .search-bar-container !important{
 	flex-wrap:wrap;	
