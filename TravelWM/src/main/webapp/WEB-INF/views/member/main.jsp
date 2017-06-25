@@ -9,7 +9,7 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
-<link href="${root}/resource/css/admin/main.css" rel="stylesheet"/>
+<link href="${root}/resource/css/member/main.css" rel="stylesheet"/>
 
 
 <main class="main-container">
@@ -112,7 +112,7 @@
 						</div>
 					</div>
 					
-					<div class="board-title">
+					<div class="board-title" onclick="window.location.href='${root }/accompany/detail?id=${li.id }'">
 						<div class="board-title-detail">
 							<span>${li.title }</span>
 						</div>

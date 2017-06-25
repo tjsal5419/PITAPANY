@@ -454,6 +454,7 @@ a, a:hover, a:focus, .btn:focus {
 	margin-top: 10px;
 		
 	border: 1px solid blue;
+	cursor: pointer;
 }
 
 .board-title-detail {
