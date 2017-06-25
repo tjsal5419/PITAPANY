@@ -416,7 +416,9 @@
         async defer></script>
 
 <script>
-	$('.calendar-reg').on("click", function(){
+	$('.calendar-reg').on("mousedown", function(){
+		
+	
 		$('.daterangepicker').css({'position':'absolute'});
 		$('.daterangepicker').css({'top':'170px'});
 	});
@@ -426,6 +428,7 @@
 		if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
 		} else {
 			$('.daterangepicker').css({'position':'fixed'});
+			$('.daterangepicker').css({'top':'-500px'});
 		}
 	});
 </script>

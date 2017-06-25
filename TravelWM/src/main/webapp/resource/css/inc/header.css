@@ -2,6 +2,36 @@
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
+@font-face{
+	font-family: 'NanumBarunpen';
+	src: url("../../fonts/NanumBarunpenR.ttf") format('truetype');
+}
+@font-face{
+	font-family: 'NanumGothicUltraLight';
+	src: url("../../fonts/NanumBarunGothicUltraLight.ttf") format('truetype');
+}
+@font-face{
+	font-family: 'NanumGothic';
+	src: url("../../fonts/NanumGothic.ttf") format('truetype');
+}
+@font-face{
+	font-family: 'BusanBada';
+	src: url("../../fonts/BusanBada.ttf") format('truetype');
+}
+@font-face{
+	font-family: 'Spoqa';
+	src: url("../../fonts/Spoqa-Regular.ttf") format('truetype');
+}
+@font-face{
+	font-family: 'Spoqa-Light';
+	src: url("../../fonts/Spoqa-Light.ttf") format('truetype');
+}
+@font-face{
+	font-family: 'Spoqa-Bold';
+	src: url("../../fonts/Spoqa-Bold.ttf") format('truetype');
+}
+
+
 a:hover{
 	text-decoration: none;	
 }
@@ -9,7 +39,8 @@ a:hover{
 html,body{
 	line-height: inherit;
 	font-size:13px;
-	font-family:'RobotoDraft', 'Roboto', sans-serif;
+	font-family:'Spoqa', 'RobotoDraft', 'Roboto', sans-serif;
+	font-weight: ;
 }
 
 
@@ -599,7 +630,7 @@ html,body{
 }
 
 element.style{
-		top: 45px;
+		top: ;
 	}
 
 @media all and (max-width: 890px) {
