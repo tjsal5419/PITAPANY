@@ -585,9 +585,7 @@
 }
 
 #age-content-container{
-	display: flex;
-	flex-direction: column;
-	
+	display: block;
 }
 
 .age-search{

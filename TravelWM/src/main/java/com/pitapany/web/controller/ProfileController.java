@@ -113,15 +113,22 @@ public class ProfileController {
 			@RequestParam(value = "locality", defaultValue = "") String locality,
 			@RequestParam(value = "country", defaultValue = "") String country) throws ParseException {
 
+		MemberProfile memberProfile = new MemberProfile();
 		MemberProfileBoard memberProfileBoard = new MemberProfileBoard();
 		memberProfileBoard.setContent(content);
 		memberProfileBoard.setLatitude(lat);
 		memberProfileBoard.setLongitude(lng);
 
+		//멤버데이터 받아오기
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getDetails()).getMember();
 		String memberId = member.getId();
-		memberProfileBoard.setMemberProfileId(memberId);
+
+		//멤버 아이디를 이용 해 프로필아이디를 받아오기
+		memberProfile.setMemberId(memberId);
+		String memberProfileId = memberProfile.getId();
+		memberProfileBoard.setMemberProfileId(memberProfileId);
+
 
 		if (!img.equals(""))
 			memberProfileBoard.setImg(img);
