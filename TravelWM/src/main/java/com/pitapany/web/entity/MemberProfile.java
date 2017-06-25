@@ -3,8 +3,10 @@ package com.pitapany.web.entity;
 public class MemberProfile {
 	private String id;
 	private String job;
-	private String img;
-	private String backgroundImg;
+	private String imgSrc;
+	private String imgName;
+	private String backImgSrc;
+	private String backImgName;
 	private String status;
 	private String kakaotalkId;
 	private String facebookUrl;
@@ -23,17 +25,30 @@ public class MemberProfile {
 	public void setJob(String job) {
 		this.job = job;
 	}
-	public String getImg() {
-		return img;
+	
+	public String getImgSrc() {
+		return imgSrc;
 	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
 	}
-	public String getBackgroundImg() {
-		return backgroundImg;
+	public String getImgName() {
+		return imgName;
 	}
-	public void setBackgroundImg(String backgroundImg) {
-		this.backgroundImg = backgroundImg;
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+	public String getBackImgSrc() {
+		return backImgSrc;
+	}
+	public void setBackImgSrc(String backImgSrc) {
+		this.backImgSrc = backImgSrc;
+	}
+	public String getBackImgName() {
+		return backImgName;
+	}
+	public void setBackImgName(String backImgName) {
+		this.backImgName = backImgName;
 	}
 	public String getStatus() {
 		return status;

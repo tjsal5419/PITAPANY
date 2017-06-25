@@ -48,9 +48,12 @@ public class ProfileController {
 
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
-	public String home(Model model, String id) {
+	public String home(Model model, 
+			@RequestParam(value="mId",defaultValue="1")String memberId) {
 		
-		String memberProfileId = id;
+		MemberProfile memberProfile = memberProfileDao.getByMemberId(memberId);
+		String memberProfileId = memberProfile.getId();
+	
 		List<MemberProfileBoard> boards = memberProfileBoardDao.getList(memberProfileId); // 그 사람의 보드들 가져오고..리스트로 
 		List<ProfHomeBoardAndReply> boardAndReplyLists = new ArrayList<ProfHomeBoardAndReply>(); // 게시판, 응답을 담아줄 객체 리스트
 		
@@ -79,13 +82,9 @@ public class ProfileController {
 
 		// (게시글1 +댓글 n개)의 객체가 m개 있는 리스트 boardAndReplyLists를 모델에 전달해줌
 		model.addAttribute("boardAndReplyLists",boardAndReplyLists);
-		
-		
-		MemberProfile memberProfile = memberProfileDao.get(id);
-		List<MemberProfileBoard> memberProfileBoard = memberProfileBoardDao.getList(memberProfileId);
-	
-		model.addAttribute("profData", memberProfile);
-	    model.addAttribute("profBoard", memberProfileBoard);
+
+		// 멤버 프로필에 관한 정보
+		model.addAttribute("memberProfile", memberProfile);
 	    
 	    return "profile.home";
 	}
@@ -98,7 +97,15 @@ public class ProfileController {
 
 	@RequestMapping(value = "reg", method = RequestMethod.GET)
 	public String reg(Model model) {
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+		
+		MemberProfile memberProfile = memberProfileDao.getByMemberId(memberId);
+		String memberProfileId = memberProfile.getId();
 
+		model.addAttribute("id",memberProfileId);
+		
 		return "profile.reg";
 	}
 
@@ -106,42 +113,41 @@ public class ProfileController {
 	public String regPost(Model model, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam(value = "lat", defaultValue = "0.0") float lat,
 			@RequestParam(value = "lng", defaultValue = "0.0") float lng,
-			@RequestParam(value = "content", defaultValue = "") String content,
-			@RequestParam(value = "style", defaultValue = "") String styleId,
+			@RequestParam(value = "content", defaultValue = "작성된 내용이 없습니다.") String content,
 			@RequestParam(value = "img", defaultValue = "") String img,
-			@RequestParam(value = "place", defaultValue = "") String place,
-			@RequestParam(value = "locality", defaultValue = "") String locality,
-			@RequestParam(value = "country", defaultValue = "") String country) throws ParseException {
+			@RequestParam(value = "place", defaultValue = "미등록 장소") String place,
+			@RequestParam(value = "locality", defaultValue = "미등록 지역") String locality,
+			@RequestParam(value = "country", defaultValue = "미등록 국가") String country) throws ParseException {
 
-		MemberProfile memberProfile = new MemberProfile();
 		MemberProfileBoard memberProfileBoard = new MemberProfileBoard();
-		memberProfileBoard.setContent(content);
-		memberProfileBoard.setLatitude(lat);
-		memberProfileBoard.setLongitude(lng);
 
 		//멤버데이터 받아오기
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getDetails()).getMember();
 		String memberId = member.getId();
+		
+		MemberProfile memberProfile = memberProfileDao.getByMemberId(memberId);
 
 		//멤버 아이디를 이용 해 프로필아이디를 받아오기
-		memberProfile.setMemberId(memberId);
 		String memberProfileId = memberProfile.getId();
+
+
+		memberProfileBoard.setImg(img);
 		memberProfileBoard.setMemberProfileId(memberProfileId);
-
-
-		if (!img.equals(""))
-			memberProfileBoard.setImg(img);
-
 		memberProfileBoard.setPlace(place);
 		memberProfileBoard.setLocality(locality);
 		memberProfileBoard.setCountry(country);
-
-		memberProfileBoardDao.add(memberProfileBoard);
-
+		memberProfileBoard.setContent(content);
+		memberProfileBoard.setLatitude(lat);
+		memberProfileBoard.setLongitude(lng);
+		
+		int add = memberProfileBoardDao.add(memberProfileBoard);
+		
+		if(add>0){
 		model.addAttribute("url", "profile/home");
-		model.addAttribute("msg", "성공적으로 프로필SNS등록이 와...와...완료...");
-
+		model.addAttribute("msg", "성공적으로 프로필SNS등록이 완료되었습니다.");
+		}
+		
 		return "inc/redirect";
 	}
 

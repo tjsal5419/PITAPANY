@@ -8,8 +8,6 @@
 	<select id="getList" resultType="com.pitapany.web.entity.MemberProfile">
 		SELECT *
 		FROM MemberProfile
-		WHERE
-		memberId = #{memberId}
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.MemberProfile">
@@ -19,6 +17,13 @@
 		WHERE id = #{id}
 	</select>
 
+	<select id="getByMemberId" resultType="com.pitapany.web.entity.MemberProfile">
+		SELECT *
+		FROM
+		`pitapanydb`.`MemberProfile`
+		WHERE memberId = #{memberId}
+	</select>
+	
 	<insert id="add" parameterType="com.pitapany.web.entity.MemberProfile">
 		<selectKey keyProperty="id" order="BEFORE" resultType="String">
 			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM
@@ -28,8 +33,10 @@
 		(
 		`id`,
 		`job`,
-		`img`,
-		`backgroundImg`,
+		`imgSrc`,
+		`imgName`,
+		`backImgSrc`,
+		`backImgName`,
 		`status`,
 		`bloodtype`,
 		`kakaotalkId`,
@@ -41,8 +48,10 @@
 		(
 		#{id},
 		#{job},
-		#{img},
-		#{backgroundImg},
+		#{imgSrc},
+		#{imgName},
+	    #{backImgSrc},
+		#{backImgName},
 		#{status},
 		#{bloodtype},
 		#{kakaotalkId},
@@ -57,8 +66,10 @@
 		`pitapanydb`.`MemberProfile`
 		SET
 		`job` = #{job},
-		`img` = #{img},
-		`backgroundImg` = #{backgroundImg},
+		`imgSrc` = #{imgSrc},
+		`imgName` = #{imgName},
+		`backImgSrc` = #{backImgSrc},
+		`backImgName` = #{backImgName},
 		`status` = #{status},
 		`bloodtype` = #{bloodtype},
 		`kakaotalkId` = #{kakaotalkId},

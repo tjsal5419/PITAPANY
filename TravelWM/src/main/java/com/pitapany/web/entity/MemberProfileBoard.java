@@ -6,7 +6,7 @@ public class MemberProfileBoard {
 	private String id;
 	private String content;
 	private String img;
-	private String like;
+	private int like;
 	private float latitude;
 	private float longitude;
 	private String locality;
@@ -39,11 +39,11 @@ public class MemberProfileBoard {
 		this.img = img;
 	}
 
-	public String getLike() {
+	public int getLike() {
 		return like;
 	}
 
-	public void setLike(String like) {
+	public void setLike(int like) {
 		this.like = like;
 	}
 
