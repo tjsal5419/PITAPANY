@@ -97,12 +97,11 @@
 							</div>
 							<div class="board-accompany-info">
 								<div class="info-item item-nickname">${li.writerNicName }</div>
-								<div class="info-item item-country">${li.country }</div>
-								<div class="info-item item-date">
-									<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
-									~
-									<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />
-
+								<div class="info-item item-country-date">
+								${li.country }</br>
+								<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
+								~
+								<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />		
 								</div>
 							</div>
 						</div>
@@ -117,7 +116,7 @@
 					<div class="board-info">
 						<div class="board-info-wrapper">
 							<div class="board-info-item item-gender">
-								<c:choose>
+								<span><c:choose>
 									<c:when test="${li.writerSex==1 }">
 										여성
 									</c:when>
@@ -125,11 +124,13 @@
 										남성
 									</c:otherwise>
 								</c:choose>
+								</span>
 							</div>
-							<div class="board-info-item item-age">${li.writerAge }</div>
-							<div class="board-info-item item-style">${li.styleType }</div>
+							<div class="board-info-item item-age"><span>${li.writerAge }</span></div>
+							<div class="board-info-item item-style"><span>${li.styleType }</span></div>
 						</div>
 						<div class="board-registration-time">
+							<span>등록일</span></br>
 							<span><fmt:formatDate value="${li.regDate }" pattern="yyyy-MM-dd" /></span>
 						</div>
 					</div>		
@@ -140,7 +141,7 @@
 		</div>
 		
 		<div class="page-info-container">
-			<a href="${root }/accompany/board" class="btn-more">More</a>
+			<a href="${root }/accompany/board" class="btn-more">더 보기</a>
 		</div>
 	</div>
 </div>

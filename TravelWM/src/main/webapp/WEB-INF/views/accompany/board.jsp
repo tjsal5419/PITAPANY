@@ -6,7 +6,7 @@
 <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
-<link href="${root}/resource/css/accompany/accompany-board.css" rel="stylesheet"/>
+<link href="${root}/resource/css/accompany/board.css" rel="stylesheet"/>
 
 <!-- For Age Selector -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
