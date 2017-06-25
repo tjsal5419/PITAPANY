@@ -1,5 +1,8 @@
 @CHARSET "UTF-8";
 
+.hidden{
+	display:none;
+}
 #main {
 	min-height: 0px;
 	padding-top: 60px;

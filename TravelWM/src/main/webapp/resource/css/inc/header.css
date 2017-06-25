@@ -2,6 +2,10 @@
 @import url("font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
+a:hover{
+	text-decoration: none;	
+}
+
 html,body{
 	line-height: inherit;
 	font-size:13px;
@@ -371,14 +375,14 @@ html,body{
 /* ---CALENDAR---------------------------------------------------------------------- */
 
 .daterangepicker {
-  position:;
+  position: fixed;
   color: inherit;
   background-color: #fff;
   border-radius: 4px;
   width: 278px;
   padding: 4px;
   margin-top: 1px;
-  top: 100px;
+  top: ;
   left: 20px;
   /* Calendars */ }
   .daterangepicker:before, .daterangepicker:after {
@@ -581,7 +585,7 @@ html,body{
 	border-radius: 0px;
 	border: none;
 	margin-top: 10px;
-	position: fixed;
+	
 	width: 497px;
 	
 }
@@ -593,6 +597,10 @@ html,body{
 .daterangepicker_input{
 	display: none;
 }
+
+element.style{
+		top: 45px;
+	}
 
 @media all and (max-width: 890px) {
 	.daterangepicker.dropdown-menu{

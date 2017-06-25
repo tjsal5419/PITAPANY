@@ -3,18 +3,59 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="root" value="${pageContext.request.contextPath }"/>
+<!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 <link href="${root}/resource/css/accompany/accompany-board.css" rel="stylesheet"/>
+
+<!-- For Age Selector -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<div id="filter-container">
 		<div class="filter-item-container">
-			<button type="button" class="btn btn-filter">성별</button>
-			<button type="button" class="btn btn-filter">나이</button>
-			<button type="button" class="btn btn-filter">성향</button>
-			<button type="button" class="btn btn-write" onclick="window.location.href='${root}/accompany/reg'">글쓰기</button>
+			<button type="button" class="btn btn-filter" id="btn-gender">성별</button>
+			<div id="gender-content">
+			<ul>
+				<li>남성</li>
+			</ul>
+			<ul>
+				<li>여성</li>
+			</ul>
+			<ul>
+				<li>성별무관</li>
+			</ul>
+			</div>
+
+			<button type="button" class="btn btn-filter" id="btn-age">나이</button>
+			<div id="age-content">
+				<div id="age-content-wrapper">
+					<p>
+						<input type="text" id="min-age" readonly/>
+					</p>
+					<div id="slider-range"></div>
+					<p>
+						<input type="text" id="max-age" readonly/>
+					</p>
+				</div>
+			</div>
+			
+			
+			<button type="button" class="btn btn-filter" id="btn-style">성향</button>
+			<div id="style-content">
+			
+			<c:forEach items="${styleList }" var="li">
+				<ul>
+					<li onclick="window.location.href='${root }/accompany/board?s=${li.id }'">${li.type }</li>
+				</ul>
+			</c:forEach>
+			
+			</div>
+			
+			<button type="button" class="btn btn-write" id="btn-write" onclick="window.location.href='${root}/accompany/reg'">글쓰기</button>
 		</div>
 	</div>
 	
-
 
 <main id="main-container">
 	
@@ -25,7 +66,7 @@
 		<!-- ----------동행 게시글 6개씩 반복하는 구간 ------------ -->
 			<c:forEach items="${accompanyBoardList }" var="li">
 				<div class="board-card">
-					<div class="board-content w3-card-4">
+					<div class="board-content w3-card-2">
 						<div class="board-bookmark">
 						</div>
 						
@@ -45,9 +86,9 @@
 							</div>
 						</div>
 						
-						<div class="board-title">
+						<div class="board-title bt${li.id }" onclick="window.location.href='${root }/accompany/detail?id=${li.id }'">
 							<div class="board-title-detail">
-								<span>${li.title }</span>
+								<div>${li.title }</div>
 							</div>
 						</div>
 						
@@ -140,9 +181,13 @@
 </style>
 
 <!-- 	-----------구글 맵 API이용하기--------------- -->
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
-<script>
 
+
+<!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
+ -->
+
+<script>
+	var map;
 	function initialize() {
 	
 		/* -----------지도 초기 위치 지정하기------------- */
@@ -154,7 +199,7 @@
 							zoom : 13,
 							mapTypeId : google.maps.MapTypeId.ROADMAP
 		};
-		var map = new google.maps.Map(document.getElementById("map-wrapper"), mapPosition);
+		map = new google.maps.Map(document.getElementById("map-wrapper"), mapPosition);
 	
 		/* -----------지도에 마커 추가하기------------- */
         
@@ -169,7 +214,7 @@
 	         });
 			
 			var initContent = "<div style=\"display:flex; justify-content:center; align-items:center;\">"+
-			"<div style=\"background-image: url('${root }/resource/images/Cat.jpg'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+		
+			"<div style=\"align-self:center; background-image: url('${root }/resource/images/Cat.jpg'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+		
 			"<div onclick='window.location.href=\"${root }/accompany/detail?p=${li.id }\"' style=\"margin-left:10px; cursor:pointer;\">${li.writerNicName }</div></div>";
 			
 	        /* -----------마커 눌렀을 때 발생하는 이벤트------------- */
@@ -194,14 +239,70 @@
               	}
          	}); 
           	
-          	google.maps.event.addListener(marker${li.id }, 'mouseover', function() {
-           	 	
-         	});
+          	var bt${li.id} = document.querySelector('.bt${li.id}');
+          	
+          	bt${li.id }.onmouseover = function(){
+          		map.setCenter(new google.maps.LatLng(${li.latitude }, ${li.longitude }));
+          	}
+
           	
           	
         </c:forEach>
-       
 	}	
+	
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
 </script>
+
+<script>
+$( function() {
+	$( "#slider-range" ).slider({
+		range: true,
+		min: 15,
+		max: 80,
+		values: [ 30, 65 ],
+		slide: function( event, ui ) {
+			$( "#min-age" ).val(ui.values[ 0 ] + " 세");
+			$( "#max-age" ).val(ui.values[ 1 ] + " 세");
+		}
+	});
+	
+	$( "#min-age" ).val( $( "#slider-range" ).slider( "values", 0 ) + " 세");
+	$( "#max-age" ).val( $( "#slider-range" ).slider( "values", 1 ) + " 세");
+});
+</script>
+
+<script>
+	  
+	$(document).on("click", function(e){
+		if($(e.target).is("#btn-gender")){
+			$("#gender-content").show();
+	    }else{
+	        $("#gender-content").hide();
+	    }
+	});
+
+	$(document).on("click", function(e){
+		if($(e.target).is("#btn-age")){
+			$("#age-content").show();
+	    }
+	});
+	
+	$('body').on("click", function(e){
+		if($(e.target).is("#age-min, #age-max, #age-content, #age-content p, #age-content label, #age-content div, #age-content input ")) {
+			
+		} else {
+			$("#age-content").hide();
+		}
+	});
+	
+
+	$(document).on("click", function(e){
+		if($(e.target).is("#btn-style")){
+			$("#style-content").show();
+	    }else{
+	        $("#style-content").hide();
+	    }
+	});
+	
+	</script>

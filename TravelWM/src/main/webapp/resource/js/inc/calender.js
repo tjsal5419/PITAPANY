@@ -1,408 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
-<c:set var="root" value="${pageContext.request.contextPath }" />
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-<!-- Include Required Prerequisites -->
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
- 
-<!-- Include Date Range Picker -->
-
-
-
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-
-
-
-<link rel="stylesheet" href="${root}/resource/css/inc/header.css" />
-
-<head>
-	<title> 동행이음 with PITAPANY</title>
-</head>
-
-<nav>
-    <div class="navbar navbar-default navbar-fixed-top">
-    	
-    	<div class = "menu-button-mobile"><i class="fa fa-bars"></i></div>
-    	<a href="${root}/member/main" class="logo"></a>
-    	<div class = "search-button-mobile"><i class="fa fa-search"></i></div>
-    	
-    	
-    	
-    	
-    	<form class="search-bar" action="" method="get" class="form-group">
-    		<div class="search-bar-container">
-			    <input class="form-control form-control-header" id="autocomplete" name="form" placeholder="동행 위치" type="text" alt="동행을 구할 위치를 입력하세요!" required/>
-
- 			    <input class="hidden" type="text" value="" name="lat1" id="lat1"/>			           
-			    <input class="hidden" type="text" value="" name="lng1" id="lng1"/>  
-			    <input class="hidden" type="text" value="" name="place1" id="place1"/>  
-			    <input class="hidden" type="text" value="" name="locality1" id="locality1"/>  
- 			    <input class="hidden" type="text" value="" name="country1" id="country1"/>  
- 	
-   	    	  	<input class="form-control form-control-header" type="text" name="datefilter" value="" placeholder="동행 날짜 입력"/>
-		  		<input type="button" class="search-button" alt="Submit"/>
-		  	</div>
-	    </form>
-        <div class="menu-bar">
-	        <ul class="accompany">
-	        	<c:if test="${empty pageContext.request.userPrincipal.name }">		
-					<li class="except-li"><a href="${root }/joinus/login">로그인</a></li>
-					<li class="except-li"><a href="${root }/joinus/join">회원가입</a></li>
-				</c:if>	
-				
-				<security:authorize  access="isAuthenticated()">
-					<li class="except-li">
-					<a class="a" href="${root }/j_spring_security_logout">
-						${m.nicName }님 로그아웃
-					</a>
-					</li>
-				</security:authorize>
-				
-				<li onclick="location.href='${root}/profile/home';">프로필홈</li>
-	        	<li onclick="location.href='${root}/accompany/board';">동행찾기</li>
-	        	<li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
-	        	<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
-	        </ul>
-	        <ul class="mypage">
-	        	<li><i class="fa fa-envelope message-item"></i></li>
-	        	<li><i class="fa fa-bell alarm-item"></i></li>
-	        	<li><i class="fa fa-user account-item"></i></li>
-	        </ul>
-        	<div id="message-content"><p>message</p></div>
-        	<div id="alarm-content"><p>alarm</p></div>
-        	<div id="account-content"><p>account</p></div>
-        </div>
-    </div>
-    
-    <div class='menu-mobile'>
-	  <ul>
-	    <li onclick="location.href='${root}/accompany/board';">동행찾기</li>
-	  </ul>
-	  <ul>  
-	    <li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
-	  </ul>
-	  <ul>	
-	  	<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
-	  </ul>
-	</div>
-	
-	<div class="search-mobile">
-		<input type="text" class="form-control form-control-header form-control-mobile" id="mobile-autocomplete" placeholder="동행 위치">
-    	<input class="form-control form-control-header form-control-mobile" type="text" name="datefilter" value=""  placeholder="동행 날짜 입력"/>
-		<input type="button" class="search-button search-button-mobile2"  alt="Submit">
-	</div>
-
-</nav>
-<!-- ------------google map API------------------- -->
-<c:set var = "url" value = "${requestScope['javax.servlet.forward.request_uri']}"/>
-
-
-<c:if test="${!fn:contains(url, 'reg')}">
-
-<script>
-if(!window.location.href.includes("reg")){
-
-    var placeSearch1, autocomplete1, mobAutocomplete1;
-    var location1;
-    var componentForm1 = {
-  	        street_number: 'short_name',
-  	        route: 'long_name',
-  	        locality: 'long_name',
-  	        administrative_area_level_1: 'short_name',
-  	        country: 'long_name',
-  	        postal_code: 'short_name'
-  	};
-    
-/*          
-    var defaultBounds = new google.maps.LatLngBounds(
-  		  new google.maps.LatLng(-33.8902, 151.1759),
-  		  new google.maps.LatLng(-33.8474, 151.2631));
-	  var input = document.getElementById('autocomplete');
-    var searchBox = new google.maps.places.SearchBox(input, {
-  		  bounds: defaultBounds
-    });
-*/
-    
-function initAutocomplete() {
-    // Create the autocomplete object, restricting the search to geographical
-    // location types.
-    autocomplete1 = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-        {types: ['geocode']});
-    
-    mobAutocomplete1 = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('mobile-autocomplete')),
-            {types: ['geocode']});
-    
-
-    autocomplete1.addListener('place_changed', getLocation1);
-    mobAutocomplete1.addListener('place_changed', getLocation2);
-
-  }
-
-    function getLocation1(){
-  	  var place1 = autocomplete1.getPlace();
-  	  var mobAuto = document.querySelector("#mobile-autocomplete");
-      var latitude = place1.geometry.location.lat();
-  	  var longitude = place1.geometry.location.lng();
-       var placeName = place1.name;
-       var fotmattedAdress = place1.formatted_address;
- 	  
-  	  
-      var lng = document.querySelector("#lng1");
-  	  var lat = document.querySelector("#lat1");
-  	  var placeForm = document.querySelector("#place1");
-  	  var localityText = document.querySelector("#locality1");
-  	  var countryText = document.querySelector("#country1");
-	  var locality = '';
-	  var country = '';
-		  alert(placeName);        	  
-		  alert(latitude);
-        for (var i = 0; i < place1.address_components.length; i++) {
-            var addressType1 = place1.address_components[i].types[0];
-            
-            if (addressType1=='country') {
-              country = place1.address_components[i][componentForm1[addressType1]];
-             
-             // alert(country);
-            }
-            
-            else if(addressType1 == 'locality'){
-          	  locality = place1.address_components[i][componentForm1[addressType1]];
-          	  
-          	 //	 alert(locality);
-            }
-       
-        }
-         alert(country);
-         alert(locality);
-        mobAuto.value = document.querySelector("#autocomplete").value;
-        lng.value = longitude;
-  	    lat.value = latitude;
-  	    placeForm.value= placeName;
-  	    countryText.value = country;
-        localityText.value = locality;
-
-        
-  	  
-    }
-
-    function getLocation2(){
-    	  var place1 = mobAutocomplete1.getPlace();
-          var latitude = place1.geometry.location.lat();
-    	  var longitude = place1.geometry.location.lng();
-      	  var placeName = place1.name;
-      	 var fotmattedAdress = place1.formatted_address;
-      	  
-      	  var auto = document.querySelector("#autocomplete").value;
-
-       	  var lng = document.querySelector("#lng1");
-    	  var lat = document.querySelector("#lat1");
-    	  var placeForm = document.querySelector("#place1");
-    	  var localityText = document.querySelector("#locality1");
-    	  var countryText = document.querySelector("#country1");
-  		  var locality = '';
-  		  var country = '';
-  		  
-  		  alert(placeName);
-  		  alert(latitude);
-           
-          for (var i = 0; i < place1.address_components.length; i++) {
-              var addressType1 = place1.address_components[i].types[0];
-              
-              if (addressType1=='country') {
-                country = place1.address_components[i][componentForm1[addressType1]];
-               
-               // alert(country);
-              }
-              
-              else if(addressType1 == 'locality'){
-            	  locality = place1.address_components[i][componentForm1[addressType1]];
-            	  
-            	 //	 alert(locality);
-              }
-         
-          }
-           alert(country);
-           alert(locality);
-           auto.value = document.querySelector("#mobile-autocomplete").value;
-  		  lng.value = longitude;
-    	  lat.value = latitude;
-    	  placeForm.value= placeName;
-    	  countryText.value = country;
-          localityText.value = locality;
-    	  
-    	  
-      }
-
-    
-     function geolocate() {
-       if (navigator.geolocation) {
-         navigator.geolocation.getCurrentPosition(function(position) {
-           var geolocation = {
-             lat: position.coords.latitude,
-             lng: position.coords.longitude
-           };
-           var circle = new google.maps.Circle({
-             center: geolocation,
-             radius: position.coords.accuracy
-           });
-           autocomplete1.setBounds(circle.getBounds());
-           mob-autocomplete1.setBounds(circle.getBounds());
-         });
-       }
-     }
-    
-     $('#autocomplete').keydown(function (e) {
-   	  if (e.which == 13 && $('.pac-container:visible').length) return false;
-   	});
-     
-     /* -----------구글 맵 검색 창 z-index 위로 올리기----------- */
-	 var autoComplete1 = document.querySelector('#autocomplete');
-	 var mobAutoComplete1 = document.querySelector('#mobile-autocomplete');
-	 		 
-		 autoComplete1.onclick = function(){
-	     autoComplete1.value='';
-	     var searchResultBox = document.querySelectorAll('.pac-container');
-	   	 for(var i=0;i<searchResultBox.length;i++)
-   			 searchResultBox[i].style.zIndex = '10000';
-   		 
-		 }
- 		 
-		 mobAutoComplete1.onclick = function(){
-			 mobAutoComplete1.value='';
-		     var searchResultBox = document.querySelectorAll('.pac-container');
-		   	 for(var i=0;i<searchResultBox.length;i++)
-       		     searchResultBox[i].style.zIndex = '10000';
-	   		 
-		 }
-}
-	 	 
-</script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
-        async defer></script>
-</c:if>
-        
-<script>
-$('input[name="datefilter"]').on("click", function(){
-		
-		$('.daterangepicker').css({'top':'45px'});
-});
-
-
-$('body').on("click", function(e){
-	
-	if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
-	} else {
-		$('.daterangepicker').css({'top':'-500px'});
-	}
-});
-
-</script>
-        
-<script type="text/javascript">
-$(function() {	
-
-  $('input[name="datefilter"]').daterangepicker({
-      autoUpdateInput: false,
-      locale: {
-          cancelLabel: 'Clear'
-      }
-  });
-
-  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('MMM DD') + ' - ' + picker.endDate.format('MMM DD'));
-  });
-
-  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-  });
-
-});
-</script>
-  
-  <!-- Toggle Down ---------------------------------------------------------------- -->
-<script>
-  
-$(document).on("click", function(e){
-	if($(e.target).is(".message-item")){
-		$("#message-content").show();
-    }else{
-        $("#message-content").hide();
-    }
-});
-
-$(document).on("click", function(e){
-	if($(e.target).is(".alarm-item")){
-		$("#alarm-content").show();
-    }else{
-        $("#alarm-content").hide();
-    }
-});
-
-$(document).on("click", function(e){
-	if($(e.target).is(".account-item")){
-		$("#account-content").show();
-    }else{
-        $("#account-content").hide();
-    }
-});
-  
-</script>
-
-
-<!-- Toggle Remove ---------------------------------------------------------------- -->
-<script>
-
-
-$('.menu-button-mobile').click(function(event){
-	
-	event.stopPropagation();
-    $('.menu-mobile').toggleClass('down');
-    $('.search-mobile').removeClass('down');
-});
-
-
-$('.search-button-mobile').click(function(event){
-	
-	event.stopPropagation();
-    $('.search-mobile').toggleClass('down');
-    $('.menu-mobile').removeClass('down');
-});
-
-$('body').click(function(e){
-	
-	
-	if($(e.target).is(".menu-mobile, .menu-mobile ul, .menu-mobile li, .search-mobile, .search-mobile>input, .range_inputs>button")) {
-		
-	} else {
-		$('.menu-mobile').removeClass('down');
-		$('.search-mobile').removeClass('down');
-	}
-});
-
-</script>
-
-
-
-
-<!-- Calendar JS ---------------------------------------------------------------- -->
-
-<script>
 /**
 * @version: 2.1.25
 * @author: Dan Grossman http://www.dangrossman.info/
@@ -1443,7 +1039,7 @@ $('body').click(function(e){
 
         move: function() {
             var parentOffset = { top: 0, left: 0 },
-                containerTop = { top: -500};
+                containerTop;
             var parentRightEdge = $(window).width();
             if (!this.parentEl.is('body')) {
                 parentOffset = {
@@ -1454,14 +1050,14 @@ $('body').click(function(e){
             }
 
             if (this.drops == 'up')
-                containerTop = '-500px';
+                containerTop = this.element.offset().top - this.container.outerHeight() - parentOffset.top;
             else
-                containerTop = '-500px';
+                containerTop = this.element.offset().top + this.element.outerHeight() - parentOffset.top;
             this.container[this.drops == 'up' ? 'addClass' : 'removeClass']('dropup');
 
             if (this.opens == 'left') {
                 this.container.css({
-
+                    top: containerTop,
                     right: parentRightEdge - this.element.offset().left - this.element.outerWidth(),
                     left: 'auto'
                 });
@@ -1473,7 +1069,7 @@ $('body').click(function(e){
                 }
             } else if (this.opens == 'center') {
                 this.container.css({
-   
+                    top: containerTop,
                     left: this.element.offset().left - parentOffset.left + this.element.outerWidth() / 2
                             - this.container.outerWidth() / 2,
                     right: 'auto'
@@ -1486,7 +1082,7 @@ $('body').click(function(e){
                 }
             } else {
                 this.container.css({
-          
+                    top: containerTop,
                     left: this.element.offset().left - parentOffset.left,
                     right: 'auto'
                 });
@@ -2031,11 +1627,6 @@ $('body').click(function(e){
     return DateRangePicker;
 
 }));
-
-
-
-
-</script>
 
 
 

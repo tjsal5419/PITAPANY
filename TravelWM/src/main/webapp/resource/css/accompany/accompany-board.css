@@ -2,12 +2,12 @@
  
 /* 페이지 이동 버튼 */
 #move-page-button{
-	background-color: #00BCD1;
-	border-color:#00BCD1;
+	background-color: #33b5e5;
+	border-color:#33b5e5;
 }
 
 #move-page-button-number{
-	color:#00BCD1;
+	color:#33b5e5;
 }
 
 #main-container{
@@ -15,7 +15,7 @@
  	flex-direction: row;
  	
  	width: 65%;
- 	height:100%;
+ 	height:;
  
  	margin-top: 115px;
  	
@@ -160,6 +160,7 @@
 	/* border: 5px solid red; */
 }
 
+
 .board-bookmark{
 	display: block;
 	position: ;
@@ -240,6 +241,11 @@
 	margin-top: 10px;
 		
 	border: 1px solid blue;
+	
+}
+
+.board-title:hover{
+	cursor: pointer;
 }
 
 .board-title-detail {
@@ -436,4 +442,144 @@
 		margin-top: 0px;
 	}
 	
+}
+
+
+#gender-content, #age-content, #style-content {
+	display: none;
+	position: absolute;
+	background-color: #f9fdff;
+	min-width: 180px;
+  		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+   	top: 60px;
+   	margin-left: 10px;
+
+   	z-index: 1;
+}
+
+#gender-content{
+	margin-left: 10px;
+	height: 120px;
+}
+
+#age-content{
+	margin-left: 70px;
+	min-height: 60px !important;
+	width: 320px;
+}
+
+#age-content-wrapper{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	
+	width: 100%;
+	height: 60px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+#style-content{
+	margin-left: 130px;
+}
+
+#gender-content ul, #style-content ul{
+	display: table;
+	width: 100%;
+}
+
+#gender-content li{
+	display: table-cell;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    color: rgba(51, 181, 229, 1);
+    padding-left: 15px;
+    vertical-align: middle;
+}
+
+#gender-content li:hover{
+	background: #e8f8ff;
+}
+
+#style-content li{
+	display: table-cell;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    color: rgba(51, 181, 229, 1);
+    padding-left: 15px;
+    vertical-align: middle;
+}
+
+#style-content li:hover{
+	background: #e8f8ff;
+}
+
+#btn-gender, #btn-age, #btn-style, #btn-write{
+	color: #fff;
+	border: none;
+	outline: none;
+
+	border-radius: 0;
+	font-weight: 500;
+	letter-spacing: 1px;
+	background: #87deff;
+}
+
+#btn-gender:hover, #btn-age:hover, #btn-style:hover, #btn-write:hover{
+	background: #009ddb;
+}
+
+.ui-widget-header{
+	background: #33b5e5 !important;
+
+}
+
+.ui-widget.ui-widget-content{
+	border: 1px solid #33b5e5 !important; 
+	background: #e8f8ff;
+	width: 220px;
+	height: 8px;
+	top: 37%;
+}
+
+.ui-slider .ui-slider-handle{
+	width: 1.1em !important;
+	height: 1.1em !important;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border-radius: 10px;
+    border: 1px solid #33b5e5 !important;
+    background: #fff !important;
+    font-weight: normal;
+    color: #454545;
+    border-radius: 10px;
+    outline: none;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+ 			top: -.4em;
+}
+
+#min-age, #max-age{
+	width: 50px;
+}
+
+#age-content p{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#age-content p>input{
+	color: #33b5e5;
+	border: 0;
+	font-weight: bold;
+	text-align: center;
 }

@@ -11,12 +11,9 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +31,9 @@ import com.pitapany.web.entity.AccompanyBoardFile;
 import com.pitapany.web.entity.AccompanyBoardView;
 import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.Style;
+import com.pitapany.web.security.CustomWebAuthenticationDetails;
+
+import javafx.css.Styleable;
 
 @Controller
 @RequestMapping("/accompany/*")
@@ -55,11 +55,8 @@ public class AccompanyController {
    @RequestMapping("/matching")
    public String matching(Model model) {
 	   
-	  Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	  String name = auth.getName(); //get logged in username
-	  String id = memberDao.getIdByEmail(name);
-	  System.out.println("���̵��Դϴ�"+id);
-	  
+	  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+	  String id = member.getId();
 	  
       List<Style> list = styleDao.getList();
       model.addAttribute("styles", list);
@@ -71,7 +68,7 @@ public class AccompanyController {
    public String detail(Model model, String id) {
       accompanyBoardDao.addHits(id);
 
-      AccompanyBoard accompanyBoard = accompanyBoardDao.get(id);
+      AccompanyBoardView accompanyBoard = accompanyBoardDao.getView(id);
       AccompanyBoardFile file = accompanyBoardFileDao.get(id);
     		  
       model.addAttribute("file", file);
@@ -95,30 +92,31 @@ public class AccompanyController {
          HttpServletRequest request, 
          HttpServletResponse response,
          AccompanyBoardFile accompanyBoardFile,
-         @RequestParam(value="title",defaultValue="")String title,
+         @RequestParam(value="title",defaultValue=" ")String title,
          @RequestParam(value="lat",defaultValue="0.0")float lat,
          @RequestParam(value="lng",defaultValue="0.0")float lng,
-         @RequestParam(value="content",defaultValue="")String content,
-         @RequestParam(value="style",defaultValue="")String styleId,
+         @RequestParam(value="content",defaultValue="작성된 내용이 없습니다.")String content,
+         @RequestParam(value="style",defaultValue="1")String styleId,
          @RequestParam(value="file", defaultValue="null") MultipartFile file,
-         @RequestParam(value="place", defaultValue="")String place,
-         @RequestParam(value="locality", defaultValue="")String locality,
-         @RequestParam(value="country", defaultValue="")String country) throws ParseException{      
-
-      
-      Member member = (Member) request.getAttribute("m");
-      String memberId = member.getId();   
-      
+         @RequestParam(value="place", defaultValue="미등록장소")String place,
+         @RequestParam(value="locality", defaultValue="미등록지역")String locality,
+         @RequestParam(value="country", defaultValue="미등록나라")String country,
+         @RequestParam(value="startDate", defaultValue="0000-00-00")String sD,
+         @RequestParam(value="endDate", defaultValue="0000-00-00")String eD) throws ParseException{      
+	   
+	   
+	  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+	  String memberId = member.getId();
+	  
       AccompanyBoard accompanyBoard = new AccompanyBoard();
       accompanyBoard.setContext(content);
       accompanyBoard.setLatitude(lat);
       accompanyBoard.setLongitude(lng);
       accompanyBoard.setTitle(title);
 
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-dd-mm");
-      java.sql.Date startDate = new java.sql.Date(sdf.parse("2017-11-11").getTime());
-      java.sql.Date endDate = new java.sql.Date(sdf.parse("2018-11-11").getTime());
-      
+      java.sql.Date startDate = java.sql.Date.valueOf(sD);
+      java.sql.Date endDate = java.sql.Date.valueOf(eD);
+
       accompanyBoard.setStartDate(startDate);
       accompanyBoard.setEndDate(endDate);
 
@@ -133,7 +131,7 @@ public class AccompanyController {
       
       
       model.addAttribute("url","accompany/board");
-      model.addAttribute("msg","���������� �������� ��...��...�Ϸ�...");
+      model.addAttribute("msg","성공적으로 동행등록이 와...와...완료...");
       
       
       
@@ -178,7 +176,6 @@ public class AccompanyController {
            
            accompanyBoardFileDao.add(accompanyBoardFile);
            
-           System.out.println(fullPath);
       }       
       
       return "inc/redirect";
@@ -208,6 +205,8 @@ public class AccompanyController {
       else if(count%6==0)
          pageCount = count/6;
       
+       /*5개 단위의 페이지로 보여줌 1/2/3/4/5*/
+      
       // prev: Start index
       // next : end index
       
@@ -231,10 +230,8 @@ public class AccompanyController {
       model.addAttribute("prev",prev);
       model.addAttribute("next",next);
       
-      /* DB�� min-Limit ������ ���� querypage��*/
+
       int minLimitPage = (page-1)*6;
-      
-      /*page�� ���� ��û page�� ����*/
       
       
       List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
@@ -244,6 +241,10 @@ public class AccompanyController {
       model.addAttribute("pageCount",pageCount);
       model.addAttribute("accompanyBoardList",accompanyBoardList);
 
+	  List<Style> stlyeList = styleDao.getList();
+	  model.addAttribute("styleList",stlyeList);
+	
+	  
       return "accompany.board";
 
    }

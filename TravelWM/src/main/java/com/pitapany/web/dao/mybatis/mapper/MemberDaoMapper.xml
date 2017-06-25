@@ -79,6 +79,16 @@
 		
 	</update>
 	
+	<update id="updateAgeAll">
+	<![CDATA[
+	UPDATE `pitapanydb`.`Member`
+	SET
+	`age` = (SELECT DATE_FORMAT(NOW(), '%Y') - 
+    DATE_FORMAT(`birthday`, '%Y') - 
+    (DATE_FORMAT(NOW(), '00-%m-%d') < DATE_FORMAT(`birthday`, '00-%m-%d'))+1 AS `age`)
+	]]>	
+	</update>
+	
 	<delete id="delete">
 	  DELETE FROM Member
       WHERE id=#{id}

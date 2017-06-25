@@ -24,7 +24,6 @@
 	});
 </script>
 
-<%@ include file="../inc/userInfo.jsp" %>
 <main class="main">
 <%@ include file="inc/aside.jsp" %>
 <div class="frame">
@@ -88,7 +87,7 @@
 		</div>
 		
 		<div class="delete-tip">
-			<c:if test="${tipView.memberId eq userId }">
+			<c:if test="${tipView.memberId eq m.id }">
 				<div class="delete"><a href="${root }/community/tip-delete?id=${tipView.id }">삭제하기</a></div>
 				<div class="update"><a href="${root }/community/tip-update?id=${tipView.id }">수정</a></div>
 			</c:if>

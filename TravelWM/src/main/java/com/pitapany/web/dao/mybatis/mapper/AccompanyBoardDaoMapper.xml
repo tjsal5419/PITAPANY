@@ -26,6 +26,14 @@
 		WHERE id = #{id}
 	</select>
 
+	<select id="getView" resultType="com.pitapany.web.entity.AccompanyBoardView">
+		SELECT *
+		FROM
+		`pitapanydb`.`AccompanyBoardView`
+		WHERE id = #{id}
+	</select>
+
+
 	<select id="count" resultType="Integer">
 		SELECT count(*) count
 		FROM
@@ -48,7 +56,6 @@
 		`latitude`,
 		`longitude`,
 		`styleId`,
-		`img`,
 		`place`,
 		`locality`,
 		`country`
@@ -64,7 +71,6 @@
 		#{latitude},
 		#{longitude},
 		#{styleId},
-		#{img},
 		#{place},
 		#{locality},
 		#{country}
@@ -83,7 +89,6 @@
 		`latitude` = #{latitude},
 		`longitude` = #{longitude},
 		`styleId` = #{styleId},
-		`img` = #{img},
 		`place` = #{place},
 		`locality` = #{locality},
 		`country` = #{country}

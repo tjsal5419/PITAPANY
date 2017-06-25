@@ -7,6 +7,7 @@ import com.pitapany.web.entity.AccompanyBoardView;
 
 public interface AccompanyBoardDao {
 	AccompanyBoard get(String id);
+	AccompanyBoardView getView(String id);
 	List<AccompanyBoardView> getList(int page);
 	List<AccompanyBoardView> getMainList();
 	
