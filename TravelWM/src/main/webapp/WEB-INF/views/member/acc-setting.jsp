@@ -58,7 +58,58 @@
 			<div class="capa">
 				<div class="first">
 					<div class="sel-zone">동행장소</div>
-					<div class="sel-date">동행날짜</div>
+					
+					
+					<input type="text" class="form-control calendar-reg" name="datefilter-reg" value="" placeholder="Search" required />
+    	  			<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" required />
+    	  			<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" required />
+    	  			
+    	  			<script>
+						$('.calendar-reg').on("mousedown", function(){
+							
+						
+							$('.daterangepicker').css({'position':'absolute'});
+							$('.daterangepicker').css({'top':'170px'});
+						});
+						
+						$('body').on("click", function(e){
+							
+							if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
+							} else {
+								$('.daterangepicker').css({'position':'fixed'});
+								$('.daterangepicker').css({'top':'-500px'});
+							}
+						});
+					</script>
+					
+					
+					<script>
+						$(function() {
+						  
+							$('input[name="datefilter-reg"]').daterangepicker({
+						      autoUpdateInput: false,
+						      locale: {
+						          cancelLabel: 'Clear'
+						      }
+						  });
+							
+						  $('input[name="datefilter-reg"]').on('apply.daterangepicker', function(ev, picker) {
+						      $(this).val(picker.startDate.format('MMM DD') + ' - ' + picker.endDate.format('MMM DD'));
+						      $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
+						      $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
+						  });
+						
+						  $('input[name="datefilter-reg"]').on('cancel.daterangepicker', function(ev, picker) {
+						      $(this).val('');
+						  });
+						
+						});
+					</script>
+					
+					
+					
+					
+					
 					<button class="btn btn-info na">등록</button>
 				</div>
 				<div class="second">
