@@ -278,14 +278,16 @@ function initAutocomplete() {
 		 autoComplete1.onclick = function(){
 	     autoComplete1.value='';
 	     var searchResultBox = document.querySelectorAll('.pac-container');
-   		 searchResultBox[0].style.zIndex = '10000';
+	   	 for(var i=0;i<searchResultBox.length;i++)
+   			 searchResultBox[i].style.zIndex = '10000';
    		 
 		 }
  		 
 		 mobAutoComplete1.onclick = function(){
 			 mobAutoComplete1.value='';
 		     var searchResultBox = document.querySelectorAll('.pac-container');
-	   		 searchResultBox[1].style.zIndex = '10000';
+		   	 for(var i=0;i<searchResultBox.length;i++)
+       		     searchResultBox[i].style.zIndex = '10000';
 	   		 
 		 }
 }
@@ -294,135 +296,24 @@ function initAutocomplete() {
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
 </c:if>
-<!-- <script>
-      // This example displays an address form, using the autocomplete feature
-      // of the Google Places API to help users fill in the information.
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-/*  window.addEventListener("load",function(event){
- */    	     
-          var placeSearch1, autocomplete1;
-          var location1;
-          var componentForm1 = {
-        	        street_number: 'short_name',
-        	        route: 'long_name',
-        	        locality: 'long_name',
-        	        administrative_area_level_1: 'short_name',
-        	        country: 'long_name',
-        	        postal_code: 'short_name'
-        	};
-          
-/*          
-          var defaultBounds = new google.maps.LatLngBounds(
-        		  new google.maps.LatLng(-33.8902, 151.1759),
-        		  new google.maps.LatLng(-33.8474, 151.2631));
-    	  var input = document.getElementById('autocomplete');
-          var searchBox = new google.maps.places.SearchBox(input, {
-        		  bounds: defaultBounds
-          });
- */
-          
-	 function initAutocomplete() {
-	     // Create the autocomplete object, restricting the search to geographical
-	     // location types.
-	     autocomplete1 = new google.maps.places.Autocomplete(
-	         /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-	         {types: ['geocode']});
+        
+<script>
+$('input[name="datefilter"]').on("click", function(){
+		
+		$('.daterangepicker').css({'top':'45px'});
+});
+
+
+$('body').on("click", function(e){
 	
-	     autocomplete1.addListener('place_changed', getLocation1);
+	if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
+	} else {
+		$('.daterangepicker').css({'top':'-500px'});
+	}
+});
 
-	   }
- 
-          function getLocation1(){
-        	  var place1 = autocomplete1.getPlace();
-/*         	  var latitude = place.geometry.location.lat();
-        	  var longitude = place.geometry.location.lng();
- */        	  var placeName1 = place1.name;
-/*         	  var fotmattedAdress = place.formatted_address;
- */        	  
-    	      
-    	      /* ---------------------------------------- */
-/*         	  
-        	  alert("위도"+latitude);
-        	  alert("경도"+longitude);
-        	  alert(place.place_id);
-        	  alert(place.vicinity);
-        	  alert(place.name); */
-        	  
-/*         	  var lng = document.querySelector("#lng");
-        	  var lat = document.querySelector("#lat");
-        	  var placeForm = document.querySelector("#place");
-        	  var localityText = document.querySelector("#locality");
-        	  var countryText = document.querySelector("#country");
-			  var locality = '';
-			  var country = ''; */
-			  alert(placeName1);        	  
-	          
-              for (var i = 0; i < place1.address_components.length; i++) {
-                  var addressType1 = place1.address_components[i].types[0];
-                  
-                  if (addressType1=='country') {
-                    country1 = place1.address_components[i][componentForm1[addressType1]];
-                   
-                   // alert(country);
-                  }
-                  
-                  else if(addressType1 == 'locality'){
-                	  locality1 = place1.address_components[i][componentForm1[addressType1]];
-                	  
-                	 //	 alert(locality);
-                  }
-             
-              }
-	          alert(country1);
-	          alert(locality1);
-              
-/*               lng.value = longitude;
-        	  lat.value = latitude;
-        	  placeForm.value= placeName;
-        	  countryText.value = country;
-              localityText.value = locality; */
-        	  /* address.value = fotmattedAdress;
-        	   */
-              
-        	  
-          }
-          // Bias the autocomplete object to the user's geographical location,
-          // as supplied by the browser's 'navigator.geolocation' object.
-	      function geolocate() {
-	        if (navigator.geolocation) {
-	          navigator.geolocation.getCurrentPosition(function(position) {
-	            var geolocation = {
-	              lat: position.coords.latitude,
-	              lng: position.coords.longitude
-	            };
-	            var circle = new google.maps.Circle({
-	              center: geolocation,
-	              radius: position.coords.accuracy
-	            });
-	            autocomplete1.setBounds(circle.getBounds());
-	          });
-	        }
-	      }
-          
- 	      $('#autocomplete').keydown(function (e) {
-	    	  if (e.which == 13 && $('.pac-container:visible').length) return false;
-	    	});
- 	      
- 	      /* -----------구글 맵 검색 창 z-index 위로 올리기----------- */
- 		 var autoComplete1 = document.querySelector('#autocomplete');
- 	     var isAutoComplete1Opend = false;
- 	     if(!isAutoComplete1Opend){
- 			 autoComplete1.onclick = function(){	
-	 	     var searchResultBox = document.querySelector('.pac-container');
- 	    	 searchResultBox.style.zIndex = '10000'; 
- 			 }
- 		 }
-          
-    </script>
-  -->   
-
+</script>
+        
 <script type="text/javascript">
 $(function() {	
 
@@ -443,7 +334,6 @@ $(function() {
 
 });
 </script>
-  
   
   <!-- Toggle Down ---------------------------------------------------------------- -->
 <script>
@@ -1553,7 +1443,7 @@ $('body').click(function(e){
 
         move: function() {
             var parentOffset = { top: 0, left: 0 },
-                containerTop;
+                containerTop = { top: -500};
             var parentRightEdge = $(window).width();
             if (!this.parentEl.is('body')) {
                 parentOffset = {
@@ -1564,14 +1454,14 @@ $('body').click(function(e){
             }
 
             if (this.drops == 'up')
-                containerTop = this.element.offset().top - this.container.outerHeight() - parentOffset.top;
+                containerTop = '-500px';
             else
-                containerTop = this.element.offset().top + this.element.outerHeight() - parentOffset.top;
+                containerTop = '-500px';
             this.container[this.drops == 'up' ? 'addClass' : 'removeClass']('dropup');
 
             if (this.opens == 'left') {
                 this.container.css({
-                    top: containerTop,
+
                     right: parentRightEdge - this.element.offset().left - this.element.outerWidth(),
                     left: 'auto'
                 });
@@ -1583,7 +1473,7 @@ $('body').click(function(e){
                 }
             } else if (this.opens == 'center') {
                 this.container.css({
-                    top: containerTop,
+   
                     left: this.element.offset().left - parentOffset.left + this.element.outerWidth() / 2
                             - this.container.outerWidth() / 2,
                     right: 'auto'
@@ -1596,7 +1486,7 @@ $('body').click(function(e){
                 }
             } else {
                 this.container.css({
-                    top: containerTop,
+          
                     left: this.element.offset().left - parentOffset.left,
                     right: 'auto'
                 });

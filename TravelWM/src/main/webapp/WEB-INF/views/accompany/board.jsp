@@ -8,6 +8,10 @@
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 <link href="${root}/resource/css/accompany/accompany-board.css" rel="stylesheet"/>
 
+<!-- For Age Selector -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 	<div id="filter-container">
 		<div class="filter-item-container">
 			<button type="button" class="btn btn-filter" id="btn-gender">성별</button>
@@ -24,18 +28,18 @@
 			</div>
 
 			<button type="button" class="btn btn-filter" id="btn-age">나이</button>
-			<div id="age-content" data-role="page">
-			
-				<div data-role="main" class="ui-content">
-				    <form method="post" action="/action_page_post.php">
-						<div data-role="rangeslider">
-						  <input type="range" name="age-min" id="age-min" value="30" min="15" max="80">
-						  <input type="range" name="age-max" id="age-max" value="65" min="15" max="80">
-						</div>
-						<input type="submit" data-inline="true" value="확인">
-					</form>
-  				</div>
+			<div id="age-content">
+				<div id="age-content-wrapper">
+					<p>
+						<input type="text" id="min-age" readonly/>
+					</p>
+					<div id="slider-range"></div>
+					<p>
+						<input type="text" id="max-age" readonly/>
+					</p>
+				</div>
 			</div>
+			
 			
 			<button type="button" class="btn btn-filter" id="btn-style">성향</button>
 			<div id="style-content">
@@ -52,154 +56,6 @@
 		</div>
 	</div>
 	
-	<style>
-	#gender-content, #age-content, #style-content {
-		display: none;
-		position: absolute;
-		background-color: #f9fdff;
-		min-width: 180px;
-   		box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-    	top: 60px;
-    	margin-left: 10px;
- 
-    	z-index: 1;
-	}
-	
-	#gender-content{
-		margin-left: 10px;
-		height: 120px;
-	}
-	
-	#age-content{
-		margin-left: 70px;
-		padding: 10px;
-		min-height: 120px !important;
-		width: 320px;
-	}
-	
-	
-	#style-content{
-		margin-left: 130px;
-	}
-	
-	#gender-content ul, #style-content ul{
-		display: table;
-		width: 100%;
-	}
-	
-	#gender-content li{
-		display: table-cell;
-	    cursor: pointer;
-	    width: 100%;
-	    height: 40px;
-	    color: rgba(51, 181, 229, 1);
-	    padding-left: 15px;
-	    vertical-align: middle;
-	}
-	
-	#gender-content li:hover{
-		background: #e8f8ff;
-	}
-	
-	#style-content li{
-		display: table-cell;
-	    cursor: pointer;
-	    width: 100%;
-	    height: 40px;
-	    color: rgba(51, 181, 229, 1);
-	    padding-left: 15px;
-	    vertical-align: middle;
-	}
-	
-	#style-content li:hover{
-		background: #e8f8ff;
-	}
-	
-	#btn-gender, #btn-age, #btn-style, #btn-write{
-		color: #fff;
-		border: none;
-		outline: none;
-
-		border-radius: 0;
-		font-weight: 500;
-		letter-spacing: 1px;
-		background: #87deff;
-	}
-	
-	#btn-gender:hover, #btn-age:hover, #btn-style:hover, #btn-write:hover{
-		background: #009ddb;
-	}
-	
-	.ui-btn-inline{
-		color: #fff !important;
-	    border: none !important;
-	    outline: none !important;
-	    border-radius: 0 !important;
-	    font-weight: 500 !important;
-	    letter-spacing: 1px !important;
-	    background: #87deff !important;
-	    box-shadow: none !important;
-	    text-shadow: none !important;
-	    
-	    width: 55px;
-	    height: 30px;
-	    
-	    font-size: 12px;
-	    font-weight: 100 !important;
-	    
-	    font-family: 'RobotoDraft', 'Roboto', sans-serif !important;
-	}
-	
-	.ui-content{
-		padding: 5px !important;
-	}
-	
-	.ui-content>form{
-		display: flex;
-		flex-direction: column;
-		flex-wrap: wrap;
-		justify-content: flex-end;
-	}
-	
-	
-	
-	</style>
-	
-	<script>
-	  
-	$(document).on("click", function(e){
-		if($(e.target).is("#btn-gender")){
-			$("#gender-content").show();
-	    }else{
-	        $("#gender-content").hide();
-	    }
-	});
-
-	$(document).on("click", function(e){
-		if($(e.target).is("#btn-age")){
-			$("#age-content").show();
-	    }
-	});
-	
-	$('body').on("click", function(e){
-		if($(e.target).is("#age-min, #age-max, #age-content, .ui-content, .ui-content form, .ui-conent form>div, .ui-conent form>input, .ui-rangeslider-sliders, .ui-slider-track a ")) {
-			
-		} else {
-			$("#age-content").hide();
-		}
-	});
-	
-
-	$(document).on("click", function(e){
-		if($(e.target).is("#btn-style")){
-			$("#style-content").show();
-	    }else{
-	        $("#style-content").hide();
-	    }
-	});
-	
-	</script>
-
 
 <main id="main-container">
 	
@@ -397,3 +253,56 @@
 	google.maps.event.addDomListener(window, 'load', initialize);
 	
 </script>
+
+<script>
+$( function() {
+	$( "#slider-range" ).slider({
+		range: true,
+		min: 15,
+		max: 80,
+		values: [ 30, 65 ],
+		slide: function( event, ui ) {
+			$( "#min-age" ).val(ui.values[ 0 ] + " 세");
+			$( "#max-age" ).val(ui.values[ 1 ] + " 세");
+		}
+	});
+	
+	$( "#min-age" ).val( $( "#slider-range" ).slider( "values", 0 ) + " 세");
+	$( "#max-age" ).val( $( "#slider-range" ).slider( "values", 1 ) + " 세");
+});
+</script>
+
+<script>
+	  
+	$(document).on("click", function(e){
+		if($(e.target).is("#btn-gender")){
+			$("#gender-content").show();
+	    }else{
+	        $("#gender-content").hide();
+	    }
+	});
+
+	$(document).on("click", function(e){
+		if($(e.target).is("#btn-age")){
+			$("#age-content").show();
+	    }
+	});
+	
+	$('body').on("click", function(e){
+		if($(e.target).is("#age-min, #age-max, #age-content, #age-content p, #age-content label, #age-content div, #age-content input ")) {
+			
+		} else {
+			$("#age-content").hide();
+		}
+	});
+	
+
+	$(document).on("click", function(e){
+		if($(e.target).is("#btn-style")){
+			$("#style-content").show();
+	    }else{
+	        $("#style-content").hide();
+	    }
+	});
+	
+	</script>
