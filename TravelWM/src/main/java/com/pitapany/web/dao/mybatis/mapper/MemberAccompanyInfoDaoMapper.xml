@@ -38,7 +38,10 @@
 		`memberId`,
 		`latitude`,
 		`longitude`,
-		`styleId`
+		`styleId`,
+		`locality`,
+		`country`,
+		`place`
 		)
 		VALUES
 		(
@@ -48,7 +51,10 @@
 		#{memberId},
 		#{latitude},
 		#{longitude},
-		#{styleId}
+		#{styleId},
+		#{locality},
+		#{country},
+		#{place}
 		)
 	</insert>
 
@@ -62,6 +68,9 @@
 		`latitude` = #{latitude},
 		`longitude` = #{longitude},
 		`styleId` = #{styleId},
+		`country` = #{country},
+		`locality` = #{locality},
+		`place` = #{place}
 		WHERE `id` = #{id}
 	</update>
 

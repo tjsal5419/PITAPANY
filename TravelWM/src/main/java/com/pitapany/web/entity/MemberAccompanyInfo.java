@@ -12,6 +12,12 @@ public class MemberAccompanyInfo {
 	private float latitude;
 	private float longitude;
 	
+	private String place;
+
+	private String locality;
+	private String country;
+
+	
 	public String getId() {
 		return id;
 	}
@@ -54,5 +60,25 @@ public class MemberAccompanyInfo {
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	public String getLocality() {
+		return locality;
+	}
+	public void setLocality(String locality) {
+		this.locality = locality;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	
 	
 }

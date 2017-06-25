@@ -67,7 +67,7 @@
 		#{country},
 		#{place},
 		#{memberProfileId}
-		);
+		)
 
 	</insert>
 
@@ -84,7 +84,7 @@
 		`country` =	#{country},
 		`place` = #{place},
 		`memberProfileId` = #{memberProfileId}
-		WHERE `id` = #{id};
+		WHERE `id` = #{id}
 	</update>
 
 	<delete id="delete">
