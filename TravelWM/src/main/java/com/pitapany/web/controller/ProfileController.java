@@ -25,6 +25,7 @@ import com.pitapany.web.entity.MemberProfile;
 import com.pitapany.web.entity.MemberProfileBoard;
 import com.pitapany.web.entity.MemberProfileBoardReply;
 import com.pitapany.web.entity.ProfHomeBoardAndReply;
+import com.pitapany.web.security.CustomWebAuthenticationDetails;
 
 @Controller
 @RequestMapping("/profile/*")
@@ -120,7 +121,7 @@ public class ProfileController {
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getDetails()).getMember();
 		String memberId = member.getId();
-		memberProfileBoard.setMemberProfileId(member);
+		memberProfileBoard.setMemberProfileId(memberId);
 
 		if (!img.equals(""))
 			memberProfileBoard.setImg(img);
