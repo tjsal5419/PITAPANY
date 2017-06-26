@@ -100,10 +100,10 @@ public class AccompanyController {
          @RequestParam(value="style",defaultValue="1")String styleId,
          @RequestParam(value="file", defaultValue="null") MultipartFile file,
          @RequestParam(value="place", defaultValue="미등록장소")String place,
-         @RequestParam(value="locality", defaultValue="미등록지역")String locality,
-         @RequestParam(value="country", defaultValue="미등록나라")String country,
-         @RequestParam(value="startDate", defaultValue="0000-00-00")String sD,
-         @RequestParam(value="endDate", defaultValue="0000-00-00")String eD) throws ParseException{      
+         @RequestParam(value="locality", defaultValue="")String locality,
+         @RequestParam(value="country", defaultValue="")String country,
+         @RequestParam(value="startDate", defaultValue="1999-01-01")String sD,
+         @RequestParam(value="endDate", defaultValue="1999-01-01")String eD) throws ParseException{      
 	   
 	   
 	  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();

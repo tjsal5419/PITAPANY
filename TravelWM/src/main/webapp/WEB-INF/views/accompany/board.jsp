@@ -128,9 +128,9 @@
 					<nav aria-label="Page navigation">
 					  <ul class="pagination">
 					  	 
-						<c:if test="${page!=1 && page!=0}">
+						<c:if test="${prev!=1 && page!=0}">
 						    <li>
-						      <a id="move-page-button-number" href="${root}/accompany/board?p=${page-1 }" aria-label="Previous">
+						      <a id="move-page-button-number" href="${root}/accompany/board?p=${prev-5	 }" aria-label="Previous">
 							     <span aria-hidden="true">&laquo;</span>
 							  </a>
 							</li>
@@ -154,9 +154,9 @@
 					    	</c:choose>
 					    </c:forEach>
 					    
-					    <c:if test="${page!=pageCount && count!=0}">
+					    <c:if test="${next<pageCount && count!=0}">
 						    <li>
-						      <a  id="move-page-button-number" href="${root}/accompany/board?p=${page+1 }" aria-label="Next">
+						      <a  id="move-page-button-number" href="${root}/accompany/board?p=${next+1 }" aria-label="Next">
 						        <span aria-hidden="true">&raquo;</span>
 						      </a>
 						    </li>
