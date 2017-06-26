@@ -7,7 +7,7 @@ import com.pitapany.web.entity.MemberAccompanyInfo;
 
 public interface MemberAccompanyInfoDao {
 	MemberAccompanyInfo get(String id);
-	List<MemberAccompanyInfo> getList(int page);
+	List<MemberAccompanyInfo> getList(String memberId);
 	
 	int count();
 	int delete(String id);
