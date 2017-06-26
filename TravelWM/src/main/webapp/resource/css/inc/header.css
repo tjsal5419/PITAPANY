@@ -23,7 +23,7 @@
 	src: url("../../fonts/Spoqa-Light.ttf") format('truetype');
 }
 @font-face{
-	font-family: 'Spoqa-Bold';
+	font-family: 'SpoqaBold';
 	src: url("../../fonts/Spoqa-Bold.ttf") format('truetype');
 }
 @font-face{
@@ -31,12 +31,12 @@
 	src: url("../../fonts/GodoM.ttf") format('truetype');
 }
 @font-face{
-	font-family: 'NanumMyeongJo';
-	src: url("../../fonts/NanumMyeongjo.ttf") format('truetype');
-}
-@font-face{
 	font-family: 'NanumBarunGothic';
 	src: url("../../fonts/NanumBarunGothic.ttf") format('truetype');
+}
+@font-face{
+	font-family: 'NanumBarunGothicLight';
+	src: url("../../fonts/NanumBarunGothicLight.ttf") format('truetype');
 }
 
 
@@ -71,7 +71,7 @@ html,body{
 	order: 1;
 	
 	height: 100%;
-	width: 100px;
+	width: 120px;
 	background:url("../../images/tripconn-logo/tripconn-logo-final-white.png") no-repeat center;
 	background-size: 75px;
 	background-position-y: 8px;
@@ -97,6 +97,9 @@ html,body{
 }
 
 .form-control{
+	font-family: 'Spoqa' !important;
+	font-size: 11px;
+	outline: none;
 	
 }
 
@@ -105,9 +108,14 @@ html,body{
 	display: block;
 		
 	width: 180px !important;
-
+	
+	outline: none;
 	border: none;
 	border-radius: 0;
+}
+
+#header-calendar{
+	width: 150px !important;	
 }
 
 .search-bar-container>input:first-child{
@@ -143,14 +151,14 @@ html,body{
 	display:flex;
 	order:4;
 	height:inherit;
-	padding-right: 10px;
+	
 }
 
 .accompany li{
 	display: flex;
 	height:initial;
 	
-	padding-left: 13px;
+	padding-left: 20px;
 	padding-right: 13px;
 	align-items:center;
 	
@@ -197,7 +205,7 @@ html,body{
 	flex-direction: row;
 	flex-wrap: nowrap;
 	
-	width: 130px;
+	width: 150px;
 	
 	heigth: 100%;
 	
@@ -207,7 +215,7 @@ html,body{
 }
 
 .mypage li{
-	margin-left:20px;
+	margin-left:25px;
 
 }
 
@@ -229,26 +237,26 @@ html,body{
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    margin-top: 50px;
-    padding: 12px 16px;
-    z-index: 1;
+    min-width: 180px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     
-    right: 92px;
+    top:55px;
+   	right: 107px;
+    
+    z-index: 1;
 }
 
 #alarm-content{
 	display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    margin-top: 50px;
-    padding: 12px 16px;
-    z-index: 1;
+    min-width: 180px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
     
-    right: 55px;
+    top:55px;
+   	right: 65px;
+    
+    z-index: 1;
 }
 
 #account-content{
@@ -263,11 +271,11 @@ html,body{
    
    	z-index: 1;
 
-    right: 22px;
+    right: 25px;
 }
 
 .account-login{
-	background: #87deff;
+	background: #009ddb;
 	height: 25px;
 	color: #fff;
 	text-align: right;
@@ -284,7 +292,6 @@ html,body{
 	
 	font-family: 'Spoqa';
 }
-
 
 #account-content ul{
 	display: table;
@@ -308,6 +315,10 @@ html,body{
 }
 
 .account-logout{
+	color: rgba(51, 181, 229, 1);
+}
+
+.account-logout:hover{
 	color: rgba(51, 181, 229, 1);
 }
 
@@ -392,11 +403,24 @@ html,body{
 		background: #e8f8ff;
 	}
 	
-	
-	
-	
-	
-	
+	.account-login-mobile{
+	background: #0087bc;
+	height: 30px !important;
+	line-height: normal;
+	color: #fff;
+	text-align: left;
+	display: table;
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	}
+
+	.account-login-mobile>span{
+		display: table-cell;
+		vertical-align: middle;
+		font-size: 11px;
+		font-family: 'Spoqa';
+	}
 	
 	.logo{
 		order: 2;

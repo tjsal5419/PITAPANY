@@ -47,7 +47,7 @@
 			    <input class="hidden" type="text" value="" name="locality1" id="locality1"/>  
  			    <input class="hidden" type="text" value="" name="country1" id="country1"/>  
  	
-   	    	  	<input class="form-control form-control-header" type="text" name="datefilter" value="" placeholder="동행 날짜 입력"/>
+   	    	  	<input class="form-control form-control-header" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜 입력"/>
 		  		<input type="button" class="search-button" alt="Submit"/>
 		  	</div>
 	    </form>
@@ -97,15 +97,38 @@
     </div>
     
     <div class='menu-mobile'>
-	  <ul>
-	    <li onclick="location.href='${root}/accompany/board';">동행찾기</li>
-	  </ul>
-	  <ul>  
-	    <li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
-	  </ul>
-	  <ul>	
-	  	<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
-	  </ul>
+    	<div class="account-login-mobile"><span>메뉴 정보</span></div>
+		<ul>
+		  <li onclick="location.href='${root}/accompany/board';">동행찾기</li>
+		</ul>
+		<ul>  
+		  <li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
+		</ul>
+		<ul>	
+			<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
+		</ul>
+		<div class="account-login-mobile"><span>안녕하세요, ${m.nicName}</span></div>
+			<ul>
+				<li onclick="location.href='${root}/profile/home';">프로필 홈</li>
+			</ul>
+			<ul>
+				<li onclick="location.href='${root }/member/profile-setting';">프로필 관리</li>
+			</ul>
+			<ul>
+				<li onclick="location.href='${root }/member/acc-setting';">동행 관리</li>
+			</ul>
+			<ul>
+				<li onclick="location.href='${root }/member/bookmark';">기타 관리</li>
+			</ul>
+			<ul>
+				<security:authorize  access="isAuthenticated()">
+				<li>
+				<a class="account-logout" href="${root }/j_spring_security_logout">
+					로그아웃
+				</a>
+				</li>
+			</security:authorize>
+			</ul>
 	</div>
 	
 	<div class="search-mobile">
@@ -332,7 +355,7 @@ $(function() {
   });
 
   $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('MMM DD') + ' - ' + picker.endDate.format('MMM DD'));
+      $(this).val(picker.startDate.format('YY.MM.DD') + ' - ' + picker.endDate.format('YY.MM.DD'));
   });
 
   $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
