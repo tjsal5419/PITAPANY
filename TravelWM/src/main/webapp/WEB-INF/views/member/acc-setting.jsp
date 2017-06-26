@@ -8,7 +8,7 @@
 	href="/TravelWM/resource/css/member/acc-setting.css" type="text/css" />
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 
-<script>
+<!-- <script>
 	window.addEventListener("load", function() {
 		var mod = document.querySelector("#mod");
 		var modAcc = document.querySelector("#mod-acc");
@@ -19,7 +19,7 @@
 			modAcc.style.display = "flex";
 		}
 	});
-</script>
+</script> -->
 
 <main id="main">
 <div class="frame">
@@ -62,76 +62,26 @@
 				<div class="first">
 					<div class="address-zone">
 						<!-- -------- 구글 지도 검색창 ------ -->
-					    <input class="form-control no-enter" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요!" type="text" required/>
+					    <input class="form-control no-enter autoComplete" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요!" type="text" required/>
 		
-					    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
-					    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
+					    <input class="hidden" type="text" value="" name="latitude" id="lat"/>			           
+					    <input class="hidden" type="text" value="" name="longitude" id="lng"/>  
 					    <input class="hidden" type="text" value="" name="place" id="place"/>  
 					    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
 					    <input class="hidden" type="text" value="" name="country" id="country"/>  
-			
+						<input class="hidden" type="text" value="" name="memberAccomBoardId" id="member-accomBoard-id"/>  
 					</div>
 					
 					<div class="calendar-zone">		
 						<input type="text" class="form-control calendar-reg" name="datefilter-reg" value="" placeholder="여행할 날짜를 입력하세요!" required />
-    	  				<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" required />
-    	  				<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" required />
+    	  				<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search"/>
+    	  				<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" />
     	  			</div>
-<script>
-	window.addEventListener("load",function(){
-		var editButton = document.querySelectorAll(".edit-button");
-		var regButton = document.querySelector("#info-reg");
-		var editPostButton = document.querySelector("#info-edit");
-		var cancelEditButton = document.querySelector("#cancel-edit");
-		
-		var hiddenLocation = document.querySelectorAll(".hidden-location");
-		var hiddenDate = document.querySelectorAll(".hidden-date");
-		
-		var locationForm = document.querySelector("#autocomplete");
-		var dateForm = document.querySelector(".calendar-reg");
-
-		alert(editButton.length);
-		alert(hiddenLocation[0].value);
-		alert(hiddenDate.length); 
-		
-		for(var i=0; i<editButton.length;i++){
-			editButton[i].onclick = function(){
-				alert(hiddenLocation[i].value);
-				locationForm.value = hiddenLocation[i].value;
-				dateForm.value = hiddenDate[i].value;
-				editPostButton.style.display = "flex";
-				regButton.style.display = "none";
-				cancelEditButton.style.display = "flex";
-			};
-		}
-		
-		// 수정 완료 버튼 클릭 시 
-		editPostButton.onclick = function(){
-		    var form = document.querySelector(".member-accom-info-form");
-		    form.setAttribute("action", "${root }/member/acc-info-edit");
-		    form.submit();
-		}
-		
-		// 수정하다 취소 버튼 눌렀을 때 
-		cancelEditButton.onclick = function(){
-		    var form = document.quertSelector(".member-accom-info-form");
-		    form.setAttribute("action", "acc-setting");
-			editPostButton.style.display = "none";
-			regButton.style.display = "flex";
-			cancelEditButton.style.display = "none";
-		}
-
-	});
-	
-</script>    	  			
-					
-					
-					
-					
+    	  								
 					<div class="accom-info-reg-button">
-						<button class="btn btn-info na" id="info-reg">등록</button>
-						<button class="btn btn-info na" id="info-edit">수정</button>
-						<button class="btn btn-info na" id="cancel-edit">취소</button>
+						<input type="submit" class="btn btn-info na" id="info-reg" value="등록"/>
+						<input type="button" class="btn btn-info na" id="info-edit" value="수정"/>
+						<input type="button" class="btn btn-info na" id="cancel-edit" value="취소"/>
 					</div>
 				</div>
 				</form>
@@ -140,15 +90,16 @@
 					<div class="blist">
 <!-- --------------------memberAccomInfo 반복 구간------------------------ -->
 						<c:forEach var="li" items="${memberAccomLists }">
-							<div class="line ${li.id }">
+							<div class="line">
 								<div>
 									<input class="hidden hidden-location" type="text" value="${li.country } ${li.locality } ${li.place }"/>  
-									<input class="hidden hidden-date" type="text" value="<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" /> ~ <fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />"/>  
-									
+									<input class="hidden hidden-date" type="text" value="<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />"/>  									
+									<input class="hidden hidden-id" type="text" value="${li.id }"/>
+
 									${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
-							    	<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
-									~
-									<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />
+							    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
+									-
+									<fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />
 								</div>
 								<div class="edit-delete">
 									<button id="mod" value="${li.id }" class="btn btn-info na edit-button">수정</button>
@@ -169,7 +120,7 @@
 			</div>
 			<div class="capa">
 				<div class="propic">
-					<c:forEach var="a" begin="1" end="5">
+					<c:forEach var="a" begin="0" end="0">
 						<div class="entity">
 							<a href="#"><div class="pro"></div></a>
 							<div class="nic">닉네임</div>
@@ -186,7 +137,7 @@
 			</div>
 			<div class="capa">
 				<div class="propic">
-					<c:forEach var="a" begin="1" end="5">
+					<c:forEach var="a" begin="0" end="0">
 						<div class="entity">
 							<a href="#"><div class="pro"></div></a>
 							<div class="nic">닉네임</div>
@@ -292,33 +243,74 @@
 	</table>
 </div> -->
 
-<!-- --------------------- ajax로 동행 정보 삭제 & 수정하기 ----------------- -->
-<!--  
+<!-- --------------동행 정보 수정용 자바 스크립트--------------------------------- -->
 <script>
- window.addEventListener("load", function(e) {
-	var deleteButton = document.querySelectorAll(".delete-button");
-	var editButton = document.querySelectorAll(".edit-button");
-	var deleteParentNode = document.querySelector(".blist");
-	
-	for(var i=0 ; i<deleteButton.length; i++){
-
-	deleteButton[i].onclick = function(){
-		var request = new window.XMLHttpRequest();
+	window.addEventListener("load",function(){
+		var editButton = document.getElementsByClassName("edit-button");
+		var regButton = document.querySelector("#info-reg");
+		var editPostButton = document.querySelector("#info-edit");
+		var cancelEditButton = document.querySelector("#cancel-edit");
 		
-		request.open("GET", "ajax-data/deleteAccomInfo.jsp?id="+deleteButton[i].value,true);
-		request.onload = function(){
+		var hiddenLocation = document.querySelectorAll(".hidden-location");
+		var hiddenDate = document.querySelectorAll(".hidden-date");
+		
+		var locationForm = document.querySelector(".autoComplete");
+		var dateForm = document.querySelector(".calendar-reg");
+		var memberAccomBoardId = document.querySelector("#member-accomBoard-id");
+		
+		// 각 member accom board 의 수정버튼에 onclick 리스너 추가하기
+		for(var i=0;i<editButton.length;i++){
+			 editButton[i].onclick = function editFunc(event){
+			        event.preventDefault();
+			        var hiddenLocByTarget = event.target.parentNode.parentNode.querySelector(".hidden-location").value;
+			        var hiddenDateByTarget = event.target.parentNode.parentNode.querySelector(".hidden-date").value;
+					var hiddenIdByTarget = event.target.parentNode.parentNode.querySelector(".hidden-id").value;
 
-			eval(alert("삭제되었습니다."));
-			deleteButton[i].parentNode.removeChild(deleteButton[i]);
-		};
-		request.send();
-	};
- 
-	} 
- 
- });
-</script>
--->
+			        locationForm.value = hiddenLocByTarget;
+					dateForm.value = hiddenDateByTarget;
+					memberAccomBoardId.value = hiddenIdByTarget;
+
+					editPostButton.style.display = "flex";
+					regButton.style.display = "none";
+					cancelEditButton.style.display = "flex";
+			};
+		}
+
+		// 수정 완료 버튼 클릭 시 
+		editPostButton.onclick= function(){
+			regButton.onsubmit = "return false;";
+	 		var latCheck = document.querySelector("#lat");
+	 		var dateCheck = document.querySelector("#hidden-endDate");
+
+	 		if(latCheck.value.length >0 || dateCheck.value.length >0){
+		    	var form = document.querySelector(".member-accom-info-form");			
+		    	form.setAttribute("action", "${root }/member/acc-info-edit");
+		    	form.submit();
+			}
+	 		else{
+	 			return false;
+	 		}
+		}
+		
+		// 수정하다 취소 버튼 눌렀을 때
+		cancelEditButton.onclick = function(){
+
+			locationForm.value='';
+			dateForm.value='';
+			editPostButton.style.display = "none";
+			regButton.style.display = "flex";
+			cancelEditButton.style.display = "none";
+		}
+		
+		locationForm.onclick = function(){
+			locationForm.value='';
+		}
+
+	});
+	
+</script>    	  			
+								
+<!-- -------------------------------------------------------- -->
 
 <!-- ------------------Calendar------------------------ -->
     	  			<script>
@@ -351,7 +343,7 @@
 						  });
 							
 						  $('input[name="datefilter-reg"]').on('apply.daterangepicker', function(ev, picker) {
-						      $(this).val(picker.startDate.format('MMM DD') + ' - ' + picker.endDate.format('MMM DD'));
+						      $(this).val(picker.startDate.format('YY.MM.DD') + ' - ' + picker.endDate.format('YY.MM.DD'));
 						      $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
 						      $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
 						  });
