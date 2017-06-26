@@ -105,7 +105,7 @@
 <c:set var = "url" value = "${requestScope['javax.servlet.forward.request_uri']}"/>
 
 
-<c:if test="${!fn:contains(url, 'reg')}">
+<c:if test="${!fn:contains(url, 'reg') && !fn:contains(url, 'acc-setting')}">
 
 <script>
 if(!window.location.href.includes("reg")){

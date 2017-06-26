@@ -7,7 +7,8 @@
 <mapper namespace="com.pitapany.web.dao.MemberAccompanyInfoDao">
 	<select id="getList" resultType="com.pitapany.web.entity.MemberAccompanyInfo">
 		SELECT * 
-		FROM MemberAccompanyInfo 
+		FROM MemberAccompanyInfo
+		WHERE memberId=#{memberId}
 		order by cast(id as unsigned) desc 
 	</select>
 

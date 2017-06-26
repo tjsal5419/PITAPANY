@@ -45,10 +45,81 @@ public class MemberController {
 		return "member.main";
 	}
 	
-	@RequestMapping("/acc-setting")
+	@RequestMapping(value="acc-setting",
+			method=RequestMethod.GET)
 	public String accSetting(Model model){
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
+		
+		List<MemberAccompanyInfo> memberAccomLists = memberAccompanyInfoDao.getList(memberId);
+		model.addAttribute("memberAccomLists", memberAccomLists);
+		
 		return "member.acc-setting";
 	}
+	
+	@RequestMapping(value="acc-setting",
+			method=RequestMethod.POST)
+	public String profileSetting(Model model,
+			@RequestParam(value="startDate", defaultValue="0000-00-00")String sD,
+			@RequestParam(value="endDate", defaultValue="0000-00-00")String eD,
+			@RequestParam(value="longitude", defaultValue="0.0")float longitude,
+			@RequestParam(value="latitude", defaultValue="0.0")float latitude,
+			@RequestParam(value="style", defaultValue="1")String styleId,
+			@RequestParam(value="locality", defaultValue="")String locality,
+			@RequestParam(value="place", defaultValue="")String place,
+			@RequestParam(value="country", defaultValue="")String country){
+		
+		
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
+		
+		MemberAccompanyInfo memberAccompanyInfo = new MemberAccompanyInfo();
+		memberAccompanyInfo.setCountry(country);
+		memberAccompanyInfo.setLatitude(latitude);
+		memberAccompanyInfo.setLocality(locality);
+		memberAccompanyInfo.setLongitude(longitude);
+		memberAccompanyInfo.setMemberId(memberId);
+		memberAccompanyInfo.setPlace(place);
+		memberAccompanyInfo.setStyleId(styleId);
+		
+		java.sql.Date startDate = java.sql.Date.valueOf(sD);
+		java.sql.Date endDate = java.sql.Date.valueOf(eD);
+		
+		memberAccompanyInfo.setStartDate(startDate);
+		memberAccompanyInfo.setEndDate(endDate);
+		
+		memberAccompanyInfoDao.add(memberAccompanyInfo);
+		
+		model.addAttribute("url","member/acc-setting");
+		model.addAttribute("msg",member.getNicName()+" 님의 정보가 성공적으로 등록되었습니다.");
+		
+		return "inc/redirect";
+	}
+	
+	@RequestMapping(value="acc-info-delete", method=RequestMethod.GET)
+	public String accInfoDelete(String id, Model model){
+		int deleteCol = memberAccompanyInfoDao.delete(id);
+		
+		if(deleteCol>0){
+			model.addAttribute("url","member/acc-setting");
+			model.addAttribute("msg","삭제되었습니다.");
+		}
+		else{
+			model.addAttribute("url","member/acc-setting");
+			model.addAttribute("msg","이미 삭제된 게시글입니다.");
+		}
+		return "inc/redirect";
+		
+	}
+	
+	@RequestMapping(value="acc-info-edit", method=RequestMethod.POST)
+	public String accInfoEdit(String id, Model model){
+
+		return "inc/redirect";
+		
+	}
+	
 	
 	@RequestMapping("/bookmark")
 	public String bookmark(Model model){
@@ -63,41 +134,7 @@ public class MemberController {
 	
 	@RequestMapping(value="/profile-setting",
 			method=RequestMethod.POST)
-	public String profileSetting(Model model,
-			@RequestParam(value="startDate", defaultValue="0000-00-00")String sD,
-			@RequestParam(value="endDate", defaultValue="0000-00-00")String eD,
-			@RequestParam(value="longitude", defaultValue="0.0")float longitude,
-			@RequestParam(value="latitude", defaultValue="0.0")float latitude,
-			@RequestParam(value="style", defaultValue="1")String styleId,
-			@RequestParam(value="locality", defaultValue="미등록 지역")String locality,
-			@RequestParam(value="place", defaultValue="미등록 장소")String place,
-			@RequestParam(value="country", defaultValue="미등록 국가")String country){
-		
-			
-		  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
-		  String memberId = member.getId();
-		  
-	      MemberAccompanyInfo memberAccompanyInfo = new MemberAccompanyInfo();
-	      memberAccompanyInfo.setCountry(country);
-	      memberAccompanyInfo.setLatitude(latitude);
-	      memberAccompanyInfo.setLocality(locality);
-	      memberAccompanyInfo.setLongitude(longitude);
-	      memberAccompanyInfo.setMemberId(memberId);
-	      memberAccompanyInfo.setPlace(place);
-	      memberAccompanyInfo.setStyleId(styleId);
-
-	      java.sql.Date startDate = java.sql.Date.valueOf(sD);
-	      java.sql.Date endDate = java.sql.Date.valueOf(eD);
-
-	      memberAccompanyInfo.setStartDate(startDate);
-	      memberAccompanyInfo.setEndDate(endDate);
-
-	      memberAccompanyInfoDao.add(memberAccompanyInfo);
-	      
-	      model.addAttribute("url","profile/acc-setting");
-	      model.addAttribute("msg","성공적으로 동행등록이 와...와...완료...");
-		
-		return "inc/redirect";
+	public String profileSettingPost(Model model){
+		return "member.profile-setting";
 	}
-	
 }

@@ -82,15 +82,29 @@
 .first {
 	display: flex;
 	margin-bottom: 10px;
+	align-items:center;
+	align-content:space-between;
+	justify-content:center;
 }
 
-.sel-zone {
-	width: 150px;
-	text-align: center;
-	margin-right: 10px;
-	background: #D5D5D5;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
+.address-zone {
+	flex-grow:2;
+}
+
+.calendar-zone{
+	flex-grow:2;
+	margin-left:5px;
+}
+
+.accom-info-reg-button{
+	flex-grow:1;
+}
+
+.accom-info-reg-button>.na{
+	width:100%;
+	padding:0px;
+	height:30px;
+	margin-left:5px;
 }
 
 .sel-date {
@@ -119,8 +133,13 @@
 .line {
 	width: 100%;
 	display: flex;
-	padding: 5px;
-	margin-top: 10px;
+	padding: 10px;
+	justify-content : space-between;
+	align-items: center;
+}
+
+.edit-delete{
+	align-self:flex-end;
 }
 
 .acc-zone {
@@ -132,7 +151,7 @@
 }
 
 .mod-acc {
-	display: none;
+	/* display: none; */
 }
 
 .na {
@@ -141,6 +160,17 @@
 	font-size: 12px;
 }
 
+#info-reg{
+	display:flex;
+}
+
+#info-edit{
+	display:none;
+}
+
+#cancel-edit{
+	display:none;	
+}
 .propic {
 	display: flex;
 	flex-wrap: wrap;
@@ -172,6 +202,8 @@
 	background: #D5D5D5;
 }
 
+
+
 @media all and (max-width:910px) {
 	#main {
 		display: flex;
@@ -184,6 +216,7 @@
 		box-shadow: 0 3px 3px 0 #e0e0e0;
 		display: flex;
 		border: 1px solid #dddddd;
+		margin-top:30px;
 	}
 	.fmain {
 		margin: 0px;

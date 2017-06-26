@@ -23,9 +23,9 @@ public class MybatisMemberAccompanyInfoDao implements MemberAccompanyInfoDao {
 	}
 
 	@Override
-	public List<MemberAccompanyInfo> getList(int page) {
+	public List<MemberAccompanyInfo> getList(String memberId) {
 		MemberAccompanyInfoDao accInfoDao = sqlSession.getMapper(MemberAccompanyInfoDao.class);
-		return accInfoDao.getList(page);
+		return accInfoDao.getList(memberId);
 	}
 
 	@Override
