@@ -69,7 +69,7 @@
 			<c:forEach items="${accompanyBoardList }" var="li">
 				<div class="board-card">
 					<div class="board-content w3-card-2">
-						<div class="board-bookmark">
+						<div class="board-bookmark fa fa-bookmark">
 						</div>
 						
 						<div class="board-detail">
@@ -78,11 +78,11 @@
 								</div>
 								<div class="board-accompany-info">
 									<div class="info-item item-nickname">${li.writerNicName }</div>
-									<div class="info-item item-country">${li.country }</div>
-									<div class="info-item item-date">
-										<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
-										~
-										<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />
+									<div class="info-item item-country-date">
+									${li.country }</br>
+									<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
+									~
+									<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />		
 									</div>
 								</div>
 							</div>
@@ -97,19 +97,21 @@
 						<div class="board-info">
 							<div class="board-info-wrapper">
 								<div class="board-info-item item-gender">
-									<c:choose>
-										<c:when test="${li.writerSex==1 }">
-											여성
-										</c:when>
-										<c:otherwise>
-											남성
-										</c:otherwise>
-									</c:choose>
+									<span><c:choose>
+									<c:when test="${li.writerSex==1 }">
+										여성
+									</c:when>
+									<c:otherwise>
+										남성
+									</c:otherwise>
+								</c:choose>
+								</span>
 								</div>
-								<div class="board-info-item item-age">${li.writerAge }</div>
-								<div class="board-info-item item-style">${li.styleType }</div>
+								<div class="board-info-item item-age"><span>${li.writerAge }</span></div>
+								<div class="board-info-item item-style"><span>${li.styleType }</span></div>
 							</div>
 							<div class="board-registration-time">
+								<span>등록일</span></br>
 								<span><fmt:formatDate value="${li.regDate }" pattern="yyyy-MM-dd" /></span>
 							</div>
 						</div>		

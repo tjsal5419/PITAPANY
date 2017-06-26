@@ -1,5 +1,11 @@
  @CHARSET "UTF-8";
  
+
+body{
+	background: #fafafa;
+}
+
+ 
 /* 페이지 이동 버튼 */
 #move-page-button{
 	background-color: #33b5e5;
@@ -80,7 +86,7 @@
 	
 	background: white;
 	
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #e8f8ff;
 	/* border: 5px solid gold; */
 	z-index: 9999;
 }
@@ -102,7 +108,7 @@
 
  	
  	width: 100%;
- 	height:1100px;
+ 	height:1140px;
  	
  	padding-top: 40px;
  	
@@ -146,6 +152,7 @@
 	
 	display: block;
 	position: ;
+	background: #fff;
 	
 	width: 100%;
 	height: 100%;
@@ -161,17 +168,24 @@
 }
 
 
-.board-bookmark{
+.board-bookmark, .fa-bookmark{
 	display: block;
-	position: ;
-	
-	width: 40px;
-	height: 40px;
-	
+	position: relative;
 	float: right;
 
-	background: pink;
+	font-size: 28px !important;	
+	top: -17px;
+	left: 4px;
+	
+	cursor: pointer;
+	
+	color: #2e2e2e !important;
 }
+
+.fa-bookmark:hover{
+	color: #87deff !important;
+}
+
 
 .board-detail{
 	display:flex;
@@ -186,7 +200,7 @@
 	
 	padding-bottom: ;
 	
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 }
 
 .board-detail-wrapper{
@@ -204,7 +218,15 @@
 	float: left;
 	left: 0px;
 	
-	background: pink;
+	margin-top: 4px;
+	
+	width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    box-shadow: 0 3px 3px 0 #e0e0e0;
+    background: url(/TravelWM/resource/images/accompany-detail/2017-05-31.png) no-repeat center;
+    background-size: cover;
+    border: 1px solid #dddddd;
 }
 
 .board-accompany-info{
@@ -217,13 +239,24 @@
 	padding: 5px;
 	float: right;
 	
-	background: blue;
+	/* background: blue; */
 
 }
 
 .info-item{
 	height: 33%;
+	font-size: 11px;
+}
+
+.item-nickname{
+	font-family: 'Spoqa-Bold';
 	font-size: 12px;
+}
+
+.item-country-date{
+	font-size: 10px;
+	line-height: 1.5;
+	margin-top: 3px;
 }
 
 .board-title{
@@ -236,15 +269,13 @@
 	
 	
 	width: 100%;
-	height: 120px;
+	height: 160px;
 	
-	margin-top: 10px;
+	/* margin-top: 10px; */
+	
+	border-bottom: 1px solid #efefef;
 		
-	border: 1px solid blue;
-	
-}
-
-.board-title:hover{
+	/* border: 1px solid blue; */
 	cursor: pointer;
 }
 
@@ -253,6 +284,9 @@
 	
 	justify-content: center;
 	padding: 20px;
+	
+	font-weight: 900;
+	font-size: 14px;
 	
 	width: 100%;
 }
@@ -268,9 +302,11 @@
 	justify-content: space-between;
 	
 	wdith: 100%;
-	height: 50px;
+	height: 45px;
 	
-	margin-top: 10px;
+	font-size: 10px;
+	
+	margin-top: 5px;
 	
 	/* border: 1px solid blue; */
 }
@@ -282,20 +318,32 @@
 	
 	width: 205px;
 	height: 100%;
-	background: red;
+	/* background: red; */
 }
 
 .board-info-item{
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	display: table;
 	
-	width: 55px;
+	width: 30px;
 	height: 100%;
 	
-	margin-right: 10px;
-	
+	color: #999;
+}
+
+.board-info-item span{
+	display: table-cell;
+	text-align: left;
+	vertical-align: middle;
 	text-align: center;
+}
+
+.item-style{
+	width: 50px;
+	margin-left: 7px;
+}
+
+.item-style>span{
+	text-align: left;
 }
 
 .board-registration-time{
@@ -303,9 +351,12 @@
 	flex-direction: column;
 	justify-content: center;
 	
-	width: 55px;
+	color: #999;
+	line-height: 0.8;
+	
+	width: 60px;
 	height: 100%;
-	background: red;
+	/* background: red; */
 }
 
 .board-registration-time span{
@@ -316,15 +367,14 @@
 .page-info-container {
     clear: left;
     
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+   	display: block;
+    
     
     width: 800px;
     height: 55px;
     
     margin: auto;	
-    margin-top: 15px;
+    margin-top: 20px;
     
     /* border: 3px solid red;    */   
 }
@@ -342,7 +392,7 @@
 
 @media all and (max-width: 1240px){
 	.board-container{
-		height: 2060px;
+		height: 2100px;
 		width: 100%;
 	}
 	
@@ -358,11 +408,9 @@
 }
 
 @media all and (max-width: 768px){
-		
 	#main-container{
 		display: block;
-		width: 100%;
-		
+		width: 100%;	
 	}
 	
 	#filter-container{
@@ -373,55 +421,8 @@
 	.board-container{
 		height: 1920px;
 		width: 100%;
-		
-
-	}
-	
-	.board-wrapper{
-		width: 280px;
-		height: 1750px;
-		margin: auto;
 	}
 
-	.board-content{
-		padding: 10px;
-	}
-	.board-card{
-		width: 280px;
-		height: 280px;
-		padding: 0px;
-	}
-	
-	.board-bookmark{
-		width: 30px;
-		height: 30px;
-		
-	}
-	
-	.board-detail{
-		width: 200px;
-		height: 55px;
-	}
-	
-	.board-accompany-info{
-		width: 140px;
-	}
-	
-	.board-title{
-		height: 115px;
-		margin-top: 15px;
-	}
-	
-	.board-info{
-		margin-top: 15px;
-		height: 40px;
-	}
-	
-	.board-info-item{
-		width: 40px;
-	}
-	
-	
 	#map-container{
 		display: inline-block;
 		position: relative;
@@ -442,7 +443,142 @@
 		margin-top: 0px;
 	}
 	
+	
+	
+	.board-wrapper{
+		width: 330px;
+		height: 1750px;
+		margin: auto;
+	}
+
+	.board-content{
+		padding: 10px;
+	}
+	
+	.board-card{
+		width: 330px;
+		height: 270px;
+		padding: 0px;
+	}
+	
+	.board-detail{
+		width: 200px;
+		height: 55px;
+	}
+	
+	.board-accompany-info{
+		width: 140px;
+	}
+	
+	.board-title{
+		height: 135px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	
+	.board-info{
+		margin-top: 5px;
+		height: 40px;
+	}
+	
+	.board-info-item{
+	display: table;
+	
+	width: 30px;
+	height: 100%;
+	
+	color: #999;
+	}
+	
+	.board-info-item span{
+		display: table-cell;
+		text-align: left;
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	.item-style{
+		width: 50px;
+		margin-left: 7px;
+	}
+	
+	.item-style>span{
+		text-align: left;
+	}
+	
+		
 }
+
+
+
+
+@media all and (max-width: 350px){
+		
+
+	
+	.board-wrapper{
+		width: 280px;
+		height: 1750px;
+		margin: auto;
+	}
+
+	.board-content{
+		padding: 10px;
+	}
+	.board-card{
+		width: 280px;
+		height: 270px;
+		padding: 0px;
+	}
+	
+	.board-bookmark{
+		width: 30px;
+		height: 30px;
+		
+	}
+	
+	.board-detail{
+		width: 200px;
+		height: 55px;
+	}
+	
+	.board-accompany-info{
+		width: 140px;
+	}
+	
+	.board-title{
+		height: 140px;
+		margin-top: 15px;
+		margin-bottom: 0;
+	}
+	
+	.board-info{
+		height: 35px;
+	}
+	
+	.board-info-item span{
+		display: table-cell;
+		text-align: left;
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	.item-style{
+		width: 50px;
+		margin-left: 7px;
+	}
+	
+	.item-style>span{
+		text-align: left;
+	}
+	
+}
+
+
+
+
+
+
 
 
 #gender-content, #age-content, #style-content {

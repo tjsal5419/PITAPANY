@@ -42,7 +42,7 @@
 				<div class="item"
 					style="background-image: url('${root}/resource/images/Austria.jpg')">
 					<div class="carousel-caption">
-						<div class="caption-content">
+						<div class="caption-content caption-content-sub1">
 							<h2 class="animated fadeInDown">여행이란 익숙한 것과의 작별, 낯선 것과의 설레는 만남</h2>
 							<span class="animated fadeInDown">여몽(如夢)</span> 
 						</div>
@@ -53,7 +53,7 @@
 				<div class="item"
 					style="background-image: url('${root}/resource/images/London.jpg')">
 					<div class="carousel-caption">
-						<div class="caption-content">
+						<div class="caption-content caption-content-sub2">
 							<h2 class="animated fadeInDown">만남은 인연이고 관계는 노력이다</h2>
 							<span class="animated fadeInDown">양광모, 비상 中에서</span>
 						</div>

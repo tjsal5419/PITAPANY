@@ -425,7 +425,7 @@
 	
 	$('body').on("click", function(e){
 		
-		if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
+		if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td.available, .prev, .prev i, .next, .next i")) {		
 		} else {
 			$('.daterangepicker').css({'position':'fixed'});
 			$('.daterangepicker').css({'top':'-500px'});
