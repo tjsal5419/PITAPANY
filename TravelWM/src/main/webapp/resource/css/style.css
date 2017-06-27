@@ -39,6 +39,7 @@ main {
 
 
 #footer{
+	font-family: 'Spoqa' !important;
 	display: block;
 	position: relative;
 	bottom: 0px;

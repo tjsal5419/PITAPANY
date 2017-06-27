@@ -39,24 +39,12 @@ window.addEventListener("load",function(){
 <main class="main">
 		<%@ include file="inc/aside.jsp" %>
 		<div class="tip-container">
-			<div class="category">
-				<div class="title"><h2>여행 Tip 게시판 </h2></div>
-				<div class="search">
-					<div>
-						<select class="select search-option" name="search-option">
-							<option value="title">제목</option>
-							<option value="nicName">작성자</option>
-				
-						</select>
-					</div>
-					<div>
-		    			<input type="text" id="query" class="form-control" placeholder="전체 카테고리 검색">
-				  	</div>
-				  	<div>
-				  		<input class="search-button" id="search-button" type="image" src="${root }/resource/images/ic_search_black_24dp_1x.png" alt="Submit">
-			  		</div>
-			  	</div>
-			  	<div class="line"></div>
+	
+			<div class="search-result">검색 결과 : ${count }건</div>
+	
+			<div class="category-search">
+			  	
+			  	
 			  	<div class="filter">
 						<select id="select-box" class="select-box" onchange="changeFunc()" name="tipCategoryId">
 							<option value="default" selected>전체 카테고리</option>
@@ -72,8 +60,27 @@ window.addEventListener("load",function(){
 							</c:forEach>
 							
 						</select>
-						<div class="search-result">검색 결과 : ${count }건</div>
+						
 				</div>
+					
+					
+				<div class="search-form">
+					<div>
+						<select class="select search-option" name="search-option">
+							<option value="title">제목</option>
+							<option value="nicName">작성자</option>
+				
+						</select>
+					</div>
+					<div>
+		    			<input type="text" id="query" class="form-control form-control-header tip-search"  placeholder="전체 카테고리 검색">
+				  	</div>
+				  	<div>
+				  		<input class="search-button" id="tip-search-button" alt="Submit">
+			  		</div>
+			  	</div>
+			  	
+			  
 			  		
 			</div>
 			<table class="table">
@@ -94,10 +101,10 @@ window.addEventListener("load",function(){
 						<tr>
 							<td class="num" colspan="1">${t.id}</td>
 							<td colspan="2" class="category">${t.category }</td>
-							<td colspan="3"><a href="${root }/community/tip-detail?id=${t.id}">${t.title }</a></td>
+							<td class="article-title" colspan="3"><a href="${root }/community/tip-detail?id=${t.id}">${t.title }</a></td>
 							<td colspan="2">${t.nicName}</td>
 							<td class="date" colspan="2">
-								<fmt:formatDate value="${t.regDate}" pattern="yyyy-MM-dd HH:mm:ss" />
+								<fmt:formatDate value="${t.regDate}" pattern="yyyy-MM-dd" />
 							</td>
 							<td class="hit" colspan="1">${t.hits }</td>
 						</tr>
@@ -153,8 +160,8 @@ window.addEventListener("load",function(){
 					</nav>	
 				</div>
 				
-				<div class="write">
-					<a href="${root }/community/tip-reg">팁 작성하기</a>
+				<div class="write" id="write-btn">
+					<a href="${root }/community/tip-reg">글쓰기</a>
 				</div>
 			</div>
 		</div>

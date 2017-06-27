@@ -91,29 +91,33 @@ public class AccompanyController {
 		return "accompany.reg";
 	}
 
-	@RequestMapping(value = "/reg", method = RequestMethod.POST)
-	public String regPost(Model model, HttpServletRequest request, HttpServletResponse response,
-			AccompanyBoardFile accompanyBoardFile, @RequestParam(value = "title", defaultValue = " ") String title,
-			@RequestParam(value = "lat", defaultValue = "0.0") float lat,
-			@RequestParam(value = "lng", defaultValue = "0.0") float lng,
-			@RequestParam(value = "content", defaultValue = "작성된 내용이 없습니다.") String content,
-			@RequestParam(value = "style", defaultValue = "1") String styleId,
-			@RequestParam(value = "file", defaultValue = "null") MultipartFile file,
-			@RequestParam(value = "place", defaultValue = "미등록장소") String place,
-			@RequestParam(value = "locality", defaultValue = "미등록지역") String locality,
-			@RequestParam(value = "country", defaultValue = "미등록나라") String country,
-			@RequestParam(value = "startDate", defaultValue = "0000-00-00") String sD,
-			@RequestParam(value = "endDate", defaultValue = "0000-00-00") String eD) throws ParseException {
-
-		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
-				.getDetails()).getMember();
-		String memberId = member.getId();
-
-		AccompanyBoard accompanyBoard = new AccompanyBoard();
-		accompanyBoard.setContext(content);
-		accompanyBoard.setLatitude(lat);
-		accompanyBoard.setLongitude(lng);
-		accompanyBoard.setTitle(title);
+	@RequestMapping(value="/reg",
+	         method=RequestMethod.POST)
+	   public String regPost(Model model,
+	         HttpServletRequest request, 
+	         HttpServletResponse response,
+	         AccompanyBoardFile accompanyBoardFile,
+	         @RequestParam(value="title",defaultValue=" ")String title,
+	         @RequestParam(value="lat",defaultValue="0.0")float lat,
+	         @RequestParam(value="lng",defaultValue="0.0")float lng,
+	         @RequestParam(value="content",defaultValue="작성된 내용이 없습니다.")String content,
+	         @RequestParam(value="style",defaultValue="1")String styleId,
+	         @RequestParam(value="file", defaultValue="null") MultipartFile file,
+	         @RequestParam(value="place", defaultValue="미등록장소")String place,
+	         @RequestParam(value="locality", defaultValue="")String locality,
+	         @RequestParam(value="country", defaultValue="")String country,
+	         @RequestParam(value="startDate", defaultValue="1999-01-01")String sD,
+	         @RequestParam(value="endDate", defaultValue="1999-01-01")String eD) throws ParseException{      
+		   
+		   
+		  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		  String memberId = member.getId();
+		  
+	      AccompanyBoard accompanyBoard = new AccompanyBoard();
+	      accompanyBoard.setContext(content);
+	      accompanyBoard.setLatitude(lat);
+	      accompanyBoard.setLongitude(lng);
+	      accompanyBoard.setTitle(title);
 
 		java.sql.Date startDate = java.sql.Date.valueOf(sD);
 		java.sql.Date endDate = java.sql.Date.valueOf(eD);

@@ -179,9 +179,6 @@
  		  	/*         	  var fotmattedAdress = place.formatted_address;
  		  	 */        	  
  		  	    	               	  
- 		  	        	  alert("위도"+latitude);
- 		  	        	  alert("경도"+longitude);
- 		  	        	  alert(placeName);
  		  	
  		  	        	  
  		  	         	  var lng = document.querySelector("#lng1");
@@ -217,8 +214,6 @@
  		  	           
  		  	        document.querySelector("#mobile-autocomplete").value = document.querySelector("#autocomplete").value;
  		  	            	  
- 		  		          alert(country);
- 		  		          alert(locality);
  		
  		}
 
@@ -253,7 +248,7 @@
  	                  }
  	                  
  	                  else if(addressType == 'locality'){
- 	                	  locality = place.address_components[i][componentForm[addressType]];
+ 	                	 locality = place.address_components[i][componentForm[addressType]];
  	                	  
  	                	 //	 alert(locality);
  	                  }
@@ -333,9 +328,6 @@
           	  var countryText = document.querySelector("#country1");
         		  var locality = '';
         		  var country = '';
-        		  
-        		  alert(placeName);
-        		  alert(latitude);
                  
                 for (var i = 0; i < place1.address_components.length; i++) {
                     var addressType1 = place1.address_components[i].types[0];
@@ -353,8 +345,6 @@
                     }
                
                 }
-                 alert(country);
-                 alert(locality);
               document.querySelector("#autocomplete").value = document.querySelector("#mobile-autocomplete").value;
         		  lng.value = longitude;
           	  lat.value = latitude;
@@ -425,7 +415,7 @@
 	
 	$('body').on("click", function(e){
 		
-		if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td")) {		
+		if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .dropdown-menu td.available, .prev, .prev i, .next, .next i")) {		
 		} else {
 			$('.daterangepicker').css({'position':'fixed'});
 			$('.daterangepicker').css({'top':'-500px'});

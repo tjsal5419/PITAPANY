@@ -6,7 +6,7 @@
 <!-- <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
-<link href="${root}/resource/css/accompany/accompany-board.css" rel="stylesheet"/>
+<link href="${root}/resource/css/accompany/board.css" rel="stylesheet"/>
 
 <!-- For Age Selector -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -69,7 +69,7 @@
 			<c:forEach items="${accompanyBoardList }" var="li">
 				<div class="board-card">
 					<div class="board-content w3-card-2">
-						<div class="board-bookmark">
+						<div class="board-bookmark fa fa-bookmark">
 						</div>
 						
 						<div class="board-detail">
@@ -78,11 +78,11 @@
 								</div>
 								<div class="board-accompany-info">
 									<div class="info-item item-nickname">${li.writerNicName }</div>
-									<div class="info-item item-country">${li.country }</div>
-									<div class="info-item item-date">
-										<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
-										~
-										<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />
+									<div class="info-item item-country-date">
+									${li.country }</br>
+									<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
+									~
+									<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />		
 									</div>
 								</div>
 							</div>
@@ -97,19 +97,21 @@
 						<div class="board-info">
 							<div class="board-info-wrapper">
 								<div class="board-info-item item-gender">
-									<c:choose>
-										<c:when test="${li.writerSex==1 }">
-											여성
-										</c:when>
-										<c:otherwise>
-											남성
-										</c:otherwise>
-									</c:choose>
+									<span><c:choose>
+									<c:when test="${li.writerSex==1 }">
+										여성
+									</c:when>
+									<c:otherwise>
+										남성
+									</c:otherwise>
+								</c:choose>
+								</span>
 								</div>
-								<div class="board-info-item item-age">${li.writerAge }</div>
-								<div class="board-info-item item-style">${li.styleType }</div>
+								<div class="board-info-item item-age"><span>${li.writerAge }</span></div>
+								<div class="board-info-item item-style"><span>${li.styleType }</span></div>
 							</div>
 							<div class="board-registration-time">
+								<span>등록일</span></br>
 								<span><fmt:formatDate value="${li.regDate }" pattern="yyyy-MM-dd" /></span>
 							</div>
 						</div>		
@@ -126,9 +128,9 @@
 					<nav aria-label="Page navigation">
 					  <ul class="pagination">
 					  	 
-						<c:if test="${page!=1 && page!=0}">
+						<c:if test="${prev!=1 && page!=0}">
 						    <li>
-						      <a id="move-page-button-number" href="${root}/accompany/board?p=${page-1 }" aria-label="Previous">
+						      <a id="move-page-button-number" href="${root}/accompany/board?p=${prev-5	 }" aria-label="Previous">
 							     <span aria-hidden="true">&laquo;</span>
 							  </a>
 							</li>
@@ -152,9 +154,9 @@
 					    	</c:choose>
 					    </c:forEach>
 					    
-					    <c:if test="${page!=pageCount && count!=0}">
+					    <c:if test="${next<pageCount && count!=0}">
 						    <li>
-						      <a  id="move-page-button-number" href="${root}/accompany/board?p=${page+1 }" aria-label="Next">
+						      <a  id="move-page-button-number" href="${root}/accompany/board?p=${next+1 }" aria-label="Next">
 						        <span aria-hidden="true">&raquo;</span>
 						      </a>
 						    </li>
