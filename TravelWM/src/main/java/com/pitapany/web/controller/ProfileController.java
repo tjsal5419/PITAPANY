@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.dao.MemberProfileBoardDao;
@@ -32,9 +32,6 @@ import com.pitapany.web.security.CustomWebAuthenticationDetails;
 public class ProfileController {
 	
 	@Autowired
-	private SqlSession sqlsession;
-
-	@Autowired
 	private MemberDao memberDao;
 	
 	@Autowired
@@ -44,16 +41,23 @@ public class ProfileController {
 	private MemberProfileBoardDao memberProfileBoardDao;
 	
 	@Autowired
-	private MemberProfileBoardReplyDao memberProfileBoardReplayDao;
+	private MemberProfileBoardReplyDao memberProfileBoardReplyDao;
 
 	
 	@RequestMapping(value = "home", method = RequestMethod.GET)
 	public String home(Model model, 
-			@RequestParam(value="mId",defaultValue="1")String memberId) {
+			@RequestParam(value="mId",defaultValue="default")String memberId) {
 		
+		if(memberId.equals("default")){
+			Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+					.getDetails()).getMember();
+			memberId = member.getId();
+			
+		}
 		MemberProfile memberProfile = memberProfileDao.getByMemberId(memberId);
 		String memberProfileId = memberProfile.getId();
-	
+		
+		Member member = memberDao.get(memberId);
 		List<MemberProfileBoard> boards = memberProfileBoardDao.getList(memberProfileId); // 그 사람의 보드들 가져오고..리스트로 
 		List<ProfHomeBoardAndReply> boardAndReplyLists = new ArrayList<ProfHomeBoardAndReply>(); // 게시판, 응답을 담아줄 객체 리스트
 		
@@ -66,7 +70,8 @@ public class ProfileController {
 		for(MemberProfileBoard m : boards){
 			
 			// 게시판 ID로 댓글 가져오기
-			List<MemberProfileBoardReply> replyLists = memberProfileBoardReplayDao.getList(m.getId());
+			List<MemberProfileBoardReply> replyLists = memberProfileBoardReplyDao.getList(m.getId());
+			
 			// 가져온 댓글과 해당 글을 ProfHomeBoardAndReply 객체에에 담아주기
 
 			// ProfHomeBoardAndReply 객체부터 생성
@@ -86,13 +91,10 @@ public class ProfileController {
 		// 멤버 프로필에 관한 정보
 		model.addAttribute("memberProfile", memberProfile);
 	    
+		// 멤버 기본정보에 관한 모델
+		model.addAttribute("member", member);
+		
 	    return "profile.home";
-	}
-
-	@RequestMapping(value = "home", method = RequestMethod.POST)
-	public String home(Model model) {
-
-		return "profile.home";
 	}
 
 	@RequestMapping(value = "reg", method = RequestMethod.GET)
