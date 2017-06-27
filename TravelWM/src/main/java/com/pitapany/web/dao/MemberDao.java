@@ -10,7 +10,9 @@ public interface MemberDao {
 	List<Member> getList();
 	String getIdByEmail(String email);
 	int getSizeByEmail(String email);
-
+	int getMatchCount(String id);
+	
+	int addMatchCount(String id);
 	int delete(String id);
 	int add(Member member);
 	int update(Member member);

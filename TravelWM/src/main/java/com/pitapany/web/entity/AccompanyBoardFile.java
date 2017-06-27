@@ -1,6 +1,5 @@
 package com.pitapany.web.entity;
 
-
 public class AccompanyBoardFile {
 	
 	private String id;

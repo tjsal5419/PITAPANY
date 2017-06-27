@@ -9,7 +9,6 @@
 		SELECT * 
 		FROM MemberAccompanyMatch 
 		order by cast(id as unsigned) desc 
-		limit #{page},6
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.MemberAccompanyMatch">
@@ -17,6 +16,14 @@
 		FROM
 		`pitapanydb`.`MemberAccompanyMatch`
 		WHERE id = #{id}
+	</select>
+
+	<select id="getByMemberId" resultType="com.pitapany.web.entity.MemberAccompanyMatch">
+		SELECT *
+		FROM
+		`pitapanydb`.`MemberAccompanyMatch`
+		WHERE memberId = #{memberId}
+		order by matchDate DESC
 	</select>
 
 	<select id="count" resultType="Integer">
@@ -33,16 +40,16 @@
 		`pitapanydb`.`MemberAccompanyMatch`
 		(
 		`id`,
-		`matchDate`,
 		`memberId`,
-		`matchedMemberId`
+		`matchedMemberId`,
+		`memberAccompanyInfoId`
 		)
 		VALUES
 		(
 		#{id},
-		#{matchDate},
 		#{memberId},
-		#{matchedMemberId}
+		#{matchedMemberId},
+		#{memberAccompanyInfoId}
 		)
 	</insert>
 
@@ -50,5 +57,7 @@
 		DELETE FROM MemberAccompanyMatch
 		WHERE id = #{id}
 	</delete>
+
+
 
 </mapper>

@@ -12,6 +12,7 @@ public class MemberProfile {
 	private String facebookUrl;
 	private String instagramUrl;
 	private String memberId;
+	private String styleId;
 	
 	public String getId() {
 		return id;
@@ -79,6 +80,12 @@ public class MemberProfile {
 	}
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
+	}
+	public String getStyleId() {
+		return styleId;
+	}
+	public void setStyleId(String styleId) {
+		this.styleId = styleId;
 	}
 	
 }

@@ -8,6 +8,7 @@ import com.pitapany.web.entity.MemberAccompanyMatch;
 public interface MemberAccompanyMatchDao {
 	MemberAccompanyMatch get(String id);
 	List<MemberAccompanyMatch> getList(int page);
+	List<MemberAccompanyMatch> getByMemberId(String memberId);
 	
 	int count();
 	int delete(String id);

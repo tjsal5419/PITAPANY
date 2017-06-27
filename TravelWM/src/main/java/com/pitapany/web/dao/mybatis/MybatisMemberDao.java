@@ -60,5 +60,18 @@ public class MybatisMemberDao implements MemberDao {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		return memberDao.getMember(id);
 	}
+
+	@Override
+	public int addMatchCount(String id) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.addMatchCount(id);
+	}
+
+	@Override
+	public int getMatchCount(String id) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getMatchCount(id);
+
+	}
 	
 }
