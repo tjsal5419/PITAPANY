@@ -6,269 +6,247 @@
 	href="/TravelWM/resource/css/member/profile-setting.css"
 	type="text/css" />
 
-<script type="text/javascript">
-	function add() {
-		var div = document.createElement('div');
-		
-		div.innerHTML = document.getElementById('sns').innerHTML;
-		document.getElementById('clone').appendChild(div);
 
-		div.style.display = "flex";
-	}
+<!-- --addButton--------------------------------------------- -->
+<script type="text/javascript">
+function add() {
+	var div = document.querySelector(".profile-sns");
+	var clone = div.cloneNode(true);
+	var cloneLabel = clone.querySelector(".profile-item-name");
+	
+	clone.removeChild(cloneLabel);
+	
+
+	var editSNS = document.querySelector("#clone");
+	clone.style.width = "80%";
+	clone.style.float = "right";
+	editSNS.appendChild(clone);
+}
 </script>
 
-<main id="main">
-<div class="frame">
-	<div class="aside-hidden">
-		<div>
-			<a href="">프로필관리</a>
+<script>
+	$("#year").on("mouseover", function () {
+		$(".select_style_year").css({"border-color": "#33b5e5"})
+	});
+	$("#year").on("mouseleave", function () {
+		$(".select_style_year").css({"border-color": "#dcdcdc"})
+	});
+	
+	$("#month").on("mouseover", function () {
+		$(".select_style_month").css({"border-color": "#33b5e5"})
+	});
+	$("#month").on("mouseleave", function () {
+		$(".select_style_month").css({"border-color": "#dcdcdc"})
+	});
+	
+	$("#day").on("mouseover", function () {
+		$(".select_style_day").css({"border-color": "#33b5e5"})
+	});
+	$("#day").on("mouseleave", function () {
+		$(".select_style_day").css({"border-color": "#dcdcdc"})
+	});
+</script>
+
+<script>
+	window.addEventListener("load",function(){
+/* ------------------------생년월일 날짜 추가 자바스크립트----------------------------------- */
+		var year = document.querySelector("#year, #year-span");
+		var month = document.querySelector("#month");
+		var day = document.querySelector("#day");
+		var yearStr = "<option value=0 selected>년도</option>";
+		var monthStr = "<option value=0 selected>월</option>";
+		var dayStr = "<option value=0 selected>일</option>";
+		
+		for(var i=1960;i<=2017;i++){
+			yearStr += "<option value="+i+">"+i+"</option>";
+		}
+		
+		for(var j=1;j<=12;j++){
+			monthStr += "<option value="+j+">"+j+"</option>";
+		}
+		
+		for(var k=1;k<=31;k++){
+			dayStr += "<option value="+k+">"+k+"</option>";
+		}
+		
+		year.innerHTML = yearStr;
+		month.innerHTML = monthStr;
+		day.innerHTML = dayStr;
+	});	
+</script>
+
+<main class="main">
+	<%@ include file="inc/aside.jsp" %>
+	<div class="profile-container">
+	
+		
+		<div class="profile-info-container">
+			<div class="profile-info-title info-title">
+			<span>프로필 정보</span>
+			</div>
+			
+			<div class="profile-info-content info-content">
+				
+				<div class="profile-pic profile-item">
+				</div>
+				
+				<div class="profile-nickname profile-item">
+					<label class="profile-item-name" for="">닉네임</label>
+					<div>
+						<input type="text" id="" name="" value="">
+					</div>
+				</div>
+				
+				<div class="profile-status profile-item">
+					<label class="profile-item-name" for="">프로필명</label>
+					<div>
+						<input type="text" id="" name="" value="">
+					</div>
+				</div>
+				
+				<div class="profile-bloodtype profile-item">
+					<label class="profile-item-name" for="">혈액형</label>
+					<div class="select_style select_style_bloodtype">
+						<select id="bloodtype" name="bloodtype">
+							<option value="0" selected>선택</option>
+							<option value="a">A</option>
+							<option value="b">B</option>
+							<option value="o">O</option>
+							<option value="ab">AB</option>
+						</select>
+						<div class="select_arrow"></div>
+					</div>
+				</div>
+				
+				<div class="profile-job profile-item" >
+					<label class="profile-item-name" for="">직업</label>
+					<div>
+						<input type="text" id="" name="" value="">
+					</div>
+				</div>
+				
+				<div class="profile-style profile-item">
+					<label class="profile-item-name" for="">동행 스타일</label>
+					<div class="select_style select_style_style">
+						<select id="style" name="style">
+							<option value="0" selected>선택</option>
+							<option value="">러브어페어</option>
+							<option value="">급만남</option>
+						</select>
+						<div class="select_arrow"></div>
+					</div>
+				</div>
+				
+				<div class="profile-intro profile-item">
+					<label class="profile-item-name" for="">자기소개</label>
+					<div>
+						<textarea rows="10" cols="5"></textarea>
+					</div>
+				</div>
+				
+			</div>
+			
+			
+			<div class="account-info-container">
+				<div class="account-info-title info-title">
+				<span>계정 정보</span>
+				</div>
+				<div class="account-info-content info-content">
+					<div class="profile-email profile-item">
+						<label class="profile-item-name" for="">아이디</label>
+						<div>
+							<input type="text" id="" name="" value="woogisky">
+						</div>
+					</div>
+					
+					<div class="profile-birthday profile-item">
+						<label class="profile-item-name" for="">생년월일</label>
+						<div class="profile-birthday-wrapper">
+							<div class="select_style select_style_year">
+								<select id="year" name="year" ></select>
+								<div class="select_arrow"></div>
+							</div>
+							
+							<div class="select_style select_style_month">
+								<select id="month" name="month"></select>
+								<div class="select_arrow"></div>
+							</div>
+							
+							<div class="select_style select_style_day">
+								<select id="day" name="day"></select>
+								<div class="select_arrow"></div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="profile-job profile-item" >
+						<label class="profile-item-name" for="">휴대폰 번호</label>
+						<div>
+							<input type="text" id="" name="" value="">
+						</div>
+					</div>
+					
+					<div id="profile-sns">
+						<div class="profile-sns profile-item">
+							<label class="profile-item-name" for="">SNS</label>
+							<div id="sns-input">
+								<input type="text" id="" name="" value="">
+							</div>
+						</div>
+					</div>
+					
+					<div id="clone">		
+					</div>
+					
+				
+					<div class="profile-add profile-item">
+						<button type="button" class="btn-del" id="btn-del" onclick="del()">삭제</button>
+			<button type="button" class="btn-add" id="btn-add" onclick="add()">추가</button>
+					</div>
+				</div>
+			</div>
+			
+			
+			<div class="password-info-container">
+				<div class="password-info-title info-title">
+				<span>비밀번호 변경</span>
+				</div>
+				<div class="password-info-content info-content">
+					<div class="profile-current-password profile-item">
+						<label class="profile-item-name" for="">현재 비밀번호</label>
+						<div>
+							<input type="password" id="" name="" value="">
+						</div>
+					</div>
+					
+					<div class="profile-new-password profile-item">
+						<label class="profile-item-name" for="">새 비밀번호</label>
+						<div>
+							<input type="password" id="" name="" value="">
+						</div>
+					</div>
+					
+					<div class="profile-new-password-check profile-item">
+						<label class="profile-item-name" for="">비밀번호 확인</label>
+						<div>
+							<input type="password" id="" name="" value="">
+						</div>
+					</div>
+					
+				
+					<div class="profile-password-confirm profile-item">
+						<button type="button" class="btn-add" id="btn-add" onclick="">변경</button>
+					</div>
+				</div>
+			</div>
+			
+			
 		</div>
-		<div>
-			<a href="/TravelWM/member/acc-setting">동행관리</a>
+	
+	
+		<div class="fake">
 		</div>
-		<div>
-			<a href="/TravelWM/member/bookmark">기타관리</a>
-		</div>
+		
+		
 	</div>
-	<div class="aside">
-		<div class="remote-controller">
-			<div class="title">
-				<h3>관리페이지</h3>
-			</div>
-			<div>
-				<a href="">프로필관리</a>
-			</div>
-			<div>
-				<a href="/TravelWM/member/acc-setting">동행관리</a>
-			</div>
-			<div>
-				<a href="/TravelWM/member/bookmark">기타관리</a>
-			</div>
-		</div>
-	</div>
-	<div class="fmain">
-		<div class="content">
-			<div class="head">
-				<div>
-					<span>프로필 기본 정보</span>
-				</div>
-			</div>
-			<div class="capa">
-				<div class="first">
-					<span>배경과 프사자리</span>
-				</div>
-				<div class="second">
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>닉네임</span>
-							</div>
-						</div>
-						<div class="t-input">
-							<input type="text" placeholder="입력란" />
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>프로필명</span>
-							</div>
-						</div>
-						<div class="t-input">
-							<input type="text" placeholder="입력란" />
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>혈액형</span>
-							</div>
-						</div>
-						<div class="t-select">
-							<select>
-								<option>A</option>
-								<option>B</option>
-								<option>O</option>
-								<option>AB</option>
-							</select>
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>직업</span>
-							</div>
-						</div>
-						<div class="t-input">
-							<input type="text" placeholder="입력란" />
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>동행유형</span>
-							</div>
-						</div>
-						<div class="t-select">
-							<select>
-								<option>유형</option>
-								<option>무형</option>
-								<option>문화재</option>
-							</select>
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>자기소개</span>
-							</div>
-						</div>
-						<div class="t-area">
-							<textarea placeholder="입력란"></textarea>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="content">
-			<div class="head">
-				<div>
-					<span>계 정 정 보</span>
-				</div>
-			</div>
-			<div class="capa">
-				<div class="second">
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>아이디</span>
-							</div>
-						</div>
-						<div class="t-display">
-							<span>Macboy</span>
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>비밀번호</span>
-							</div>
-						</div>
-						<div class="t-display">
-							<span>*******</span>
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>생년월일</span>
-							</div>
-						</div>
-						<div class="t-input">
-							<input type="date" />
-						</div>
-					</div>
-					<div class="info-factor">
-						<div class="t-label">
-							<div>
-								<span>휴대전화</span>
-							</div>
-						</div>
-						<div class="t-input">
-							<input type="text" placeholder="입력란" />
-						</div>
-					</div>
-					<div class="info-factor">
-						<div id="sns" class="sns-info">
-							<div id="sns-label" class="t-label">
-								<div id="sns-label-div">
-									<span>S N S</span>
-								</div>
-							</div>
-							<div id="sns-input" class="t-input">
-								<input id="sns-input-in" type="text" placeholder="입력란" />
-							</div>
-						</div>
-						<div class="sns-button">
-							<div class="btn-custom">
-								<button class="btn btn-info customs" onclick="add()">추가</button>
-							</div>
-						</div>
-					</div>
-					<div id="clone" class="info-factor"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 </main>
-
-
-
-
-
-<!-- <div
-	style="border: 1px solid; width: 80%; display: flex; flex-direction: column; align-items: center;">
-	<table>
-		<tbody>
-			<tr>
-				<th>닉네임</th>
-				<td><textarea></textarea></td>
-			</tr>
-			<tr>
-				<th>프로필명</th>
-				<td><textarea></textarea></td>
-			</tr>
-			<tr>
-				<th>혈액형</th>
-				<td><select><option>A</option>
-						<option>B</option>
-						<option>O</option>
-						<option>AB</option></select></td>
-			</tr>
-			<tr>
-				<th>직업</th>
-				<td><textarea></textarea></td>
-			</tr>
-			<tr>
-				<th>동행유형</th>
-				<td><select><option>1</option>
-						<option>2</option>
-						<option>3</option></select></td>
-			</tr>
-			<tr>
-				<th>자기소개</th>
-				<td><textarea cols="60"></textarea></td>
-			</tr>
-		</tbody>
-	</table>
-
-	<table>
-		<tbody>
-			<tr>
-				<th>아이디</th>
-				<td>newlec</td>
-			</tr>
-			<tr>
-				<th>비밀번호</th>
-				<td>******</td>
-			</tr>
-			<tr>
-				<th>생년월일</th>
-				<td><input type="date"></td>
-			</tr>
-			<tr>
-				<th>휴대폰번호</th>
-				<td><textarea></textarea></td>
-			</tr>
-			<tr>
-				<th>SNS</th>
-				<td><select><option>twitter</option>
-						<option>facebook</option></select> <textarea cols="45"></textarea></td>
-			</tr>
-		</tbody>
-	</table>
-	<div style="width: 454px; display: flex; flex-direction: row-reverse;">
-		<button>추가하기</button>
-	</div>
-</div> -->

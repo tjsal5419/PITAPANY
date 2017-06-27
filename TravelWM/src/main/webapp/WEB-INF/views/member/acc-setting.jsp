@@ -22,34 +22,10 @@
 </script> -->
 
 <main id="main">
+
+<%@ include file="inc/aside.jsp" %>
+
 <div class="frame">
-	<div class="aside-hidden">
-		<div>
-			<a href="${root }/member/profile-setting">프로필관리</a>
-		</div>
-		<div>
-			<a href="">동행관리</a>
-		</div>
-		<div>
-			<a href="${root }/member/bookmark">기타관리</a>
-		</div>
-	</div>
-	<div class="aside">
-		<div class="remote-controller">
-			<div class="title">
-				<h3>관리페이지</h3>
-			</div>
-			<div>
-				<a href="${root }/member/profile-setting">프로필관리</a>
-			</div>
-			<div>
-				<a href="">동행관리</a>
-			</div>
-			<div>
-				<a href="${root }/member/bookmark">기타관리</a>
-			</div>
-		</div>
-	</div>
 	<div class="fmain">
 		<div class="content">
 			<div class="head">

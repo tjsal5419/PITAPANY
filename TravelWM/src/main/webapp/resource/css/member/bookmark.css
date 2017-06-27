@@ -1,138 +1,303 @@
 @CHARSET "UTF-8";
-
-#main {
-	min-height: 0px;
-	padding-top: 70px;
+/* ---------------- 공통영역 ----------------- */
+.search .select, .search-option{
+	height:34px;
+	outline: none;
+	font-size: 12px;
 }
 
-.frame {
-	width: 100%;
-	display: flex;
+
+#footer{
+	margin-top:0px;
 }
 
-.aside {
-	max-width: 15%;
-	min-width: 15%;
-	padding: 10px;
-	padding-top: 30px;
-	flex-grow: 1;
-	position: relative;
-	padding-left: 10px;
-	border-right: 1px solid #979797;
-	box-shadow: 0px 0px 2px 0.5px #979797;
+.form-control{
+	width:200px;
 }
 
-.aside .remote-controller>div {
-	margin-bottom: 10px;
+/* -----------------메인 ----------------------- */
+.main{
+	margin-top:60px;
+	display:flex;
+	flex-wrap:wrap;
+	min-height:0px;
+	
+/* 	padding-left: 20px;
+	padding-right: 20px; */
 }
 
-.aside .title {
-	font-size: 20px;
-	font-weight: bold;
+.fake{
+	max-width:5%;
+	min-width:5%;
+	flex-grow:1;
 }
 
-.aside .title h3 {
-	font-weight: bold;
-}
-
-.aside-hidden {
-	display: none;
-}
-
-.aside .remote-controller {
-	position: fixed;
-}
-
-.fmain {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	margin-left: 5%;
-	margin-right: 5%;
-}
-.content {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 20px;
-	background: #F6F6F6;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-}
-.content:last-child {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.head {
-	width: 100%;
-	height: 25px;
-	text-align: center;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	background: #D5D5D5;
-}
-
-.blist {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	padding:10px;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-}
 
 /* --------------------팁 게시판 컨테이너----------- */
+.profile-container{
+	margin-top:30px;
+	
+	flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+	
+	padding-top: 70px !important;
+	padding:15px;
+	width:75%;
+	margin-left:1%;
+	margin-bottom:20px;
+	
+	/* background-color: #ffffff;
+	box-shadow: 0 3px 3px 0 #e0e0e0;
+	border: 1px solid #dddddd; */
+}
+
+.profile-container .category{
+	flex-grow:2;
+}
+
+.profile-container .category .filter{
+	display:flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.profile-container .category .filter .select-box{
+	height:30px;
+}
+
+.profile-container .category .filter .search-result{
+	font-size:12px;
+}
+
+.profile-container>div{
+	margin-bottom:15px;
+	text-align: right;
+}
+
+.profile-container .foot{
+	flex-grow:1;
+}
+
+.foot .page{
+	display:flex;
+	justify-content:center;
+}
+
+#write-btn{
+	display: table;
+	float: right;
+	
+	width: 60px;
+	height: 34px;
+	
+    outline: none;
+    border-radius: 0;
+    
+    background: #87deff;
+}
+
+#write-btn:hover{
+	background: #009ddb;
+}
+
+#write-btn>a{
+	display: table-cell;
+	
+	color: #fff;
+	font-weight: 500;
+	letter-spacing: 1px;
+	
+	text-align: center;
+	vertical-align: middle;
+}
+
+.foot a{
+	color:#00BCD1;
+}
+
+
+
+/* ----------------미디어쿼리----------------- */
+@media all and (max-width:890px){
+	.fake{
+		display:hidden;
+	}
+	
+	.category .filter .select{
+		width:100%;
+	}
+	.aside{
+		display:none;
+	}
+	.main{
+		flex-direction:column;
+		margin-top:80px;
+	}
+	
+	.aside-hidden{
+		display:flex;
+		position:fixed;
+		left:0px;
+		top:60px;
+		width:100%;
+		height:30px;
+		box-shadow: 0px 0px 10px #3f3f3f;
+		z-index: 1000;
+		background-color: white;
+		align-items:center;
+		justify-content: space-around;
+		
+	}
+	
+	.profile-container{
+		padding:15px;
+		margin-left:5%;
+		margin-right:5%;
+		width:inherit;
+		margin-top:10px;
+		margin-bottom:0px;
+	}
+	
+	.table .date{
+		display:none;
+	}
+	
+	.scrapArticle-info-content .category{
+		display:none;
+	}
+	
+	.table .hit{
+		display:none;
+	}
+	
+}
+
+@media all and (max-width:480px){
+	.profile-container{
+		margin-left:0px;
+		margin-right:0px;
+	}
+
+	
+}
+
+.info-title{
+	
+	display: table;
+
+	width: 100%;
+	height: 40px;
+	
+	padding: 10px;
+	
+	background: #bbb;
+	border: 1px solid #bbb;
+}
+
+.info-title>span{
+	
+	display: table-cell;
+	
+	font-size: 18px;
+	color: #fff;
+	
+	vertical-align: middle;
+	text-align: left;
+}
+
+.info-content{
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	padding-top:35px;
+	padding-bottom: 35px;
+	margin-bottom: 50px;
+
+	width: 100%;
+	height: inherit;
+	border: 1px solid #bbb;
+}
+
+
+
+
+
+
+
+
+.foot .page{
+	display:flex;
+	justify-content:center;
+}
+
+.foot a{
+	color:#00BCD1;
+}
+
+.active>#move-page-button{
+	background-color: #33b5e5;
+	border-color:#33b5e5;
+}
+
+#move-page-button-number{
+	color:#33b5e5;
+}
+
+
+.info-content>div{
+	margin-bottom:15px;
+	text-align: right;
+}
+
+
+.info-content .table{
+	margin-top: 10px;
+	box-sizing: border-box;
+}
+
+.info-content .table a{
+	color:black;
+}
+
+.info-content .table a:hover{
+	font-weight: normal;
+	text-decoration: underline;
+}
+
+.info-content .table td{
+	height:38px;
+}
+
+.info-content .foot{
+	
+}
 
 .table td{
 	text-align: center;
 	vertical-align: middle !important;
 	padding:3px !important;
+	box-sizing: border-box;
 }
 
-@media all and (max-width:768px) {
-	#main {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-	}
-	.frame {
-		width: 100%;
-		background: #F6F6F6;
-		box-shadow: 0 3px 3px 0 #e0e0e0;
-		display: flex;
-		border: 1px solid #dddddd;
-	}
-	.fmain {
-		margin: 0px;
-	}
-	.faside {
-		display: none;
-	}
-	.aside {
-		display: none;
-	}
-	.aside-hidden {
-		display: flex;
-		position: fixed;
-		left: 0px;
-		top: 60px;
-		width: 100%;
-		height: 30px;
-		box-shadow: 0px 0px 10px #3f3f3f;
-		z-index: 1000;
-		background-color: white;
-		align-items: center;
-		justify-content: space-around;
-	}
-	.table .date {
-		display: none;
-	}
-	.table .num {
-		display: none;
-	}
-	.table .hit {
-		display: none;
-	}
+.table>thead>tr>td{
+	
+	border-bottom: 2px solid #efefef;
+}
+
+
+
+.table>tbody>tr>td{
+	border-top: none;
+	
+	border-bottom: 1px solid #efefef;	
+	color: #777777;
+	font-size: 12px;
+	font-family: 'NanumBarunGothicLight';
+}
+
+.table>tbody>tr>td.article-title{
+	font-size: 12px;
+	font-weight: 500;
+	font-family: 'NanumBarunGothic';
 }
