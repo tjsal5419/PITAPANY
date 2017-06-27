@@ -77,6 +77,37 @@
 	.main{
 		flex-direction:column;
 		margin-top:80px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	.profile-container{
+		padding: 5px;
+		width: inherit;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	
+	.profile-info-container{
+		width: 100%;
+	}
+	
+	.acc-info-input{
+		flex-direction: column;
+	}
+	
+	.address-zone{
+		width: 100%;
+		border-bottom: none;
+	}
+	
+	.calendar-zone{
+		width: 100%;
+		border-left: 1px solid #dcdcdc !important;
+	}
+	
+	.form-control{
+		width: 100%;
 	}
 	
 	.aside-hidden{

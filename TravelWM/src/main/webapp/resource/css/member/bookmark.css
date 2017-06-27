@@ -191,8 +191,8 @@
 	
 	padding: 10px;
 	
-	background: #bbb;
-	border: 1px solid #bbb;
+	background: #aaa;
+	border: 1px solid #aaa;
 }
 
 .info-title>span{
@@ -210,13 +210,13 @@
 	display: flex;
 	flex-direction: column;
 	padding: 15px;
-	padding-top:35px;
-	padding-bottom: 35px;
+	padding-top:30px;
+	padding-bottom: 30px;
 	margin-bottom: 50px;
 
 	width: 100%;
 	height: inherit;
-	border: 1px solid #bbb;
+	border: 1px solid #aaa;
 }
 
 

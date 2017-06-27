@@ -466,14 +466,19 @@ html,body{
 	.form-control-mobile{
 		width: 100% !important;
 		margin-bottom: 15px;
-		background: #edfcff;
-		border-radius: 3px;
-		border: 2px solid rgba(51, 181, 229, 1);
+		background: #fff;
+		
+		font-family: 'NanumBarunGothicLight' !important;
+    	font-size: 12px;
+		
+		border-radius: 0px;
+		outline: none;
+		border: 1px solid #dcdcdc;
 	}
 	
 	.search-button-mobile2{
 		width: 70px !important;
-		border-radius: 3px;		
+		border-radius: 0px;		
 	}
 	
 	.down {
@@ -750,6 +755,7 @@ element.style{
 	.ranges{
 		margin-left: 50% !important;
 		margin-top: 5px;
+		float: none;
 	}
 	
 	.range_inputs{

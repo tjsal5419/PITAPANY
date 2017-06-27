@@ -187,6 +187,36 @@
 		width:inherit;
 		margin-top:10px;
 		margin-bottom:0px;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
+	}
+	
+	.profile-item>label{
+		width:25% !important;
+		font-size: 11px !important;
+		padding-right: 5px !important;
+		padding-left: 5px !important;
+	}
+	
+	.select_style_year {
+		width: 100px !important;
+	}
+	
+	.select_style_month{
+		width: 50px !important;
+	}
+	
+	.select_style_day{
+		width: 50px !important;
+	}
+	
+	.select_style_bloodtype, .select_style_style{
+		width: 150px !important;
+	}
+	
+	.info-content{
+		padding-left: 5px !important;
+		padding-right: 5px !important;
 	}
 	
 	.table .date{
@@ -242,8 +272,8 @@
 	
 	padding: 10px;
 	
-	background: #bbb;
-	border: 1px solid #bbb;
+	background: #aaa;
+	border: 1px solid #aaa;
 }
 
 .info-title>span{
@@ -261,13 +291,13 @@
 	display: flex;
 	flex-direction: column;
 	padding: 15px;
-	padding-top:35px;
-	padding-bottom: 35px;
+	padding-top:30px;
+	padding-bottom: 30px;
 	margin-bottom: 50px;
 
 	width: 100%;
 	height: inherit;
-	border: 1px solid #bbb;
+	border: 1px solid #aaa;
 }
 
 .profile-item{
@@ -294,7 +324,7 @@
 	padding-right: 20px;
 	
 	vertical-align: middle;
-	text-align: right;
+	text-align: left;
 	
 	/* background: red; */
 }
@@ -339,7 +369,7 @@
     
     font-family: 'NanumBarunGothicLight';
     font-size: 12px;
-    padding-left: 20px;
+    padding-left: 10px;
     
     outline: 0;
     border: 0;

@@ -192,6 +192,7 @@
 							</tbody>
 						</table>
 		
+		
 						<div class="foot">
 					<!-- ----------페이지 수 표시하는 부분----------- -->
 							<div class="page">
