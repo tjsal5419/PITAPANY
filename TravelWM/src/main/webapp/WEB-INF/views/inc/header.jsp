@@ -78,17 +78,15 @@
 					<li onclick="location.href='${root }/member/profile-setting';">프로필 관리</li>
 				</ul>
 				<ul>
-					<li onclick="location.href='${root }/member/acc-setting';">동행 관리</li>
+					<li onclick="location.href='${root }/member/acc-setting';">나의 동행 관리</li>
 				</ul>
 				<ul>
-					<li onclick="location.href='${root }/member/bookmark';">기타 관리</li>
+					<li onclick="location.href='${root }/member/bookmark';">북마크 관리</li>
 				</ul>
 				<ul>
 					<security:authorize  access="isAuthenticated()">
-					<li>
-					<a class="account-logout" href="${root }/j_spring_security_logout">
+					<li class="account-logout" onclick="location.href='${root }/j_spring_security_logout';">
 						로그아웃
-					</a>
 					</li>
 				</security:authorize>
 				</ul>
@@ -107,7 +105,7 @@
 		<ul>	
 			<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
 		</ul>
-		<div class="account-login-mobile"><span>안녕하세요, ${m.nicName}</span></div>
+		<div class="account-login-mobile"><span>안녕하세요, ${m.nicName}님</span></div>
 			<ul>
 				<li onclick="location.href='${root}/profile/home';">프로필 홈</li>
 			</ul>
@@ -115,10 +113,10 @@
 				<li onclick="location.href='${root }/member/profile-setting';">프로필 관리</li>
 			</ul>
 			<ul>
-				<li onclick="location.href='${root }/member/acc-setting';">동행 관리</li>
+				<li onclick="location.href='${root }/member/acc-setting';">나의 동행 관리</li>
 			</ul>
 			<ul>
-				<li onclick="location.href='${root }/member/bookmark';">기타 관리</li>
+				<li onclick="location.href='${root }/member/bookmark';">북마크 관리</li>
 			</ul>
 			<ul>
 				<security:authorize  access="isAuthenticated()">

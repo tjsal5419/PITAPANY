@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+
+
+.main{
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+
+/* --------------------커뮤니티 게시판 목록 ---------*/
+
+.aside{
+	max-width:20%;
+	min-width:20%;
+	flex-grow: 1;
+	
+	padding-right:20px;
+	padding-top:30px;
+	position:relative;
+	border-right: 1px solid #efefef;	
+}
+
+.aside .remote-controller{
+	position:block;
+}
+
+.aside .title h3{
+	font-weight: bold; 
+	font-family:'GodoM';
+	margin-bottom: 35px;
+	letter-spacing: 1px;
+}
+
+.remote-controller ul{
+	font-size:14px;
+	font-family: 'NanumBarunGothicLight';
+}
+
+.remote-controller li{
+	display: table;
+	font-size:13px;
+	font-family: 'NanumBarunGothicLight';
+	
+	width: 100%;
+	height: 45px;
+}
+
+.remote-controller li>a{
+	display: table-cell;
+	vertical-align: middle;
+	width: 90%;
+	text-decoration: none;
+}
+
+.remote-controller li>a:hover{
+	color: #33b5e5;
+}
+
+.remote-controller li>span{
+	display: none;
+}
+
+.aside-hidden{
+	display: none;
+	font-family: NanumBarunGothic;
+}
+
+
+@media all and (max-width:890px){
+	.fake{
+		display:hidden;
+	}
+
+	.aside{
+		display:none;
+	}
+	.main{
+		flex-direction:column;
+		margin-top:80px;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
+	.profile-container{
+		padding: 5px;
+		width: inherit;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	
+	.profile-info-container{
+		width: 100%;
+	}
+	
+	.acc-info-input{
+		flex-direction: column;
+	}
+	
+	.address-zone{
+		width: 100%;
+		border-bottom: none;
+	}
+	
+	.calendar-zone{
+		width: 100%;
+		border-left: 1px solid #dcdcdc !important;
+	}
+	
+	.form-control{
+		width: 100%;
+	}
+	
+	.aside-hidden{
+		display:flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		position:fixed;
+		left:0px;
+		top:60px;
+		width:100%;
+		height:30px;
+		box-shadow: 0px 0px 10px #3f3f3f;
+		z-index: 1000;
+		background-color: white;
+		align-items:center;
+		justify-content: space-around;
+		
+	}
+	
+	.aside-hidden div{
+		display: table;
+		width: 34%;
+		height: 100%;
+		text-align: center;
+		flex-grow: 1;
+	}
+	
+	.aside-hidden div>a{
+		display: table-cell;
+		vertical-align: middle;
+		text-decoration: none;
+	}
+	
+	.aside-hidden div>a:hover{
+		font-weight: normal;
+		color: #33b5e5;
+	}
+}

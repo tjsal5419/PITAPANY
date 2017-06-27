@@ -21,227 +21,163 @@
 	});
 </script> -->
 
-<main id="main">
-<div class="frame">
-	<div class="aside-hidden">
-		<div>
-			<a href="${root }/member/profile-setting">프로필관리</a>
-		</div>
-		<div>
-			<a href="">동행관리</a>
-		</div>
-		<div>
-			<a href="${root }/member/bookmark">기타관리</a>
-		</div>
-	</div>
-	<div class="aside">
-		<div class="remote-controller">
-			<div class="title">
-				<h3>관리페이지</h3>
-			</div>
-			<div>
-				<a href="${root }/member/profile-setting">프로필관리</a>
-			</div>
-			<div>
-				<a href="">동행관리</a>
-			</div>
-			<div>
-				<a href="${root }/member/bookmark">기타관리</a>
-			</div>
-		</div>
-	</div>
-	<div class="fmain">
-		<div class="content">
-			<div class="head">
-				<div>
-					<span>동행 정보 관리</span>
-				</div>
-			</div>
-			<div class="capa">
-				<form method="post" class="member-accom-info-form">
-				<div class="first">
-					<div class="address-zone">
-						<!-- -------- 구글 지도 검색창 ------ -->
-					    <input class="form-control no-enter autoComplete" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요!" type="text" required/>
+<main class="main">
+	<%@ include file="inc/aside.jsp" %>
+	
+	<div class="profile-container">
+	
 		
-					    <input class="hidden" type="text" value="" name="latitude" id="lat"/>			           
-					    <input class="hidden" type="text" value="" name="longitude" id="lng"/>  
-					    <input class="hidden" type="text" value="" name="place" id="place"/>  
-					    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
-					    <input class="hidden" type="text" value="" name="country" id="country"/>  
-						<input class="hidden" type="text" value="" name="memberAccomBoardId" id="member-accomBoard-id"/>  
-					</div>
-					
-					<div class="calendar-zone">		
-						<input type="text" class="form-control calendar-reg" name="datefilter-reg" value="" placeholder="여행할 날짜를 입력하세요!" required />
-    	  				<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search"/>
-    	  				<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" />
-    	  			</div>
-    	  								
-					<div class="accom-info-reg-button">
-						<input type="submit" class="btn btn-info na" id="info-reg" value="등록"/>
-						<input type="button" class="btn btn-info na" id="info-edit" value="수정"/>
-						<input type="button" class="btn btn-info na" id="cancel-edit" value="취소"/>
-					</div>
-				</div>
-				</form>
+		<div class="profile-info-container">
+			<div class="profile-info-title info-title">
+			<span>나의 동행 정보</span>
+			</div>
+			
+			<div class="acc-info-content info-content">
+				<div class="acc-info-wrapper">
+					<form method="post" class="member-accom-info-form">
+						<div class="acc-info-input">
+							<div class="address-zone">
+								<!-- -------- 구글 지도 검색창 ------ -->
+							    <input class="form-control acc-info-enter no-enter autoComplete" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요!" type="text" required/>
 				
-				<div class="second">
-					<div class="blist">
-<!-- --------------------memberAccomInfo 반복 구간------------------------ -->
-						<c:forEach var="li" items="${memberAccomLists }">
-							<div class="line">
-								<div>
-									<input class="hidden hidden-location" type="text" value="${li.country } ${li.locality } ${li.place }"/>  
-									<input class="hidden hidden-date" type="text" value="<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />"/>  									
-									<input class="hidden hidden-id" type="text" value="${li.id }"/>
-
-									${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
-							    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
-									-
-									<fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />
-								</div>
-								<div class="edit-delete">
-									<button id="mod" value="${li.id }" class="btn btn-info na edit-button">수정</button>
-									<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/acc-info-delete?id=${li.id }'">삭제</button>
-								</div>
+							    <input class="hidden" type="text" value="" name="latitude" id="lat"/>			           
+							    <input class="hidden" type="text" value="" name="longitude" id="lng"/>  
+							    <input class="hidden" type="text" value="" name="place" id="place"/>  
+							    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
+							    <input class="hidden" type="text" value="" name="country" id="country"/>  
+								<input class="hidden" type="text" value="" name="memberAccomBoardId" id="member-accomBoard-id"/>  
 							</div>
-						</c:forEach>
-<!-- ------------------------------------------------------------------ -->						
+							
+							<div class="calendar-zone">		
+								<input type="text" class="form-control acc-info-enter calendar-reg" name="datefilter-reg" value="" placeholder="여행할 날짜를 입력하세요!" required />
+		    	  				<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search"/>
+		    	  				<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" />
+		    	  			</div>
+		    	  								
+							<div class="accom-info-reg-button">
+								<input type="submit" class="btn btn-info na" id="info-reg" value="등록"/>
+								<input type="button" class="btn btn-info na" id="info-edit" value="수정"/>
+								<input type="button" class="btn btn-info na" id="cancel-edit" value="취소"/>
+							</div>
+						</div>
+					</form>
+				
+					<div class="acc-info-display">
+						<div class="acc-info-display-wrapper">
+	<!-- --------------------memberAccomInfo 반복 구간------------------------ -->
+							<c:forEach var="li" items="${memberAccomLists }">
+								<div class="display-item">
+									<div>
+										<input class="hidden hidden-location" type="text" value="${li.country } ${li.locality } ${li.place }"/>  
+										<input class="hidden hidden-date" type="text" value="<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />"/>  									
+										<input class="hidden hidden-id" type="text" value="${li.id }"/>
+	
+										${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
+								    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
+										-
+										<fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />
+									</div>
+									<div class="edit-delete">
+										<button id="mod" value="${li.id }" class="btn btn-info na edit-button">수정</button>
+										<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/acc-info-delete?id=${li.id }'">삭제</button>
+									</div>
+								</div>
+							</c:forEach>
+	<!-- ------------------------------------------------------------------ -->						
+						</div>
+					</div>
+			</div>
+
+			</div>
+			
+			
+			<div class="chat-info-container">
+				<div class="account-info-title info-title">
+				<span>이음 대화 목록</span>
+				</div>
+				<div class="account-info-content info-content">
+					<div>
+						<button type="button" class="btn-add" id="btn-add" onclick="add()">추가</button>
+						<button type="button" class="btn-del" id="btn-del" onclick="del()">삭제</button>
 					</div>
 				</div>
 			</div>
+			
+			
+			<div class="match-info-container">
+				<div class="password-info-title info-title">
+				<span>이음 매칭 목록</span>
+				</div>
+				<div class="password-info-content info-content">
+					<div>
+						<button type="button" class="btn-add" id="btn-add" onclick="add()">추가</button>
+						<button type="button" class="btn-del" id="btn-del" onclick="del()">삭제</button>
+					</div>
+				</div>
+			</div>
+			
+			
 		</div>
-		<div class="content spa">
-			<div class="head">
-				<div>
-					<span>대화 친구 목록</span>
-				</div>
-			</div>
-			<div class="capa">
-				<div class="propic">
-					<c:forEach var="a" begin="0" end="0">
-						<div class="entity">
-							<a href="#"><div class="pro"></div></a>
-							<div class="nic">닉네임</div>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
+	
+	
+		<div class="fake">
 		</div>
-		<div class="content spa">
-			<div class="head">
-				<div>
-					<span>매칭 친구 목록</span>
-				</div>
-			</div>
-			<div class="capa">
-				<div class="propic">
-					<c:forEach var="a" begin="0" end="0">
-						<div class="entity">
-							<a href="#"><div class="pro"></div></a>
-							<div class="nic">닉네임</div>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
+		
+		
+	</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</div>
 </div>
 </main>
 
-
-
-
-
-<!-- <h2 class="main-title">동행 설정</h2>
-<div
-	style="border: 1px solid; width: 80%; display: flex; flex-direction: column; align-items: center;">
-	<table border='1'>
-		<thead>
-			<tr>
-				<th colspan='3'>동행 정보 관리</th>
-			</tr>
-		</thead>
-		<tr>
-			<td><textarea placeholder="동행장소"></textarea></td>
-			<td><input type="date" /></td>
-			<td><button>등록</button></td>
-		</tr>
-		<tbody>
-			<tr>
-				<td colspan='2'>동행장소</td>
-				<td><button>수정</button>
-					<button>삭제</button></td>
-			</tr>
-			<tr>
-				<td colspan='2'>동행장소</td>
-				<td><button>수정</button>
-					<button>삭제</button></td>
-			</tr>
-			<tr>
-				<td colspan='2'>동행장소</td>
-				<td><button>수정</button>
-					<button>삭제</button></td>
-			</tr>
-		</tbody>
-	</table>
-
-
-	<table>
-		<thead>
-			<tr>
-				<th colspan='6'>대화 친구 목록</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-			</tr>
-			<tr>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-			</tr>
-		</tbody>
-	</table>
-
-
-
-	<table>
-		<thead>
-			<tr>
-				<th colspan='6'>매칭 친구 목록</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-				<td><img src="a" /><a href="">닉네임</a></td>
-			</tr>
-			<tr>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-				<td style="border: none"><img src="a" /><a href="">닉네임</a></td>
-			</tr>
-		</tbody>
-	</table>
-</div> -->
 
 <!-- --------------동행 정보 수정용 자바 스크립트--------------------------------- -->
 <script>
@@ -318,7 +254,7 @@
 							
 						
 							$('.daterangepicker').css({'position':'absolute'});
-							$('.daterangepicker').css({'top':'170px'});
+							$('.daterangepicker').css({'top':'270px'});
 						});
 						
 						$('body').on("click", function(e){

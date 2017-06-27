@@ -410,7 +410,7 @@
 		
 	
 		$('.daterangepicker').css({'position':'absolute'});
-		$('.daterangepicker').css({'top':'170px'});
+		$('.daterangepicker').css({'top':'160px'});
 	});
 	
 	$('body').on("click", function(e){

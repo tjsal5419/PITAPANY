@@ -109,35 +109,26 @@
 }
 
 .char .item1 {
-	width: 30px;
+	width: 50px;
 	height: 30px;
 	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border-radius: 50px;
-	background:
-		url("/TravelWM/resource/images/accompany-detail/ic_access_time_black_24dp_1x.png")
-		no-repeat center;
+	text-align: center;
 	border: 1px solid #dddddd;
 }
 
 .char .item2 {
-	width: 30px;
+	width: 50px;
 	height: 30px;
 	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border-radius: 50px;
-	background:
-		url("/TravelWM/resource/images/accompany-detail/ic_flight_takeoff_black_24dp_1x.png")
-		no-repeat center;
+	text-align: center;
 	border: 1px solid #dddddd;
 }
 
 .char .item3 {
-	width: 30px;
+	width: 50px;
 	height: 30px;
 	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border-radius: 50px;
-	background:
-		url("/TravelWM/resource/images/accompany-detail/ic_shopping_cart_black_24dp_1x.png")
-		no-repeat center;
+	text-align: center;
 	border: 1px solid #dddddd;
 }
 

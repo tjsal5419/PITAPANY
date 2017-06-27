@@ -23,7 +23,6 @@ public class MybatisMemberDao implements MemberDao {
 		return memberDao.getList();
 	}
 
-
 	public int delete(String id) {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		int result = memberDao.delete(id);
