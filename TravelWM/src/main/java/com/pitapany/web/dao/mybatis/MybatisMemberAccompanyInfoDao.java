@@ -10,6 +10,8 @@ import com.pitapany.web.dao.CommunityTipDao;
 import com.pitapany.web.dao.MemberAccompanyInfoDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.MemberAccompanyInfo;
+import com.pitapany.web.entity.MemberAccompanyInfoMatchingView;
+import com.pitapany.web.entity.MemberProfInfoMatchingResultView;
 
 public class MybatisMemberAccompanyInfoDao implements MemberAccompanyInfoDao {
 
@@ -50,6 +52,22 @@ public class MybatisMemberAccompanyInfoDao implements MemberAccompanyInfoDao {
 	public int count() {
 		MemberAccompanyInfoDao accInfoDao = sqlSession.getMapper(MemberAccompanyInfoDao.class);
 		return accInfoDao.count();
+	}
+
+
+
+	@Override
+	public MemberProfInfoMatchingResultView getMatchingResult(String memberAccomInfoId) {
+		MemberAccompanyInfoDao accInfoDao = sqlSession.getMapper(MemberAccompanyInfoDao.class);
+		return accInfoDao.getMatchingResult(memberAccomInfoId);
+	}
+
+	@Override
+	public List<MemberAccompanyInfoMatchingView> getListMemberAccompanyMatching(float latitude, float longitude,
+			String memberId, String styleEq, String styleId, String distance, String sexEq, String sex, int minAge,
+			int maxAge) {
+		MemberAccompanyInfoDao accInfoDao = sqlSession.getMapper(MemberAccompanyInfoDao.class);
+		return accInfoDao.getListMemberAccompanyMatching(latitude, longitude, memberId, styleEq, styleId, distance, sexEq, sex, minAge, maxAge);
 	}
 
 

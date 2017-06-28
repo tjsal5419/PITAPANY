@@ -1,5 +1,4 @@
 package com.pitapany.web.entity;
-
 import java.util.Date;
 
 public class AccompanyBoardReply {
