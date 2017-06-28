@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -19,18 +20,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.AccompanyBoardFileDao;
+import com.pitapany.web.dao.AccompanyBoardReplyDao;
+import com.pitapany.web.dao.MemberAccompanyInfoDao;
+import com.pitapany.web.dao.MemberAccompanyMatchDao;
 import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.dao.MemberProfileDao;
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.AccompanyBoardFile;
+import com.pitapany.web.entity.AccompanyBoardReply;
 import com.pitapany.web.entity.AccompanyBoardView;
 import com.pitapany.web.entity.Member;
+import com.pitapany.web.entity.MemberAccompanyInfo;
+import com.pitapany.web.entity.MemberAccompanyInfoMatchingView;
+import com.pitapany.web.entity.MemberAccompanyMatch;
+import com.pitapany.web.entity.MemberProfInfoMatchingResultView;
 import com.pitapany.web.entity.MemberProfile;
+import com.pitapany.web.entity.OnlyAccReplyView;
 import com.pitapany.web.entity.Style;
 import com.pitapany.web.security.CustomWebAuthenticationDetails;
 
@@ -42,45 +55,115 @@ public class AccompanyController {
 	private MemberDao memberDao;
 
 	@Autowired
-	private MemberProfileDao memberProfileDao;
-
-	@Autowired
-	private AccompanyBoardDao accompanyBoardDao;
-
-	@Autowired
 	private StyleDao styleDao;
 
 	@Autowired
 	private AccompanyBoardFileDao accompanyBoardFileDao;
 
+	@Autowired
+	private MemberAccompanyInfoDao memberAccomInfoDao;
+
+	@Autowired
+	private MemberProfileDao memberProfileDao;
+
+	@Autowired
+	private MemberAccompanyMatchDao memberAccompanyMatchDao;
+
+	@Autowired
+	private AccompanyBoardDao accompanyBoardDao;
+
+	@Autowired
+	private AccompanyBoardReplyDao accompanyBoardReplyDao;
+
 	@RequestMapping(value = "matching", method = RequestMethod.GET)
 	public String matching(Model model) {
 
+		// 로그인한 회원 정보 가져오기
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
 				.getDetails()).getMember();
-		String id = member.getId();
+		String memberId = member.getId();
 
+		// 스타일 가져오기
 		List<Style> list = styleDao.getList();
 		model.addAttribute("styles", list);
+
+		// ------- 본인 동행 정보 가져오기 ------
+		List<MemberAccompanyInfo> tempMemAccomInfoList = memberAccomInfoDao.getList(memberId);
+
+		int size = tempMemAccomInfoList.size();
+
+		List<MemberAccompanyInfo> memAccomInfoList = new ArrayList<MemberAccompanyInfo>();
+
+		int maxIndex = 0;
+
+		// 동행 정보 최신 순으로 최대 5개 까지만 보이도록 만들기
+		if (size < 5)
+			maxIndex = size;
+		else
+			maxIndex = 5;
+
+		for (int i = 0; i < maxIndex; i++) {
+			memAccomInfoList.add(tempMemAccomInfoList.get(i));
+		}
+
+		/* ------------------매칭된 동행 정보 ----------------------- */
+		List<MemberProfInfoMatchingResultView> resultList = new ArrayList<MemberProfInfoMatchingResultView>();
+
+		// 기존 정보 + 새로 저장된 매칭 정보 가져오기
+		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
+
+		for (MemberAccompanyMatch m : memAccomMatchedList) {
+			System.out.println("매칭된 정보들" + m.getMemberAccompanyInfoId());
+			MemberProfInfoMatchingResultView result = memberAccomInfoDao
+					.getMatchingResult(m.getMemberAccompanyInfoId());
+			resultList.add(result);
+		}
+
+		model.addAttribute("memberPrevMatchedList", resultList);
+
+		model.addAttribute("memAccomInfoList", memAccomInfoList);
+		model.addAttribute("size", size);
 
 		return "accompany.matching";
 	}
 
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detail(Model model, String id) {
+	public String detailGet(Model model, String id) {
 		accompanyBoardDao.addHits(id);
-
-		Member member = memberDao.get(id);
-		MemberProfile memberProfile = memberProfileDao.getByMemberId(id);
 		AccompanyBoardView accompanyBoard = accompanyBoardDao.getView(id);
 		AccompanyBoardFile file = accompanyBoardFileDao.get(id);
-
+		Member member = memberDao.get(accompanyBoard.getMemberId());
+		MemberProfile memberProfile = memberProfileDao.getByMemberId(accompanyBoard.getMemberId());
+		List<OnlyAccReplyView> reply = accompanyBoardReplyDao.getReplyList(id);
 		model.addAttribute("file", file);
 		model.addAttribute("accDetail", accompanyBoard);
 		model.addAttribute("member", member);
 		model.addAttribute("memberProfile", memberProfile);
-		
+		model.addAttribute("boardReply", reply);
+
 		return "accompany.detail";
+	}
+
+	@RequestMapping(value = "detail", method = RequestMethod.POST)
+	public String detailPost(Model model, HttpServletRequest request, HttpServletResponse response, String id,
+			@RequestParam(value = "reply", defaultValue = "") String reply,
+			@RequestParam(value = "isSecret", defaultValue = "0") int isSecret) {
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+
+		AccompanyBoardReply accompanyBoardReply = new AccompanyBoardReply();
+		accompanyBoardReply.setAccompanyBoardId(id);
+		accompanyBoardReply.setMemberId(memberId);
+		accompanyBoardReply.setIsSecret(isSecret);
+		accompanyBoardReply.setReply(reply);
+
+		accompanyBoardReplyDao.add(accompanyBoardReply);
+
+		model.addAttribute("url", "accompany/detail?id=" + id);
+		model.addAttribute("msg", "성공적으로 대에에에에엣글 등록이 완료로로로로!");
+
+		return "inc/redirect";
 	}
 
 	@RequestMapping(value = "/reg", method = RequestMethod.GET)
@@ -91,33 +174,29 @@ public class AccompanyController {
 		return "accompany.reg";
 	}
 
-	@RequestMapping(value="/reg",
-	         method=RequestMethod.POST)
-	   public String regPost(Model model,
-	         HttpServletRequest request, 
-	         HttpServletResponse response,
-	         AccompanyBoardFile accompanyBoardFile,
-	         @RequestParam(value="title",defaultValue=" ")String title,
-	         @RequestParam(value="lat",defaultValue="0.0")float lat,
-	         @RequestParam(value="lng",defaultValue="0.0")float lng,
-	         @RequestParam(value="content",defaultValue="작성된 내용이 없습니다.")String content,
-	         @RequestParam(value="style",defaultValue="1")String styleId,
-	         @RequestParam(value="file", defaultValue="null") MultipartFile file,
-	         @RequestParam(value="place", defaultValue="미등록장소")String place,
-	         @RequestParam(value="locality", defaultValue="")String locality,
-	         @RequestParam(value="country", defaultValue="")String country,
-	         @RequestParam(value="startDate", defaultValue="1999-01-01")String sD,
-	         @RequestParam(value="endDate", defaultValue="1999-01-01")String eD) throws ParseException{      
-		   
-		   
-		  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
-		  String memberId = member.getId();
-		  
-	      AccompanyBoard accompanyBoard = new AccompanyBoard();
-	      accompanyBoard.setContext(content);
-	      accompanyBoard.setLatitude(lat);
-	      accompanyBoard.setLongitude(lng);
-	      accompanyBoard.setTitle(title);
+	@RequestMapping(value = "/reg", method = RequestMethod.POST)
+	public String regPost(Model model, HttpServletRequest request, HttpServletResponse response,
+			AccompanyBoardFile accompanyBoardFile, @RequestParam(value = "title", defaultValue = "") String title,
+			@RequestParam(value = "lat", defaultValue = "0.0") float lat,
+			@RequestParam(value = "lng", defaultValue = "0.0") float lng,
+			@RequestParam(value = "content", defaultValue = "작성된 내용이 없습니다.") String content,
+			@RequestParam(value = "style", defaultValue = "1") String styleId,
+			@RequestParam(value = "file", defaultValue = "null") MultipartFile file,
+			@RequestParam(value = "place", defaultValue = "미등록장소") String place,
+			@RequestParam(value = "locality", defaultValue = "") String locality,
+			@RequestParam(value = "country", defaultValue = "") String country,
+			@RequestParam(value = "startDate", defaultValue = "1999-01-01") String sD,
+			@RequestParam(value = "endDate", defaultValue = "1999-01-01") String eD) throws ParseException {
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+
+		AccompanyBoard accompanyBoard = new AccompanyBoard();
+		accompanyBoard.setContext(content);
+		accompanyBoard.setLatitude(lat);
+		accompanyBoard.setLongitude(lng);
+		accompanyBoard.setTitle(title);
 
 		java.sql.Date startDate = java.sql.Date.valueOf(sD);
 		java.sql.Date endDate = java.sql.Date.valueOf(eD);
@@ -240,4 +319,110 @@ public class AccompanyController {
 		return "accompany.board";
 
 	}
+
+	/*-------------------사용자에게 동행 추천해주는 컨트롤러------------*/
+	@RequestMapping(value = "matching-ajax-data", produces = "application/text; charset=utf8", method = RequestMethod.GET)
+	@ResponseBody
+	public String matchingAjaxGet(@RequestParam(value = "a", defaultValue = "") String memberAccomInfoId,
+			@RequestParam(value = "sx", defaultValue = "2") int sex,
+			@RequestParam(value = "min", defaultValue = "15") int minAge,
+			@RequestParam(value = "max", defaultValue = "45") int maxAge,
+			@RequestParam(value = "di", defaultValue = "default") String distance,
+			@RequestParam(value = "sty", defaultValue = "default") String styleId) {
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+
+		// 본인이 선택한 동행 정보 중에서 날짜, 장소 가져오기
+		MemberAccompanyInfo memAccomInfo = memberAccomInfoDao.get(memberAccomInfoId);
+		float latitude = memAccomInfo.getLatitude();
+		float longitude = memAccomInfo.getLongitude();
+
+		System.out.println(memAccomInfo.getPlace() + latitude + longitude);
+
+		// 거리, 나이, 스타일, 성별로 조회해서 사람들 리스트 가져오기
+		List<MemberAccompanyInfoMatchingView> matchedMember = new ArrayList<MemberAccompanyInfoMatchingView>();
+
+		String sexEq, styleEq, sexString;
+
+		// 스타일 무관인 경우
+		if (styleId.equals("default")) {
+			styleEq = "LIKE";
+			styleId = "%%";
+		} else
+			styleEq = "=";
+
+		// 거리 무관인 경우
+		if (distance.equals("default"))
+			distance = "50000000";
+
+		// 성별 무관인 경우
+		if (sex == 2) {
+			sexEq = "LIKE";
+			sexString = "%%";
+		} else {
+			sexEq = "=";
+			sexString = String.valueOf(sex);
+		}
+
+		// 동행 매칭 정보를 거리를 기준으로 10개 가져온다.
+		matchedMember = memberAccomInfoDao.getListMemberAccompanyMatching(latitude, longitude, memberId, styleEq,
+				styleId, distance, sexEq, sexString, minAge, maxAge);
+
+		// 가져온 데이터를 저장할 객체 생성
+		MemberAccompanyMatch memberMatch = null;
+		String resultString = "{'error': '매칭을 받으실 수 없습니다.'}";
+		int count = memberDao.getMatchCount(memberId);
+		boolean isNotMatched = false;
+		// 결과를 담을 Result View List 생성 ( memberProf + member + memAccomInfo 조인한
+		// 뷰로 매칭된 memAccomInfo ID로 조회해서 가져온다. )
+		List<MemberProfInfoMatchingResultView> resultList = new ArrayList<MemberProfInfoMatchingResultView>();
+
+		// 매치 횟수 3회를 초과하였는지 비교하기
+		if (count >= 1 && matchedMember.size() > 0) {
+			System.out.println(matchedMember.get(0).getId());
+			// 사람들 리스트 중 제일 매칭 조건에 적합한 사람(matchedMember.get(0))을 등록해주기
+			memberMatch = new MemberAccompanyMatch();
+			memberMatch.setMatchedMemberId(matchedMember.get(0).getMemberId());
+			memberMatch.setMemberId(memberId);
+			memberMatch.setMemberAccompanyInfoId(matchedMember.get(0).getId());
+			memberAccompanyMatchDao.add(memberMatch);
+			memberDao.addMatchCount(memberId);
+
+		} else if (matchedMember.size() == 0) {
+			System.out.println("매칭될 사람이 없음..");
+			resultString = "{\"error\":\"검색 결과가 없습니다.\"}";
+			isNotMatched = true;
+		} else if (count < 1) {
+			System.out.println("카운트 횟수 초과");
+			resultString = "{\"error\":\"하루 매칭 최대 횟수를 초과하였습니다.\"}";
+			isNotMatched = true;
+		}
+
+		// 기존 정보 + 새로 저장된 매칭 정보 가져오기
+		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
+
+		for (MemberAccompanyMatch m : memAccomMatchedList) {
+			System.out.println("매칭된 정보들" + m.getMemberAccompanyInfoId());
+			MemberProfInfoMatchingResultView result = memberAccomInfoDao
+					.getMatchingResult(m.getMemberAccompanyInfoId());
+			resultList.add(result);
+		}
+
+		String json = null;
+		Gson gson = new Gson();
+		JsonParser parser = new JsonParser();
+
+		if (!isNotMatched) {
+			json = gson.toJson(resultList);
+			System.out.println("json" + json);
+			return json;
+		} else {
+			System.out.println(resultString);
+			return resultString;
+		}
+
+	}
+
 }

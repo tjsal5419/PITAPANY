@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pitapany.web.dao.AccompanyBoardReplyDao;
 import com.pitapany.web.entity.AccompanyBoardReply;
+import com.pitapany.web.entity.OnlyAccReplyView;
 
 public class MybatisAccompanyBoardReplyDao implements AccompanyBoardReplyDao {
 	@Autowired
@@ -19,9 +20,9 @@ public class MybatisAccompanyBoardReplyDao implements AccompanyBoardReplyDao {
 	}
 
 	@Override
-	public List<AccompanyBoardReply> getList() {
+	public List<AccompanyBoardReply> getList(String id) {
 		AccompanyBoardReplyDao accBoardReplyDao = sqlSession.getMapper(AccompanyBoardReplyDao.class);
-		return accBoardReplyDao.getList();
+		return accBoardReplyDao.getList(id);
 	}
 
 	@Override
@@ -40,6 +41,12 @@ public class MybatisAccompanyBoardReplyDao implements AccompanyBoardReplyDao {
 	public int update(AccompanyBoardReply accompanyBoardReply) {
 		AccompanyBoardReplyDao accBoardReplyDao = sqlSession.getMapper(AccompanyBoardReplyDao.class);
 		return accBoardReplyDao.update(accompanyBoardReply);
+	}
+
+	@Override
+	public List<OnlyAccReplyView> getReplyList(String id) {
+		AccompanyBoardReplyDao accBoardReplyDao = sqlSession.getMapper(AccompanyBoardReplyDao.class);
+		return accBoardReplyDao.getReplyList(id);
 	}
 
 }

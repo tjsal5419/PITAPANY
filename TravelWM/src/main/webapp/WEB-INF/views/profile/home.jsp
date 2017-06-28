@@ -56,8 +56,7 @@
 		var hearts = document.querySelector(".hearts");
 		var emheart = document.querySelector("#emheart");
 		var heart = document.querySelector("#heart");
-		
-		
+
 		hearts.onclick = function() {
 			if (emheart.style.display !== "none") {
 				heart.style.display = "block"
@@ -72,7 +71,7 @@
 
 <div class="visual">
 	<div class="back-img"
-		style='background: url("${memberProfile.imgSrc}") no-repeat center; background-size: cover;'>
+		style='background: url("${root}${memberProfile.backImgSrc}${memberProfile.backImgName}") no-repeat center; background-size: cover;'>
 	</div>
 
 	<div class="setting-button">
@@ -82,7 +81,8 @@
 	<div class="name">${memberProfile.status}</div>
 	<div class="prof-img">
 		<div class="thumblist">
-			<img class="prof-img-circle" src="${memberProfile.imgSrc}"
+			<img class="prof-img-circle"
+				src="${root}${memberProfile.imgSrc}${memberProfile.imgName}"
 				alt="프로필사진">
 		</div>
 		<div class="center">${member.nicName}</div>
@@ -91,7 +91,6 @@
 </div>
 
 <main class="main">
-
 <div>
 	<div class="menu">
 		<div class="list">
@@ -112,12 +111,13 @@
 				<div class="info-box">
 					<div class="prof-box">
 						<div class="prof-thumblist">
-							<img class="prof-small-img-circle" src="${memberProfile.imgSrc}"
+							<img class="prof-small-img-circle"
+								src="${root}${memberProfile.imgSrc}${memberProfile.imgName}"
 								alt="프로필사진">
 						</div>
 						<div class="list">
 							<div class="nic">${member.nicName}</div>
-							<div class="location">${f.board.place }</div>
+							<div class="location">${f.board.place}</div>
 							<div class="write-date">
 								<fmt:formatDate value="${f.board.regDate}" pattern="yy.MM.dd" />
 							</div>
@@ -125,7 +125,7 @@
 					</div>
 
 					<div class="content">
-						<img src="${f.board.img}" />
+						<img src="${root}${f.board.src}${f.board.name}" />
 						<div>${f.board.content}</div>
 					</div>
 
@@ -140,9 +140,11 @@
 							</div>
 						</div>
 						<div id="rep" class="rep">
-							<form class="void" action="replyReg" method="POST">
+							<form class="void" method="POST">
 								<div class="re-text">
-									<textarea name="contwnt"></textarea>
+									<input style="display: none;" type="text" name="id"
+										value="${f.board.id}" />
+									<textarea name="reply"></textarea>
 								</div>
 								<button class="btn btn-info" type="submit">등록</button>
 							</form>
@@ -151,7 +153,7 @@
 									<div class="list-void">
 										<div class="id-date">
 											<div class="re-id">
-												<span>${li.writerNicName}</span>
+												<span>${li.nicName}</span>
 											</div>
 											<div class="re-date" style="width: 200px;">
 												<span><fmt:formatDate value="${li.regDate}"
@@ -160,7 +162,7 @@
 										</div>
 										<div class="list-content">
 											<div class="list-pic"
-												style='background: url("") no-repeat center;'></div>
+												style='background: url("${root}${li.imgSrc}${li.imgName}") no-repeat center; background-size: cover;'></div>
 											<div class="list-text">
 												<span>${li.reply}</span>
 											</div>
@@ -191,40 +193,6 @@
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
-				<%-- <c:if test="${page!=1 && page!=0}">
-						<li><a id="move-page-button-number"
-							href="${root}/profile/home?p=${page-1 }" aria-label="Previous">
-								<span aria-hidden="true">&laquo;</span>
-						</a></li>
-					</c:if>
-	
-					<c:forEach begin="${prev }" end="${next }" var="p">
-	
-						<c:choose>
-							<c:when test="${p== page }">
-								<li class="active"><a id="move-page-button"
-									href="${root }/profile/home?p=${p }">${p }</a></li>
-							</c:when>
-	
-							<c:otherwise>
-								<li><a id="move-page-button-number"
-									href="${root }/profile/home?p=${p }">${p }</a></li>
-							</c:otherwise>
-	
-						</c:choose>
-					</c:forEach>
-	
-					<c:if test="${page!=pageCount && count!=0}">
-						<li><a id="move-page-button-number"
-							href="${root}/profile/home?p=${page+1 }" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-						</a></li>
-					</c:if>
-	
-					<c:if test="${count==0 }">
-						<div>결과가 없습니다.</div>
-					</c:if> --%>
-
 			</ul>
 		</nav>
 	</div>
@@ -312,7 +280,7 @@
 		<c:forEach var="f" items="${boardAndReplyLists}">
 			<div class="board-card">
 				<div class="board-content"
-					style='background: url("${f.board.img}") no-repeat center; background-size: cover;'></div>
+					style='background: url("${root}${f.board.src}${f.board.name}") no-repeat center; background-size: cover;'></div>
 			</div>
 		</c:forEach>
 	</div>

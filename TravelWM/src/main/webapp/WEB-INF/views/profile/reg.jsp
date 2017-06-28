@@ -43,13 +43,12 @@
 			</div>
 			<div class="bottun">
 				<div class="cancel">
-					<button onclick="window.location.href='${root}/profile/home?${id }'" class="btn btn-info chat">글 취소</button>	
+					<button onclick="window.location.href='${root}/profile/home?${id}'" class="btn btn-info chat">글 취소</button>	
 				</div>
 				<div class="reg">
 					<button class="btn btn-info chat" id="submit" type ="submit">글 등록</button>
 				</div>
 			</div>
-	
 	</form>
 	</div>
 	

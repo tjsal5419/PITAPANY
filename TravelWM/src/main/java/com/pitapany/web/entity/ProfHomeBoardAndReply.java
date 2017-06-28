@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ProfHomeBoardAndReply {
 	MemberProfileBoard board;
-	List<MemberProfileBoardReply> replyLists;
+	List<OnlyProfBoardReplyView> replyLists;
 	
 	public MemberProfileBoard getBoard() {
 		return board;
@@ -12,12 +12,11 @@ public class ProfHomeBoardAndReply {
 	public void setBoard(MemberProfileBoard board) {
 		this.board = board;
 	}
-	public List<MemberProfileBoardReply> getReplyLists() {
+	public List<OnlyProfBoardReplyView> getReplyLists() {
 		return replyLists;
 	}
-	public void setReplyLists(List<MemberProfileBoardReply> replyLists) {
+	public void setReplyLists(List<OnlyProfBoardReplyView> replyLists) {
 		this.replyLists = replyLists;
 	}
-
 	
 }

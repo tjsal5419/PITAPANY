@@ -46,7 +46,8 @@
 		(
 		`id`,
 		`content`,
-		`img`,
+		`src`,
+		`name`,
 		`like`,
 		`latitude`,
 		`longitude`,
@@ -59,7 +60,8 @@
 		(
 		#{id},
 		#{content},
-		#{img},
+		#{src},
+		#{name},
 		#{like},
 		#{latitude},
 		#{longitude},

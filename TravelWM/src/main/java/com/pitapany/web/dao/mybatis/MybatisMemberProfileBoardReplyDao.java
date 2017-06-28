@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pitapany.web.dao.MemberProfileBoardReplyDao;
 import com.pitapany.web.entity.MemberProfileBoardReply;
+import com.pitapany.web.entity.OnlyProfBoardReplyView;
 
 public class MybatisMemberProfileBoardReplyDao implements MemberProfileBoardReplyDao {
 
@@ -47,6 +48,12 @@ public class MybatisMemberProfileBoardReplyDao implements MemberProfileBoardRepl
 	public int update(MemberProfileBoardReply memberProfileBoardReply) {
 		MemberProfileBoardReplyDao memberProfileBoardReplyDao = sqlSession.getMapper(MemberProfileBoardReplyDao.class);
 		return memberProfileBoardReplyDao.update(memberProfileBoardReply);
+	}
+
+	@Override
+	public List<OnlyProfBoardReplyView> getReplyList(String id) {
+		MemberProfileBoardReplyDao memberProfileBoardReplyDao = sqlSession.getMapper(MemberProfileBoardReplyDao.class);
+		return memberProfileBoardReplyDao.getReplyList(id);
 	}
 
 }

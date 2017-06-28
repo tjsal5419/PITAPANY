@@ -26,8 +26,7 @@
 	
 	<insert id="add" parameterType="com.pitapany.web.entity.MemberProfile">
 		<selectKey keyProperty="id" order="BEFORE" resultType="String">
-			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM
-			MemberProfileBoard
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM MemberProfile
 		</selectKey>
 		INSERT INTO `pitapanydb`.`MemberProfile`
 		(
@@ -42,7 +41,8 @@
 		`kakaotalkId`,
 		`facebookUrl`,
 		`instagramUrl`,
-		`memberId`
+		`memberId`,
+		`styleId`
 		)
 		VALUES
 		(
@@ -57,7 +57,8 @@
 		#{kakaotalkId},
 		#{facebookUrl},
 		#{instagramUrl},
-		#{memberId}
+		#{memberId},
+		#{styleId}
 		)
 	</insert>
 
@@ -75,7 +76,7 @@
 		`kakaotalkId` = #{kakaotalkId},
 		`facebookUrl` =	#{facebookUrl},
 		`instagramUrl` = #{instagramUrl},
-		`memberId` = #{memberId}
+		`styleId`= #{styleId}
 		WHERE `id` = #{id}
 
 	</update>

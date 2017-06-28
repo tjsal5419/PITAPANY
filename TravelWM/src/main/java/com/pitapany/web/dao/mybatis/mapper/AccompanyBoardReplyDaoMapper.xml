@@ -9,6 +9,15 @@
 		SELECT *
 		FROM
 		`pitapanydb`.`AccompanyBoardReply`
+		WHERE accompanyBoardId=#{id}
+	</select>
+
+	<select id="getReplyList" resultType="com.pitapany.web.entity.OnlyAccReplyView">
+		SELECT *
+		FROM
+		`pitapanydb`.`OnlyAccReplyView`
+		WHERE accompanyBoardId=#{id}
+		ORDER BY regDate DESC;
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoardReply">
@@ -20,12 +29,13 @@
 
 	<insert id="add" parameterType="com.pitapany.web.entity.AccompanyBoardReply">
 		<selectKey keyProperty="id" order="BEFORE" resultType="String">
-			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM AccompanyBoardReply
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM
+			AccompanyBoardReply
 		</selectKey>
-		INSERT INTO
-		`pitapanydb`.`AccompanyBoardReply`
+		INSERT INTO `pitapanydb`.`AccompanyBoardReply`
 		(
 		`id`,
+		`memberId`,
 		`reply`,
 		`isSecret`,
 		`accompanyBoardId`
@@ -33,10 +43,11 @@
 		VALUES
 		(
 		#{id},
+		#{memberId},
 		#{reply},
 		#{isSecret},
 		#{accompanyBoardId}
-		);
+		)
 	</insert>
 
 	<update id="update" parameterType="com.pitapany.web.entity.AccompanyBoardReply">
@@ -44,7 +55,8 @@
 		`pitapanydb`.`AccompanyBoardReply`
 		SET
 		`id` = #{id},
-		`memberId` = #{memberId},
+		`memberId` =
+		#{memberId},
 		`reply` = #{reply},
 		`isSecret` = #{isSecret},
 		`accompanyBoardId` = #{accompanyBoardId}

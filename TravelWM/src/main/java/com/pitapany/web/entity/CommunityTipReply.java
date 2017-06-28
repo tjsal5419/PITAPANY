@@ -1,13 +1,13 @@
 package com.pitapany.web.entity;
 import java.util.Date;
 
-public class AccompanyBoardReply {
+public class CommunityTipReply {
 	private String id;
 	private String memberId;
 	private String reply;
 	private Date regDate;
 	private int isSecret;
-	private String accompanyBoardId;
+	private String communityTipId;
 
 	public String getId() {
 		return id;
@@ -49,11 +49,11 @@ public class AccompanyBoardReply {
 		this.isSecret = isSecret;
 	}
 
-	public String getAccompanyBoardId() {
-		return accompanyBoardId;
+	public String getCommunityTipId() {
+		return communityTipId;
 	}
 
-	public void setAccompanyBoardId(String accompanyBoardId) {
-		this.accompanyBoardId = accompanyBoardId;
+	public void setCommunityTipId(String communityTipId) {
+		this.communityTipId = communityTipId;
 	}
 }

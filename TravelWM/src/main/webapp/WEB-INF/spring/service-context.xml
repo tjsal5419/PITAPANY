@@ -35,13 +35,14 @@
 	<bean class="com.pitapany.web.dao.mybatis.MybatisChattingDetailDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisTipCategoryDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardReplyDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberAccompanyInfoDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardFileDao" />
-
+	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberAccompanyMatchDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardReplyDao" />
-
+<bean class="com.pitapany.web.dao.mybatis.MybatisCommunityTipReplyDao" />
 	<context:annotation-config /> <!-- Autowired가 필요한 곳에서 설정함 -->
 	<bean class="com.pitapany.web.service.AdminService" />
 

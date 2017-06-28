@@ -5,7 +5,8 @@ import java.util.Date;
 public class MemberProfileBoard {
 	private String id;
 	private String content;
-	private String img;
+	private String src;
+	private String name;
 	private int like;
 	private float latitude;
 	private float longitude;
@@ -31,12 +32,20 @@ public class MemberProfileBoard {
 		this.content = content;
 	}
 
-	public String getImg() {
-		return img;
+	public String getSrc() {
+		return src;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setSrc(String src) {
+		this.src = src;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getLike() {

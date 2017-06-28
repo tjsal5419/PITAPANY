@@ -6,7 +6,7 @@ public class MemberProfileBoardReply {
 	private String id;
 	private String reply;
 	private int isSecret;
-	private String writerNicName;
+	private String memberId;
 	private Date regDate;
 	private String memberProfileBoardId;
 
@@ -34,12 +34,12 @@ public class MemberProfileBoardReply {
 		this.isSecret = isSecret;
 	}
 
-	public String getWriterNicName() {
-		return writerNicName;
+	public String getMemberId() {
+		return memberId;
 	}
 
-	public void setWriterNicName(String writerNicName) {
-		this.writerNicName = writerNicName;
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
 	}
 
 	public Date getRegDate() {

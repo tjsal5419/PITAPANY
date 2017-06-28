@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pitapany.web.dao.CommunityTipReplyDao">
+	<select id="getList" resultType="com.pitapany.web.entity.CommunityTipReply">
+		SELECT *
+		FROM
+		`pitapanydb`.`CommunityTipReply`
+		WHERE communityTipId=#{id}
+	</select>
+
+	<select id="getReplyList" resultType="com.pitapany.web.entity.OnlyTipReplyView">
+		SELECT *
+		FROM
+		`pitapanydb`.`OnlyTipReplyView`
+		WHERE communityTipId=#{id}
+		ORDER BY regDate DESC;
+	</select>
+
+	<select id="get" resultType="com.pitapany.web.entity.CommunityTipReply">
+		SELECT *
+		FROM
+		`pitapanydb`.`CommunityTipReply`
+		WHERE id=#{id}
+	</select>
+
+	<insert id="add" parameterType="com.pitapany.web.entity.CommunityTipReply">
+		<selectKey keyProperty="id" order="BEFORE" resultType="String">
+			SELECT IFNULL(max(cast(id as unsigned))+1,'1') id FROM
+			CommunityTipReply
+		</selectKey>
+		INSERT INTO `pitapanydb`.`CommunityTipReply`
+		(
+		`id`,
+		`memberId`,
+		`reply`,
+		`isSecret`,
+		`communityTipId`
+		)
+		VALUES
+		(
+		#{id},
+		#{memberId},
+		#{reply},
+		#{isSecret},
+		#{communityTipId}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.pitapany.web.entity.CommunityTipReply">
+		UPDATE
+		`pitapanydb`.`CommunityTipReply`
+		SET
+		`id` = #{id},
+		`memberId` =
+		#{memberId},
+		`reply` = #{reply},
+		`isSecret` = #{isSecret},
+		`communityTipId` = #{communityTipId}
+		WHERE `id` = #{id};
+	</update>
+
+	<delete id="delete">
+		DELETE FROM CommunityTipReply
+		WHERE id=#{id}
+	</delete>
+
+</mapper>
