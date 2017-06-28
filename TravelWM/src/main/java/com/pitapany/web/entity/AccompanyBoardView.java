@@ -1,7 +1,5 @@
 package com.pitapany.web.entity;
 
-import java.util.Date;
-
 public class AccompanyBoardView extends AccompanyBoard {
 	private String writerNicName;
 	private String styleType;
@@ -32,8 +30,5 @@ public class AccompanyBoardView extends AccompanyBoard {
 	public void setWriterAge(int writerAge) {
 		this.writerAge = writerAge;
 	}
-	
-	
-	
 	
 }

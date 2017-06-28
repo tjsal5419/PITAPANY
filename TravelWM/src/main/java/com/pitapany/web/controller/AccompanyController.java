@@ -23,14 +23,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.AccompanyBoardFileDao;
+import com.pitapany.web.dao.AccompanyBoardReplyDao;
 import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.dao.MemberProfileDao;
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.AccompanyBoardFile;
+import com.pitapany.web.entity.AccompanyBoardReply;
 import com.pitapany.web.entity.AccompanyBoardView;
 import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.MemberProfile;
+import com.pitapany.web.entity.OnlyAccReplyView;
 import com.pitapany.web.entity.Style;
 import com.pitapany.web.security.CustomWebAuthenticationDetails;
 
@@ -46,6 +49,9 @@ public class AccompanyController {
 
 	@Autowired
 	private AccompanyBoardDao accompanyBoardDao;
+
+	@Autowired
+	private AccompanyBoardReplyDao accompanyBoardReplyDao;
 
 	@Autowired
 	private StyleDao styleDao;
@@ -67,20 +73,44 @@ public class AccompanyController {
 	}
 
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detail(Model model, String id) {
+	public String detailGet(Model model, String id) {
 		accompanyBoardDao.addHits(id);
 
-		Member member = memberDao.get(id);
-		MemberProfile memberProfile = memberProfileDao.getByMemberId(id);
 		AccompanyBoardView accompanyBoard = accompanyBoardDao.getView(id);
 		AccompanyBoardFile file = accompanyBoardFileDao.get(id);
+		Member member = memberDao.get(accompanyBoard.getMemberId());
+		MemberProfile memberProfile = memberProfileDao.getByMemberId(accompanyBoard.getMemberId());
+		List<OnlyAccReplyView> reply = accompanyBoardReplyDao.getReplyList(id);
 
 		model.addAttribute("file", file);
 		model.addAttribute("accDetail", accompanyBoard);
 		model.addAttribute("member", member);
 		model.addAttribute("memberProfile", memberProfile);
-		
+		model.addAttribute("boardReply", reply);
+
 		return "accompany.detail";
+	}
+
+	@RequestMapping(value = "detail", method = RequestMethod.POST)
+	public String detailPost(Model model, HttpServletRequest request, HttpServletResponse response, String id,
+			@RequestParam(value = "reply", defaultValue = "") String reply,
+			@RequestParam(value = "isSecret", defaultValue = "0") int isSecret) {
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+
+		AccompanyBoardReply accompanyBoardReply = new AccompanyBoardReply();
+		accompanyBoardReply.setAccompanyBoardId(id);
+		accompanyBoardReply.setMemberId(memberId);
+		accompanyBoardReply.setIsSecret(isSecret);
+		accompanyBoardReply.setReply(reply);
+
+		accompanyBoardReplyDao.add(accompanyBoardReply);
+
+		model.addAttribute("url", "accompany/detail?id=" + id);
+		model.addAttribute("msg", "성공적으로 대에에에에엣글 등록이 완료로로로로!");
+
+		return "inc/redirect";
 	}
 
 	@RequestMapping(value = "/reg", method = RequestMethod.GET)
@@ -91,33 +121,29 @@ public class AccompanyController {
 		return "accompany.reg";
 	}
 
-	@RequestMapping(value="/reg",
-	         method=RequestMethod.POST)
-	   public String regPost(Model model,
-	         HttpServletRequest request, 
-	         HttpServletResponse response,
-	         AccompanyBoardFile accompanyBoardFile,
-	         @RequestParam(value="title",defaultValue=" ")String title,
-	         @RequestParam(value="lat",defaultValue="0.0")float lat,
-	         @RequestParam(value="lng",defaultValue="0.0")float lng,
-	         @RequestParam(value="content",defaultValue="작성된 내용이 없습니다.")String content,
-	         @RequestParam(value="style",defaultValue="1")String styleId,
-	         @RequestParam(value="file", defaultValue="null") MultipartFile file,
-	         @RequestParam(value="place", defaultValue="미등록장소")String place,
-	         @RequestParam(value="locality", defaultValue="")String locality,
-	         @RequestParam(value="country", defaultValue="")String country,
-	         @RequestParam(value="startDate", defaultValue="1999-01-01")String sD,
-	         @RequestParam(value="endDate", defaultValue="1999-01-01")String eD) throws ParseException{      
-		   
-		   
-		  Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
-		  String memberId = member.getId();
-		  
-	      AccompanyBoard accompanyBoard = new AccompanyBoard();
-	      accompanyBoard.setContext(content);
-	      accompanyBoard.setLatitude(lat);
-	      accompanyBoard.setLongitude(lng);
-	      accompanyBoard.setTitle(title);
+	@RequestMapping(value = "/reg", method = RequestMethod.POST)
+	public String regPost(Model model, HttpServletRequest request, HttpServletResponse response,
+			AccompanyBoardFile accompanyBoardFile, @RequestParam(value = "title", defaultValue = "") String title,
+			@RequestParam(value = "lat", defaultValue = "0.0") float lat,
+			@RequestParam(value = "lng", defaultValue = "0.0") float lng,
+			@RequestParam(value = "content", defaultValue = "작성된 내용이 없습니다.") String content,
+			@RequestParam(value = "style", defaultValue = "1") String styleId,
+			@RequestParam(value = "file", defaultValue = "null") MultipartFile file,
+			@RequestParam(value = "place", defaultValue = "미등록장소") String place,
+			@RequestParam(value = "locality", defaultValue = "") String locality,
+			@RequestParam(value = "country", defaultValue = "") String country,
+			@RequestParam(value = "startDate", defaultValue = "1999-01-01") String sD,
+			@RequestParam(value = "endDate", defaultValue = "1999-01-01") String eD) throws ParseException {
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+
+		AccompanyBoard accompanyBoard = new AccompanyBoard();
+		accompanyBoard.setContext(content);
+		accompanyBoard.setLatitude(lat);
+		accompanyBoard.setLongitude(lng);
+		accompanyBoard.setTitle(title);
 
 		java.sql.Date startDate = java.sql.Date.valueOf(sD);
 		java.sql.Date endDate = java.sql.Date.valueOf(eD);

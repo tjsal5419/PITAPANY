@@ -9,7 +9,17 @@
 		SELECT *
 		FROM
 		`pitapanydb`.`MemberProfileBoardReply`
-		WHERE memberProfileBoardId = #{memberProfileBoardId}
+		WHERE memberProfileBoardId =
+		#{memberProfileBoardId}
+	</select>
+
+	<select id="getReplyList" resultType="com.pitapany.web.entity.OnlyProfBoardReplyView">
+		SELECT *
+		FROM
+		`pitapanydb`.`OnlyProfBoardReplyView`
+		WHERE memberProfileBoardId=#{id}
+		ORDER BY
+		regDate DESC;
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.MemberProfileBoardReply">
@@ -28,19 +38,18 @@
 		(
 		`id`,
 		`reply`,
+		`memberId`,
 		`isSecret`,
-		`writerNicName`,
 		`memberProfileBoardId`
 		)
 		VALUES
 		(
 		#{id},
 		#{reply},
+		#{memberId},
 		#{isSecret},
-		#{writerNicName},
 		#{memberProfileBoardId}
-		);
-
+		)
 	</insert>
 
 	<update id="update" parameterType="com.pitapany.web.entity.MemberProfileBoardReply">

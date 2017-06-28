@@ -35,10 +35,10 @@
 	<bean class="com.pitapany.web.dao.mybatis.MybatisChattingDetailDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisTipCategoryDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardReplyDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberAccompanyInfoDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisAccompanyBoardFileDao" />
-
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardReplyDao" />
 
