@@ -59,30 +59,34 @@
 			</div>
 		</div>
 		<div id="rep" class="rep">
-			<div class="void">
+			<form class="void" method="POST">
 				<div class="re-pic"></div>
 				<div class="re-text">
-					<textarea></textarea>
+					<textarea name="reply"></textarea>
 				</div>
-				<button class="btn btn-info">등록</button>
-			</div>
+				<button class="btn btn-info" type="submit">등록</button>
+			</form>
 			<div class="re-list">
-				<div class="list-void">
-					<div class="id-date">
-						<div class="re-id">
-							<span>MacJo</span>
+				<c:forEach var="t" items="${reply}">
+					<div class="list-void">
+						<div class="id-date">
+							<div class="re-id">
+								<span>${t.nicName}</span>
+							</div>
+							<div class="re-date">
+								<span><fmt:formatDate value="${t.regDate}"
+										pattern="yy.MM.dd HH:mm:ss" /></span>
+							</div>
 						</div>
-						<div class="re-date">
-							<span>11-03-02 09:10</span>
+						<div class="list-content">
+							<div class="list-pic"
+								style='background: url("${root}${t.imgSrc}${imgName}") no-repeat center; background-size: cover;'></div>
+							<div class="list-text">
+								<span>${t.reply}</span>
+							</div>
 						</div>
 					</div>
-					<div class="list-content">
-						<div class="list-pic"></div>
-						<div class="list-text">
-							<span>세 벌이면 될 듯? ^^</span>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 		
