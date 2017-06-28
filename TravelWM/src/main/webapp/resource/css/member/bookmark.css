@@ -210,8 +210,8 @@
 	display: flex;
 	flex-direction: column;
 	padding: 15px;
-	padding-top:30px;
-	padding-bottom: 30px;
+	padding-top:20px;
+	padding-bottom: 5x;
 	margin-bottom: 50px;
 
 	width: 100%;
@@ -219,7 +219,10 @@
 	border: 1px solid #aaa;
 }
 
-
+.pagination{
+	margin-top: 20px !important;
+	margin-bottom: 0 !important;
+}
 
 
 

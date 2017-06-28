@@ -9,26 +9,35 @@
 <main class="main">
 <%@ include file="inc/aside.jsp" %>
 <form class="frame" method="post">
+	
+	
 	<div class="content">
-		<div class="title">
-			<h2>팁 작성 페이지</h2>
-		</div>			
+	
+		
 		<div class="head">
 			<div class="title-logo">
-				<span>Title</span>
+				<span>제목</span>
 			</div>
 			<div class="title-content">
-				<input class="ti form-control" name="title" type="text" placeholder="제목내용" />
+				<input class="ti form-control form-control-reg" name="title" type="text" placeholder="제목내용" />
 			</div>
 		</div>
-		<div class="category">
-			<select class="select" name="tipCategoryId">
-				<c:forEach var="l" items="${categoryList }">
-					<option value="${l.id}">${l.category } </option>	
-				</c:forEach>
-			</select>
-		
+	
+		<div class="select-char">
+			<span>카테고리</span>
+			<div class="select_style">
+				<select class="select" name="tipCategoryId">
+					<c:forEach var="l" items="${categoryList }">
+						<option value="${l.id}">${l.category } </option>	
+					</c:forEach>
+				</select>
+				<div class="select_arrow"></div>
+			</div>
 		</div>
+	
+	
+		
+		
 		<div class="text">
 			<textarea name="content" class="form-control" placeholder="본문내용"></textarea>
 		</div>

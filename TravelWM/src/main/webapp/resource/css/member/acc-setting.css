@@ -22,8 +22,8 @@
     color: #555;
     background-color: #fff;
     background-image: none;
-    
-    border: none;
+    border: 1px solid #dcdcdc;
+
     outline: none;
     border-radius: 0;
     
@@ -32,14 +32,16 @@
 }
 
 .address-zone{
-	border: 1px solid #dcdcdc
+	border: none;
 }
 
 .calendar-zone{
-	border: 1px solid #dcdcdc;
-	border-left: none !important;
+	border: none;
 }
 
+.calendar-reg{
+	border-left: none;
+}
 
 .accom-info-reg-button{
 	flex-grow:1;
@@ -81,7 +83,7 @@
 	/* padding: 10px; */
 	padding-top: 10px;
 	padding-bottom: 10px;
-	padding-right: 10px;
+	/* padding-right: 10px; */
 	padding-left: 30px;
 	justify-content : space-between;
 	align-items: center;
@@ -340,6 +342,9 @@
 	color:#00BCD1;
 }
 
+.acc-info-content{
+	padding-bottom: 10px !important;
+}
 
 
 /* ----------------미디어쿼리----------------- */
@@ -462,7 +467,7 @@
 	flex-direction: column;
 	padding: 15px;
 	padding-top:35px;
-	padding-bottom: 20px;
+	/* padding-bottom: 20px; */
 	margin-bottom: 50px;
 
 	width: 100%;

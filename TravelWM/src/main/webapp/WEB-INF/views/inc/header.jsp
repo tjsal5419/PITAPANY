@@ -58,8 +58,8 @@
 					<li class="except-li"><a href="${root }/joinus/join">회원가입</a></li>
 				</c:if>	
 				
-	        	<li onclick="location.href='${root}/accompany/board';">동행찾기</li>
-	        	<li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
+	        	<li onclick="location.href='${root}/accompany/board';">이음찾기</li>
+	        	<li onclick="location.href='${root}/accompany/matching';">이음매칭</li>
 	        	<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
 	        </ul>
 	        <ul class="mypage">
@@ -88,7 +88,7 @@
 					<li class="account-logout" onclick="location.href='${root }/j_spring_security_logout';">
 						로그아웃
 					</li>
-				</security:authorize>
+					</security:authorize>
 				</ul>
         	</div>
         </div>
@@ -97,10 +97,10 @@
     <div class='menu-mobile'>
     	<div class="account-login-mobile"><span>메뉴 정보</span></div>
 		<ul>
-		  <li onclick="location.href='${root}/accompany/board';">동행찾기</li>
+		  <li onclick="location.href='${root}/accompany/board';">이음찾기</li>
 		</ul>
 		<ul>  
-		  <li onclick="location.href='${root}/accompany/matching';">동행매칭</li>
+		  <li onclick="location.href='${root}/accompany/matching';">이음매칭</li>
 		</ul>
 		<ul>	
 			<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
@@ -120,12 +120,10 @@
 			</ul>
 			<ul>
 				<security:authorize  access="isAuthenticated()">
-				<li>
-				<a class="account-logout" href="${root }/j_spring_security_logout">
-					로그아웃
-				</a>
-				</li>
-			</security:authorize>
+					<li class="account-logout" onclick="location.href='${root }/j_spring_security_logout';">
+						로그아웃
+					</li>
+				</security:authorize>
 			</ul>
 	</div>
 	
