@@ -133,7 +133,6 @@
 
 .visual {
 	margin-top: 60px;
-	border: 1px solid red;
 	position: relative;
 }
 
@@ -224,7 +223,6 @@
    top: -200px;
 } */
 .main {
-	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
 	margin-left: 20%;
