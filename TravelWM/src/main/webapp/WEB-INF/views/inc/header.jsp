@@ -47,8 +47,11 @@
 			    <input class="hidden" type="text" value="" name="locality1" id="locality1"/>  
  			    <input class="hidden" type="text" value="" name="country1" id="country1"/>  
  	
-   	    	  	<input class="form-control form-control-header" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜 입력"/>
-		  		<input type="button" class="search-button" alt="Submit"/>
+ 	    	  		<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" />
+    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search"/>
+ 	
+   	    	  	<input class="form-control form-control-header" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜 입력" required/>
+		  		<input type="button" class="search-button" onclick="searchLocDate()" id="search-loc-date" alt="Submit"/>
 		  	</div>
 	    </form>
         <div class="menu-bar">
@@ -141,6 +144,21 @@
 <c:if test="${!fn:contains(url, 'reg') && !fn:contains(url, 'acc-setting')}">
 
 <script>
+	var searchLocDate=function(){
+		var search = document.querySelector("#search-loc-date");
+		search.onclick = function(){
+			var lng = document.querySelector("#lat1");
+			var lat = document.querySelector("#lng1");
+			var sD = document.querySelector("#hidden-startDate");
+			var eD = document.querySelector("#hidden-endDate");
+			//alert(lng.value);
+			
+			//window.location.href='${root}/accompany/board?lat='+lat+'&lng='+lng+'?sD='+sD+'?eD='eD;
+		}
+	};
+
+</script>
+<script>
 if(!window.location.href.includes("reg")){
 
     var placeSearch1, autocomplete1, mobAutocomplete1;
@@ -197,8 +215,6 @@ function initAutocomplete() {
   	  var countryText = document.querySelector("#country1");
 	  var locality = '';
 	  var country = '';
-		  alert(placeName);        	  
-		  alert(latitude);
         for (var i = 0; i < place1.address_components.length; i++) {
             var addressType1 = place1.address_components[i].types[0];
             
@@ -215,8 +231,6 @@ function initAutocomplete() {
             }
        
         }
-         alert(country);
-         alert(locality);
         mobAuto.value = document.querySelector("#autocomplete").value;
         lng.value = longitude;
   	    lat.value = latitude;
@@ -245,8 +259,6 @@ function initAutocomplete() {
   		  var locality = '';
   		  var country = '';
   		  
-  		  alert(placeName);
-  		  alert(latitude);
            
           for (var i = 0; i < place1.address_components.length; i++) {
               var addressType1 = place1.address_components[i].types[0];
@@ -264,8 +276,6 @@ function initAutocomplete() {
               }
          
           }
-           alert(country);
-           alert(locality);
            auto.value = document.querySelector("#mobile-autocomplete").value;
   		  lng.value = longitude;
     	  lat.value = latitude;
@@ -352,10 +362,14 @@ $(function() {
 
   $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
       $(this).val(picker.startDate.format('YY.MM.DD') + ' - ' + picker.endDate.format('YY.MM.DD'));
+      $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
+      $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
   });
 
   $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
       $(this).val('');
+      $('input[name="endDate"]').val('');
+      $('input[name="startDate"]').val('');
   });
 
 });

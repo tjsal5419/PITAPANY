@@ -272,9 +272,16 @@ public class AccompanyController {
 	public String board(Model model, @RequestParam(value = "p", defaultValue = "1") int page,
 			@RequestParam(value = "sty", defaultValue = "") String sty,
 			@RequestParam(value = "sx", defaultValue = "4") int sx,
-			@RequestParam(value = "a", defaultValue = "4") int age) {
+			@RequestParam(value = "a", defaultValue = "4") int age,
+			@RequestParam(value = "lat", defaultValue = "0") String latitude,
+			@RequestParam(value = "lng", defaultValue = "0") String longitude,
+			@RequestParam(value = "sD", defaultValue = "0000-00-00") String startDate,
+			@RequestParam(value = "eD", defaultValue = "9999-99-99") String endDate) {
 
 		int count = accompanyBoardDao.count();
+		if(!latitude.equals("0") && !startDate.equals("0000-00-00"))
+			count = accompanyBoardDao.countByLocationDate(latitude, longitude, startDate, endDate);
+		
 		int pageCount = 1;
 
 		if (count % 6 != 0)
@@ -307,11 +314,18 @@ public class AccompanyController {
 
 		int minLimitPage = (page - 1) * 6;
 
-		List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
-
 		model.addAttribute("page", page);
 		model.addAttribute("pageCount", pageCount);
-		model.addAttribute("accompanyBoardList", accompanyBoardList);
+
+		if(!latitude.equals("0") && !startDate.equals("0000-00-00")){
+			List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getListByLocationDate(latitude, longitude, startDate, endDate,minLimitPage);
+			model.addAttribute("accompanyBoardList", accompanyBoardList);
+		}
+		else{
+			List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
+			model.addAttribute("accompanyBoardList", accompanyBoardList);			
+		}
+		
 
 		List<Style> stlyeList = styleDao.getList();
 		model.addAttribute("styleList", stlyeList);

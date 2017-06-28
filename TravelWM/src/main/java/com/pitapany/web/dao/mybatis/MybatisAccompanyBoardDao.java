@@ -69,4 +69,17 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 		return accBoardDao.getView(id);
 	}
 
+	@Override
+	public List<AccompanyBoardView> getListByLocationDate(String latitude, String longitude, String startDate,
+			String endDate,int page) {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.getListByLocationDate(latitude, longitude, startDate, endDate,page);
+	}
+
+	@Override
+	public int countByLocationDate(String latitude, String longitude, String startDate, String endDate) {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.countByLocationDate(latitude, longitude, startDate, endDate);
+	}
+
 }
