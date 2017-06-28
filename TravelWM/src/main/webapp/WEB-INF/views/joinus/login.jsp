@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  	<title>Flat Login Form 3.0</title>
+  	<title>동행이음 - 설레는 인연을 만나보세요 </title>
   
   	<meta name="viewport" content="width=device-width, initial-scale=1" />
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Travel with me</title>
+<title>동행이음 - 설레는 인연을 만나보세요</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!--Import Google Icon Font-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

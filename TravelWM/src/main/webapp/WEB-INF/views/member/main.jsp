@@ -32,7 +32,7 @@
 				
 					<div class="carousel-caption">
 						<div class="caption-content">
-							<h2 class="animated fadeInDown">당신과 당신의 여행이 만나는 곳</h2>
+							<h2 class="animated fadeInDown">우리 여행할래?</h2>
 							<span class="animated fadeInDown">동행 등록을 하시면 보다 편리한 이용이 가능합니다</span> <a href="#" class="btn btn-blue btn-effect">동행 등록</a>
 						</div>
 					</div>

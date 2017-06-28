@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="${root}/resource/css/inc/header.css" />
 
 <head>
-	<title> 동행이음 with PITAPANY</title>
+	<title>동행이음 - 설레는 인연을 만나보세요</title>
 </head>
 
 <nav>

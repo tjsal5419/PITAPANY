@@ -50,6 +50,7 @@
 		<div class="accompany-manage">
 			<div class="accom-info-title">
 				<h2>나의 동행 정보</h2>
+				<div class="head-line"></div>
 		<!-- 	본인이 등록한 동행 정보가 없는 경우, 본인 동행 정보 등록하는 페이지로 이동하도록 하는 조건문 -->
 				<c:choose>
 					<c:when test="${size>0 }">
@@ -61,7 +62,7 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div>
+			<div class="accompany-info-list">
 				<c:forEach items="${memAccomInfoList }" var="li">
 					<div>
 						<input type="radio" id="${li.id }" name="accompany-info" value=${li.id } required/>
@@ -77,7 +78,8 @@
 		</div>
 		<div class="accompany-option">
 			<div>
-				<h2>선호하는 동행 스타일</h2>
+				<h2>매칭 선호 정보</h2>
+				<div class="head-line"></div>
 			</div>
 			<div class="sex">
 				<div class="select-label">성별</div>
@@ -96,16 +98,19 @@
 					 </div>
 				</div>
 			</div>
-			<div class="age" id="age-content-container">
-					<div id="age-content-wrapper">
-						<p>
-							<input type="text" name="age-min" id="min-age" readonly/>
-						</p>
-						<div id="slider-range"></div>
-						<p>
-							<input type="text" name="age-max" id="max-age" readonly/>
-						</p>
-					</div>
+			<div class="age-container">
+				<div class="select-label">나이</div>
+				<div class="age" id="age-content-container">
+						<div id="age-content-wrapper">
+							<p>
+								<input type="text" name="age-min" id="min-age" readonly/>
+							</p>
+							<div id="slider-range"></div>
+							<p>
+								<input type="text" name="age-max" id="max-age" readonly/>
+							</p>
+						</div>
+				</div>
 			</div>
 			<div class="distance">
 				<div class="distance-container">
@@ -123,7 +128,7 @@
 						<option value="2000">2km 이내</option>					
 					</select>
 				</div>
-				<div>? 선택하신 여행지로부터의 거리를 선택하실 수 있습니다.</div>
+				<div class="temp">? 선택하신 여행지로부터의 거리를 선택하실 수 있습니다.</div>
 			</div>
 			<div class="style">
 				<div class="select-label">스타일</div>

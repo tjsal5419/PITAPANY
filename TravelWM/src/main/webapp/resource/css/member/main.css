@@ -105,12 +105,21 @@ body{
     position: relative;
     z-index: 2;
     
-    font-family: 'Spoqa';
-    font-weight: 100 !important;
+    font-family: 'NanumGothicUltraLight' !important;
+    font-weight: 900 !important;
     
     box-sizing: border-box;
         
     text-align: center;
+}
+
+.caption-content>h2{
+	letter-spacing: 3px !important;
+}
+
+.caption-content>span{
+	font-size: 18px !important;
+	font-weight: 100 !important;
 }
 
 .caption-content-sub1{
