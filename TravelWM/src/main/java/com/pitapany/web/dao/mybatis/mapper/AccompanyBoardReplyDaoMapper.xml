@@ -17,7 +17,8 @@
 		FROM
 		`pitapanydb`.`OnlyAccReplyView`
 		WHERE accompanyBoardId=#{id}
-		ORDER BY regDate DESC;
+		ORDER BY
+		regDate DESC;
 	</select>
 
 	<select id="get" resultType="com.pitapany.web.entity.AccompanyBoardReply">

@@ -412,6 +412,14 @@
 	height: 30px;
 }
 
+.profile-reg{
+	margin-bottom: 0 !important;
+	height: 30px;
+	display:flex;
+	justify-content:flex-end;
+	margin-top:10px;
+}
+
 .profile-birthday-wrapper{
 	display: flex;
 	flex-direction: row;

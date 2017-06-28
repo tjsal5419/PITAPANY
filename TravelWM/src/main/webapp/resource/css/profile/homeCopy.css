@@ -422,11 +422,13 @@
 	margin-bottom: 10px;
 	position: relative;
 	padding: 10px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 2px 0.5px #979797;
 }
 
 .prof-info-box {
 	width: 65%;
-	border: 1px solid red;
 	padding: 10px;
 	padding-bottom: 0px;
 }
@@ -443,7 +445,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: pink;
+	border-left: 1px solid #979797;
+	border-top: 1px solid #979797;
+	border-bottom: 1px solid #979797;
+	
 }
 
 .prof-info-box .gender {
@@ -452,7 +457,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: pink;
+	border-left: 1px solid #979797;
+	border-top: 1px solid #979797;
+	border-bottom: 1px solid #979797;
 }
 
 .prof-info-box .blood {
@@ -461,7 +468,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: pink;
+	border-left: 1px solid #979797;
+	border-top: 1px solid #979797;
+	border-bottom: 1px solid #979797;
 }
 
 .prof-info-box .job {
@@ -470,7 +479,9 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: pink;
+	border-left: 1px solid #979797;
+	border-top: 1px solid #979797;
+	border-bottom: 1px solid #979797;
 }
 
 .prof-info-box .value {
@@ -479,13 +490,17 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: aqua;
+	border-right: 1px solid #979797;
+	border-top: 1px solid #979797;
+	border-bottom: 1px solid #979797;
 }
 
 .self-intro-box {
 	width: 35%;
-	border: 1px solid green;
 	padding: 10px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 0px 0px 2px 0.5px #979797;
 }
 
 .accompany-type {
@@ -493,12 +508,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: pink;
+	border-bottom: 1px solid #979797;
 }
 
 .self-intro {
+	padding-top: 20px;
 	height: 75%;
-	background-color: aqua;
 }
 
 .sns-button {

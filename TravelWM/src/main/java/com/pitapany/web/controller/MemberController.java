@@ -13,10 +13,15 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.MemberAccompanyInfoDao;
+import com.pitapany.web.dao.MemberDao;
+import com.pitapany.web.dao.MemberProfileDao;
+import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.AccompanyBoardView;
 import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.MemberAccompanyInfo;
+import com.pitapany.web.entity.MemberProfile;
+import com.pitapany.web.entity.Style;
 import com.pitapany.web.security.CustomWebAuthenticationDetails;
 
 @Controller
@@ -29,6 +34,17 @@ public class MemberController {
 	@Autowired
 	private MemberAccompanyInfoDao memberAccompanyInfoDao;
 	
+	
+	@Autowired
+	private MemberDao memberDao;
+	
+	@Autowired
+	private StyleDao styleDao;
+
+	@Autowired
+	private MemberProfileDao memberProfileDao;
+	
+	
 	@RequestMapping("index")
 	
 	public String memberIndex(){
@@ -37,12 +53,21 @@ public class MemberController {
 	
 	@RequestMapping(value="/main",
 			method=RequestMethod.GET)
-	public String main(Model model){	
+	public String main(Model model){
 		List<AccompanyBoardView> accomBoardMainList = accompanyBoardDao.getMainList();
-	
-		model.addAttribute("accomBoardMainList", accomBoardMainList);
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
 		
-		return "member.main";
+		int profCount = memberProfileDao.isRegisterd(memberId);
+		
+		if(profCount>0){
+			model.addAttribute("accomBoardMainList", accomBoardMainList);
+			
+			return "member.main";
+		}
+		else{
+			return "redirect:first-login-profile-setting";
+		}
 	}
 	
 	@RequestMapping(value="acc-setting",
@@ -198,5 +223,59 @@ public class MemberController {
 			method=RequestMethod.POST)
 	public String profileSettingPost(Model model){
 		return "member.profile-setting";
+	}
+	
+	@RequestMapping(value="first-login-profile-setting",
+			method=RequestMethod.GET)
+	public String firstProfSetting(Model model){
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
+		
+		member = memberDao.get(memberId);
+		List<Style> styleList = styleDao.getList();
+		
+		model.addAttribute("member",member);
+		model.addAttribute("styles",styleList);
+		
+		return "member.firstLoginProfileSetting";
+	}
+	
+	@RequestMapping(value="first-login-profile-setting",
+			method=RequestMethod.POST)
+	public String firstProfSettingPost(Model model,
+			@RequestParam(value="status",defaultValue="입력된 상태가 없습니다.")String status,
+			@RequestParam(value="bloodtype")String bloodtype,
+			@RequestParam(value="job", defaultValue="입력 안된 직업")String job,
+			@RequestParam(value="styleId", defaultValue="1")String styleId,
+			@RequestParam(value="introduce",defaultValue="입력된 소개가 없습니다.")String introduce){
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
+		
+		MemberProfile memberProfile = new MemberProfile();
+		
+		memberProfile.setJob(job);
+		memberProfile.setMemberId(memberId);
+		memberProfile.setStatus(status);
+		memberProfile.setBloodType(bloodtype);
+		memberProfile.setIntroduce(introduce);
+		memberProfile.setStyleId(styleId);
+		
+		int result = memberProfileDao.add(memberProfile);
+		
+		if(result>0){
+			model.addAttribute("url", "member/main");
+			model.addAttribute("msg", "동행이음에 오신 것을 환영합니다.");
+			
+			return "inc/redirect";
+		}
+		
+		else{
+			model.addAttribute("url", "member/first-login-profile-setting");
+			model.addAttribute("msg", "등록 오류");
+			
+			return "inc/redirect";
+			
+		}
 	}
 }

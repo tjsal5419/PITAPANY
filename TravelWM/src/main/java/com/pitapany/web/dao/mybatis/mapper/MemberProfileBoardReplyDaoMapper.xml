@@ -10,7 +10,7 @@
 		FROM
 		`pitapanydb`.`MemberProfileBoardReply`
 		WHERE memberProfileBoardId =
-		#{memberProfileBoardId}
+		#{id}
 	</select>
 
 	<select id="getReplyList" resultType="com.pitapany.web.entity.OnlyProfBoardReplyView">
