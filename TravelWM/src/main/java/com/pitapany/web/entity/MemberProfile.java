@@ -14,7 +14,8 @@ public class MemberProfile {
 	private String instagramUrl;
 	private String memberId;
 	private String styleId;
-
+	private String introduce;
+	
 	public String getId() {
 		return id;
 	}
@@ -118,4 +119,13 @@ public class MemberProfile {
 		this.styleId = styleId;
 	}
 
+	public String getIntroduce() {
+		return introduce;
+	}
+
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+
+	
 }

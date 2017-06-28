@@ -6,8 +6,6 @@
 <c:set var="root" value="${pageContext.request.contextPath }" />
 <link rel="stylesheet" href="${root}/resource/css/accompany/detail.css"
 	type="text/css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 	window.addEventListener("load", function() {
 		var re = document.querySelector("#re");
@@ -113,8 +111,6 @@
 </div>
 <div id="map-wrapper" class="map-container"></div>
 </main>
-<script
-	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
 
 
 <script>
