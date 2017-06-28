@@ -76,7 +76,7 @@ window.addEventListener("load",function(){
 		    			<input type="text" id="query" class="form-control form-control-header tip-search"  placeholder="전체 카테고리 검색">
 				  	</div>
 				  	<div>
-				  		<input class="search-button" id="tip-search-button" alt="Submit">
+				  		<input class="search-button" id="search-button" alt="Submit">
 			  		</div>
 			  	</div>
 			  	

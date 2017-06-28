@@ -87,20 +87,17 @@ function add() {
 			
 			<div class="profile-info-content info-content">
 				
-				<div class="profile-pic profile-item">
-				</div>
-				
 				<div class="profile-nickname profile-item">
 					<label class="profile-item-name" for="">닉네임</label>
 					<div>
-						<input type="text" id="" name="" value="">
+						<input class="form-control" type="text" id="" name="" value="">
 					</div>
 				</div>
 				
 				<div class="profile-status profile-item">
 					<label class="profile-item-name" for="">프로필명</label>
 					<div>
-						<input type="text" id="" name="" value="">
+						<input class="form-control" type="text" id="" name="" value="">
 					</div>
 				</div>
 				
@@ -121,7 +118,7 @@ function add() {
 				<div class="profile-job profile-item" >
 					<label class="profile-item-name" for="">직업</label>
 					<div>
-						<input type="text" id="" name="" value="">
+						<input class="form-control" type="text" id="" name="" value="">
 					</div>
 				</div>
 				
@@ -140,7 +137,7 @@ function add() {
 				<div class="profile-intro profile-item">
 					<label class="profile-item-name" for="">자기소개</label>
 					<div>
-						<textarea rows="10" cols="5"></textarea>
+						<textarea class="form-control" rows="10" cols="5"></textarea>
 					</div>
 				</div>
 				
@@ -155,7 +152,7 @@ function add() {
 					<div class="profile-email profile-item">
 						<label class="profile-item-name" for="">아이디</label>
 						<div>
-							<input type="text" id="" name="" value="woogisky">
+							<input class="form-control" type="text" id="" name="" value="woogisky">
 						</div>
 					</div>
 					
@@ -182,7 +179,7 @@ function add() {
 					<div class="profile-job profile-item" >
 						<label class="profile-item-name" for="">휴대폰 번호</label>
 						<div>
-							<input type="text" id="" name="" value="">
+							<input class="form-control"  type="text" id="" name="" value="">
 						</div>
 					</div>
 					
@@ -190,7 +187,7 @@ function add() {
 						<div class="profile-sns profile-item">
 							<label class="profile-item-name" for="">SNS</label>
 							<div id="sns-input">
-								<input type="text" id="" name="" value="">
+								<input class="form-control"  type="text" id="" name="" value="">
 							</div>
 						</div>
 					</div>

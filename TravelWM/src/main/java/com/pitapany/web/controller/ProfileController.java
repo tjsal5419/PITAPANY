@@ -130,8 +130,7 @@ public class ProfileController {
 
 		return "inc/redirect";
 	}
-	
-	
+
 	@RequestMapping(value = "reg", method = RequestMethod.GET)
 	public String reg(Model model) {
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()

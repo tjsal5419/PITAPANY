@@ -6,6 +6,8 @@
 	display:flex;
 	flex-wrap:wrap;
 	min-height:0px;
+	
+	background: #fafafa;
 }
 
 .fake{
@@ -21,16 +23,16 @@ h2{
 }
 
 .frame {
-	background: #F6F6F6;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
+	background: #fff;
+	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+	
 	display: flex;
 	flex-grow:2;
 	margin-left:10%;
 	margin-right:10%;
 	height:500px;
-	margin-top:30px;
-	margin-bottom:30px;
+	margin-top:90px;
+	margin-bottom:60px;
 }
 
 .content {
@@ -54,28 +56,42 @@ h2{
 
 .head {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	width: 100%;
-	margin-bottom:10px;
+	
 }
 
 .title-logo {
+	display: table;
+	
+	height:36px;
 	width: 100px;
 	text-align: center;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	background: #D5D5D5;
+}
+
+.title-logo>span{
+	display: table-cell;
+	height: 100%;
+	font-size: 15px;
+	vertical-align: middle;
+	letter-spacing: 1px;
 }
 
 .title-content {
 	width: 200px;
 	flex-grow: 2;
 	margin-left: 10px;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
 }
 
 .ti {
 	width: 100%;
-	padding-left: 5px;
+	padding-left: 10px;
+	
+	outline: none;
+    border: 1px solid #dddddd;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .content .category {
@@ -122,18 +138,241 @@ h2{
 	background: #D5D5D5;
 }
 
-@media all and (max-width:760px) {
 
-	.frame {
-		width: 100%;
-		background: #F6F6F6;
-		margin-left: auto;
-		margin-right: auto;
-		box-shadow: 0 3px 3px 0 #e0e0e0;
-		border: 1px solid #dddddd;
-		display: flex;
-		margin-top:10px;
-		margin-bottom:0px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    max-width: ;
+    height: 33px;
+    font-size: 1.25rem;
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.no-js .inputfile + label {
+    display: none;
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile + label * {
+    /* pointer-events: none; */
+    /* in case of FastClick lib use */
+}
+
+.inputfile + label svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    margin-top: -0.25em;
+    /* 4px */
+    margin-right: 0.25em;
+    /* 4px */
+}
+
+
+
+/* style 6 */
+
+.inputfile-6 + label {
+    color: #d3394c;
+}
+
+.inputfile-6 + label {
+    border: 1px solid #dddddd;
+    background-color: #fff;
+    padding: 0;
+}
+
+.inputfile-6:focus + label,
+.inputfile-6.has-focus + label,
+.inputfile-6 + label:hover {
+    border-color: #aaa;
+}
+
+.inputfile-6 + label span,
+.inputfile-6 + label strong {
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.inputfile-6 + label span {
+    width: 200px;
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.inputfile-6 + label strong {
+	line-height: 0;
+    height: 100%;
+    color: #fff;
+    background-color: #dddddd;
+    display: inline-block;
+}
+
+.inputfile-6:focus + label strong,
+.inputfile-6.has-focus + label strong,
+.inputfile-6 + label:hover strong {
+    background-color: #aaa;
+}
+
+@media screen and (max-width: 50em) {
+	.inputfile-6 + label strong {
+		display: block;
 	}
+}
+
+.inputfile{
+	height: 0px !important;
+}
+
+.inputfile-6 + label span {
+	line-height: 0.8;
+    color: #33b5e5;
+}
+
+
+
+
+
+
+
+
+
+
+.select-char{
+	display: table;
 	
+	width: 100%;
+	height: 35px;
+	
+	margin-bottom: 20px;
+	
+	border: 1px solid transparent;
+}
+
+.select-char>span{
+	display: table-cell;
+
+ 	color: #777777;
+	
+	width: 100px;
+	height: 100%;
+	
+	font-size: 13px;
+	
+	vertical-align: middle;
+	text-align: center;
+	
+	/* background: red; */
+}
+
+
+.select-char{
+	margin-top: 20px;
+}
+
+
+.select_style{
+	display: block;
+    position: relative;
+    padding-left: 10px;
+    width: 20%;
+    height: 35px;
+    box-sizing: border-box;
+    border: solid 1px #dcdcdc;
+}
+
+.select_style select{
+	display: inline-block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    
+    font-family: 'NanumBarunGothicLight';
+    font-size: 12px;
+    padding-left: 10px;
+    
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+.select_arrow{
+	position: absolute;
+    top: 14px;
+    right: 7px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 5px 3px 0 3px;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+
+.chat{
+	border-radius: 0;
+	outline: none;
+	border: none;
+	
+	background: #ddd;
+}
+
+.chat:hover{
+	background: #aaa;
+}
+
+#submit{
+	border-radius: 0;
+	outline: none;
+	border: none;
+	
+	background: #87deff;
+}
+
+#submit:hover{
+	background: #009ddb;
 }

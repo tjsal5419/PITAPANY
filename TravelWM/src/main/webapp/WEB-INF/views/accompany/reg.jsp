@@ -10,22 +10,31 @@
 
 <main id="main">
 <div class="frame">
+	<div class="accboard-reg-title">
+		<h2>이음 찾기</h2>
+	</div>
+	<div class="head-line"></div>
+
+
 	<div class="content">
 
 	<form class="form" method="post" enctype="multipart/form-data">
 
+
 		<div class="head">
 			<div class="title-logo">
-				<span>Title</span>
+				<span>제목</span>
 			</div>
 			<div class="title-content">
-				<input class="ti form-control" type="text" name="title" placeholder="제목내용" required/>
+				<input class="ti form-control form-control-reg" type="text" name="title" placeholder="제목내용" required/>
 			</div>
 		</div>
+		
+		
 		<div class="sel">
 			<div class="search-bar-container-accom">
 				<!-- -------- 구글 지도 검색창 ------ -->
-			    <input class="form-control no-enter" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
+			    <input class="form-control no-enter ti form-control-reg" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
 
 			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
 			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
@@ -35,21 +44,36 @@
 			    
   				<!-- -------- 달력 ------ -->
 
-    	  		<input type="text" class="form-control calendar-reg" name="datefilter-reg" value="" placeholder="Search" required />
+    	  		<input type="text" class="form-control calendar-reg ti form-control-reg" name="datefilter-reg" value="" placeholder="Search" required />
     	  		<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" required />
     	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" required />
 	    	</div>
 		</div>
 		<div class="text">
-			<textarea name="content"  class="form-control" placeholder="본문내용" required></textarea>
+			<textarea name="content"  class="form-control form-textarea" placeholder="본문내용" required></textarea>
 		</div>
+		
+		
 		<div class="select-char">
-			<span>선호 여행 스타일</span>
-			<select class="select" name="style">
-				<c:forEach var="l" items="${styleList }">
-					<option value="${l.id}">${l.type } </option>	
-				</c:forEach>
-			</select>
+			<span>동행 스타일</span>
+			<div class="select_style">
+				<select class="select" name="style">
+					<c:forEach var="l" items="${styleList }">
+						<option value="${l.id}">${l.type } </option>	
+					</c:forEach>
+				</select>
+				<div class="select_arrow"></div>
+			</div>
+		</div>
+		
+		
+		<div class="select-char">
+			<span>첨부 파일</span>
+			<div>
+ 				<input type="file" name="file" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
+				<label for="file-7"><strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></strong><span></span></label>
+ 			</div>
+	
 		</div>
 		<div class="foot">
  			<!-- <div class="insert-pic">
@@ -59,10 +83,7 @@
 					<input type="file" name="img" id="filebox"/>
 				</div>
  			</div> -->
- 			<div>
- 				<input type="file" name="file" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
-				<label for="file-7"><strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></strong><span></span></label>
- 			</div>
+ 			
  			
  			<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
  			
@@ -410,7 +431,7 @@
 		
 	
 		$('.daterangepicker').css({'position':'absolute'});
-		$('.daterangepicker').css({'top':'160px'});
+		$('.daterangepicker').css({'top':'315px'});
 	});
 	
 	$('body').on("click", function(e){

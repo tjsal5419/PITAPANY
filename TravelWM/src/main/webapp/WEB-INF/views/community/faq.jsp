@@ -14,37 +14,39 @@
 				<div class="qna-title">
 					<h2>자주 하는 질문</h2>
 				</div>
+				<div class="head-line"></div>
 		
 				<div class="qna-content-wrapper">
 					
-					<button class="accordion">Q. 동행하고 싶어</button>
+					<button class="accordion">Q. 동행하고 싶어요</button>
 					<div class="panel">
-						<p> 네 하세요.
+						<p> 네.
 						</p>
 					</div>
 		
-					<button class="accordion">Q. PITAPANY는 무슨 뜻이죠</button>
+					<button class="accordion">Q. PITAPANY는 무슨 뜻인가요?</button>
 					<div class="panel">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-							do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						<p>PITAPANY는 두근두근 의미의 PIT-A-PAT과 COMPANY의 합성어로 사용자들이 두근두근 거릴 수 있는 서비스를 지향하는 회사입니다.
 						</p>
 					</div>
 		
-					<button class="accordion">Q. 일등하실 수 있나요?</button>
+					<button class="accordion">Q. 박용우 선생님은 어떠신 분인가요?</button>
 					<div class="panel">
-						<p>예.
+						<p>ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+						ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
+						ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
 						</p>
 					</div>
 					
-					<button class="accordion">Q. 일등하실 수 있나요?</button>
+					<button class="accordion">Q. 커플이 생기기도 하나요?</button>
 					<div class="panel">
-						<p>예.
+						<p>능력이 되신다면. ㅋ
 						</p>
 					</div>
 					
-					<button class="accordion">Q. 일등하실 수 있나요?</button>
+					<button class="accordion">Q. PITAPANY 팀장님 번호가 궁금해요!</button>
 					<div class="panel">
-						<p>예.
+						<p>제 번호는 010358..ㅎ 데헷
 						</p>
 					</div>
 		
@@ -53,8 +55,9 @@
 
 			<div class="location-container">
 				<div class="location-title">
-					<h2>Find Us Via Google Map</h2>
+					<h2>Location</h2>
 				</div>
+				<div class="head-line"></div>
 				<div id="map-wrapper"></div>
 					<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
 					<script>
@@ -75,8 +78,9 @@
 
 			
 				<div class="contact-title">
-					<h2>Send Message</h2>
+					<h2>Contact Us</h2>
 				</div>
+				<div class="head-line"></div>
 				
 				<form action="" method="POST">
                     <div class="panel-body">
