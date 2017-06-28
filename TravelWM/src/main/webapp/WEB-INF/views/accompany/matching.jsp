@@ -98,6 +98,7 @@
 			</div>
 			<div class="age" id="age-content-container">
 					<div id="age-content-wrapper">
+						<div class="select-label">나이</div>
 						<p>
 							<input type="text" name="age-min" id="min-age" readonly/>
 						</p>
