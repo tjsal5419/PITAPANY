@@ -25,33 +25,45 @@
 	flex-grow: 1;
 	
 	padding: 15px;
-	margin-top: 30px;
-	margin-left:5%;
+	margin-top: 70px;
+	margin-left:15px;
 	margin-bottom:30px;
-	
-	border: 1px solid #dddddd;
 }
 
 .qna-title{
 	display: table;
 	height: 50px;
-	text-align: left;
+	text-align: left;	
+}
+
+.head-line{
+    content: '';
+    margin-top: 15px;
+    margin-bottom: 35px;
+    width: 80px;
+    height: 2px;
+    background: rgba(51, 181, 229, 1);
 }
 
 .qna-title h2{
 	display: table-cell;
-	vertical-align: middle;
+	vertical-align: bottom;
+	
+	font-family:'GodoM' !important;
+	font-size: 25px;
 }
 
+.qna-container{
+	margin-bottom: 50px;
+}
 
 .location-container{
 	height: 100%;
 	width: 100%;
 	
-	margin-top: 30px;
+	margin-bottom: 50px;
 	
 	box-sizing: border-box;
-	border: 1px solid red;
 }
 
 .location-title{
@@ -62,7 +74,10 @@
 
 .location-title h2{
 	display: table-cell;
-	vertical-align: middle;
+	vertical-align: bottom;
+	
+	font-family:'GodoM' !important;
+	font-size: 25px;
 }
 
 #map-wrapper{
@@ -76,10 +91,9 @@
 	height: 100%;
 	width: 100%;
 	
-	margin-top: 30px;
+	margin-bottom: 30px;
 	
 	box-sizing: border-box;
-	border: 1px solid red;
 }
 
 .contact-title{
@@ -90,7 +104,10 @@
 
 .contact-title h2{
 	display: table-cell;
-	vertical-align: middle;
+	vertical-align: bottom;
+	
+	font-family:'GodoM' !important;
+	font-size: 25px;
 }
 
 .btn{
@@ -99,7 +116,7 @@
 
 /* ---Accordion 부분---------------------------- */
 .accordion {
-    background-color: #eee;
+    background-color: #e8f8ff;
     color: #444;
     cursor: pointer;
     padding: 18px;
@@ -107,12 +124,16 @@
     border: none;
     text-align: left;
     outline: none;
-    font-size: 15px;
     transition: 0.4s;
+    
+    letter-spacing: 1px;
+    font-size: 14px;
+    font-weight: bold;
+	font-family: 'NanumBarunGothic';
 }
 
 .accordion.active, .accordion:hover {
-    background-color: #ddd;
+    background-color: #33b5e5;
 }
 
 .accordion:after {
@@ -128,19 +149,55 @@
 }
 
 .panel {
+
     padding: 0 18px;
-    background-color: white;
+    line-height: 1.4;
+    background-color: #f5f5f5;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
 }
 
+.panel>p{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	letter-spacing: 1px;
+	font-family: 'NanumBarunGothic';
+}
+
+.input-group-addon{
+	border-radius: 0;
+}
+
+.form-control{
+	border-radius: 0;
+}
+
+.form-group{
+	margin-bottom: 10px;
+}
+
+.pull-right{
+	
+	border-radius: 0;
+	border: none;
+	
+	height: 35px;
+	background: #87deff;
+}
+
+.pull-right:hover{
+	background: #009ddb;
+}
 
 
-
-
-
-@media all and (max-width:760px){
+@media all and (max-width:890px){
+	.main-container{
+		width: 100%;
+		margin-left: 0;
+		margin-top: 60px;
+	}
+	
 	.fake{
 		display:hidden;
 	}
@@ -179,7 +236,6 @@
 		margin-top: 30px;
 		
 		width:inherit;
-		min-width: 320px;
 	}
 
 	

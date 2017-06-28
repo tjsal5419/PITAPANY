@@ -67,6 +67,7 @@
 
 
 @media all and (max-width:890px){
+
 	.fake{
 		display:hidden;
 	}
@@ -77,6 +78,13 @@
 	.main{
 		flex-direction:column;
 		margin-top:80px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	
+	.main-container{
+		padding-left: 0;
+		padding-right: 0;
 	}
 	
 	.aside-hidden{
