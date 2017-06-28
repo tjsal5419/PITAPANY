@@ -48,5 +48,11 @@ public class MybatisMemberProfileDao implements MemberProfileDao {
 		MemberProfileDao memberProfileDao =  sqlSession.getMapper(MemberProfileDao.class);
 		return memberProfileDao.getByMemberId(memberId);
 	}
+
+	@Override
+	public int isRegisterd(String memberId) {
+		MemberProfileDao memberProfileDao =  sqlSession.getMapper(MemberProfileDao.class);
+		return memberProfileDao.isRegisterd(memberId);
+	}
 	
 }
