@@ -13,7 +13,7 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://211.238.142.84/pitapanydb?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
+			value="jdbc:mysql://211.238.142.247/pitapanydb?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
 		<property name="username" value="pitapany" />
 		<property name="password" value="0916" />
 	</bean>
