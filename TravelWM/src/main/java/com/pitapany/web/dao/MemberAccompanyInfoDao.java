@@ -12,7 +12,8 @@ public interface MemberAccompanyInfoDao {
 	List<MemberAccompanyInfo> getList(String memberId);
 	
 	List<MemberAccompanyInfoMatchingView> getListMemberAccompanyMatching(float latitude, float longitude, String memberId, String styleEq, String styleId, String distance, String sexEq, String sex, int minAge, int maxAge);
-	
+	List<MemberProfInfoMatchingResultView> getMatchedListByMemberId(String memberId);
+		
 	MemberProfInfoMatchingResultView getMatchingResult(String memberAccomInfoId);
 	
 	int count();

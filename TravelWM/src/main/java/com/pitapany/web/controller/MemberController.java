@@ -1,5 +1,6 @@
 package com.pitapany.web.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,18 @@ import org.springframework.web.context.annotation.SessionScope;
 
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.MemberAccompanyInfoDao;
+import com.pitapany.web.dao.MemberAccompanyMatchDao;
 import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.dao.MemberProfileDao;
 import com.pitapany.web.dao.StyleDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.AccompanyBoardView;
+import com.pitapany.web.entity.MatchedMemberView;
 import com.pitapany.web.entity.Member;
 import com.pitapany.web.entity.MemberAccompanyInfo;
+import com.pitapany.web.entity.MemberAccompanyInfoMatchingView;
+import com.pitapany.web.entity.MemberAccompanyMatch;
+import com.pitapany.web.entity.MemberProfInfoMatchingResultView;
 import com.pitapany.web.entity.MemberProfile;
 import com.pitapany.web.entity.Style;
 import com.pitapany.web.security.CustomWebAuthenticationDetails;
@@ -44,6 +50,8 @@ public class MemberController {
 	@Autowired
 	private MemberProfileDao memberProfileDao;
 	
+	@Autowired
+	private MemberAccompanyMatchDao memberAccompanyMatchDao;
 	
 	@RequestMapping("index")
 	
@@ -58,12 +66,26 @@ public class MemberController {
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
 		String memberId = member.getId();
 		
+
+		model.addAttribute("accomBoardMainList", accomBoardMainList);
+			
+		return "member.main";
+
+	}
+	
+	@RequestMapping(value="is-prof-set",
+			method=RequestMethod.GET)
+	public String isProfSet(Model model){
+		List<AccompanyBoardView> accomBoardMainList = accompanyBoardDao.getMainList();
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
+		
 		int profCount = memberProfileDao.isRegisterd(memberId);
 		
 		if(profCount>0){
 			model.addAttribute("accomBoardMainList", accomBoardMainList);
 			
-			return "member.main";
+			return "redirect:main";
 		}
 		else{
 			return "redirect:first-login-profile-setting";
@@ -78,7 +100,22 @@ public class MemberController {
 		String memberId = member.getId();
 		
 		List<MemberAccompanyInfo> memberAccomLists = memberAccompanyInfoDao.getList(memberId);
-		model.addAttribute("memberAccomLists", memberAccomLists);
+		model.addAttribute("memberAccomList", memberAccomLists);
+		model.addAttribute("memberAccomListSize", memberAccomLists.size());
+		
+		/* ------------------매칭된 동행 정보 ----------------------- */
+		List<MemberProfInfoMatchingResultView> resultList = new ArrayList<MemberProfInfoMatchingResultView>();
+
+		// 기존 정보 + 새로 저장된 매칭 정보 가져오기
+		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
+
+		for (MemberAccompanyMatch m : memAccomMatchedList) {
+			MemberProfInfoMatchingResultView result = memberAccompanyInfoDao.getMatchingResult(m.getMemberAccompanyInfoId());
+			resultList.add(result);
+		}
+		
+		model.addAttribute("matchedMemberList", resultList);
+		model.addAttribute("matchedMemberListSize", resultList.size());
 		
 		return "member.acc-setting";
 	}
@@ -116,10 +153,7 @@ public class MemberController {
 		
 		memberAccompanyInfoDao.add(memberAccompanyInfo);
 		
-		model.addAttribute("url","member/acc-setting");
-		model.addAttribute("msg",member.getNicName()+" 님의 정보가 성공적으로 등록되었습니다.");
-		
-		return "inc/redirect";
+		return "redirect:acc-setting";
 	}
 	
 	@RequestMapping(value="acc-info-delete", method=RequestMethod.GET)
@@ -202,6 +236,24 @@ public class MemberController {
 		else{
 			model.addAttribute("url","member/acc-setting");
 			model.addAttribute("msg","이미 삭제된 동행 정보입니다.");
+		}
+		return "inc/redirect";
+		
+	}
+	
+	/*-------------매칭된 동행 정보 삭제하기--------------------*/
+	@RequestMapping(value="matched-accom-delete", method=RequestMethod.GET)
+	public String matchedAccomDelete(String id, Model model){
+		System.out.println(id);
+		int deleteCol = memberAccompanyMatchDao.deleteByAccomInfoId(id);
+		
+		if(deleteCol>0){
+			model.addAttribute("url","member/acc-setting");
+			model.addAttribute("msg","삭제되었습니다.");
+		}
+		else{
+			model.addAttribute("url","member/acc-setting");
+			model.addAttribute("msg","이미 삭제된 게시글입니다.");
 		}
 		return "inc/redirect";
 		

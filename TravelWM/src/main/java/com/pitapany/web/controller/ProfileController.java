@@ -52,7 +52,7 @@ public class ProfileController {
 	private MemberProfileBoardReplyDao memberProfileBoardReplyDao;
 
 	@RequestMapping(value = "home", method = RequestMethod.GET)
-	public String homeGet(Model model, @RequestParam(value = "mId", defaultValue = "default") String memberId) {
+	public String homeGet(Model model, @RequestParam(value = "id", defaultValue = "default") String memberId) {
 
 		if (memberId.equals("default")) {
 			Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()

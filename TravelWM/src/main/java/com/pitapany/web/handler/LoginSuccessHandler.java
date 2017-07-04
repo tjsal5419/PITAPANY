@@ -13,7 +13,7 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.entity.Member;
 
-public class PitapanySuccessHandler implements AuthenticationSuccessHandler{
+public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 
 	@Autowired
 	private MemberDao memberDao; 
@@ -32,7 +32,7 @@ public class PitapanySuccessHandler implements AuthenticationSuccessHandler{
 		Member member = memberDao.get(id);
 		
 		request.getSession().setAttribute("user", member);
-		response.sendRedirect("/TravelWM/member/main");
+		response.sendRedirect("/TravelWM/member/is-prof-set");
 		
 	}
 

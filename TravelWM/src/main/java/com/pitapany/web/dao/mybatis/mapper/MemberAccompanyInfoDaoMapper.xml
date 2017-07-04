@@ -43,6 +43,10 @@
 		(SELECT MemberAccompanyInfoId AS id FROM MemberAccompanyMatch WHERE memberId=#{param3})
 		AND
 		MemberAccompanyInfo.memberId
+		NOT IN 
+		(SELECT matchedMemberId AS memberId FROM MemberAccompanyMatch WHERE memberId=#{param3})
+		AND
+		MemberAccompanyInfo.memberId
 		NOT IN
 		(SELECT id AS memberId FROM Member WHERE id=#{param3})
 		AND
@@ -54,10 +58,16 @@
 		HAVING
 		distance<#{param6}
 		ORDER BY distance
-		LIMIT 0,10;
+		LIMIT 0,100;
 ]]>	
 	</select>
 
+	<select id="getMatchedListByMemberId" resultType="com.pitapany.web.entity.MemberProfInfoMatchingResultView">
+		SELECT *
+		FROM
+		`pitapanydb`.`MemberProfInfoMatchingResultView`
+		WHERE memberId = #{memberId}
+	</select>
 
 	<select id="getMatchingResult" resultType="com.pitapany.web.entity.MemberProfInfoMatchingResultView">
 		SELECT *

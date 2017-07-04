@@ -160,7 +160,7 @@
 			  <img class="matched-list-button" src="${root }/resource/images/ic_more_vert_black_24dp_1x.png"/>
 			  <div id="myDropdown" class="dropdown-content">
 			  	<c:forEach items="${memberPrevMatchedList }" var="li">
-				    <a href="#">${li.place }의 동행 ${li.nicName }님</a>
+				    <a href="#">${li.nicName }님 (${li.place })</a>
 			  	</c:forEach>
 			  </div>
 			</div>
@@ -222,77 +222,85 @@ window.addEventListener("load", function(e) {
 	
 	searchBtn.onclick = function(){
 		
-		var accomInfoId = matchingInfoForm.elements['accompany-info'].value;
-		var sexV = matchingInfoForm.elements['sex'].value;
-		var min = matchingInfoForm.elements['age-min'].value;
-		var max = matchingInfoForm.elements['age-max'].value;
-		var dis = matchingInfoForm.elements['distance'].value;
-		var sty = matchingInfoForm.elements['style'].value;
-
-		var profImg = document.querySelector(".circle-img");
-		var nicName = document.querySelector(".matched-nicName");
-		var location = document.querySelector(".accom-location");
-		var date = document.querySelector(".acoom-date");
-		var hiddenDate = document.querySelector(".hidden-accom-date");
-		var endDate = document.querySelector(".end-date");
-		var startDate = document.querySelector(".start-date");
-		var sex = document.querySelector(".accom-sex");
-		var age = document.querySelector(".accom-age");
-
-		if(accomInfoId.length>0){
 		
-			var url = "matching-ajax-data?a=" + accomInfoId + "&sx=" + sexV + "&min=" + min + "&max=" + max + "&dis=" + dis + "&sty=" + sty;
+		if(${size }>0){
 		
-			request.open("GET",url, true);			
+			var accomInfoId = matchingInfoForm.elements['accompany-info'].value;
+			var sexV = matchingInfoForm.elements['sex'].value;
+			var min = matchingInfoForm.elements['age-min'].value;
+			var max = matchingInfoForm.elements['age-max'].value;
+			var dis = matchingInfoForm.elements['distance'].value;
+			var sty = matchingInfoForm.elements['style'].value;
 	
-			request.onload = function(){
-				var result = JSON.parse(request.responseText);
-				
-				if(typeof result.error != 'undefined'){
-					alert(result.error);
-				}
-				else{
-					profImg.src = '${root }/' + result[0].imgSrc;
-					nicName.innerHTML =  result[0].nicName;
-					location.innerHTML = result[0].place;
-					
-					age.innerHTML = result[0].age + " 세";
-					
-					if(result[0].sex==='0')
-						sex.innerHTML = "남성";
-					
-					else(result[0].sex === '1')
-						sex.innerHTML = "남성";
-					
-					
-					//alert(result[0].startDate);
-					//Jun 29, 2017 12:00:00 AM
-					alert("매칭되었습니다.");
-					
-					hiddenDate.style.display = "flex";
-					date.style.display = "none";
-										
-				  }
-					document.body.removeChild(screen);
-			};
-			request.send();
+			var profImg = document.querySelector(".circle-img");
+			var nicName = document.querySelector(".matched-nicName");
+			var location = document.querySelector(".accom-location");
+			var date = document.querySelector(".acoom-date");
+			var hiddenDate = document.querySelector(".hidden-accom-date");
+			var endDate = document.querySelector(".end-date");
+			var startDate = document.querySelector(".start-date");
+			var sex = document.querySelector(".accom-sex");
+			var age = document.querySelector(".accom-age");
 			
-			var screen = document.createElement("div");
-			screen.style.width = "100%";
-			screen.style.height = "100%";
-			screen.style.position = "fixed";
-			screen.style.left = "0px";
-			screen.style.top = "0px";
-			screen.style.background = "#000";
-			screen.style.opacity = "0.5";
-			screen.style.zIndex = "1000000";
+			if(accomInfoId.length>0){
+				var url = "matching-ajax-data?a=" + accomInfoId + "&sx=" + sexV + "&min=" + min + "&max=" + max + "&dis=" + dis + "&sty=" + sty;
 			
-			document.body.appendChild(screen);
+				request.open("GET",url, true);			
 		
-		}
+				request.onload = function(){
+					var result = JSON.parse(request.responseText);
+					
+					if(typeof result.error != 'undefined'){
+						alert(result.error);
+					}
+					else{
+						profImg.src = '${root }/' + result[0].imgSrc;
+						nicName.innerHTML =  result[0].nicName;
+						location.innerHTML = result[0].place;
+						
+						age.innerHTML = result[0].age + " 세";
+						
+						if(result[0].sex == '0')
+							sex.innerHTML = "남성";
+						
+						else
+							sex.innerHTML = "여성";
+						
+						
+						//alert(result[0].startDate);
+						//Jun 29, 2017 12:00:00 AM
+						alert("매칭되었습니다.");
+						
+						hiddenDate.style.display = "flex";
+						date.style.display = "none";
+											
+					  }
+						document.body.removeChild(screen);
+				};
+				request.send();
+				
+				var screen = document.createElement("div");
+				screen.style.width = "100%";
+				screen.style.height = "100%";
+				screen.style.position = "fixed";
+				screen.style.left = "0px";
+				screen.style.top = "0px";
+				screen.style.background = "#000";
+				screen.style.opacity = "0.5";
+				screen.style.zIndex = "1000000";
+				
+				document.body.appendChild(screen);
 			
+			}
+			else{
+				alert("동행 정보를 선택해주세요.");
+			}
+			
+		}
+		/* --------------등록된 동행 정보가 없는 경우----------------- */ 
 		else{
-			alert("동행 정보를 선택해주세요.");
+			alert("회원님의 동행 정보 우선 등록 후 매칭 서비스를 이용해주세요.");
+			window.location.href="${root }/member/acc-setting";
 		}
 	}
 	

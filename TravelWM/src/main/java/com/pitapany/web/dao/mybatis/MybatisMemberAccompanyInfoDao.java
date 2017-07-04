@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.CommunityTipDao;
 import com.pitapany.web.dao.MemberAccompanyInfoDao;
+import com.pitapany.web.dao.MemberAccompanyMatchDao;
 import com.pitapany.web.entity.AccompanyBoard;
 import com.pitapany.web.entity.MemberAccompanyInfo;
 import com.pitapany.web.entity.MemberAccompanyInfoMatchingView;
@@ -68,6 +69,13 @@ public class MybatisMemberAccompanyInfoDao implements MemberAccompanyInfoDao {
 			int maxAge) {
 		MemberAccompanyInfoDao accInfoDao = sqlSession.getMapper(MemberAccompanyInfoDao.class);
 		return accInfoDao.getListMemberAccompanyMatching(latitude, longitude, memberId, styleEq, styleId, distance, sexEq, sex, minAge, maxAge);
+	}
+	
+
+	@Override
+	public List<MemberProfInfoMatchingResultView> getMatchedListByMemberId(String memberId) {
+		MemberAccompanyInfoDao accInfoDao = sqlSession.getMapper(MemberAccompanyInfoDao.class);
+		return accInfoDao.getMatchedListByMemberId(memberId);
 	}
 
 

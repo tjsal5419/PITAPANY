@@ -147,13 +147,12 @@
 	var searchLocDate=function(){
 		var search = document.querySelector("#search-loc-date");
 		search.onclick = function(){
-			var lng = document.querySelector("#lat1");
-			var lat = document.querySelector("#lng1");
-			var sD = document.querySelector("#hidden-startDate");
-			var eD = document.querySelector("#hidden-endDate");
-			//alert(lng.value);
+			var lng = document.querySelector("#lat1").value;
+			var lat = document.querySelector("#lng1").value;
+			var sD = document.querySelector("#hidden-startDate").value;
+			var eD = document.querySelector("#hidden-endDate").value;
 			
-			//window.location.href='${root}/accompany/board?lat='+lat+'&lng='+lng+'?sD='+sD+'?eD='eD;
+			window.location.href='${root}/accompany/board?lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;
 		}
 	};
 

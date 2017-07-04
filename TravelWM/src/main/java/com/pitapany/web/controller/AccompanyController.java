@@ -380,7 +380,7 @@ public class AccompanyController {
 			sexString = String.valueOf(sex);
 		}
 
-		// 동행 매칭 정보를 거리를 기준으로 10개 가져온다.
+		// 동행 매칭 정보를 거리를 기준으로 100개 가져온다.
 		matchedMember = memberAccomInfoDao.getListMemberAccompanyMatching(latitude, longitude, memberId, styleEq,
 				styleId, distance, sexEq, sexString, minAge, maxAge);
 
@@ -393,26 +393,28 @@ public class AccompanyController {
 		// 뷰로 매칭된 memAccomInfo ID로 조회해서 가져온다. )
 		List<MemberProfInfoMatchingResultView> resultList = new ArrayList<MemberProfInfoMatchingResultView>();
 
+		System.out.println(count);
 		// 매치 횟수 3회를 초과하였는지 비교하기
 		if (count >= 1 && matchedMember.size() > 0) {
-			System.out.println(matchedMember.get(0).getId());
-			// 사람들 리스트 중 제일 매칭 조건에 적합한 사람(matchedMember.get(0))을 등록해주기
-			memberMatch = new MemberAccompanyMatch();
-			memberMatch.setMatchedMemberId(matchedMember.get(0).getMemberId());
-			memberMatch.setMemberId(memberId);
-			memberMatch.setMemberAccompanyInfoId(matchedMember.get(0).getId());
-			memberAccompanyMatchDao.add(memberMatch);
-			memberDao.addMatchCount(memberId);
+				System.out.println(matchedMember.get(0).getId());
+				// 사람들 리스트 중 제일 매칭 조건에 적합한 사람(matchedMember.get(0))을 등록해주기
+				memberMatch = new MemberAccompanyMatch();
+				memberMatch.setMatchedMemberId(matchedMember.get(0).getMemberId());
+				memberMatch.setMemberId(memberId);
+				memberMatch.setMemberAccompanyInfoId(matchedMember.get(0).getId());
+				memberAccompanyMatchDao.add(memberMatch);
+				memberDao.addMatchCount(memberId);				
 
-		} else if (matchedMember.size() == 0) {
-			System.out.println("매칭될 사람이 없음..");
-			resultString = "{\"error\":\"검색 결과가 없습니다.\"}";
-			isNotMatched = true;
 		} else if (count < 1) {
 			System.out.println("카운트 횟수 초과");
 			resultString = "{\"error\":\"하루 매칭 최대 횟수를 초과하였습니다.\"}";
 			isNotMatched = true;
 		}
+		else if (matchedMember.size() == 0) {
+			System.out.println("매칭될 사람이 없음..");
+			resultString = "{\"error\":\"검색 결과가 없습니다.\"}";
+			isNotMatched = true;
+		} 
 
 		// 기존 정보 + 새로 저장된 매칭 정보 가져오기
 		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);

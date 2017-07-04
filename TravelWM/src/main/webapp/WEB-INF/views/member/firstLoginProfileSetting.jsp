@@ -30,7 +30,7 @@
 				</div>
 				
 				<div class="profile-status profile-item">
-					<label class="profile-item-name" for="">프로필명</label>
+					<label class="profile-item-name" for="">프로필 상태명</label>
 					<div>
 						<input type="text" name="status"/>
 					</div>

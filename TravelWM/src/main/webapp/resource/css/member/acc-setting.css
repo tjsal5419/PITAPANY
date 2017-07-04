@@ -92,6 +92,18 @@
 	font-family: 'NanumBarunGothic';
 }
 
+.display-item .matched-member-info{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+}
+
+.display-item .matched-member-info .content
+{
+	margin-left:5px;
+	align-self:center;
+}
+
 .edit-delete{
 	display: flex;
 	flex-direction: row;

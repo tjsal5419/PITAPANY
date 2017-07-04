@@ -9,7 +9,9 @@ import com.pitapany.web.dao.AccompanyBoardDao;
 import com.pitapany.web.dao.CommunityTipDao;
 import com.pitapany.web.dao.MemberAccompanyMatchDao;
 import com.pitapany.web.entity.AccompanyBoard;
+import com.pitapany.web.entity.MatchedMemberView;
 import com.pitapany.web.entity.MemberAccompanyMatch;
+import com.pitapany.web.entity.MemberProfInfoMatchingResultView;
 
 public class MybatisMemberAccompanyMatchDao implements MemberAccompanyMatchDao {
 
@@ -52,5 +54,19 @@ public class MybatisMemberAccompanyMatchDao implements MemberAccompanyMatchDao {
 		return memberAccMatchDao.getByMemberId(memberId);
 		
 	}
+
+	@Override
+	public List<MatchedMemberView> getMatchedMemberList(String memberId) {
+		MemberAccompanyMatchDao memberAccMatchDao = sqlSession.getMapper(MemberAccompanyMatchDao.class);
+		return memberAccMatchDao.getMatchedMemberList(memberId);
+	}
+
+	@Override
+	public int deleteByAccomInfoId(String memberAccompanyInfoId) {
+		MemberAccompanyMatchDao memberAccMatchDao = sqlSession.getMapper(MemberAccompanyMatchDao.class);
+		return memberAccMatchDao.deleteByAccomInfoId(memberAccompanyInfoId);
+
+	}
+
 
 }

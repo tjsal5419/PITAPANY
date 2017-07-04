@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security.xsd">
 
-	<beans:bean id="successHandler" class="com.pitapany.web.handler.PitapanySuccessHandler"/>
+	<beans:bean id="successHandler" class="com.pitapany.web.handler.LoginSuccessHandler"/>
 	<beans:bean id="customWebAuthenticationDetailsSource" class="com.pitapany.web.security.CustomWebAuthenticationDetailsSource"/>
 	
 <!--     <beans:bean id="myWebAuthenticationDetails" class="com.pitapany.web.security.CustomWebAuthenticationDetails"/>

@@ -65,24 +65,33 @@
 					<div class="acc-info-display">
 						<div class="acc-info-display-wrapper">
 	<!-- --------------------memberAccomInfo 반복 구간------------------------ -->
-							<c:forEach var="li" items="${memberAccomLists }">
-								<div class="display-item">
-									<div>
-										<input class="hidden hidden-location" type="text" value="${li.country } ${li.locality } ${li.place }"/>  
-										<input class="hidden hidden-date" type="text" value="<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />"/>  									
-										<input class="hidden hidden-id" type="text" value="${li.id }"/>
-	
-										${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
-								    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
-										-
-										<fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />
-									</div>
-									<div class="edit-delete">
-										<button id="mod" value="${li.id }" class="btn btn-info na edit-button">수정</button>
-										<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/acc-info-delete?id=${li.id }'">삭제</button>
-									</div>
-								</div>
-							</c:forEach>
+							
+							<c:choose>
+								<c:when test="${memberAccomListSize eq 0}">
+									<div>등록된 동행 정보가 없습니다.</div>									
+								</c:when>
+								<c:otherwise>
+								
+									<c:forEach var="li" items="${memberAccomList }">
+										<div class="display-item">
+											<div>
+												<input class="hidden hidden-location" type="text" value="${li.country } ${li.locality } ${li.place }"/>  
+												<input class="hidden hidden-date" type="text" value="<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />"/>  									
+												<input class="hidden hidden-id" type="text" value="${li.id }"/>
+			
+												${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
+										    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
+												-
+												<fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />
+											</div>
+											<div class="edit-delete">
+												<button id="mod" value="${li.id }" class="btn btn-info na edit-button">수정</button>
+												<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/acc-info-delete?id=${li.id }'">삭제</button>
+											</div>
+										</div>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 	<!-- ------------------------------------------------------------------ -->						
 						</div>
 					</div>
@@ -109,9 +118,32 @@
 				<span>이음 매칭 목록</span>
 				</div>
 				<div class="password-info-content info-content">
+						<c:choose>
+							<c:when test="${matchedMemberListSize eq 0}">
+								매칭된 동행이 없습니다.
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${matchedMemberList }" var="li">
+								<div class="display-item"> 
+									<div class="matched-member-info">
+										<!-- -----동행 프로필 사진----- -->
+										<div class="profile-image" style="background-image: url('${root}${li.imgSrc }/${li.imgName }'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px;"></div>
+										<!-- ------------매칭된 동행 정보------------- -->
+										<div class="content" onclick='window.location.href="${root }/profile/home?id=${li.memberId }"'>
+											${li.nicName }(${li.country } ${li.place })
+										</div>
+									</div>
+								
+									<div class="edit-delete">
+										<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/matched-accom-delete?id=${li.id }'">삭제</button>
+									</div>
+								</div>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					
 					<div>
-						<button type="button" class="btn-add" id="btn-add" onclick="add()">추가</button>
-						<button type="button" class="btn-del" id="btn-del" onclick="del()">삭제</button>
+						<button type="button" class="btn-add" id="btn-add" onclick="window.location.href='${root }/accompany/matching'">추가</button>
 					</div>
 				</div>
 			</div>
@@ -125,57 +157,7 @@
 		
 		
 	</div>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-</div>
+	
 </main>
 
 

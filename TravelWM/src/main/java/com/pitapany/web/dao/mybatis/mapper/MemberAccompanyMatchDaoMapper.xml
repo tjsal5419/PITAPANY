@@ -17,7 +17,7 @@
 		`pitapanydb`.`MemberAccompanyMatch`
 		WHERE id = #{id}
 	</select>
-
+	
 	<select id="getByMemberId" resultType="com.pitapany.web.entity.MemberAccompanyMatch">
 		SELECT *
 		FROM
@@ -25,6 +25,12 @@
 		WHERE memberId = #{memberId}
 		order by matchDate DESC
 	</select>
+	
+	<select id="getMatchedMemberList" resultType="com.pitapany.web.entity.MatchedMemberView">
+		SELECT * FROM MatchedMemberView
+        WHERE memberId=#{memberId}
+	</select>
+	
 
 	<select id="count" resultType="Integer">
 		SELECT count(*) count
@@ -57,7 +63,9 @@
 		DELETE FROM MemberAccompanyMatch
 		WHERE id = #{id}
 	</delete>
-
-
+	<delete id="deleteByAccomInfoId">
+		DELETE FROM MemberAccompanyMatch
+		WHERE memberAccompanyInfoId = #{memberAccompanyInfoId}
+	</delete>
 
 </mapper>
