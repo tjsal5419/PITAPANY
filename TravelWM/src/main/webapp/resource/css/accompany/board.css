@@ -222,11 +222,11 @@ body{
 	
 	width: 55px;
     height: 55px;
-    border-radius: 50px;
+    border-radius: 100px;
     box-shadow: 0 3px 3px 0 #e0e0e0;
-    background: url(/TravelWM/resource/images/accompany-detail/2017-05-31.png) no-repeat center;
     background-size: cover;
     border: 1px solid #dddddd;
+    background-position: center;
 }
 
 .board-accompany-info{

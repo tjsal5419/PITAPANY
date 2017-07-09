@@ -21,7 +21,7 @@
 }
 
 .aside .remote-controller{
-	position:block;
+	position:fixed;
 }
 
 .aside .title h3{

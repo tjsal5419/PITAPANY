@@ -43,7 +43,6 @@
 		UPDATE
 		`pitapanydb`.`AccompanyBoardFile`
 		SET
-		`id` = #{id},
 		`src` = #{src},
 		`name` = #{name},
 		`accompanyBoardId` = #{accompanyBoardId},

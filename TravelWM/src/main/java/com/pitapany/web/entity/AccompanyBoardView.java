@@ -5,6 +5,8 @@ public class AccompanyBoardView extends AccompanyBoard {
 	private String styleType;
 	private int writerSex;
 	private int writerAge;
+	private String imgSrc;
+	private String imgName;
 	
 	public String getWriterNicName() {
 		return writerNicName;
@@ -30,5 +32,19 @@ public class AccompanyBoardView extends AccompanyBoard {
 	public void setWriterAge(int writerAge) {
 		this.writerAge = writerAge;
 	}
+	public String getImgSrc() {
+		return imgSrc;
+	}
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
+	}
+	public String getImgName() {
+		return imgName;
+	}
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+	
+	
 	
 }

@@ -141,7 +141,7 @@
 <c:set var = "url" value = "${requestScope['javax.servlet.forward.request_uri']}"/>
 
 
-<c:if test="${!fn:contains(url, 'reg') && !fn:contains(url, 'acc-setting')}">
+<c:if test="${!fn:contains(url, 'reg') && !fn:contains(url, 'acc-setting') && !fn:contains(url, 'detail-edit')}">
 
 <script>
 	var searchLocDate=function(){

@@ -313,6 +313,7 @@ public class MemberController {
 		memberProfile.setIntroduce(introduce);
 		memberProfile.setStyleId(styleId);
 		
+		
 		int result = memberProfileDao.add(memberProfile);
 		
 		if(result>0){

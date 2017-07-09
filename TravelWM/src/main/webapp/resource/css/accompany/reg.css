@@ -232,11 +232,8 @@
 	}
 	.frame {
 		width: 100%;
-		background: #F6F6F6;
 		margin-left: 100px;
 		margin-right: 100px;
-		box-shadow: 0 3px 3px 0 #e0e0e0;
-		border: 1px solid #dddddd;
 		display: flex;
 	}
 }
@@ -244,11 +241,8 @@
 @media all and (max-width:480px) {
 	.frame {
 		width: 100%;
-		background: #F6F6F6;
 		margin-left: 0px;
 		margin-right: 0px;
-		box-shadow: 0 3px 3px 0 #e0e0e0;
-		border: 1px solid #dddddd;
 		display: flex;
 		align-items:center;
 	}

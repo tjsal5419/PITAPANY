@@ -24,7 +24,7 @@
 	<div class="content">
 		<div class="head">
 			<div class="profile">
-				<div class="pic"></div>
+				<div class="pic" style="background-image:url('${root}${memberProfile.imgSrc }${memberProfile.imgName }')"></div>
 				<div class="info">
 					<span class="item"><a
 						href="${root }/accompany/profile?id=${accDetail.memberId }">${accDetail.writerNicName}</a></span>
@@ -61,7 +61,20 @@
 				<div class="item2">${member.age}세</div>
 				<div class="item3">${memberProfile.job}</div>
 			</div>
-			<a href="#"><button class="btn btn-info chat">대화하기</button></a>
+
+			<!-- ------------ 본인이 작성한 글인지 여부 확인 -------------- -->
+			<div>
+			<c:choose>
+				<c:when test="${member.id ne m.id  }">
+					<button class="btn btn-info chat" onclick="window.location.href=''">대화하기</button>
+				</c:when>
+				<c:otherwise>
+					<button class="btn btn-info chat" onclick="window.location.href='detail-edit?id=${accDetail.id }&p=${page }'">수정</button>
+					<button class="btn btn-info chat delete-board" onclick="deleteBoard();">삭제</button>
+				</c:otherwise>
+			</c:choose>
+				<button class="btn btn-info chat" onclick="window.location.href='board?p=${page }'">목록으로</button>
+			</div>
 		</div>
 		<div class="reply">
 			<div class="left">
@@ -111,7 +124,14 @@
 </div>
 <div id="map-wrapper" class="map-container"></div>
 </main>
-
+<!-- -----글 삭제 경고를 위한 자바스크립트----- -->
+<script>
+	var deleteBoard = function(){
+		if(confirm("작성하신 글을 삭제하시겠습니까?")){
+		document.location.href="detail-delete?id=${accDetail.id }";
+		}
+	};
+</script>
 
 <script>
 	function initialize() {

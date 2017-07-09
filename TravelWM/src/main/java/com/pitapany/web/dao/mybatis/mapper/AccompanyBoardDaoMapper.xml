@@ -111,12 +111,10 @@
 		`pitapanydb`.`AccompanyBoard`
 		SET
 		`startDate` = #{startDate},
-		`endDate` =
-		#{endDate},
+		`endDate` = #{endDate},
 		`title` = #{title},
 		`context` = #{context},
-		`memberId` =
-		#{memberId},
+		`memberId` = #{memberId},
 		`latitude` = #{latitude},
 		`longitude` = #{longitude},
 		`styleId` = #{styleId},

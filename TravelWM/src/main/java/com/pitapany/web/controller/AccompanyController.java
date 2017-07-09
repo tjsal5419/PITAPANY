@@ -128,7 +128,8 @@ public class AccompanyController {
 	}
 
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detailGet(Model model, String id) {
+	public String detailGet(Model model, String id,
+			@RequestParam(value = "p", defaultValue = "1") String page) {
 		accompanyBoardDao.addHits(id);
 		AccompanyBoardView accompanyBoard = accompanyBoardDao.getView(id);
 		AccompanyBoardFile file = accompanyBoardFileDao.get(id);
@@ -140,6 +141,7 @@ public class AccompanyController {
 		model.addAttribute("member", member);
 		model.addAttribute("memberProfile", memberProfile);
 		model.addAttribute("boardReply", reply);
+		model.addAttribute("page", page);
 
 		return "accompany.detail";
 	}
@@ -165,6 +167,18 @@ public class AccompanyController {
 
 		return "inc/redirect";
 	}
+	
+	@RequestMapping(value = "detail-delete", method = RequestMethod.GET)
+	public String detaiDelete(Model model, HttpServletRequest request, HttpServletResponse response,
+			String id) {
+		
+		accompanyBoardDao.delete(id);
+
+		model.addAttribute("url", "accompany/board");
+		model.addAttribute("msg", "삭제되었습니다.");
+
+		return "inc/redirect";
+	}
 
 	@RequestMapping(value = "/reg", method = RequestMethod.GET)
 	public String reg(Model model) {
@@ -176,7 +190,7 @@ public class AccompanyController {
 
 	@RequestMapping(value = "/reg", method = RequestMethod.POST)
 	public String regPost(Model model, HttpServletRequest request, HttpServletResponse response,
-			AccompanyBoardFile accompanyBoardFile, @RequestParam(value = "title", defaultValue = "") String title,
+			@RequestParam(value = "title", defaultValue = "") String title,
 			@RequestParam(value = "lat", defaultValue = "0.0") float lat,
 			@RequestParam(value = "lng", defaultValue = "0.0") float lng,
 			@RequestParam(value = "content", defaultValue = "작성된 내용이 없습니다.") String content,
@@ -250,6 +264,8 @@ public class AccompanyController {
 			}
 
 			String viewPath = "/resource/upload/";
+			
+			AccompanyBoardFile accompanyBoardFile = new AccompanyBoardFile();
 
 			accompanyBoardFile.setName(rename);
 			accompanyBoardFile.setAccompanyBoardId(accompanyBoard.getId());
@@ -266,6 +282,114 @@ public class AccompanyController {
 		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyyMMdd-HH-mm-ss", Locale.KOREA);
 		return dayTime.format(new Date(time));
+	}
+	
+	@RequestMapping(value = "detail-edit", method = RequestMethod.GET)
+	public String detailEditGet(Model model, String id,
+			String p) {
+		List<Style> stlyeList = styleDao.getList();
+		AccompanyBoardView accompanyBoardView = accompanyBoardDao.getView(id);
+		model.addAttribute("accDetail", accompanyBoardView);
+		
+		model.addAttribute(stlyeList);
+		model.addAttribute("page",p);
+		
+		return "accompany.detail-edit";
+	}
+	
+	@RequestMapping(value = "detail-edit", method = RequestMethod.POST)
+	public String detailEditPost(Model model, HttpServletRequest request, HttpServletResponse response,
+			String id,
+			@RequestParam(value = "page", defaultValue = "1") String page,
+			@RequestParam(value = "title", defaultValue = "default") String title,
+			@RequestParam(value = "lat", defaultValue = "0.0") float lat,
+			@RequestParam(value = "lng", defaultValue = "0.0") float lng,
+			@RequestParam(value = "content", defaultValue = "default") String content,
+			@RequestParam(value = "style", defaultValue = "default") String styleId,
+			@RequestParam(value = "file", defaultValue = "") MultipartFile file,
+			@RequestParam(value = "place", defaultValue = "default") String place,
+			@RequestParam(value = "locality", defaultValue = "default") String locality,
+			@RequestParam(value = "country", defaultValue = "default") String country,
+			@RequestParam(value = "startDate", defaultValue = "default") String sD,
+			@RequestParam(value = "endDate", defaultValue = "default") String eD) throws ParseException {
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+
+		AccompanyBoard accompanyBoard = new AccompanyBoard();
+		
+		accompanyBoard.setContext(content);
+		accompanyBoard.setLatitude(lat);
+		accompanyBoard.setLongitude(lng);
+		accompanyBoard.setTitle(title);
+
+		java.sql.Date startDate = java.sql.Date.valueOf(sD);
+		java.sql.Date endDate = java.sql.Date.valueOf(eD);
+
+		accompanyBoard.setStartDate(startDate);
+		accompanyBoard.setEndDate(endDate);
+
+		accompanyBoard.setStyleId(styleId);
+		accompanyBoard.setMemberId(memberId);
+
+		accompanyBoard.setPlace(place);
+		accompanyBoard.setLocality(locality);
+		accompanyBoard.setCountry(country);
+		accompanyBoard.setId(id);
+		
+		if (!file.isEmpty()) {
+			String path = request.getSession().getServletContext().getRealPath("/resource/upload");
+
+			/* String path = "WiynPrj\\resources\\upload"; */
+
+			File d = new File(path);
+			if (!d.exists())// 경로가 존재하지 않는다면
+				d.mkdir();
+
+			String originalFilename = file.getOriginalFilename(); // fileName.jpg
+			String onlyFileName = originalFilename.substring(0, originalFilename.indexOf(".")); // fileName
+			String extension = originalFilename.substring(originalFilename.indexOf(".")); // .jpg
+
+			String rename = onlyFileName + "_" + getCurrentDayTime() + extension; // fileName_20150721-14-07-50.jpg
+			String fullPath = path + "/" + rename;
+
+			if (!file.isEmpty()) {
+				try {
+					byte[] bytes = file.getBytes();
+					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(new File(fullPath)));
+					stream.write(bytes);
+					stream.close();
+					// model.addAttribute("resultMsg", "파일을 업로드 성공!");
+					System.out.println("업로드 성공");
+				} catch (Exception e) {
+					// model.addAttribute("resultMsg", "파일을 업로드하는 데에 실패했습니다.");
+					System.out.println("업로드 실패");
+				}
+			} else {
+				// model.addAttribute("resultMsg", "업로드할 파일을 선택해주시기 바랍니다.");
+				System.out.println("업로드 파일 x");
+			}
+
+			String viewPath = "/resource/upload/";
+
+			AccompanyBoardFile accompanyBoardFile = new AccompanyBoardFile();
+			
+			accompanyBoardFile.setName(rename);
+			accompanyBoardFile.setAccompanyBoardId(accompanyBoard.getId());
+			accompanyBoardFile.setSrc(viewPath);
+			accompanyBoardFile.setId(id);
+			
+			accompanyBoardFileDao.update(accompanyBoardFile);
+
+		}
+
+		accompanyBoardDao.update(accompanyBoard);
+		
+		model.addAttribute("url", "accompany/detail?id="+id+"&p="+page);
+		model.addAttribute("msg", "수정되었습니다.");
+
+		return "inc/redirect";
 	}
 
 	@RequestMapping(value = "/board", method = RequestMethod.GET)

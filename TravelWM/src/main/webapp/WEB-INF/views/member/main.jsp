@@ -93,7 +93,7 @@
 					
 					<div class="board-detail">
 						<div class="board-detail-wrapper">
-							<div class="board-profile-pic">
+							<div class="board-profile-pic" style="background-image:url('${root}${li.imgSrc }${li.imgName }')">
 							</div>
 							<div class="board-accompany-info">
 								<div class="info-item item-nickname">${li.writerNicName }</div>
