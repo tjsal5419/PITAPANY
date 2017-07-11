@@ -26,12 +26,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		String email = authentication.getName();
 		String id = memberDao.getIdByEmail(email);
 		
-		System.out.println(authentication.getName());
-		System.out.println("환영합니당!");
-		
 		Member member = memberDao.get(id);
 		
-		request.getSession().setAttribute("user", member);
+		//request.getSession().setAttribute("user", member);
 		response.sendRedirect("/TravelWM/member/is-prof-set");
 		
 	}

@@ -91,7 +91,7 @@
 							</div>
 						</div>
 						
-						<div class="board-title bt${li.id }" onclick="window.location.href='${root }/accompany/detail?id=${li.id }&p=${page }'">
+						<div class="board-title bt${li.id }" onclick="window.location.href='${root }/accompany/detail?id=${li.id }&p=${page }&pla=${pla }&sty=${sty }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }'">
 							<div class="board-title-detail">
 								<div>${li.title }</div>
 							</div>

@@ -26,10 +26,9 @@ public class CustomWebAuthenticationDetails extends WebAuthenticationDetails {
         super(request);
 
         String email = request.getParameter("j_username");
-        System.out.println(email);
+        System.out.println(email+"님 환영합니다.");
         
         SpringBeanAutowiringSupport.processInjectionBasedOnCurrentContext(this);
-        System.out.println("아이디는"+memberDao.getIdByEmail(email));
         
         Member member = memberDao.get(memberDao.getIdByEmail(email));
         memberDao.updateAgeAll();

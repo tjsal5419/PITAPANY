@@ -94,7 +94,8 @@ public class MemberController {
 	
 	@RequestMapping(value="acc-setting",
 			method=RequestMethod.GET)
-	public String accSetting(Model model){
+	public String accSetting(Model model,
+			@RequestParam(value="scr", defaultValue="")String scroll){
 
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
 		String memberId = member.getId();
@@ -116,6 +117,7 @@ public class MemberController {
 		
 		model.addAttribute("matchedMemberList", resultList);
 		model.addAttribute("matchedMemberListSize", resultList.size());
+		model.addAttribute("scroll", scroll);
 		
 		return "member.acc-setting";
 	}

@@ -69,11 +69,11 @@
 					<button class="btn btn-info chat" onclick="window.location.href=''">대화하기</button>
 				</c:when>
 				<c:otherwise>
-					<button class="btn btn-info chat" onclick="window.location.href='detail-edit?id=${accDetail.id }&p=${page }'">수정</button>
+					<button class="btn btn-info chat" onclick="window.location.href='detail-edit?id=${accDetail.id }&p=${page }&pla=${pla }&sty=${sty }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }'">수정</button>
 					<button class="btn btn-info chat delete-board" onclick="deleteBoard();">삭제</button>
 				</c:otherwise>
 			</c:choose>
-				<button class="btn btn-info chat" onclick="window.location.href='board?p=${page }'">목록으로</button>
+				<button class="btn btn-info chat" onclick="window.location.href='board?p=${page }&pla=${pla }&sty=${sty }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }'">목록으로</button>
 			</div>
 		</div>
 		<div class="reply">

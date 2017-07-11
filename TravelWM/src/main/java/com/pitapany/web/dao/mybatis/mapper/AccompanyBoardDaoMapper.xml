@@ -80,6 +80,7 @@
         WHERE styleId ${param1} #{param2}
         AND writerAge>=#{param3} AND writerAge<=#{param4}
         AND writerSex LIKE #{param5}
+        order by regDate DESC
         limit #{param6},6	
 ]]>	
 	</select>

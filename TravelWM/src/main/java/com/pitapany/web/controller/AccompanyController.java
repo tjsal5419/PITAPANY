@@ -74,6 +74,15 @@ public class AccompanyController {
 
 	@Autowired
 	private AccompanyBoardReplyDao accompanyBoardReplyDao;
+	
+	private String pla;
+	private String sty;
+	private int min_a;
+	private int max_a;
+	private String lat;
+	private String lng;
+	private String sD;
+	private String eD;
 
 	@RequestMapping(value = "matching", method = RequestMethod.GET)
 	public String matching(Model model) {
@@ -113,7 +122,6 @@ public class AccompanyController {
 		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
 
 		for (MemberAccompanyMatch m : memAccomMatchedList) {
-			System.out.println("매칭된 정보들" + m.getMemberAccompanyInfoId());
 			MemberProfInfoMatchingResultView result = memberAccomInfoDao
 					.getMatchingResult(m.getMemberAccompanyInfoId());
 			resultList.add(result);
@@ -128,7 +136,7 @@ public class AccompanyController {
 	}
 
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detailGet(Model model, String id,
+	public String detailGet(Model model, String id, String pla, String sty, int min_a, int max_a, String lat,String lng,String sD, String eD,
 			@RequestParam(value = "p", defaultValue = "1") String page) {
 		accompanyBoardDao.addHits(id);
 		AccompanyBoardView accompanyBoard = accompanyBoardDao.getView(id);
@@ -142,7 +150,15 @@ public class AccompanyController {
 		model.addAttribute("memberProfile", memberProfile);
 		model.addAttribute("boardReply", reply);
 		model.addAttribute("page", page);
-
+		model.addAttribute("pla",pla);
+		model.addAttribute("sty",sty);
+		model.addAttribute("min_a",min_a);
+		model.addAttribute("max_a",max_a);
+		model.addAttribute("lat",lat);
+		model.addAttribute("lng",lng);
+		model.addAttribute("sD",sD);
+		model.addAttribute("eD",eD);
+		
 		return "accompany.detail";
 	}
 
@@ -228,7 +244,7 @@ public class AccompanyController {
 		accompanyBoardDao.add(accompanyBoard);
 
 		model.addAttribute("url", "accompany/board");
-		model.addAttribute("msg", "성공적으로 동행등록이 와...와...완료...");
+		model.addAttribute("msg", "성공적으로 동행등록이 완료되었습니다.");
 
 		if (!file.isEmpty()) {
 			String path = request.getSession().getServletContext().getRealPath("/resource/upload");
@@ -285,7 +301,7 @@ public class AccompanyController {
 	}
 	
 	@RequestMapping(value = "detail-edit", method = RequestMethod.GET)
-	public String detailEditGet(Model model, String id,
+	public String detailEditGet(Model model, String id, String pla, String sty, int min_a, int max_a, String lat,String lng,String sD, String eD,
 			String p) {
 		List<Style> stlyeList = styleDao.getList();
 		AccompanyBoardView accompanyBoardView = accompanyBoardDao.getView(id);
@@ -293,6 +309,15 @@ public class AccompanyController {
 		
 		model.addAttribute(stlyeList);
 		model.addAttribute("page",p);
+		
+		this.pla = pla;
+		this.sty = sty;
+		this.min_a = min_a;
+		this.max_a = max_a;
+		this.lat = lat;
+		this.lng = lng;
+		this.sD = sD;
+		this.eD = eD;
 		
 		return "accompany.detail-edit";
 	}
@@ -384,10 +409,15 @@ public class AccompanyController {
 
 		}
 
-		accompanyBoardDao.update(accompanyBoard);
+		int result = accompanyBoardDao.update(accompanyBoard);
+
+		if(result>0)
+			model.addAttribute("msg", "수정되었습니다.");
+		else
+			model.addAttribute("msg", "수정 과정에 오류가 발생했습니다. 관리자에게 문의해주세요.");
 		
-		model.addAttribute("url", "accompany/detail?id="+id+"&p="+page);
-		model.addAttribute("msg", "수정되었습니다.");
+		model.addAttribute("url", "accompany/detail?id="+id+"&p="+page+
+				"&pla="+this.pla+"&sty="+this.sty+"&min_a="+this.min_a+"&max_a="+this.max_a+"&lat="+this.lat+"&lng="+this.lng+"&sD="+this.sD+"&eD="+this.eD);
 
 		return "inc/redirect";
 	}
@@ -609,7 +639,6 @@ public class AccompanyController {
 		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
 
 		for (MemberAccompanyMatch m : memAccomMatchedList) {
-			System.out.println("매칭된 정보들" + m.getMemberAccompanyInfoId());
 			MemberProfInfoMatchingResultView result = memberAccomInfoDao
 					.getMatchingResult(m.getMemberAccompanyInfoId());
 			resultList.add(result);

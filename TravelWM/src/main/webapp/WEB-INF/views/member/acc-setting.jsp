@@ -175,6 +175,10 @@
 		var locationForm = document.querySelector(".autoComplete");
 		var dateForm = document.querySelector(".calendar-reg");
 		var memberAccomBoardId = document.querySelector("#member-accomBoard-id");
+		var matchInfoContainer = $('.match-info-container').offset();
+		
+		if('${scroll }'==='accom-list')
+			$('html, body').animate({scrollTop: matchInfoContainer.top}, "slow");
 		
 		// 각 member accom board 의 수정버튼에 onclick 리스너 추가하기
 		for(var i=0;i<editButton.length;i++){

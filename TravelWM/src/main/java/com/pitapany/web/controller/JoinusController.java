@@ -52,7 +52,6 @@ public class JoinusController {
 		else{
 			String date = year+"-"+month+"-"+day;
 			Date birthday = Date.valueOf(date);
-			System.out.println(birthday);
 			Member member = new Member();
 			System.out.println(email);
 			member.setEmail(email);
@@ -63,8 +62,6 @@ public class JoinusController {
 			member.setPhone(phone);
 			member.setNicName(nicName);
 			memberDao.add(member);
-		    System.out.print(name);
-		    System.out.print("join success");
 			return "redirect:login";
 		}
 	}

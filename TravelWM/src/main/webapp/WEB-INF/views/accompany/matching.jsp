@@ -155,7 +155,7 @@
 			<div class="matched-list-box">
 				
 			</div>
-			<h3>이전 동행 목록</h3>
+			<h3><a href="${root }/member/acc-setting?scr=accom-list">이전 동행 목록</a></h3>
 			<div class="dropdown">
 			  <img class="matched-list-button" src="${root }/resource/images/ic_more_vert_black_24dp_1x.png"/>
 			  <div id="myDropdown" class="dropdown-content">
