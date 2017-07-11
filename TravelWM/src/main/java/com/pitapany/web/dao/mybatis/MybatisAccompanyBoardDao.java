@@ -70,16 +70,30 @@ public class MybatisAccompanyBoardDao implements AccompanyBoardDao {
 	}
 
 	@Override
-	public List<AccompanyBoardView> getListByLocationDate(String latitude, String longitude, String startDate,
-			String endDate,int page) {
+	public List<AccompanyBoardView> getListBySexAgeStyle(String styleComp, String styleId, int minAge, int maxAge,
+			String sex, int page) {
 		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
-		return accBoardDao.getListByLocationDate(latitude, longitude, startDate, endDate,page);
+		return accBoardDao.getListBySexAgeStyle(styleComp, styleId, minAge, maxAge, sex, page);
 	}
 
 	@Override
-	public int countByLocationDate(String latitude, String longitude, String startDate, String endDate) {
+	public int countBySexAgeStyle(String styleComp, String styleId, int minAge, int maxAge, String sex) {
 		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
-		return accBoardDao.countByLocationDate(latitude, longitude, startDate, endDate);
+		return accBoardDao.countBySexAgeStyle(styleComp, styleId, minAge, maxAge, sex);
+	}
+
+	@Override
+	public List<AccompanyBoardView> getListByLocationDate(String latitude, String longitude, String startDate,
+			String endDate, int page, String styleComp, String styleId, int minAge, int maxAge, String sex) {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.getListByLocationDate(latitude, longitude, startDate, endDate, page, styleComp, styleId, minAge, maxAge, sex);
+	}
+
+	@Override
+	public int countByLocationDate(String latitude, String longitude, String startDate, String endDate,
+			String styleComp, String styleId, int minAge, int maxAge, String sex) {
+		AccompanyBoardDao accBoardDao = sqlSession.getMapper(AccompanyBoardDao.class);
+		return accBoardDao.countByLocationDate(latitude, longitude, startDate, endDate, styleComp, styleId, minAge, maxAge, sex);
 	}
 
 }

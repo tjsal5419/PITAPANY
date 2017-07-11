@@ -392,19 +392,55 @@ public class AccompanyController {
 		return "inc/redirect";
 	}
 
+	/*-----------------------------ACCOMPANY/BOARD----------------------------------------------*/
 	@RequestMapping(value = "/board", method = RequestMethod.GET)
 	public String board(Model model, @RequestParam(value = "p", defaultValue = "1") int page,
-			@RequestParam(value = "sty", defaultValue = "") String sty,
-			@RequestParam(value = "sx", defaultValue = "4") int sx,
-			@RequestParam(value = "a", defaultValue = "4") int age,
+			@RequestParam(value = "sty", defaultValue = "default") String sty,
+			@RequestParam(value = "sx", defaultValue = "default") String sx,
+			@RequestParam(value = "min_a", defaultValue = "0") int minAge,
+			@RequestParam(value = "max_a", defaultValue = "100") int maxAge,
 			@RequestParam(value = "lat", defaultValue = "0") String latitude,
 			@RequestParam(value = "lng", defaultValue = "0") String longitude,
 			@RequestParam(value = "sD", defaultValue = "0000-00-00") String startDate,
-			@RequestParam(value = "eD", defaultValue = "9999-99-99") String endDate) {
+			@RequestParam(value = "eD", defaultValue = "9999-99-99") String endDate,
+			@RequestParam(value = "pla", defaultValue = "default") String place) {
 
-		int count = accompanyBoardDao.count();
+		/*--------------style 미지정 시 default값 설정해주기---------------*/
+		String styleComp = null;
+		String styleId = null;
+		String sex = null;
+
+		if(sty.equals("default")){
+			styleId = "%%";
+			styleComp = "LIKE";
+		}
+		else{ 
+			styleId = sty;
+			styleComp = "=";
+		}
+		/*----------------------sex 미지정시 default값 설정 -------------*/
+		/*---------3-필터 없음 4-성별 무관----------------*/
+		if(sx.equals("default") || sx.equals("3"))
+			sex = "%%";
+		else
+			sex = sx;
+		
+		
+	
+		/*------------검색 결과 갯수 가져오기------------*/
+		
+		int count;
+		//날짜, 위치로 검색한 경우
 		if(!latitude.equals("0") && !startDate.equals("0000-00-00"))
-			count = accompanyBoardDao.countByLocationDate(latitude, longitude, startDate, endDate);
+			count = accompanyBoardDao.countByLocationDate(latitude, longitude, startDate, endDate, styleComp, styleId, minAge, maxAge, sex);
+
+		//날짜, 위치 검색하지 않고, 스타일 성별 나이 검색 옵션 이용하는 경우
+		else if(latitude.equals("0") && startDate.equals("0000-00-00") && ( !sty.equals("default") || !sx.equals("default") || maxAge!=100)){
+			count = accompanyBoardDao.countBySexAgeStyle(styleComp, styleId, minAge, maxAge, sex);
+		}
+		// 검색 옵션 없이, 초기 페이지를 요청한 경우
+		else
+			count = accompanyBoardDao.count();
 		
 		int pageCount = 1;
 
@@ -441,14 +477,39 @@ public class AccompanyController {
 		model.addAttribute("page", page);
 		model.addAttribute("pageCount", pageCount);
 
+		/* ------------------ 검색 필터를 이용한 동행 게시판 목록 가져오기  ----------- */
+		List<AccompanyBoardView> accompanyBoardList = null;
+		
+		
+		//날짜, 주소 검색와 스타일, 나이, 성별 필터 모두 적용
 		if(!latitude.equals("0") && !startDate.equals("0000-00-00")){
-			List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getListByLocationDate(latitude, longitude, startDate, endDate,minLimitPage);
-			model.addAttribute("accompanyBoardList", accompanyBoardList);
+			accompanyBoardList = accompanyBoardDao.getListByLocationDate(latitude, longitude, startDate, endDate, minLimitPage, styleComp, styleId, minAge, maxAge, sex);
 		}
+		// 날짜, 주소 검색 없이, 스타일, 나이, 성별 필터만 적용
+		else if(latitude.equals("0") && startDate.equals("0000-00-00") && ( !sty.equals("default") || !sx.equals("default") || maxAge!=100 )){
+			accompanyBoardList = accompanyBoardDao.getListBySexAgeStyle(styleComp, styleId, minAge, maxAge, sex, minLimitPage);
+
+		}
+		// 아무런 필터 없이 페이지만 요청한 경우
 		else{
-			List<AccompanyBoardView> accompanyBoardList = accompanyBoardDao.getList(minLimitPage);
-			model.addAttribute("accompanyBoardList", accompanyBoardList);			
+			accompanyBoardList = accompanyBoardDao.getList(minLimitPage);			
 		}
+		
+		if(accompanyBoardList.isEmpty()){
+			model.addAttribute("msg","검색된 결과가 없습니다.");
+			return "inc/goBack";
+		}
+		
+		model.addAttribute("accompanyBoardList", accompanyBoardList);
+		model.addAttribute("lat", latitude);
+		model.addAttribute("lng", longitude);
+		model.addAttribute("sD", startDate);
+		model.addAttribute("eD", endDate);
+		model.addAttribute("sx", sx);	
+		model.addAttribute("sty", sty);	
+		model.addAttribute("min_a", minAge);	
+		model.addAttribute("max_a", maxAge);
+		model.addAttribute("pla", place);	
 		
 
 		List<Style> stlyeList = styleDao.getList();
@@ -457,7 +518,11 @@ public class AccompanyController {
 		return "accompany.board";
 
 	}
+	
+	/*-----------------------------------------------------------------------------------------*/
 
+	
+	
 	/*-------------------사용자에게 동행 추천해주는 컨트롤러------------*/
 	@RequestMapping(value = "matching-ajax-data", produces = "application/text; charset=utf8", method = RequestMethod.GET)
 	@ResponseBody

@@ -656,7 +656,7 @@ body{
 	background: #e8f8ff;
 }
 
-#btn-gender, #btn-age, #btn-style, #btn-write{
+#btn-gender, #btn-age, #btn-style, #btn-write, #btn-see-all{
 	color: #fff;
 	border: none;
 	outline: none;
@@ -667,7 +667,7 @@ body{
 	background: #87deff;
 }
 
-#btn-gender:hover, #btn-age:hover, #btn-style:hover, #btn-write:hover{
+#btn-gender:hover, #btn-age:hover, #btn-style:hover, #btn-write:hover, #btn-see-all:hover{
 	background: #009ddb;
 }
 

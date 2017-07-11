@@ -47,7 +47,7 @@
 			    <input class="hidden" type="text" value="" name="locality1" id="locality1"/>  
  			    <input class="hidden" type="text" value="" name="country1" id="country1"/>  
  	
- 	    	  		<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" />
+ 	    	  	<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" />
     	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search"/>
  	
    	    	  	<input class="form-control form-control-header" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜 입력" required/>
@@ -133,27 +133,54 @@
 	<div class="search-mobile">
 		<input type="text" class="form-control form-control-header form-control-mobile" id="mobile-autocomplete" placeholder="동행 위치">
     	<input class="form-control form-control-header form-control-mobile" type="text" name="datefilter" value=""  placeholder="동행 날짜 입력"/>
-		<input type="button" class="search-button search-button-mobile2"  alt="Submit">
+		<input type="button" class="search-button search-button-mobile2" id="mob-search-loc-date" onclick="mobSearchLocDate();"  alt="Submit">
 	</div>
 
 </nav>
-<!-- ------------google map API------------------- -->
+<script>
+	window.addEventListener("load",function(){
+		var searchLocation = document.querySelector("#autocomplete");
+		var searchDate = document.querySelector("#header-calendar");
+		
+		if('${sD }' !== '0000-00-00' && '${sD }' !== '' )
+			searchDate.value = '${sD} - ${eD}';
+		if('${pla }' !== 'default')
+			searchLocation.value = '${pla }';
+		
+	});
+</script>
+
+<!-- -----------Don't Touch------google map API--------------------------------- -->
 <c:set var = "url" value = "${requestScope['javax.servlet.forward.request_uri']}"/>
 
 
 <c:if test="${!fn:contains(url, 'reg') && !fn:contains(url, 'acc-setting') && !fn:contains(url, 'detail-edit')}">
 
+<!-- ----------------------------- 날짜, 동행 위치 검색 필터 ----------------------- -->
 <script>
 	var searchLocDate=function(){
 		var search = document.querySelector("#search-loc-date");
-		search.onclick = function(){
-			var lng = document.querySelector("#lat1").value;
-			var lat = document.querySelector("#lng1").value;
-			var sD = document.querySelector("#hidden-startDate").value;
-			var eD = document.querySelector("#hidden-endDate").value;
+		var lat = document.querySelector("#lat1").value;
+		var lng = document.querySelector("#lng1").value;
+		var place = document.querySelector("#place1").value;
+		var sD = document.querySelector("#hidden-startDate").value;
+		var eD = document.querySelector("#hidden-endDate").value;
 			
-			window.location.href='${root}/accompany/board?lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;
-		}
+		window.location.href='${root}/accompany/board?pla='+place+'&lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;
+	
+	};
+	
+	var mobSearchLocDate=function(){
+		var search = document.querySelector("#mob-search-loc-date");
+
+		var lat = document.querySelector("#lat1").value;
+		var lng = document.querySelector("#lng1").value;
+		var place = document.querySelector("#place1").value;
+		var sD = document.querySelector("#hidden-startDate").value;
+		var eD = document.querySelector("#hidden-endDate").value;
+			
+		window.location.href='${root}/accompany/board?pla='+place+'&lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;
+		
 	};
 
 </script>
@@ -248,7 +275,7 @@ function initAutocomplete() {
       	  var placeName = place1.name;
       	 var fotmattedAdress = place1.formatted_address;
       	  
-      	  var auto = document.querySelector("#autocomplete").value;
+      	  var auto = document.querySelector("#autocomplete");
 
        	  var lng = document.querySelector("#lng1");
     	  var lat = document.querySelector("#lat1");
@@ -275,7 +302,7 @@ function initAutocomplete() {
               }
          
           }
-           auto.value = document.querySelector("#mobile-autocomplete").value;
+          auto.value = document.querySelector("#mobile-autocomplete").value;
   		  lng.value = longitude;
     	  lat.value = latitude;
     	  placeForm.value= placeName;
@@ -332,6 +359,8 @@ function initAutocomplete() {
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
 </c:if>
+<!-- ---------------------The end of google map API--------------------------------- -->
+
         
 <script>
 $('input[name="datefilter"]').on("mousedown", function(){
@@ -360,7 +389,7 @@ $(function() {
   });
 
   $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('YY.MM.DD') + ' - ' + picker.endDate.format('YY.MM.DD'));
+      $('input[name="datefilter"]').val(picker.startDate.format('YY.MM.DD') + ' - ' + picker.endDate.format('YY.MM.DD'));
       $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
       $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
   });

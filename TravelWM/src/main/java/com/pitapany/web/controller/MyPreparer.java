@@ -20,13 +20,18 @@ public class MyPreparer implements ViewPreparer{
 	   
 	@Override
 	public void execute(Request tilesRequest, AttributeContext context) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName(); //get logged in username
 		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		if(!auth.isAuthenticated()){
+			System.out.println("로그인 세션 만료");
+		}
+		else{
+		String name = auth.getName(); //get logged in username
 		
 		Member member = memberDao.get(memberDao.getIdByEmail(name));
 		tilesRequest.getContext("request").put("m",member);
-		
+		}
 	}
 
 }

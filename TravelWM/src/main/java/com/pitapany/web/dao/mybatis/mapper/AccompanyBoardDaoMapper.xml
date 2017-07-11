@@ -52,22 +52,48 @@
 		SELECT AccompanyBoardView.*
 		From AccompanyBoardView
 		WHERE startDate>=#{param3} AND endDate<=#{param4}
+		AND styleId ${param6} #{param7}
+        AND writerAge>=#{param8} AND writerAge<=#{param9}
+        AND writerSex LIKE #{param10}
 		ORDER BY ((6371*acos(cos(radians(#{param1}))*cos(radians(latitude))*cos(radians(longitude)
 		-radians(#{param2}))+sin(radians(#{param1}))*sin(radians(latitude))))), regDate DESC
 		limit #{param5},6;
 ]]>	
 	</select>
 	
-	
 	<select id="countByLocationDate" resultType="Integer">
 <![CDATA[
 		SELECT count(*)
 		From AccompanyBoardView
 		WHERE startDate>=#{param3} AND endDate<=#{param4}
+		AND styleId ${param5} #{param6}
+        AND writerAge>=#{param7} AND writerAge<=#{param8}
+        AND writerSex LIKE #{param9}
 		ORDER BY ((6371*acos(cos(radians(#{param1}))*cos(radians(latitude))*cos(radians(longitude)
 		-radians(#{param2}))+sin(radians(#{param1}))*sin(radians(latitude))))), regDate DESC;
 ]]>	
 	</select>
+
+	<select id="getListBySexAgeStyle" resultType="com.pitapany.web.entity.AccompanyBoardView">
+<![CDATA[
+        SELECT * FROM AccompanyBoardView
+        WHERE styleId ${param1} #{param2}
+        AND writerAge>=#{param3} AND writerAge<=#{param4}
+        AND writerSex LIKE #{param5}
+        limit #{param6},6	
+]]>	
+	</select>
+	
+		<select id="countBySexAgeStyle" resultType="Integer">
+<![CDATA[
+        SELECT count(*)
+        FROM AccompanyBoardView
+        WHERE styleId ${param1} #{param2}
+        AND writerAge>=#{param3} AND writerAge<=#{param4}
+        AND writerSex LIKE #{param5}
+]]>	
+	</select>
+	
 
 	<insert id="add" parameterType="com.pitapany.web.entity.AccompanyBoard">
 		<selectKey keyProperty="id" order="BEFORE" resultType="String">

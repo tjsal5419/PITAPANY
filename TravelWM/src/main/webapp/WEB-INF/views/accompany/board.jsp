@@ -7,23 +7,21 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
 <link href="${root}/resource/css/accompany/board.css" rel="stylesheet"/>
-
 <!-- For Age Selector -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
 	<div id="filter-container">
 		<div class="filter-item-container">
 			<button type="button" class="btn btn-filter" id="btn-gender">성별</button>
 			<div id="gender-content">
 			<ul>
-				<li>남성</li>
+				<li onclick="window.location.href='${root }/accompany/board?pla=${pla }&sty=${sty }&sx=${0 }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }'">남성</li>
 			</ul>
 			<ul>
-				<li>여성</li>
+				<li onclick="window.location.href='${root }/accompany/board?pla=${pla }&sty=${sty }&sx=${1 }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }'">여성</li>
 			</ul>
 			<ul>
-				<li>성별무관</li>
+				<li onclick="window.location.href='${root }/accompany/board?pla=${pla }&sty=${sty }&sx=3&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }'">성별무관</li>
 			</ul>
 			</div>
 
@@ -39,7 +37,8 @@
 							<input type="text" id="max-age" readonly/>
 						</p>
 					</div>
-					<button type="submit" class="age-search">확인</button>
+					<button class="age-search" onclick="submitAge();">확인</button>
+					<button class="age-search">취소</button>
 				</div>
 			</div>
 			
@@ -48,11 +47,15 @@
 			
 			<c:forEach items="${styleList }" var="li">
 				<ul>
-					<li onclick="window.location.href='${root }/accompany/board?s=${li.id }'">${li.type }</li>
+					<li onclick="window.location.href='${root }/accompany/board?pla=${pla }&sty=${li.id }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }'">${li.type }</li>
 				</ul>
-			</c:forEach>
-			
+			</c:forEach>			
 			</div>
+			
+			<!-- ------검색 필터 취소 버튼(모든 동행)-------- -->		
+			<c:if test="${min_a ne '0' || max_a ne '100' || sty ne 'default' || sx ne 'default' }">
+				<button type="button" class="btn btn-filter" id="btn-see-all" onclick="window.location.href='${root }/accompany/board'" >모든 동행</button>
+			</c:if>
 			
 			<button type="button" class="btn btn-write" id="btn-write" onclick="window.location.href='${root}/accompany/reg'">글쓰기</button>
 		</div>
@@ -79,7 +82,7 @@
 								<div class="board-accompany-info">
 									<div class="info-item item-nickname">${li.writerNicName }</div>
 									<div class="info-item item-country-date">
-									${li.country }</br>
+									${li.country }&nbsp;${li.place }</br>
 									<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
 									~
 									<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />		
@@ -130,7 +133,7 @@
 					  	 
 						<c:if test="${prev!=1 && page!=0}">
 						    <li>
-						      <a id="move-page-button-number" href="${root}/accompany/board?p=${prev-5	 }" aria-label="Previous">
+						      <a id="move-page-button-number" href="${root}/accompany/board?pla=${pla }&sty=${sty }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }&p=${prev-5	 }" aria-label="Previous">
 							     <span aria-hidden="true">&laquo;</span>
 							  </a>
 							</li>
@@ -141,13 +144,13 @@
 					    	<c:choose>
 					    	<c:when test="${p== page }">
 						    	<li class="active">
-						    	<a id="move-page-button" href="${root }/accompany/board?p=${p }">${p }</a>
+						    	<a id="move-page-button" href="${root }/accompany/board?pla=${pla }&sty=${sty }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }&p=${p }">${p }</a>
 						    	</li>
 					    	</c:when>
 					    	
 					    	<c:otherwise>
 						    	<li>
-						    	<a id="move-page-button-number" href="${root }/accompany/board?p=${p }">${p }</a>
+						    	<a id="move-page-button-number" href="${root }/accompany/board?pla=${pla }&sty=${sty }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }&p=${p }">${p }</a>
 						    	</li>
 					    	</c:otherwise>
 					    	
@@ -156,7 +159,7 @@
 					    
 					    <c:if test="${next<pageCount && count!=0}">
 						    <li>
-						      <a  id="move-page-button-number" href="${root}/accompany/board?p=${next+1 }" aria-label="Next">
+						      <a  id="move-page-button-number" href="${root}/accompany/board?pla=${pla }&sty=${sty }&sx=${sx }&min_a=${min_a }&max_a=${max_a }&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }&p=${next+1 }" aria-label="Next">
 						        <span aria-hidden="true">&raquo;</span>
 						      </a>
 						    </li>
@@ -179,10 +182,51 @@
 	<div id="map-wrapper"></div>
 </div>
 
+<!-- --------show current search filter in the button------- -->
+<script>
+	window.addEventListener("load",function(){
+		var searchGender = document.querySelector("#btn-gender");
+		var searchStyle = document.querySelector("#btn-style");
+		var searchAge = document.querySelector("#btn-age");
+		
+		if('${sx }' !== 'default'){
+			if('${sx }' === '0')
+				searchGender.innerHTML = '남성';
+			else if('${sx }' === '1')
+				searchGender.innerHTML = '여성';
+			else
+				searchGender.innerHTML = '성별 무관';
+		}
+		
+		if('${sty }' !== 'default'){
+			<c:forEach items='${styleList }' var="li">
+				if('${li.id}' === '${sty }')
+					searchStyle.innerHTML = '${li.type }';
+			</c:forEach>	
+		}
+		
+		
+		if('${min_a }' !== '0' && '${min_a }' !== '100'){
+			searchAge.innerHTML = '${min_a }세~${max_a }세';
+		}
+		
+	});
+</script>
 <!-- ----------지도에 x버튼 없애기------------- -->
 <style>
 	.gm-style-iw + div {display: none;}
 </style>
+
+<!-- -------나이 필터 검색 클릭 시 발생하는 이벤트----------- -->
+<script>
+	var submitAge = function(){
+		var minAge = $( "#slider-range" ).slider( "values", 0 );
+		var maxAge = $( "#slider-range" ).slider( "values", 1 );
+		
+		window.location.href='${root }/accompany/board?sty=${sty }&sx=${sx }&min_a='+minAge+'&max_a='+maxAge+'&lat=${lat }&lng=${lng }&sD=${sD }&eD=${eD }';
+		
+	};
+</script>
 
 <!-- 	-----------구글 맵 API이용하기--------------- -->
 
@@ -218,8 +262,8 @@
 	         });
 			
 			var initContent = "<div style=\"display:flex; justify-content:center; align-items:center;\">"+
-			"<div style=\"align-self:center; background-image: url('${root }/resource/images/Cat.jpg'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+		
-			"<div onclick='window.location.href=\"${root }/accompany/detail?p=${li.id }\"' style=\"margin-left:10px; cursor:pointer;\">${li.writerNicName }</div></div>";
+			"<div style=\"align-self:center; background-image: url('${root }${li.imgSrc}${li.imgName }'); border-radius:100px; width:40px; height:40px; background-position: center; background-size: 40px 40px; \"></div>"+		
+			"<div onclick='window.location.href=\"${root }/accompany/detail?id=${li.id }\"' style=\"margin-left:10px; cursor:pointer;\">${li.writerNicName }</div></div>";
 			
 	        /* -----------마커 눌렀을 때 발생하는 이벤트------------- */
        	     var infowindow${li.id } = new google.maps.InfoWindow({
@@ -277,19 +321,31 @@ $( function() {
 </script>
 
 <script>
-	  
+	var genderClicked = false;
+	var styleClicked = false;
+	 
 	$(document).on("click", function(e){
 		if($(e.target).is("#btn-gender")){
-			$("#gender-content").show();
+			/* 버튼 다시 클릭 시 닫아주기 */
+			if(!genderClicked){
+				$("#gender-content").show();
+				genderClicked = true;
+			}
+			else{
+				$("#gender-content").hide();
+				genderClicked = false;			
+			}
 	    }else{
 	        $("#gender-content").hide();
+	        genderClicked = false;
 	    }
 	});
 
 	$(document).on("click", function(e){
 		if($(e.target).is("#btn-age")){
-			$("#age-content").show();
-	    }
+				$("#age-content").show();
+			}
+	 
 	});
 	
 	$('body').on("click", function(e){
@@ -303,9 +359,21 @@ $( function() {
 
 	$(document).on("click", function(e){
 		if($(e.target).is("#btn-style")){
-			$("#style-content").show();
+			
+			/* 버튼 다시 클릭 시 닫아주기 */
+			if(!styleClicked){
+				$("#style-content").show();
+				styleClicked = true;
+			}
+			else{
+				$("#style-content").hide();
+				styleClicked = false;			
+			}
+			
+			
 	    }else{
 	        $("#style-content").hide();
+	        styleClicked = false;	
 	    }
 	});
 	

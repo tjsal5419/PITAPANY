@@ -44,7 +44,6 @@ public class CommunityController {
 			@RequestParam(value = "f", defaultValue = "title") String field,
 			@RequestParam(value = "q", defaultValue = "") String query,
 			@RequestParam(value = "c", defaultValue = "%%") String category) {
-		System.out.println(field);
 
 		List<TipCategory> categoryList = tipCategoryDao.getList();
 		model.addAttribute("categoryList", categoryList);

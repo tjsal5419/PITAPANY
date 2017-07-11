@@ -11,9 +11,12 @@ public interface AccompanyBoardDao {
 	List<AccompanyBoardView> getList(int page);
 	List<AccompanyBoardView> getMainList();
 	
-	List<AccompanyBoardView> getListByLocationDate(String latitude, String longitude, String startDate, String endDate, int page);
-	int countByLocationDate(String latitude, String longitude, String startDate, String endDate);
+	List<AccompanyBoardView> getListByLocationDate(String latitude, String longitude, String startDate, String endDate, int page, String styleComp, String styleId, int minAge, int maxAge, String sex);
+	int countByLocationDate(String latitude, String longitude, String startDate, String endDate, String styleComp, String styleId, int minAge, int maxAge, String sex);
 	
+	List<AccompanyBoardView> getListBySexAgeStyle(String styleComp, String styleId, int minAge, int maxAge, String sex, int page);
+	int countBySexAgeStyle(String styleComp, String styleId, int minAge, int maxAge, String sex);
+
 	int count();
 	int addHits(String id);
 	int delete(String id);
