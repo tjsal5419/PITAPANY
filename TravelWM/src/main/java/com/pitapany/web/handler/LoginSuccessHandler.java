@@ -29,7 +29,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler{
 		Member member = memberDao.get(id);
 		
 		//request.getSession().setAttribute("user", member);
-		response.sendRedirect("/TravelWM/member/is-prof-set");
+		response.sendRedirect(request.getContextPath()+"/member/is-prof-set");
 		
 	}
 

@@ -246,7 +246,7 @@ public class MemberController {
 	/*-------------매칭된 동행 정보 삭제하기--------------------*/
 	@RequestMapping(value="matched-accom-delete", method=RequestMethod.GET)
 	public String matchedAccomDelete(String id, Model model){
-		System.out.println(id);
+
 		int deleteCol = memberAccompanyMatchDao.deleteByAccomInfoId(id);
 		
 		if(deleteCol>0){

@@ -553,7 +553,7 @@ public class AccompanyController {
 
 	
 	
-	/*-------------------사용자에게 동행 추천해주는 컨트롤러------------*/
+	/*-------------------AJAX 동행 매칭 부분------------*/
 	@RequestMapping(value = "matching-ajax-data", produces = "application/text; charset=utf8", method = RequestMethod.GET)
 	@ResponseBody
 	public String matchingAjaxGet(@RequestParam(value = "a", defaultValue = "") String memberAccomInfoId,
@@ -572,7 +572,6 @@ public class AccompanyController {
 		float latitude = memAccomInfo.getLatitude();
 		float longitude = memAccomInfo.getLongitude();
 
-		System.out.println(memAccomInfo.getPlace() + latitude + longitude);
 
 		// 거리, 나이, 스타일, 성별로 조회해서 사람들 리스트 가져오기
 		List<MemberAccompanyInfoMatchingView> matchedMember = new ArrayList<MemberAccompanyInfoMatchingView>();
@@ -644,11 +643,13 @@ public class AccompanyController {
 			resultList.add(result);
 		}
 
+		
 		String json = null;
 		Gson gson = new Gson();
 		JsonParser parser = new JsonParser();
 
 		if (!isNotMatched) {
+			System.out.println(resultList.get(0).getStartDate());
 			json = gson.toJson(resultList);
 			System.out.println("json" + json);
 			return json;

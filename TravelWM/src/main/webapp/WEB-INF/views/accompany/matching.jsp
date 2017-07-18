@@ -160,7 +160,7 @@
 			  <img class="matched-list-button" src="${root }/resource/images/ic_more_vert_black_24dp_1x.png"/>
 			  <div id="myDropdown" class="dropdown-content">
 			  	<c:forEach items="${memberPrevMatchedList }" var="li">
-				    <a href="#">${li.nicName }님 (${li.place })</a>
+				    <div id="prev-matched-list${li.id }">${li.nicName }님 (${li.place })</div>
 			  	</c:forEach>
 			  </div>
 			</div>
@@ -191,12 +191,6 @@
 				동행 날짜
 			</div>
 
-			<div class="hidden hidden-accom-date">
-<%--  				<fmt:formatDate class="start-date" value="Jun 8, 2017 12:00:00 AM" pattern="yy.MM.dd" />
-				-
-				<fmt:formatDate class="end-date" value="Jun 8, 2017 12:00:00 AM" pattern="yy.MM.dd" />
- --%>			</div>
-
 						
 			<div class="accom-sex">
 				성별
@@ -223,7 +217,7 @@ window.addEventListener("load", function(e) {
 	searchBtn.onclick = function(){
 		
 		
-		if(${size }>0){
+		if(${size>0 }){
 		
 			var accomInfoId = matchingInfoForm.elements['accompany-info'].value;
 			var sexV = matchingInfoForm.elements['sex'].value;
@@ -265,18 +259,49 @@ window.addEventListener("load", function(e) {
 						
 						else
 							sex.innerHTML = "여성";
+/* 					
+						var startMonth = result[0].startDate.split("월 ");
+						var startDate = startMonth[1].split(",");
+						var startYear = startDate[1].split(" 20");
+						
+						var endMonth = result[0].endDate.split("월 ");
+						var endDate = endMonth[1].split(",");
+						var endYear = endDate[1].split(" 20");
+		
+						var startDateFull;
+						var endDateFull;
 						
 						
-						//alert(result[0].startDate);
-						//Jun 29, 2017 12:00:00 AM
+						if(startMonth[0].length>1)
+							startDateFull = startYear[1] + "." + startMonth[0];
+						else 
+							startDateFull = startYear[1] + ".0" + startMonth[0];
+						
+						if(startDate[0].length>1)
+								startDateFull = startDateFull + "." + startDate[0];
+						else 
+							startDateFull = startDateFull + ".0" + startDate[0];
+						
+						
+						if(endMonth[0].length>1)
+							endDateFull = endYear[1] + "." + endMonth[0];
+						else 
+							endDateFull = endYear[1] + ".0" + endMonth[0];
+							
+						if(endDate[0].length>1)
+							endDateFull = endDateFull + "." + endDate[0];
+						else 
+							endDateFull = endDateFull + ".0" + endDate[0];
+			
+						date.innerHTML = startDateFull+" - "+endDateFull;
+						 
+ */
 						alert("매칭되었습니다.");
 						
-						hiddenDate.style.display = "flex";
-						date.style.display = "none";
-											
 					  }
 						document.body.removeChild(screen);
 				};
+				
 				request.send();
 				
 				var screen = document.createElement("div");
@@ -328,3 +353,14 @@ $( function() {
 	$( "#max-age" ).val( $( "#slider-range" ).slider( "values", 1 ));
 });
 </script>
+
+<!-- ------------------------이전 동행 목록 불러오기-------------------------------------------------- -->
+<!-- <script>
+	window.adEventListener("load",function(){
+		
+	});
+	<c:forEach items="${memberPrevMatchedList }" var="li">
+    <div id="prev-matched-list${li.id }">${li.nicName }님 (${li.place })</div>
+	</c:forEach>
+	
+</script> -->
