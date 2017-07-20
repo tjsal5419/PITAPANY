@@ -25,6 +25,18 @@
 		WHERE memberId = #{memberId}
 		order by matchDate DESC
 	</select>
+
+	<select id="getByMemberIdToday" resultType="com.pitapany.web.entity.MemberAccompanyMatch">
+<![CDATA[
+		SELECT *
+		FROM
+		`pitapanydb`.`MemberAccompanyMatch`
+		WHERE memberId = #{memberId}
+		AND matchDate > CURDATE()
+		AND matchDate < CURDATE()+1
+		order by matchDate DESC
+]]>	
+	</select>
 	
 	<select id="getMatchedMemberList" resultType="com.pitapany.web.entity.MatchedMemberView">
 		SELECT * FROM MatchedMemberView

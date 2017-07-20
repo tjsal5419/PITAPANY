@@ -13,9 +13,9 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://211.238.142.247/pitapanydb?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
-		<property name="username" value="pitapany" />
-		<property name="password" value="0916" />
+			value="jdbc:mysql://220.71.83.152/pitapanydb?autoReconnect=true&amp;useSSL=false&amp;characterEncoding=UTF-8" />
+		<property name="username" value="admin" />
+		<property name="password" value="pitapany0916" />
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
