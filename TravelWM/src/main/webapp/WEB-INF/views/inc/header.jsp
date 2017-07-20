@@ -21,6 +21,7 @@
 <!-- 네모 테두리 디자인 -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="${root}/resource/css/inc/header.css" />
 
 <head>
@@ -30,70 +31,78 @@
 <nav>
     <div class="navbar navbar-default navbar-fixed-top">
     	
-    	<div class = "menu-button-mobile"><i class="fa fa-bars"></i></div>
-    	<a href="${root}/member/main" class="logo"></a>
-    	<div class = "search-button-mobile"><i class="fa fa-search"></i></div>
-    	
-    	
-    	
-    	
-    	<form class="search-bar" action="" method="get" class="form-group">
-    		<div class="search-bar-container">
-			    <input class="form-control form-control-header" id="autocomplete" name="form" placeholder="동행 위치" type="text" alt="동행을 구할 위치를 입력하세요!" required/>
-
- 			    <input class="hidden" type="text" value="" name="lat1" id="lat1"/>			           
-			    <input class="hidden" type="text" value="" name="lng1" id="lng1"/>  
-			    <input class="hidden" type="text" value="" name="place1" id="place1"/>  
-			    <input class="hidden" type="text" value="" name="locality1" id="locality1"/>  
- 			    <input class="hidden" type="text" value="" name="country1" id="country1"/>  
- 	
- 	    	  	<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" />
-    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search"/>
- 	
-   	    	  	<input class="form-control form-control-header" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜 입력" required/>
-		  		<input type="button" class="search-button" onclick="searchLocDate()" id="search-loc-date" alt="Submit"/>
-		  	</div>
-	    </form>
-        <div class="menu-bar">
-	        <ul class="accompany">
-	        	<c:if test="${empty pageContext.request.userPrincipal.name }">		
-					<li class="except-li"><a href="${root }/joinus/login">로그인</a></li>
-					<li class="except-li"><a href="${root }/joinus/join">회원가입</a></li>
-				</c:if>	
+	    	<div class = "menu-button-mobile"><i class="fa fa-bars"></i></div>
+	    	<a href="${root}/member/main" class="logo"></a>
+	    	<div class = "search-button-mobile"><i class="fa fa-search"></i></div>
+	    	
+	    	
+	    	
+	    	
+	    	<form class="search-bar" action="" method="get" class="form-group">
+	    		<div class="search-bar-container">
+	
+				<input class="form-control form-control-header header-input" id="autocomplete" name="form" placeholder="동행 위치" type="text" alt="동행을 구할 위치를 입력하세요!" required/>
 				
-	        	<li onclick="location.href='${root}/accompany/board';">이음찾기</li>
-	        	<li onclick="location.href='${root}/accompany/matching';">이음매칭</li>
-	        	<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
-	        </ul>
-	        <ul class="mypage">
-	        	<li><i class="fa fa-envelope message-item"></i></li>
-	        	<li><i class="fa fa-bell alarm-item"></i></li>
-	        	<li><i class="fa fa-user account-item"></i></li>
-	        </ul>
-        	<div id="message-content"><p>message</p></div>
-        	<div id="alarm-content"><p>alarm</p></div>
-        	<div id="account-content">
-        		<div class="account-login"><span>안녕하세요, ${m.nicName}님</span></div>
-	        	<ul>
-					<li onclick="location.href='${root}/profile/home';">프로필 홈</li>
-				</ul>
-				<ul>
-					<li onclick="location.href='${root }/member/profile-setting';">프로필 관리</li>
-				</ul>
-				<ul>
-					<li onclick="location.href='${root }/member/acc-setting';">나의 동행 관리</li>
-				</ul>
-				<ul>
-					<li onclick="location.href='${root }/member/bookmark';">북마크 관리</li>
-				</ul>
-				<ul>
-					<security:authorize  access="isAuthenticated()">
-					<li class="account-logout" onclick="location.href='${root }/j_spring_security_logout';">
-						로그아웃
-					</li>
-					</security:authorize>
-				</ul>
-        	</div>
+				<input class="hidden" type="text" value="" name="lat1" id="lat1"/>			           
+				<input class="hidden" type="text" value="" name="lng1" id="lng1"/>  
+				<input class="hidden" type="text" value="" name="place1" id="place1"/>  
+				<input class="hidden" type="text" value="" name="locality1" id="locality1"/>  
+				<input class="hidden" type="text" value="" name="country1" id="country1"/>  
+	 	
+	 	    	  	<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" />
+	    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search"/>
+	 	
+	   	    	  	<input class="form-control form-control-header header-input" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜 입력" required/>
+	 	
+			  	<input type="button" class="search-button" onclick="searchLocDate()" id="search-loc-date" alt="Submit"/>
+			</div>	  	
+		</form>
+	
+        <div class="menu-bar">
+        		
+        		<div class="menu-bar-top">
+		        <ul class="sub-menu">
+			        	<li><a><i class="fa fa-user-circle"></i>계정관리</a></li>
+			        	<li><a><i class="fa fa-sign-out"></i>로그아웃</a></li>
+		        </ul>        		
+        		</div>
+        		
+        		<div class="menu-bar-bottom">
+		        <ul class="main-menu">
+		        		<li><a href='${root}/accompany/board'>이음찾기</a></li>
+		        		<li><a href='${root}/accompany/matching'>이음매칭</a></li>
+		        		<li><a href='${root}/community/tip'>커뮤니티</a></li>
+		        		<li><a href='${root}/accompany/matching'>나의이음</a></li>
+		        </ul>        		
+        		</div>
+        
+	        
+	        
+	        	<div id="message-content"><p>message</p></div>
+	        	<div id="alarm-content"><p>alarm</p></div>
+        	
+	        	<div id="account-content">
+	        		<div class="account-login"><span>안녕하세요, ${m.nicName}님</span></div>
+		        	<ul>
+						<li onclick="location.href='${root}/profile/home';">프로필 홈</li>
+					</ul>
+					<ul>
+						<li onclick="location.href='${root }/member/profile-setting';">프로필 관리</li>
+					</ul>
+					<ul>
+						<li onclick="location.href='${root }/member/acc-setting';">나의 동행 관리</li>
+					</ul>
+					<ul>
+						<li onclick="location.href='${root }/member/bookmark';">북마크 관리</li>
+					</ul>
+					<ul>
+						<security:authorize  access="isAuthenticated()">
+						<li class="account-logout" onclick="location.href='${root }/j_spring_security_logout';">
+							로그아웃
+						</li>
+						</security:authorize>
+					</ul>
+	        	</div>
         </div>
     </div>
     

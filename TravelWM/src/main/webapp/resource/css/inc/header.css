@@ -3,18 +3,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,900,300italic");
 
 @font-face{
-	font-family: 'NanumBarunpen';
-	src: url("../../fonts/NanumBarunpenR.ttf") format('truetype');
-}
-@font-face{
-	font-family: 'NanumGothicUltraLight';
-	src: url("../../fonts/NanumBarunGothicUltraLight.ttf") format('truetype');
-}
-@font-face{
-	font-family: 'NanumGothic';
-	src: url("../../fonts/NanumGothic.ttf") format('truetype');
-}
-@font-face{
 	font-family: 'Spoqa';
 	src: url("../../fonts/Spoqa-Regular.ttf") format('truetype');
 }
@@ -23,22 +11,13 @@
 	src: url("../../fonts/Spoqa-Light.ttf") format('truetype');
 }
 @font-face{
-	font-family: 'SpoqaBold';
+	font-family: 'Spoqa-Bold';
 	src: url("../../fonts/Spoqa-Bold.ttf") format('truetype');
 }
 @font-face{
 	font-family: 'GodoM';
 	src: url("../../fonts/GodoM.ttf") format('truetype');
 }
-@font-face{
-	font-family: 'NanumBarunGothic';
-	src: url("../../fonts/NanumBarunGothic.ttf") format('truetype');
-}
-@font-face{
-	font-family: 'NanumBarunGothicLight';
-	src: url("../../fonts/NanumBarunGothicLight.ttf") format('truetype');
-}
-
 
 
 a:hover{
@@ -48,13 +27,12 @@ a:hover{
 html,body{
 	line-height: inherit;
 	font-size:13px;
-	font-family:'GodoM', 'RobotoDraft', 'Roboto', sans-serif;
+	font-family:'Spoqa', 'RobotoDraft', 'Roboto', sans-serif;
 	font-weight: 100;
 }
 
-
-.navbar{
-	height:60px;
+ol, ul{
+	margin: 0;
 }
 
 .navbar-default{
@@ -62,24 +40,37 @@ html,body{
 	flex-direction: row;
 	flex-wrap: nowrap;
 	
-	background-color: rgba(51, 181, 229, 1);
-	box-shadow: ;
-	border-bottom: 0px;
+	height:90px;
+	
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	magin: 0;
+	
+	border: 0;
+	border-bottom: 1px solid #e4e4e4;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	background: #fff;
 }
 
+
+
+/* --- HEADER LOGO PART ---------------------------------------------------------- */
 .logo{
-	order: 1;
+	display: block;
 	
-	height: 100%;
-	width: 120px;
-	background:url("../../images/tripconn-logo/tripconn-logo-final-white.png") no-repeat center;
-	background-size: 75px;
-	background-position-y: 8px;
+	width: 130px;
+	
+	background:url("../../images/tripconn-logo/tripconn-logo-final-blue.png") no-repeat center;
+	background-size: 90px;
+	background-position-y: 10px;
 	text-align: center;
 }
 
+
+
+/* --- HEADER SEARCH BAR PART ---------------------------------------------------------- */
 .search-bar{
-	order: 2;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -96,30 +87,31 @@ html,body{
 	flex-wrap: nowrap;
 }
 
+
 .form-control{
-	font-family: 'Spoqa' !important;
-	font-size: 11px;
-	outline: none;
-	
+	font-family: 'Spoqa-Light';
+	font-size: 12px;
 }
 
 .form-control-header{
-	
 	display: block;
 		
-	width: 180px !important;
+	width: 170px;
 	
 	outline: none;
 	border: none;
+	box-shadow: none;
 	border-radius: 0;
 }
 
-#header-calendar{
-	width: 160px !important;	
+.header-input{
+	border: 1px solid #33b5e5;
+	border-right: none;
 }
 
-.search-bar-container>input:first-child{
-	border-right: 1px solid #e4e4e4;
+.header-input:focus{
+	outline: none;
+	box-shadow: none;
 }
 
 .search-button{
@@ -129,109 +121,124 @@ html,body{
 	border: 0 none;
 	cursor: pointer;
 
-    background: #87deff url(../../images/ic_search_white_36dp_1x.png) center no-repeat;
+    background: #33b5e5 url(../../images/ic_search_white_36dp_1x.png) center no-repeat;
     background-size: 20px 20px;
 } 
 
+
 .search-button:hover{
-	background: #009ddb url(../../images/ic_search_white_36dp_1x.png) center no-repeat;	
+	background: #0099d6 url(../../images/ic_search_white_36dp_1x.png) center no-repeat;	
 	background-size: 20px 20px;
 }
 
+
+
+/* --- HEADER MENU BAR PART ---------------------------------------------------------- */
 .menu-bar{
-	order:99;
-	min-width: inherit;
-	height:60px;
 	display: flex;
-	align-items:center;
-	justify-content:flex-end;
+	flex-direction: column;
 	flex-grow:2;
 }
-.accompany{
-	display:flex;
-	order:4;
-	height:inherit;
-	
+
+.menu-bar-top{
+	height: 40%;
+	padding-right: 15px;
 }
 
-.accompany li{
-	display: flex;
-	height:initial;
-	
-	padding-left: 20px;
-	padding-right: 20px;
-	align-items:center;
-	
-	font-size:13px;
-	color:#e8f8ff;
-	text-align: center;
-	
-	white-space: nowrap;
-	overflow: hidden;
-	
-	margin-top:5px;
+.menu-bar-bottom{
+	height: 60%;
+	padding-right: 15px;
 }
 
-.accompany li:hover{
-	cursor: pointer;
-	border-bottom: 2px solid #fff;
-	color:#fff;
-	text-decoration:none;
-	background:transparent;
-	margin-top:7px;
-}
-
-
-.accompany li a{
-	font-size:12px;
-	color:#e8f8ff;
-}
-
-.accompany .except-li a:hover{
-	margin-top:0px;
-	border-bottom: 0px;
-	text-decoration: none;
-	color:#e8f8ff;
-	font-weight: normal;
-}
-
-
-.accoompany>li{
-	align-items:center;
-}
-
-.mypage{
+.main-menu{
 	display:flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	
-	width: 150px;
+	height: 100%;
 	
-	heigth: 100%;
-	
-	font-size: 12px !important;
-	
-	order:99;
+	justify-content: flex-end;
 }
 
-.mypage li{
-	margin-left:25px;
-
+.main-menu ul{
+	display: table;
 }
 
-.fa{
-	font-size: 17px !important;
-	color: #fff !important;
+.main-menu li{
+	display: table-cell;
+	
+	height: 100%;
 }
 
-.fa:hover{
+.main-menu li a{
+	height: 100%;
+	
+	line-height: 35px;
+	font-size:15px;
+	font-family: 'Spoqa-Light';
+	
+	padding: 0px 15px 17px 15px;
+	border-bottom: 3px solid transparent;
+	
+	color: #666;
+}
+
+.main-menu li a:hover{
+	color: #0099d6;
+	border-bottom: 3px solid #0099d6;
+}
+
+.sub-menu{
+	display:flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+		
+	height: 100%;
+	
+	justify-content: flex-end;
+}
+
+.sub-menu ul{
+	display: table;
+}
+
+.sub-menu li{
+	display: table-cell;
+	
+	height: 100%;
+	
+	padding-right: 15px;
+}
+
+.sub-menu li a{
+	height: 100%;
+	
+	font-size: 12px;
+	font-family: 'Spoqa-Light';
+	color: #999;
+	
+	padding: 0px 0px 9px 5px;
+}
+
+.fa{	
+	line-height: 7px;
+	padding-right: 5px;
+}
+
+.sub-menu li a:hover{
 	cursor: pointer;
-	color: #009ddb !important;
+	color: #009ddb;
 }
 
-.body{
-	font-size: 13px;
-}
+
+
+
+
+
+
+
+
+
 
 #message-content{
 	display: none;
