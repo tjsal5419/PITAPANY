@@ -85,7 +85,8 @@ public class AccompanyController {
 	private String eD;
 
 	@RequestMapping(value = "matching", method = RequestMethod.GET)
-	public String matching(Model model) {
+	public String matching(@RequestParam(value="id", defaultValue="default")String memberAccomInfoId,
+			Model model) {
 
 		// 로그인한 회원 정보 가져오기
 		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
@@ -115,10 +116,10 @@ public class AccompanyController {
 			memAccomInfoList.add(tempMemAccomInfoList.get(i));
 		}
 
-		/* ------------------매칭된 동행 정보 ----------------------- */
+		/* ------------------매칭된 동행 정보(전체) ----------------------- */
 		List<MemberProfInfoMatchingResultView> resultList = new ArrayList<MemberProfInfoMatchingResultView>();
 
-		// 기존 정보 + 새로 저장된 매칭 정보 가져오기
+		// 매칭 당일 새로 저장된 매칭 정보 가져오기
 		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
 
 		for (MemberAccompanyMatch m : memAccomMatchedList) {
@@ -126,11 +127,40 @@ public class AccompanyController {
 					.getMatchingResult(m.getMemberAccompanyInfoId());
 			resultList.add(result);
 		}
+		
+		/* ------------------매칭된 동행 정보(당일날 매칭된 정보) ----------------------- */
+		List<MemberProfInfoMatchingResultView> resultListToday = new ArrayList<MemberProfInfoMatchingResultView>();
+		
+		// 매칭 당일 새로 저장된 매칭 정보 가져오기
+		List<MemberAccompanyMatch> memAccomMatchedListToday = memberAccompanyMatchDao.getByMemberIdToday(memberId);
+		
+		for (MemberAccompanyMatch m : memAccomMatchedListToday) {
+			MemberProfInfoMatchingResultView result = memberAccomInfoDao
+					.getMatchingResult(m.getMemberAccompanyInfoId());
+			resultListToday.add(result);
+		}
+
+		
+		/*---------------기존 매칭 정보 선택 시 해당 정보 가져오기-------------------*/ 
+		MemberProfInfoMatchingResultView selectMatchedInfo = null;
+		
+		if(!memberAccomInfoId.equals("default"))
+			selectMatchedInfo = memberAccomInfoDao.getMatchingResult(memberAccomInfoId);
+
+		
+
+		
+		//남은 매칭 횟수
+		String matchCount = memberDao.getMember(memberId).getMatchCount();
 
 		model.addAttribute("memberPrevMatchedList", resultList);
-
+		model.addAttribute("memberPrevMatchedListToday", resultListToday);
+		model.addAttribute("memberPrevSelected",selectMatchedInfo);
 		model.addAttribute("memAccomInfoList", memAccomInfoList);
 		model.addAttribute("size", size);
+		model.addAttribute("memberAccomInfoId", memberAccomInfoId);
+		model.addAttribute("matchCount", matchCount);
+		
 
 		return "accompany.matching";
 	}
@@ -635,7 +665,7 @@ public class AccompanyController {
 		} 
 
 		// 기존 정보 + 새로 저장된 매칭 정보 가져오기
-		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
+		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberIdToday(memberId);
 
 		for (MemberAccompanyMatch m : memAccomMatchedList) {
 			MemberProfInfoMatchingResultView result = memberAccomInfoDao
@@ -659,5 +689,41 @@ public class AccompanyController {
 		}
 
 	}
+/*	
+	---------------------------- 이전 동행 매칭 정보 ajax 로 가져오기 -----------------
+	@RequestMapping(value = "prev-matched-ajax-data", produces = "application/text; charset=utf8", method = RequestMethod.GET)
+	@ResponseBody
+	public String prevMatchedGet(){
+
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		String memberId = member.getId();
+		
+		// 기존 정보 + 새로 저장된 매칭 정보 가져오기
+		List<MemberAccompanyMatch> memAccomMatchedList = memberAccompanyMatchDao.getByMemberId(memberId);
+		List<MemberProfInfoMatchingResultView> resultList = new ArrayList<MemberProfInfoMatchingResultView>();
+		
+		for (MemberAccompanyMatch m : memAccomMatchedList) {
+			MemberProfInfoMatchingResultView result = memberAccomInfoDao
+					.getMatchingResult(m.getMemberAccompanyInfoId());
+			resultList.add(result);
+		}
+
+		
+		String json = null;
+		Gson gson = new Gson();
+		JsonParser parser = new JsonParser();
+		
+		if(resultList.isEmpty()) {
+			String resultString = "{\"error\":\"이전 동행 정보가 없습니다.\"}";
+			return resultString;
+		}
+		else {	
+			json = gson.toJson(resultList);
+			return json;
+		}
+		
+	}
+	*/
 
 }

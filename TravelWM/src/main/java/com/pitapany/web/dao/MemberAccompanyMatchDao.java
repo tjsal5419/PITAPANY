@@ -11,6 +11,7 @@ public interface MemberAccompanyMatchDao {
 	MemberAccompanyMatch get(String id);
 	List<MemberAccompanyMatch> getList(int page);
 	List<MemberAccompanyMatch> getByMemberId(String memberId);
+	List<MemberAccompanyMatch> getByMemberIdToday(String memberId);
 	List<MatchedMemberView> getMatchedMemberList(String memberId);
 	
 	int count();
