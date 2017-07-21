@@ -19,4 +19,5 @@ public interface MemberAccompanyMatchDao {
 	int deleteByAccomInfoId(String memberAccompanyInfoId);
 	
 	int add(MemberAccompanyMatch memberAccompanyMatch);
+	int deleteAll(String memberId);
 }

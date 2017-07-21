@@ -160,11 +160,17 @@ public class MemberController {
 	
 	@RequestMapping(value="acc-info-delete", method=RequestMethod.GET)
 	public String accInfoDelete(String id, Model model){
-		int deleteCol = memberAccompanyInfoDao.delete(id);
+		int deleteCol;
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
+		
+		if(id.equals("all"))
+			deleteCol = memberAccompanyInfoDao.deleteAll(memberId);
+		else
+			deleteCol = memberAccompanyInfoDao.delete(id);
 		
 		if(deleteCol>0){
-			model.addAttribute("url","member/acc-setting");
-			model.addAttribute("msg","삭제되었습니다.");
+			return "redirect:acc-setting";
 		}
 		else{
 			model.addAttribute("url","member/acc-setting");
@@ -173,6 +179,7 @@ public class MemberController {
 		return "inc/redirect";
 		
 	}
+
 	
 	@RequestMapping(value="acc-info-edit", method=RequestMethod.POST)
 	public String accInfoEdit(Model model,
@@ -247,11 +254,18 @@ public class MemberController {
 	@RequestMapping(value="matched-accom-delete", method=RequestMethod.GET)
 	public String matchedAccomDelete(String id, Model model){
 
-		int deleteCol = memberAccompanyMatchDao.deleteByAccomInfoId(id);
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication().getDetails()).getMember();
+		String memberId = member.getId();
+		
+		int deleteCol;
+		
+		if(id.equals("all"))
+			deleteCol = memberAccompanyMatchDao.deleteAll(memberId);
+		else
+			deleteCol = memberAccompanyMatchDao.deleteByAccomInfoId(id);
 		
 		if(deleteCol>0){
-			model.addAttribute("url","member/acc-setting");
-			model.addAttribute("msg","삭제되었습니다.");
+			return "redirect:acc-setting";
 		}
 		else{
 			model.addAttribute("url","member/acc-setting");

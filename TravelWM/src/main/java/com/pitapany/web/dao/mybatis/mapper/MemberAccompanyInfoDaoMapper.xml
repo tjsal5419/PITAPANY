@@ -128,5 +128,10 @@
 		DELETE FROM MemberAccompanyInfo
 		WHERE id = #{id}
 	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM MemberAccompanyInfo
+		WHERE memberId = #{memberId}
+	</delete>
 
 </mapper>
