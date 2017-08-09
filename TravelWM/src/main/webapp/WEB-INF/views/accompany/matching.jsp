@@ -38,7 +38,7 @@
 	   }
 	 });
  </script>
-<main class="container">
+<main class="container1">
 	<div class="accompany-option-section Col-lg-7 Col-sm-6">
 	<form name="mathing-info-form" class="mathing-info-form">
 		<h1 class="hidden"> 동행 선택 옵션 추가 </h1>
@@ -169,7 +169,7 @@
 				<h2 class="matched-profile-title">오늘 하루 매칭된 동행 </h2>
 			</div>
 			<div>
-				<h2>남은 횟수 : ${matchCount }</h2>
+				<h2 class="match-count">남은 횟수 : ${matchCount }</h2>
 			</div>
 			<ul class="matched-profile-img">
 				<li><img class="prev-button" src="${root }/resource/images/ic_keyboard_arrow_left_black_24dp_2x.png"/></li>
@@ -233,11 +233,16 @@ window.addEventListener("load", function(e) {
 	var sex = document.querySelector(".accom-sex");
 	var age = document.querySelector(".accom-age");
 	var chattingButton = document.querySelector("#request-chatting");
+	var profiletitle = document.querySelector(".matched-profile-title");
+	
+	if(${memberAccomInfoId ne'default' })
+		profiletitle.innerHTML = "기존에 매칭된 동행";
 
-	if(${memberPrevMatchedListToday.size()} ==0){
+	// 초기 데이터 설정하기
+	if(${memberPrevMatchedListToday.size()} ==0 && ${memberAccomInfoId eq 'default'}){
 		chattingButton.style.display="none";
 	}
-	// 초기 데이터 설정하기
+	
 	if(${memberPrevMatchedListToday.size()} >0){
 		// 정보 교체
 
@@ -418,7 +423,7 @@ window.addEventListener("load", function(e) {
 						else
 							sex.innerHTML = "여성";
 					
-						
+						/* --------------------------날 짜 ------------------------ */
 						var startDate = new Date(result[0].startDate);
 						var endDate = new Date(result[0].endDate);
 						var startDateMon = startDate.getMonth() +1;
@@ -451,51 +456,14 @@ window.addEventListener("load", function(e) {
 							if(endDateDay<10)
 								endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
 							else
-								endDate = endDateYear + "." + endDateMon + "." + endDateDay;
+								endDate = endDateYear + endDateMon + "." + endDateDay;
 						}
 						
 						date.innerHTML = startDate+ "-" +endDate;
+						/* ----------------------------------------------------- */
 
-						/* 					
-						var startMonth = result[0].startDate.split("월 ");
-						var startDate = startMonth[1].split(",");
-						var startYear = startDate[1].split(" 20");
-						
-						var endMonth = result[0].endDate.split("월 ");
-						var endDate = endMonth[1].split(",");
-						var endYear = endDate[1].split(" 20");
-		
-						var startDateFull;
-						var endDateFull;
-						
-						
-						if(startMonth[0].length>1)
-							startDateFull = startYear[1] + "." + startMonth[0];
-						else 
-							startDateFull = startYear[1] + ".0" + startMonth[0];
-						
-						if(startDate[0].length>1)
-								startDateFull = startDateFull + "." + startDate[0];
-						else 
-							startDateFull = startDateFull + ".0" + startDate[0];
-						
-						
-						if(endMonth[0].length>1)
-							endDateFull = endYear[1] + "." + endMonth[0];
-						else 
-							endDateFull = endYear[1] + ".0" + endMonth[0];
-							
-						if(endDate[0].length>1)
-							endDateFull = endDateFull + "." + endDate[0];
-						else 
-							endDateFull = endDateFull + ".0" + endDate[0];
-			
-						date.innerHTML = startDateFull+" - "+endDateFull;
-						 
- */
 						alert("매칭되었습니다.");
- 
-
+ 						
  						if(result.length>1){
  							var currentMatchInfo = 0;
  							nextButton.style.display = "flex";
@@ -504,7 +472,48 @@ window.addEventListener("load", function(e) {
 								currentMatchInfo++;
  								// 정보 교체
 								location.innerHTML = result[currentMatchInfo].place;
-								date.innerHTML = result[currentMatchInfo].startDate+ "-" +result[currentMatchInfo].endDate;	
+								
+								/* --------------------------날 짜 ------------------------ */
+								startDate = new Date(result[currentMatchInfo].startDate);
+								endDate = new Date(result[currentMatchInfo].endDate);
+								startDateMon = startDate.getMonth() +1;
+								endDateMon = endDate.getMonth() + 1;
+								startDateDay = startDate.getDate();
+								endDateDay = endDate.getDate(); 
+								startDateYear = startDate.getFullYear().toString().substring(2,4);
+								endDateYear = endDate.getFullYear().toString().substring(2,4);
+								
+								if(startDateMon<10){
+									if(startDateDay<10)
+										startDate = startDateYear+ ".0"+ startDateMon + ".0" + startDateDay;
+									else
+										startDate = startDateYear+ ".0"+ startDateMon + "." + startDateDay;
+								}
+								else{
+									if(startDateDay<10)
+										startDate = startDateYear+ "."+startDateMon + ".0" + startDateDay;
+									else
+										startDate = startDateYear+ "."+ startDateMon + "." + startDateDay;
+								}	
+									
+								if(endDateMon<10){
+									if(endDateDay<10)
+										endDate = endDateYear + ".0"+ endDateMon + ".0" + endDateDay;
+									else
+										endDate = endDateYear+ ".0"+ endDateMon + "." + endDateDay;
+								}
+								else{
+									if(endDateDay<10)
+										endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
+									else
+										endDate = endDateYear + endDateMon + "." + endDateDay;
+								}
+								
+								date.innerHTML = startDate+ "-" +endDate;	
+								
+								/* ----------------------------------------------------- */
+
+ 								
 								
 								if(result[currentMatchInfo].sex === '0')
 									sex.innerHTML = "남성";
@@ -531,11 +540,52 @@ window.addEventListener("load", function(e) {
  							};
  							
  							prevButton.onclick=function(){
+ 								
  								currentMatchInfo--;
  								
+								/* --------------------------날 짜 ------------------------ */
+								startDate = new Date(result[currentMatchInfo].startDate);
+								endDate = new Date(result[currentMatchInfo].endDate);
+								startDateMon = startDate.getMonth() +1;
+								endDateMon = endDate.getMonth() + 1;
+								startDateDay = startDate.getDate();
+								endDateDay = endDate.getDate(); 
+								startDateYear = startDate.getFullYear().toString().substring(2,4);
+								endDateYear = endDate.getFullYear().toString().substring(2,4);
+								
+								if(startDateMon<10){
+									if(startDateDay<10)
+										startDate = startDateYear+ ".0"+ startDateMon + ".0" + startDateDay;
+									else
+										startDate = startDateYear+ ".0"+ startDateMon + "." + startDateDay;
+								}
+								else{
+									if(startDateDay<10)
+										startDate = startDateYear+ "."+startDateMon + ".0" + startDateDay;
+									else
+										startDate = startDateYear+ "."+ startDateMon + "." + startDateDay;
+								}	
+									
+								if(endDateMon<10){
+									if(endDateDay<10)
+										endDate = endDateYear + ".0"+ endDateMon + ".0" + endDateDay;
+									else
+										endDate = endDateYear+ ".0"+ endDateMon + "." + endDateDay;
+								}
+								else{
+									if(endDateDay<10)
+										endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
+									else
+										endDate = endDateYear + endDateMon + "." + endDateDay;
+								}
+								
+								date.innerHTML = startDate+ "-" +endDate;	
+								
+								/* ----------------------------------------------------- */
+
+								
  								// 정보 교체
 								location.innerHTML = result[currentMatchInfo].place;
-								date.innerHTML = result[currentMatchInfo].startDate+ "-" +result[currentMatchInfo].endDate;
 								
 								if(result[currentMatchInfo].sex === '0')
 									sex.innerHTML = "남성";

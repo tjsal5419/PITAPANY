@@ -16,7 +16,7 @@ body{
 	background: #fafafa;
 }
 /* ----------------Section-------------------- */
-.container{
+.container1{
 	margin-left: 5%;
 	margin-right: 5%;
 	display:flex;
@@ -397,7 +397,7 @@ h2{
 }
 /*------------------- mediaÄõ¸®--------------*/
 @media all and (max-width:480px){
-	.container{
+	.container1{
 		margin-left:0px;
 		margin-right:0px;
 		flex-wrap:wrap;
@@ -434,7 +434,7 @@ h2{
 }
 
 @media all and (min-width:480px) and (max-width:1024px){
-	.container{
+	.container1{
 		flex-wrap:wrap;
 	}
 	

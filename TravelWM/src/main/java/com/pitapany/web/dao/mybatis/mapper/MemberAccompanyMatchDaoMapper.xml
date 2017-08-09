@@ -75,9 +75,16 @@
 		DELETE FROM MemberAccompanyMatch
 		WHERE id = #{id}
 	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM MemberAccompanyMatch
+		WHERE memberId = #{memberId}
+	</delete>
+	
 	<delete id="deleteByAccomInfoId">
 		DELETE FROM MemberAccompanyMatch
 		WHERE memberAccompanyInfoId = #{memberAccompanyInfoId}
 	</delete>
+	
 
 </mapper>

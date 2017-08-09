@@ -87,12 +87,17 @@
 											<div class="edit-delete">
 												<button id="mod" value="${li.id }" class="btn btn-info na edit-button">수정</button>
 												<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/acc-info-delete?id=${li.id }'">삭제</button>
+					
 											</div>
 										</div>
 									</c:forEach>
+									
+									<button value="${li.id }" class="btn btn-info na delete-button" onclick="AccomDelAll()">전체 삭제</button>
 								</c:otherwise>
 							</c:choose>
-	<!-- ------------------------------------------------------------------ -->						
+							
+	<!-- ------------------------------------------------------------------ -->					
+							
 						</div>
 					</div>
 			</div>
@@ -135,15 +140,19 @@
 									</div>
 								
 									<div class="edit-delete">
-										<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/matched-accom-delete?id=${li.id }'">삭제</button>
+										<button value="${li.id }" class="btn btn-info na delete-button">삭제</button>
 									</div>
 								</div>
 								</c:forEach>
+								<div>
+									<button class="btn btn-info" onclick="matchDelAll()">전체 삭제</button>
+								</div>
 							</c:otherwise>
 						</c:choose>
 					
 					<div>
 						<button type="button" class="btn-add" id="btn-add" onclick="window.location.href='${root }/accompany/matching'">추가</button>
+						
 					</div>
 				</div>
 			</div>
@@ -160,6 +169,31 @@
 	
 </main>
 
+<!-- ---------------전체 삭제 확인하기----------------- -->
+<script>
+
+var matchDelAll = function(){
+
+	var checkDelete = confirm("매칭된 동행을 전부 삭제하시겠습니까?");
+	if(checkDelete)
+	 	window.location.href='${root }/member/matched-accom-delete?id=all';
+	else
+		return;
+
+};
+
+var AccomDelAll = function(){
+
+	var checkDeleteAccom = confirm("입력하신 동행 정보를 전부 삭제하시겠습니까?");
+	if(checkDeleteAccom)
+	 	window.location.href='${root }/member/acc-info-delete?id=all';
+	else
+		return;
+
+};
+
+
+</script>
 
 <!-- --------------동행 정보 수정용 자바 스크립트--------------------------------- -->
 <script>

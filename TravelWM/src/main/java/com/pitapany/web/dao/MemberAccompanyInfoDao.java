@@ -20,4 +20,5 @@ public interface MemberAccompanyInfoDao {
 	int delete(String id);
 	int add(MemberAccompanyInfo memberAccompanyInfo);
 	int update(MemberAccompanyInfo memberAccompanyInfo);
+	int deleteAll(String memberId);
 }

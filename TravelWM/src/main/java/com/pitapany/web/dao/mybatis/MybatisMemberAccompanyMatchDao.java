@@ -74,5 +74,11 @@ public class MybatisMemberAccompanyMatchDao implements MemberAccompanyMatchDao {
 		return memberAccMatchDao.getByMemberIdToday(memberId);
 	}
 
+	@Override
+	public int deleteAll(String memberId) {
+		MemberAccompanyMatchDao memberAccMatchDao = sqlSession.getMapper(MemberAccompanyMatchDao.class);
+		return memberAccMatchDao.deleteAll(memberId);
+	}
+
 
 }

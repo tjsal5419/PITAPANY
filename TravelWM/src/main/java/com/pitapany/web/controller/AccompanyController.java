@@ -166,14 +166,26 @@ public class AccompanyController {
 	}
 
 	@RequestMapping(value = "detail", method = RequestMethod.GET)
-	public String detailGet(Model model, String id, String pla, String sty, int min_a, int max_a, String lat,String lng,String sD, String eD,
+	public String detailGet(Model model, 
+			String id,
+			@RequestParam(value = "sty", defaultValue = "default") String sty,
+			@RequestParam(value = "sx", defaultValue = "default") String sx,
+			@RequestParam(value = "min_a", defaultValue = "0") int min_a,
+			@RequestParam(value = "max_a", defaultValue = "100") int max_a,
+			@RequestParam(value = "lat", defaultValue = "0") String lat,
+			@RequestParam(value = "lng", defaultValue = "0") String lng,
+			@RequestParam(value = "sD", defaultValue = "0000-00-00") String sD,
+			@RequestParam(value = "eD", defaultValue = "9999-99-99") String eD,
+			@RequestParam(value = "pla", defaultValue = "default") String pla,
 			@RequestParam(value = "p", defaultValue = "1") String page) {
+		
 		accompanyBoardDao.addHits(id);
 		AccompanyBoardView accompanyBoard = accompanyBoardDao.getView(id);
 		AccompanyBoardFile file = accompanyBoardFileDao.get(id);
 		Member member = memberDao.get(accompanyBoard.getMemberId());
 		MemberProfile memberProfile = memberProfileDao.getByMemberId(accompanyBoard.getMemberId());
 		List<OnlyAccReplyView> reply = accompanyBoardReplyDao.getReplyList(id);
+		
 		model.addAttribute("file", file);
 		model.addAttribute("accDetail", accompanyBoard);
 		model.addAttribute("member", member);
@@ -679,8 +691,8 @@ public class AccompanyController {
 		JsonParser parser = new JsonParser();
 
 		if (!isNotMatched) {
-			System.out.println(resultList.get(0).getStartDate());
 			json = gson.toJson(resultList);
+//			gson.toJson(json, memberDao.getMember(memberId).getMatchCount()));
 			System.out.println("json" + json);
 			return json;
 		} else {
