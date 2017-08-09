@@ -9,11 +9,6 @@
 	display:none;
 }
 
-.navbar{
- 	min-height:0px;
- 	height:50px;
-}
-  
 body {
     display: flex;
     flex-direction: column;

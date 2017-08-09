@@ -7,35 +7,63 @@
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Include Required Prerequisites -->
 <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
- 
-<!-- 네모 테두리 디자인 -->
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<!-- Main Page & Header Related CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="${root}/resource/css/inc/header.css" />
 
-<head>
-	<title>동행이음 - 설레는 인연을 만나보세요</title>
-</head>
 
 <nav>
+
+	
+	<div class="navbar-top">
+		<ul class="clearfix">
+		    <li>
+		        <a class="default-fa"><i class="fa fa-envelope"></i><i class="fa fa-caret-down"></i></a>
+		 
+		        <ul class="sub-menu-container sub-menu-container-transparent">
+		            <li><a href="#">In Cinemas Now11</a></li>
+		            <li><a href="#">Coming Soon11</a></li>
+		            <li><a href="#">On DVD/Blu-ray</a></li>
+		        </ul>
+		    </li>
+		    <li>
+		        <a class="default-fa"><i class="fa fa-bell"></i><i class="fa fa-caret-down"></i></a>
+		 
+		        <ul class="sub-menu-container sub-menu-container-transparent">
+		            <li><a href="#">In Cinemas Now22</a></li>
+		            <li><a href="#">Coming Soon22</a></li>
+		            <li><a href="#">On DVD/Blu-ray</a></li>
+		        </ul>
+		    </li>
+		    <li>
+		    		<a class="default-fa"><i class="fa fa-user-circle"></i><i class="fa fa-caret-down"></i></a>
+		        <!-- <a href="#">Movies <span class="arrow">&#9660;</span></a> -->
+		 
+		        <ul class="sub-menu-container sub-menu-container-transparent">
+		            <li><a href="#"><i class="fa fa-gear"></i>계정설정</a></li>
+		            <li><a href="#"><i class="fa fa-bookmark"></i>북마크</a></li>
+		            <li class="item-divider"></li>
+		            <security:authorize  access="isAuthenticated()">
+		            <li><a href="${root }/j_spring_security_logout"><i class="fa fa-sign-out"></i>로그아웃</a></li>
+		            </security:authorize>
+		        </ul>
+		    </li>
+		</ul>
+	</div>
+		
     <div class="navbar navbar-default navbar-fixed-top">
-    	
-	    	<div class = "menu-button-mobile"><i class="fa fa-bars"></i></div>
+		
+	    	<div class = "menu-mobile-button"><i class="fa fa-bars"></i></div>
 	    	<a href="${root}/member/main" class="logo"></a>
-	    	<div class = "search-button-mobile"><i class="fa fa-search"></i></div>
-	    	
-	    	
+	    	<div class = "search-mobile-button"><i class="fa fa-search"></i></div>
 	    	
 	    	
 	    	<form class="search-bar" action="" method="get" class="form-group">
@@ -52,100 +80,153 @@
 	 	    	  	<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" />
 	    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search"/>
 	 	
-	   	    	  	<input class="form-control form-control-header header-input" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜 입력" required/>
+	   	    	  	<input class="form-control form-control-header header-input" id="header-calendar" type="text" name="datefilter" value="" placeholder="동행 날짜" required/>
 	 	
 			  	<input type="button" class="search-button" onclick="searchLocDate()" id="search-loc-date" alt="Submit"/>
 			</div>	  	
 		</form>
 	
-        <div class="menu-bar">
-        		
-        		<div class="menu-bar-top">
-		        <ul class="sub-menu">
-			        	<li><a><i class="fa fa-user-circle"></i>계정관리</a></li>
-			        	<li><a><i class="fa fa-sign-out"></i>로그아웃</a></li>
-		        </ul>        		
-        		</div>
-        		
+	
+        <div class="menu-bar"> 	
         		<div class="menu-bar-bottom">
 		        <ul class="main-menu">
-		        		<li><a href='${root}/accompany/board'>이음찾기</a></li>
-		        		<li><a href='${root}/accompany/matching'>이음매칭</a></li>
-		        		<li><a href='${root}/community/tip'>커뮤니티</a></li>
-		        		<li><a href='${root}/accompany/matching'>나의이음</a></li>
+		        		<li><a class="default-font" href='${root}/accompany/board'>이음찾기</a></li>
+		        		<li><a class="default-font" href='${root}/accompany/matching'>이음매칭</a></li>
+		        		<li><a class="default-font" href='${root}/community/tip'>커뮤니티</a></li>
+		        		<li><a class="default-font" href='${root}/profile/home'>나의이음</a></li>
 		        </ul>        		
         		</div>
-        
-	        
-	        
-	        	<div id="message-content"><p>message</p></div>
-	        	<div id="alarm-content"><p>alarm</p></div>
-        	
-	        	<div id="account-content">
-	        		<div class="account-login"><span>안녕하세요, ${m.nicName}님</span></div>
-		        	<ul>
-						<li onclick="location.href='${root}/profile/home';">프로필 홈</li>
-					</ul>
-					<ul>
-						<li onclick="location.href='${root }/member/profile-setting';">프로필 관리</li>
-					</ul>
-					<ul>
-						<li onclick="location.href='${root }/member/acc-setting';">나의 동행 관리</li>
-					</ul>
-					<ul>
-						<li onclick="location.href='${root }/member/bookmark';">북마크 관리</li>
-					</ul>
-					<ul>
-						<security:authorize  access="isAuthenticated()">
-						<li class="account-logout" onclick="location.href='${root }/j_spring_security_logout';">
-							로그아웃
-						</li>
-						</security:authorize>
-					</ul>
-	        	</div>
         </div>
+    
+    </div>
+
+
+    <div class="menu-mobile-screen">
     </div>
     
-    <div class='menu-mobile'>
-    	<div class="account-login-mobile"><span>메뉴 정보</span></div>
-		<ul>
-		  <li onclick="location.href='${root}/accompany/board';">이음찾기</li>
-		</ul>
-		<ul>  
-		  <li onclick="location.href='${root}/accompany/matching';">이음매칭</li>
-		</ul>
-		<ul>	
-			<li onclick="location.href='${root}/community/tip';">커뮤니티</li>
-		</ul>
-		<div class="account-login-mobile"><span>안녕하세요, ${m.nicName}님</span></div>
-			<ul>
-				<li onclick="location.href='${root}/profile/home';">프로필 홈</li>
-			</ul>
-			<ul>
-				<li onclick="location.href='${root }/member/profile-setting';">프로필 관리</li>
-			</ul>
-			<ul>
-				<li onclick="location.href='${root }/member/acc-setting';">나의 동행 관리</li>
-			</ul>
-			<ul>
-				<li onclick="location.href='${root }/member/bookmark';">북마크 관리</li>
-			</ul>
-			<ul>
-				<security:authorize  access="isAuthenticated()">
-					<li class="account-logout" onclick="location.href='${root }/j_spring_security_logout';">
-						로그아웃
-					</li>
-				</security:authorize>
-			</ul>
+    <div class="menu-mobile">
+    
+	    <div class="menu-mobile-container">
+	    		<div class="account-container-mobile">
+	    			<div class="account-info-mobile">
+	    				<a class="account-info-content"><i class="fa fa-user-circle mobile-menu-icon"></i>${m.nicName}님</a>
+	    			</div>
+	    			<div class="account-setting-mobile">
+	    				<a class="fa fa-cog mobile-menu-icon"></a>
+	    			</div>
+	    		</div>
+	    		
+	    		<div class="account-nav-mobile">
+	    			<button type="button" onclick=""><i class="fa fa-envelope mobile-button-icon"></i><span>메세지</span></button>
+	    			<button type="button" onclick=""><i class="fa fa-bell mobile-button-icon"></i><span>알림</span></button>
+	    			<button type="button" onclick=""><i class="fa fa-bookmark mobile-button-icon"></i><span>북마크</span></button>
+	    		</div>
+	    		
+	    		<div class="side-menu-container">
+	    			<button class="side-menu-mobile" onclick="location.href='${root}/accompany/board';">이음찾기</button>
+	    			<button class="side-menu-mobile">이음매칭</button>
+	    			<button class="side-menu-mobile side-menu-accordion">커뮤니티</button>
+	    				<div class="side-menu-panel">
+		    				<div>이음광장</div>
+		    				<div>이음팁게</div>
+		    				<div>이음질문</div>
+	    				</div>
+	    			<button class="side-menu-mobile">나의이음</button>
+	    		</div>
+    		</div>
+   		
+   		
+    		<div class="logout-mobile-container">
+    			<security:authorize  access="isAuthenticated()">
+			<a class="logout-mobile" onclick="location.href='${root }/j_spring_security_logout';"><i class="fa fa-sign-out"></i>로그아웃</a>
+			</security:authorize>
+    		</div>
+    		
 	</div>
 	
-	<div class="search-mobile">
+	<div class="search-mobile-container">
 		<input type="text" class="form-control form-control-header form-control-mobile" id="mobile-autocomplete" placeholder="동행 위치">
-    	<input class="form-control form-control-header form-control-mobile" type="text" name="datefilter" value=""  placeholder="동행 날짜 입력"/>
+    		<input class="form-control form-control-header form-control-mobile" type="text" name="datefilter" value=""  placeholder="동행 날짜"/>
 		<input type="button" class="search-button search-button-mobile2" id="mob-search-loc-date" onclick="mobSearchLocDate();"  alt="Submit">
 	</div>
 
 </nav>
+
+
+
+
+
+<!-- Side Menu Related Javascript -->
+<script>
+		window.addEventListener("load", function () {
+			var body = document.querySelector("body");
+			var menuMobileButton = document.querySelector(".menu-mobile-button");
+			var menuMobile = document.querySelector(".menu-mobile");
+			var menuMobileScreen = document.querySelector(".menu-mobile-screen");
+			
+			menuMobile.parentElement.insertBefore(menuMobileScreen, menuMobile);
+			
+			menuMobileButton.onclick = function() {
+				menuMobileScreen.style.display = "block";
+				menuMobile.style.left = "0%";
+				body.style.overflow = "hidden";
+			}
+			
+			menuMobileScreen.onclick = function() {
+				
+				menuMobileScreen.style.display = "none";
+				menuMobile.style.left = "-100%";
+				body.style.overflow = "auto";
+			}
+		});
+</script>
+
+
+
+
+
+<!-- Side Menu Accordion Javascript -->
+<script>
+	var sideMenuAccordion = document.getElementsByClassName("side-menu-accordion");
+	var i;
+	
+	for (i = 0; i < sideMenuAccordion.length; i++) {
+		sideMenuAccordion[i].onclick = function() {
+	    this.classList.toggle("active");
+	    var sideMenuPanel = this.nextElementSibling;
+	    if (sideMenuPanel.style.maxHeight){
+	    		sideMenuPanel.style.maxHeight = null;
+	    } else {
+	   	 	sideMenuPanel.style.maxHeight = "200px";
+	    } 
+	  }
+	}
+</script>
+
+
+
+
+
+<!-- Navbar-Top Related Javascript -->
+<script>
+	$(window).scroll(function () {
+	    var sc = $(window).scrollTop()
+	    
+	    $(".navbar-transition").css("transition-duration", "0.4s");
+	  
+	    if (sc > 10){
+	     	$(".navbar").css("top", "0px");
+	    } else {
+	    		$(".navbar").css("top", "20px");
+	    }
+	});
+</script>
+
+
+
+
+
+<!-- Location & Date Related Javascript -->
 <script>
 	window.addEventListener("load",function(){
 		var searchLocation = document.querySelector("#autocomplete");
@@ -159,260 +240,11 @@
 	});
 </script>
 
-<!-- -----------Don't Touch------google map API--------------------------------- -->
-<c:set var = "url" value = "${requestScope['javax.servlet.forward.request_uri']}"/>
 
 
-<c:if test="${!fn:contains(url, 'reg') && !fn:contains(url, 'acc-setting') && !fn:contains(url, 'detail-edit')}">
-
-<!-- ----------------------------- 날짜, 동행 위치 검색 필터 ----------------------- -->
-<script>
-	var searchLocDate=function(){
-		var search = document.querySelector("#search-loc-date");
-		var lat = document.querySelector("#lat1").value;
-		var lng = document.querySelector("#lng1").value;
-		var place = document.querySelector("#place1").value;
-		var sD = document.querySelector("#hidden-startDate").value;
-		var eD = document.querySelector("#hidden-endDate").value;
-			
-		window.location.href='${root}/accompany/board?pla='+place+'&lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;
-	
-	};
-	
-	var mobSearchLocDate=function(){
-		var search = document.querySelector("#mob-search-loc-date");
-
-		var lat = document.querySelector("#lat1").value;
-		var lng = document.querySelector("#lng1").value;
-		var place = document.querySelector("#place1").value;
-		var sD = document.querySelector("#hidden-startDate").value;
-		var eD = document.querySelector("#hidden-endDate").value;
-			
-		window.location.href='${root}/accompany/board?pla='+place+'&lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;
-		
-	};
-
-</script>
-<script>
-if(!window.location.href.includes("reg")){
-
-    var placeSearch1, autocomplete1, mobAutocomplete1;
-    var location1;
-    var componentForm1 = {
-  	        street_number: 'short_name',
-  	        route: 'long_name',
-  	        locality: 'long_name',
-  	        administrative_area_level_1: 'short_name',
-  	        country: 'long_name',
-  	        postal_code: 'short_name'
-  	};
-    
-/*          
-    var defaultBounds = new google.maps.LatLngBounds(
-  		  new google.maps.LatLng(-33.8902, 151.1759),
-  		  new google.maps.LatLng(-33.8474, 151.2631));
-	  var input = document.getElementById('autocomplete');
-    var searchBox = new google.maps.places.SearchBox(input, {
-  		  bounds: defaultBounds
-    });
-*/
-    
-function initAutocomplete() {
-    // Create the autocomplete object, restricting the search to geographical
-    // location types.
-    autocomplete1 = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-        {types: ['geocode']});
-    
-    mobAutocomplete1 = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('mobile-autocomplete')),
-            {types: ['geocode']});
-    
-
-    autocomplete1.addListener('place_changed', getLocation1);
-    mobAutocomplete1.addListener('place_changed', getLocation2);
-
-  }
-
-    function getLocation1(){
-  	  var place1 = autocomplete1.getPlace();
-  	  var mobAuto = document.querySelector("#mobile-autocomplete");
-      var latitude = place1.geometry.location.lat();
-  	  var longitude = place1.geometry.location.lng();
-       var placeName = place1.name;
-       var fotmattedAdress = place1.formatted_address;
- 	  
-  	  
-      var lng = document.querySelector("#lng1");
-  	  var lat = document.querySelector("#lat1");
-  	  var placeForm = document.querySelector("#place1");
-  	  var localityText = document.querySelector("#locality1");
-  	  var countryText = document.querySelector("#country1");
-	  var locality = '';
-	  var country = '';
-        for (var i = 0; i < place1.address_components.length; i++) {
-            var addressType1 = place1.address_components[i].types[0];
-            
-            if (addressType1=='country') {
-              country = place1.address_components[i][componentForm1[addressType1]];
-             
-             // alert(country);
-            }
-            
-            else if(addressType1 == 'locality'){
-          	  locality = place1.address_components[i][componentForm1[addressType1]];
-          	  
-          	 //	 alert(locality);
-            }
-       
-        }
-        mobAuto.value = document.querySelector("#autocomplete").value;
-        lng.value = longitude;
-  	    lat.value = latitude;
-  	    placeForm.value= placeName;
-  	    countryText.value = country;
-        localityText.value = locality;
-
-        
-  	  
-    }
-
-    function getLocation2(){
-    	  var place1 = mobAutocomplete1.getPlace();
-          var latitude = place1.geometry.location.lat();
-    	  var longitude = place1.geometry.location.lng();
-      	  var placeName = place1.name;
-      	 var fotmattedAdress = place1.formatted_address;
-      	  
-      	  var auto = document.querySelector("#autocomplete");
-
-       	  var lng = document.querySelector("#lng1");
-    	  var lat = document.querySelector("#lat1");
-    	  var placeForm = document.querySelector("#place1");
-    	  var localityText = document.querySelector("#locality1");
-    	  var countryText = document.querySelector("#country1");
-  		  var locality = '';
-  		  var country = '';
-  		  
-           
-          for (var i = 0; i < place1.address_components.length; i++) {
-              var addressType1 = place1.address_components[i].types[0];
-              
-              if (addressType1=='country') {
-                country = place1.address_components[i][componentForm1[addressType1]];
-               
-               // alert(country);
-              }
-              
-              else if(addressType1 == 'locality'){
-            	  locality = place1.address_components[i][componentForm1[addressType1]];
-            	  
-            	 //	 alert(locality);
-              }
-         
-          }
-          auto.value = document.querySelector("#mobile-autocomplete").value;
-  		  lng.value = longitude;
-    	  lat.value = latitude;
-    	  placeForm.value= placeName;
-    	  countryText.value = country;
-          localityText.value = locality;
-    	  
-    	  
-      }
-
-    
-     function geolocate() {
-       if (navigator.geolocation) {
-         navigator.geolocation.getCurrentPosition(function(position) {
-           var geolocation = {
-             lat: position.coords.latitude,
-             lng: position.coords.longitude
-           };
-           var circle = new google.maps.Circle({
-             center: geolocation,
-             radius: position.coords.accuracy
-           });
-           autocomplete1.setBounds(circle.getBounds());
-           mob-autocomplete1.setBounds(circle.getBounds());
-         });
-       }
-     }
-    
-     $('#autocomplete').keydown(function (e) {
-   	  if (e.which == 13 && $('.pac-container:visible').length) return false;
-   	});
-     
-     /* -----------구글 맵 검색 창 z-index 위로 올리기----------- */
-	 var autoComplete1 = document.querySelector('#autocomplete');
-	 var mobAutoComplete1 = document.querySelector('#mobile-autocomplete');
-	 		 
-		 autoComplete1.onclick = function(){
-	     autoComplete1.value='';
-	     var searchResultBox = document.querySelectorAll('.pac-container');
-	   	 for(var i=0;i<searchResultBox.length;i++)
-   			 searchResultBox[i].style.zIndex = '10000';
-   		 
-		 }
- 		 
-		 mobAutoComplete1.onclick = function(){
-			 mobAutoComplete1.value='';
-		     var searchResultBox = document.querySelectorAll('.pac-container');
-		   	 for(var i=0;i<searchResultBox.length;i++)
-       		     searchResultBox[i].style.zIndex = '10000';
-	   		 
-		 }
-}
-	 	 
-</script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
-        async defer></script>
-</c:if>
-<!-- ---------------------The end of google map API--------------------------------- -->
-
-        
-<script>
-$('input[name="datefilter"]').on("mousedown", function(){
-		$('.daterangepicker').css({'position':'fixed'});
-		$('.daterangepicker').css({'top':'45px'});
-});
 
 
-$('body').on("click", function(e){
-	if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .available, .prev, .prev i, .next, .next i, .dropdown-menu td")) {		
-	} else {
-		$('.daterangepicker').css({'top':'-500px'});
-	}
-});
-
-</script>
-        
-<script type="text/javascript">
-$(function() {	
-
-  $('input[name="datefilter"]').daterangepicker({
-      autoUpdateInput: false,
-      locale: {
-          cancelLabel: 'Clear'
-      }
-  });
-
-  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $('input[name="datefilter"]').val(picker.startDate.format('YY.MM.DD') + ' - ' + picker.endDate.format('YY.MM.DD'));
-      $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
-      $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
-  });
-
-  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-      $('input[name="endDate"]').val('');
-      $('input[name="startDate"]').val('');
-  });
-
-});
-</script>
-  
-  <!-- Toggle Down ---------------------------------------------------------------- -->
+<!-- Menu Toggle Javascript -->
 <script>
   
 $(document).on("click", function(e){
@@ -442,33 +274,31 @@ $(document).on("click", function(e){
 </script>
 
 
-<!-- Toggle Remove ---------------------------------------------------------------- -->
+
+
+
+<!-- Menu Toggle Remove Javascript -->
 <script>
 
-
-$('.menu-button-mobile').click(function(event){
+/* $('.menu-button-mobile').click(function(event){
 	
 	event.stopPropagation();
     $('.menu-mobile').toggleClass('down');
-    $('.search-mobile').removeClass('down');
-});
+    $('.search-mobile-container').removeClass('down');
+}); */
 
-
-$('.search-button-mobile').click(function(event){
+$('.search-mobile-button').click(function(event){
 	
 	event.stopPropagation();
-    $('.search-mobile').toggleClass('down');
+    $('.search-mobile-container').toggleClass('down');
     $('.menu-mobile').removeClass('down');
 });
 
 $('body').click(function(e){
-	
-	
-	if($(e.target).is(".menu-mobile, .menu-mobile ul, .menu-mobile li, .search-mobile, .search-mobile>input, .range_inputs>button")) {
-		
+	if($(e.target).is(".menu-mobile, .menu-mobile ul, .menu-mobile li, .search-mobile-container, .search-mobile-container>input, .range_inputs>button")) {
 	} else {
 		$('.menu-mobile').removeClass('down');
-		$('.search-mobile').removeClass('down');
+		$('.search-mobile-container').removeClass('down');
 	}
 });
 
@@ -477,8 +307,53 @@ $('body').click(function(e){
 
 
 
-<!-- Calendar JS ---------------------------------------------------------------- -->
 
+<!-- Customized Calendar Javascript -->
+<script>
+$('input[name="datefilter"]').on("mousedown", function(){
+		$('.daterangepicker').css({'position':'fixed'});
+		$('.daterangepicker').css({'top':'45px'});
+});
+
+
+$('body').on("click", function(e){
+	if($(e.target).is(".form-control-header, .calendar-reg, .daterangepicker, .dropdown-menu, .dropdown-menu div, .dropdown-menu th, .available, .prev, .prev i, .next, .next i, .dropdown-menu td")) {		
+	} else {
+		$('.daterangepicker').css({'top':'-500px'});
+	}
+});
+</script>
+        
+<script type="text/javascript">
+$(function() {	
+	
+  $('input[name="datefilter"]').daterangepicker({
+      autoUpdateInput: false,
+      locale: {
+          cancelLabel: 'Clear'
+      }
+  });
+
+  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+      $('input[name="datefilter"]').val(picker.startDate.format('YY.MM.DD') + ' - ' + picker.endDate.format('YY.MM.DD'));
+      $('input[name="endDate"]').val(picker.endDate.format('YYYY-MM-DD'));
+      $('input[name="startDate"]').val(picker.startDate.format('YYYY-MM-DD'));
+  });
+
+  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+      $('input[name="endDate"]').val('');
+      $('input[name="startDate"]').val('');
+  });
+
+});
+</script>
+
+
+
+
+
+<!-- Calendar Javascript -->
 <script>
 /**
 * @version: 2.1.25
@@ -1803,5 +1678,192 @@ $('body').click(function(e){
     return DateRangePicker;
 }));
 </script>
+<!-- The End Calendar Javascript -->
 
 
+
+
+<!-- Google Map API -->
+<c:set var = "url" value = "${requestScope['javax.servlet.forward.request_uri']}"/>
+<c:if test="${!fn:contains(url, 'reg') && !fn:contains(url, 'acc-setting') && !fn:contains(url, 'detail-edit')}">
+
+<!-- 날짜, 동행 위치 검색 필터 -->
+<script>
+	var searchLocDate=function(){
+		var search = document.querySelector("#search-loc-date");
+		var lat = document.querySelector("#lat1").value;
+		var lng = document.querySelector("#lng1").value;
+		var place = document.querySelector("#place1").value;
+		var sD = document.querySelector("#hidden-startDate").value;
+		var eD = document.querySelector("#hidden-endDate").value;
+			
+		window.location.href='${root}/accompany/board?pla='+place+'&lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;	
+	};
+	
+	var mobSearchLocDate=function(){
+		var search = document.querySelector("#mob-search-loc-date");
+		var lat = document.querySelector("#lat1").value;
+		var lng = document.querySelector("#lng1").value;
+		var place = document.querySelector("#place1").value;
+		var sD = document.querySelector("#hidden-startDate").value;
+		var eD = document.querySelector("#hidden-endDate").value;
+			
+		window.location.href='${root}/accompany/board?pla='+place+'&lat='+lat+'&lng='+lng+'&sD='+sD+'&eD='+eD;
+	};
+</script>
+
+<script>
+if(!window.location.href.includes("reg")){
+    var placeSearch1, autocomplete1, mobAutocomplete1;
+    var location1;
+    var componentForm1 = {
+  	        street_number: 'short_name',
+  	        route: 'long_name',
+  	        locality: 'long_name',
+  	        administrative_area_level_1: 'short_name',
+  	        country: 'long_name',
+  	        postal_code: 'short_name'
+  	};
+/*          
+    var defaultBounds = new google.maps.LatLngBounds(
+  		  new google.maps.LatLng(-33.8902, 151.1759),
+  		  new google.maps.LatLng(-33.8474, 151.2631));
+	  var input = document.getElementById('autocomplete');
+    var searchBox = new google.maps.places.SearchBox(input, {
+  		  bounds: defaultBounds
+    });
+*/  
+function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+    autocomplete1 = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        {types: ['geocode']});
+    
+    mobAutocomplete1 = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */(document.getElementById('mobile-autocomplete')),
+            {types: ['geocode']});
+    
+    autocomplete1.addListener('place_changed', getLocation1);
+    mobAutocomplete1.addListener('place_changed', getLocation2);
+  }
+
+    function getLocation1(){
+  	  var place1 = autocomplete1.getPlace();
+  	  var mobAuto = document.querySelector("#mobile-autocomplete");
+      var latitude = place1.geometry.location.lat();
+  	  var longitude = place1.geometry.location.lng();
+      var placeName = place1.name;
+      var fotmattedAdress = place1.formatted_address;
+  	  
+      var lng = document.querySelector("#lng1");
+  	  var lat = document.querySelector("#lat1");
+  	  var placeForm = document.querySelector("#place1");
+  	  var localityText = document.querySelector("#locality1");
+  	  var countryText = document.querySelector("#country1");
+	  var locality = '';
+	  var country = '';
+        for (var i = 0; i < place1.address_components.length; i++) {
+            var addressType1 = place1.address_components[i].types[0];
+            
+            if (addressType1=='country') {
+              country = place1.address_components[i][componentForm1[addressType1]];
+             
+             // alert(country);
+            } else if(addressType1 == 'locality'){
+          	  locality = place1.address_components[i][componentForm1[addressType1]];
+          	 //	 alert(locality);
+            }     
+        }
+        mobAuto.value = document.querySelector("#autocomplete").value;
+        lng.value = longitude;
+  	    lat.value = latitude;
+  	    placeForm.value= placeName;
+  	    countryText.value = country;
+        localityText.value = locality;
+    }
+
+    function getLocation2(){
+    		var place1 = mobAutocomplete1.getPlace();
+        var latitude = place1.geometry.location.lat();
+    	  	var longitude = place1.geometry.location.lng();
+      	var placeName = place1.name;
+      	var fotmattedAdress = place1.formatted_address;
+      	  
+      	var auto = document.querySelector("#autocomplete");
+
+       	var lng = document.querySelector("#lng1");
+    	  	var lat = document.querySelector("#lat1");
+    	  	var placeForm = document.querySelector("#place1");
+    	  	var localityText = document.querySelector("#locality1");
+    	  	var countryText = document.querySelector("#country1");
+  		var locality = '';
+  		var country = '';
+  		  
+           
+          for (var i = 0; i < place1.address_components.length; i++) {
+              var addressType1 = place1.address_components[i].types[0];
+              
+              if (addressType1=='country') {
+                country = place1.address_components[i][componentForm1[addressType1]];
+               
+               // alert(country);
+              } else if(addressType1 == 'locality'){
+            	  locality = place1.address_components[i][componentForm1[addressType1]];
+            	  
+            	 //	 alert(locality);
+              }
+          }
+          
+          auto.value = document.querySelector("#mobile-autocomplete").value;
+  		  lng.value = longitude;
+    	  	  lat.value = latitude;
+    	  	  placeForm.value= placeName;
+    	  	  countryText.value = country;
+          localityText.value = locality;
+      }
+
+    
+     function geolocate() {
+       if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+           var geolocation = {
+             lat: position.coords.latitude,
+             lng: position.coords.longitude
+           };
+           var circle = new google.maps.Circle({
+             center: geolocation,
+             radius: position.coords.accuracy
+           });
+           autocomplete1.setBounds(circle.getBounds());
+           mob-autocomplete1.setBounds(circle.getBounds());
+         });
+       }
+     }
+    
+     $('#autocomplete').keydown(function (e) {
+   	  if (e.which == 13 && $('.pac-container:visible').length) return false;
+   	});
+     
+     <!-- 구글 맵 검색 창 z-index 위로 올리기 -->
+	 var autoComplete1 = document.querySelector('#autocomplete');
+	 var mobAutoComplete1 = document.querySelector('#mobile-autocomplete');
+	 		 
+		 autoComplete1.onclick = function(){
+	     autoComplete1.value='';
+	     var searchResultBox = document.querySelectorAll('.pac-container');
+	   	 for(var i=0;i<searchResultBox.length;i++)
+   			 searchResultBox[i].style.zIndex = '10000';
+		 }
+ 		 
+		 mobAutoComplete1.onclick = function(){
+			 mobAutoComplete1.value='';
+		     var searchResultBox = document.querySelectorAll('.pac-container');
+		   	 for(var i=0;i<searchResultBox.length;i++)
+       		     searchResultBox[i].style.zIndex = '10000';	 
+		 }
+}	 
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete" async defer></script>
+</c:if>
+<!-- The end of google map API -->
