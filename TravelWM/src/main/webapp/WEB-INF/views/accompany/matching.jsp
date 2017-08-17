@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<!-- For Matching Card Slider -->
+<script src='${root }/resource/js/matching/slick.min.js'></script>
+<link rel="stylesheet prefetch" href="${root }/resource/css/accompany/matching-slick.css"/>
+<link rel="stylesheet prefetch" href="${root }/resource/css/accompany/matching-slick-theme.css"/>
 
  <script>
  	window.addEventListener("load",function(event){
@@ -38,113 +42,190 @@
 	   }
 	 });
  </script>
-<main class="container1">
-	<div class="accompany-option-section Col-lg-7 Col-sm-6">
-	<form name="mathing-info-form" class="mathing-info-form">
-		<h1 class="hidden"> 동행 선택 옵션 추가 </h1>
-		<div class="accompany-manage">
-			<div class="accom-info-title">
-				<h2>나의 동행 정보</h2>
-				<div class="head-line"></div>
-		<!-- 	본인이 등록한 동행 정보가 없는 경우, 본인 동행 정보 등록하는 페이지로 이동하도록 하는 조건문 -->
-				<c:choose>
-					<c:when test="${size>0 }">
-						<div class="manage-page"><a href="${root }/member/acc-setting">나의 동행 관리</a></div>				
-					</c:when>
-					
-					<c:otherwise>
-						<div class="manage-page-no-accom-info"><a href="${root }/member/acc-setting">등록된 동행 정보가 없습니다. 동행 정보 등록 후 이용해주세요.</a></div>						
-					</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="accompany-info-list">
-				<c:forEach items="${memAccomInfoList }" var="li">
-					<div>
-						<input type="radio" id="${li.id }" name="accompany-info" value=${li.id } required/>
-						<label class="label-for-accom-info" for="${li.id }"> 
-									${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
-							    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
-									-
-									<fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />							
-						</label>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-		<div class="accompany-option">
-			<div>
-				<h2>매칭 선호 정보</h2>
-				<div class="head-line"></div>
-			</div>
-			<div class="sex">
-				<div class="select-label">성별</div>
-				<div class="select-container">
-					 <div class="select-box">
-						 <label for="boy">남</label>
-						 <input type="radio" id="boy" name="sex" value="0"/>
-					 </div>
-					 <div class="select-box">
-						 <label for="girl">여</label>
-						 <input type="radio" id="girl" name="sex" value="1"/>
-					 </div>
-					 <div class="select-box">
-						 <label for="everyone">아무나</label>
-						 <input type="radio" id="everyone" name="sex" value="2" checked/>
-					 </div>
-				</div>
-			</div>
-			<div class="age-container">
-				<div class="select-label">나이</div>
-				<div class="age" id="age-content-container">
-						<div id="age-content-wrapper">
-							<p>
-								<input type="text" name="age-min" id="min-age" readonly/>
-							</p>
-							<div id="slider-range"></div>
-							<p>
-								<input type="text" name="age-max" id="max-age" readonly/>
-							</p>
-						</div>
-				</div>
-			</div>
-			<div class="distance">
-				<div class="distance-container">
-					<div class="select-label">거리</div>
-					<select name="distance" id="distance-select">
-						<option value="default" selected>거리선택</option>
-						<option value="default">가까운 거리 순</option>
-						<option value="10">10m 이내</option>
-						<option value="50">50m 이내</option>
-						<option value="100">100m 이내</option>
-						<option value="200">200m 이내</option>
-						<option value="300">300m 이내</option>
-						<option value="500">500m 이내</option>
-						<option value="1000">1km 이내</option>
-						<option value="2000">2km 이내</option>					
-					</select>
-				</div>
-				<div class="temp">? 선택하신 여행지로부터의 거리를 선택하실 수 있습니다.</div>
-			</div>
-			<div class="style">
-				<div class="select-label">스타일</div>
-				<select name="style" id="style-select">
-					<option value="default" selected>스타일 무관</option>
-					<c:forEach items="${styles }" var="i">
-						<option value="${i.id }">${i.type }</option>
-					</c:forEach>
-				</select>
-			</div>
-			<div>
-				<input type="button" id="search-button" class="btn btn-info" value="동행찾기"/>
-			</div>
-		</div>
-	</form>
-	</div>
-	
-	
+ 
+<main class="matching-page-container">
+
+
+<script>
+$(window).ready(function(){
+	var slideContainer = $('.slide-container');
+	  
+	  slideContainer.slick();
+	  
+	  /* $('.clash-card__image img').hide();
+	  $('.slick-active').find('.clash-card img').fadeIn(200);
+	  
+	  // On before slide change
+	  slideContainer.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+	    $('.slick-active').find('.clash-card img').fadeOut(1000);
+	  });
+	  
+	  // On after slide change
+	  slideContainer.on('afterChange', function(event, slick, currentSlide) {
+	    $('.slick-active').find('.clash-card img').fadeIn(200);
+	  }); */
+})
+</script>
+
+
 <!-- ----------------- 매칭된 동행 창 ------------------------- -->	
-	<div class="matched-accompany-section Col-lg-5 Col-sm-6">
-		
+	<div class="matched-accompany-section">
+
+	<div class="matched-accompany-form">
+
+		<div class="matched-accompany-info">
+			<div class="matched-accompany-info-container">
+				<div class="mathed-accompany-title">
+					<span>오늘의 이음</span>
+				</div>
+
+				<span>매칭 내역</span>
+				<div class="dropdown">
+					<img class="matched-list-button"
+						src="${root }/resource/images/ic_more_vert_black_24dp_1x.png" />
+					<div id="myDropdown" class="dropdown-content">
+						<c:forEach items="${memberPrevMatchedList }" var="li">
+							<c:if test="${memberAccomInfoId ne li.id }">
+								<div style="cursor: pointer;" id="prev-matched-list${li.id }">${li.nicName }님
+									(${li.place })</div>
+							</c:if>
+						</c:forEach>
+					</div>
+				</div>
+				<%-- <div class="matched-accompany-histroy">
+					<a href="${root }/member/acc-setting?scr=accom-list"><span>이음 내역</span></a>
+				</div> --%>
+			</div>
+		</div>
+
+<style>
+/* .btn {
+  background: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 40px;
+  color: rgba(0,0,0,0.75);
+  display: block;
+  font-size: 1em;
+  font-weight: 400;
+  height: 44px;
+  letter-spacing: 5px;
+  line-height: 42px;
+  margin: 10px auto;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+  vertical-align: middle;
+  width: 60%;
+}
+
+.btn:hover {
+  background: rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.15);
+} */
+</style>		
+
+		<div class="slide-container">
+
+
+			<div class="wrapper">
+				<div class="matched-card">
+					
+					<div class="matched-card-header">
+						<img src="https://goo.gl/DM5s4f" alt="" />
+						<h2>초코우유</h2>
+					</div>
+
+
+					<div class="matched-location">
+						<div class="accom-location">이음 장소</div>
+						<div class="accom-date">이음 날짜</div>
+					</div>
+
+
+					<div class="matched-message">
+						<a href="" class="btn-matched-message">대화하기</a>
+					</div>
+
+
+					<div
+						class="matched-info clearfix">
+
+						<div class="matched-info-item">
+							<div class="item-value">Training</div>
+						</div>
+
+						<div class="matched-info-item">
+							<div class="item-value">Speed</div>
+						</div>
+
+						<div class="matched-info-item">
+							<div class="item-value">Cost</div>
+						</div>
+
+					</div>
+					
+				</div>
+			</div> 
+			
+			<div class="wrapper">
+				<div class="matched-card">
+					
+					<div class="matched-card-header">
+						<img class="circle-img" src="https://goo.gl/DM5s4f" alt="" />
+						<c:choose>
+							<c:when test="${memberPrevMatchedListToday.size()} >0">				
+								<div class="matched-nicName">
+									닉네임
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="matched-nicName">
+									결과없음
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
+
+
+					<div class="matched-location">
+						<div class="accom-location">이음 장소</div>
+						<div class="accom-date">이음 날짜</div>
+					</div>
+
+
+					<div class="matched-message">
+						<a href="" class="btn-matched-message" id="request-chatting">대화하기</a>
+					</div>
+
+
+					<div
+						class="matched-info clearfix">
+
+						<div class="matched-info-item">
+							<div class="item-value accom-age">나이</div>
+						</div>
+
+						<div class="matched-info-item">
+							<div class="item-value accom-sex">성별</div>
+						</div>
+
+						<div class="matched-info-item">
+							<div class="item-value accom-style">스타일</div>
+						</div>
+
+					</div>
+					
+				</div>
+			</div>
+
+
+		</div>
+	
+	
+		<%-- 
 		<!-- 기존에 매치되었던 동행 목록 불러오기 -->
 		<div class="matched-list">
 			<div class="matched-list-box">
@@ -196,7 +277,7 @@
 				동행 장소
 			</div>
 			
-			<div class="acoom-date">
+			<div class="accom-date">
 				동행 날짜
 			</div>
 						
@@ -211,7 +292,121 @@
 				<input  type="button" class="btn btn-info" id="request-chatting" value="대화하기"/>
 			</div>
 			
+		</div> --%>
 		</div>
+	</div>
+	
+	
+	
+	
+	<div class="accompany-option-section">
+		<form name="matching-info-form" class="matching-info-form">
+			
+			
+			<div class="accompany-manage">
+				<div class="accompany-manage-title">
+					<span>나의 이음 플랜</span>
+				</div>
+				
+				<div class="accom-info-title">
+			<!-- 	본인이 등록한 동행 정보가 없는 경우, 본인 동행 정보 등록하는 페이지로 이동하도록 하는 조건문 -->
+					<c:choose>
+						<c:when test="${size>0 }">
+							<div class="manage-page"><a href="${root }/member/acc-setting">나의 동행 관리</a></div>				
+						</c:when>
+						
+						<c:otherwise>
+							<div class="manage-page-no-accom-info"><a href="${root }/member/acc-setting">등록된 동행 정보가 없습니다. 동행 정보 등록 후 이용해주세요.</a></div>						
+						</c:otherwise>
+					</c:choose>
+				</div>
+				
+				
+				<div class="accompany-info-list">
+					<c:forEach items="${memAccomInfoList }" var="li">
+						<div>
+							<input type="radio" id="${li.id }" name="accompany-info" value=${li.id } required/>
+							<label class="label-for-accom-info" for="${li.id }"> 
+										${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
+								    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
+										-
+										<fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />							
+							</label>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
+			
+			
+			<div class="accompany-option">
+				<div class="accompany-option-title">
+					<span>선호 이음 정보</span>
+				</div>
+
+				<div class="sex">
+					<div class="select-label">성별</div>
+					<div class="select-container">
+						 <div class="select-box">
+							 <label for="boy">남</label>
+							 <input type="radio" id="boy" name="sex" value="0"/>
+						 </div>
+						 <div class="select-box">
+							 <label for="girl">여</label>
+							 <input type="radio" id="girl" name="sex" value="1"/>
+						 </div>
+						 <div class="select-box">
+							 <label for="everyone">아무나</label>
+							 <input type="radio" id="everyone" name="sex" value="2" checked/>
+						 </div>
+					</div>
+				</div>
+				<div class="age-container">
+					<div class="select-label">나이</div>
+					<div class="age" id="age-content-container">
+							<div id="age-content-wrapper">
+								<p>
+									<input type="text" name="age-min" id="min-age" readonly/>
+								</p>
+								<div id="slider-range"></div>
+								<p>
+									<input type="text" name="age-max" id="max-age" readonly/>
+								</p>
+							</div>
+					</div>
+				</div>
+				<div class="distance">
+					<div class="distance-container">
+						<div class="select-label">거리</div>
+						<select name="distance" id="distance-select">
+							<option value="default" selected>거리선택</option>
+							<option value="default">가까운 거리 순</option>
+							<option value="10">10m 이내</option>
+							<option value="50">50m 이내</option>
+							<option value="100">100m 이내</option>
+							<option value="200">200m 이내</option>
+							<option value="300">300m 이내</option>
+							<option value="500">500m 이내</option>
+							<option value="1000">1km 이내</option>
+							<option value="2000">2km 이내</option>					
+						</select>
+					</div>
+					<div class="temp">? 선택하신 여행지로부터의 거리를 선택하실 수 있습니다.</div>
+				</div>
+				<div class="style">
+					<div class="select-label">스타일</div>
+					<select name="style" id="style-select">
+						<option value="default" selected>스타일 무관</option>
+						<c:forEach items="${styles }" var="i">
+							<option value="${i.id }">${i.type }</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
+			<div>
+			
+				<input type="button" id="search-button" class="btn btn-info" value="동행찾기"/>
+			</div>
+		</form>
 	</div>
 </main>
 
@@ -220,13 +415,13 @@ window.addEventListener("load", function(e) {
 	var request = new window.XMLHttpRequest();
 	//request.setRequestHeader('Content-Type', 'application/json'); post의 경우 설정해줌.
 	var searchBtn = document.querySelector("#search-button");
-	var matchingInfoForm = document.forms['mathing-info-form'];
+	var matchingInfoForm = document.forms['matching-info-form'];
 	var prevButton = document.querySelector(".prev-button");
  	var nextButton = document.querySelector(".next-button");
 	var profImg = document.querySelector(".circle-img");
 	var nicName = document.querySelector(".matched-nicName");
 	var location = document.querySelector(".accom-location");
-	var date = document.querySelector(".acoom-date");
+	var date = document.querySelector(".accom-date");
 	var hiddenDate = document.querySelector(".hidden-accom-date");
 	var endDate = document.querySelector(".end-date");
 	var startDate = document.querySelector(".start-date");
@@ -235,12 +430,14 @@ window.addEventListener("load", function(e) {
 	var chattingButton = document.querySelector("#request-chatting");
 	var profiletitle = document.querySelector(".matched-profile-title");
 	
-	if(${memberAccomInfoId ne'default' })
-		profiletitle.innerHTML = "기존에 매칭된 동행";
+	/* if(${memberAccomInfoId ne'default' })
+		profiletitle.innerHTML = "기존에 매칭된 동행"; */
 
 	// 초기 데이터 설정하기
 	if(${memberPrevMatchedListToday.size()} ==0 && ${memberAccomInfoId eq 'default'}){
-		chattingButton.style.display="none";
+		chattingButton.style.background="gray";
+		chattingButton.textContent="대화상대없음";
+		chattingButton.style.pointerEvents="none";
 	}
 	
 	if(${memberPrevMatchedListToday.size()} >0){
@@ -366,13 +563,13 @@ window.addEventListener("load", function(e) {
 	var request = new window.XMLHttpRequest();
 	//request.setRequestHeader('Content-Type', 'application/json'); post의 경우 설정해줌.
 	var searchBtn = document.querySelector("#search-button");
-	var matchingInfoForm = document.forms['mathing-info-form'];
+	var matchingInfoForm = document.forms['matching-info-form'];
 	var prevButton = document.querySelector(".prev-button");
  	var nextButton = document.querySelector(".next-button");
 	var profImg = document.querySelector(".circle-img");
 	var nicName = document.querySelector(".matched-nicName");
 	var location = document.querySelector(".accom-location");
-	var date = document.querySelector(".acoom-date");
+	var date = document.querySelector(".accom-date");
 	var hiddenDate = document.querySelector(".hidden-accom-date");
 	var endDate = document.querySelector(".end-date");
 	var startDate = document.querySelector(".start-date");
@@ -383,8 +580,8 @@ window.addEventListener("load", function(e) {
 	
  	//-----------------------동행 찾기 버튼 클릭 시 --------------------------
 	searchBtn.onclick = function(){
-		nextButton.style.display = "none";
-		prevButton.style.display = "none";
+		/* nextButton.style.display = "none";
+		prevButton.style.display = "none"; */
 		
 		if(${size>0 }){
 	 		
@@ -675,7 +872,7 @@ $( function() {
 		
 		<c:if test="${memberPrevSelected ne null}">
 			var accomLocation = document.querySelector(".accom-location");
-			var accomDate = document.querySelector(".acoom-date");
+			var accomDate = document.querySelector(".accom-date");
 			var accomSex = document.querySelector(".accom-sex");
 			var accomAge = document.querySelector(".accom-age");
 			var requestChatting = document.querySelector("#request-chatting");
@@ -683,9 +880,17 @@ $( function() {
 			var nicName = document.querySelector(".matched-nicName");
 			var chattingButton = document.querySelector("#request-chatting");
 			
+			if(${memberPrevMatchedListToday.size()} ==0 && ${memberAccomInfoId eq 'default'}){
+				chattingButton.style.background="#33b5e5";
+				chattingButton.textContent="대화하기";
+				chattingButton.style.pointerEvents="auto";
+			}
+			
 			
 			accomLocation.innerHTML = "${memberPrevSelected.place}";
 			accomDate.innerHTML = '<fmt:formatDate value="${memberPrevSelected.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${memberPrevSelected.endDate }" pattern="yy.MM.dd" />';	
+			
+			
 			
 			if(${memberPrevSelected.sex eq '0' })
 				accomSex.innerHTML = "남성";

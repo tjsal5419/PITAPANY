@@ -509,7 +509,6 @@ a, a:hover, a:focus, .btn:focus {
 	width: 55px;
     height: 55px;
     border-radius: 50px;
-    box-shadow: 0 3px 3px 0 #e0e0e0;
 	background-position : center;	
     background-size: cover;
     border: 1px solid #dddddd;

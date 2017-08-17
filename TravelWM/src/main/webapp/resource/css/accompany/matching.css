@@ -13,48 +13,392 @@ label{
 }
 
 body{
-	background: #fafafa;
+	/* background: linear-gradient(to bottom, #cee7d4 0%, #87deff 100%); */
 }
+/* #f5f4c9 */
+/* #cee7d4 */
 /* ----------------Section-------------------- */
-.container1{
-	margin-left: 5%;
-	margin-right: 5%;
+.matching-page-container{
 	display:flex;
-	min-height:300px;
-	justify-content:space-around;
-	margin-top:120px;
-	margin-bottom:60px;
+	flex-direction: row;
+	
+	margin-top:60px;
+	
+	background: url("../../images/wallpaper/EnglandStreet.jpg") no-repeat;
+	background-size:cover;
+}
+
+.matching-page-container>div:first-child{
+	display:flex;
+	flex-direction: row;
+	
+	padding-left: 40px;
+	padding-right: 40px;
+	
+	background-color: rgba(0, 0, 0, 0.6);
+	min-height:100%;
+	min-width:100%;
+	left: 0px;
+	top:0px;
 }
 
 .accompany-option-section{
-	min-height:600px;
-	min-width: 55%; 
-	background-color: #ffffff;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-	border: none;
-	padding:2%;
-	margin-right:20px;
+	display: flex;
+	
+	width: 50%;
+
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
 .matched-accompany-section{
-	min-height:600px;
-	min-width: 40%;
-	background-color: #ffffff;
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-	border: none;
-	padding:2%;
+	display: flex;
+	flex-direction: column;
+	
+	width: 50%;
+	
+	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
+
+
+
+
+/* --------------Matched Accompany Section Part----------------- */
+.matched-accompany-form{
+	width: 100%;
+	height: 100%;
+	
+	padding-left: 30px;
+	padding-right: 30px;
+	
+}
+
+.matched-accompany-info{
+	display: flex;
+	justify-content: space-around;
+	
+	background: rgba(255,255,255,0.9);
+	
+	height: 50px;
+	width: 100%;
+	
+	min-width: 420px;
+}
+
+.matched-accompany-info-container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	
+	width: 300px;
+	height: 100%;
+	
+	background: red;
+}
+
+
+
+
+
+/* --------------Matched Accompany Section Slide Part----------------- */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.window,
+.matched-card-header,
+ul,
+li {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+}
+
+.slide-container {
+  margin: auto;
+  width: 420px;
+  text-align: center;
+}
+
+.wrapper {
+  padding-top: 20px;
+}
+.wrapper:focus {
+  outline: 0;
+}
+
+.matched-card {
+  background: white;
+  
+  height: 550px;
+  width: 300px;
+  display: inline-block;
+  margin: auto;
+  border-radius: 19px;
+  position: relative;
+  text-align: center;
+  box-shadow: -1px 15px 30px -12px black;
+  z-index: 9999;
+}
+
+.matched-card-header {
+	color: #444;
+	text-align: center;
+ 	
+	height: 280px;
+	width: 100%;
+}
+
+.matched-card-header:before {
+  border: 1px solid rgba(68, 68, 68, 0.3);
+  border-radius: 100%;
+  content: "";
+  height: 135px;
+  left: 0;
+  margin: 55px auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 135px;
+  z-index: 2;
+  -webkit-transform: scale(1.24, 1.24);
+  -moz-transform: scale(1.24, 1.24);
+  transform: scale(1.24, 1.24);
+  
+}
+
+.matched-card-header img {
+  border: 3px solid #333;
+  border-radius: 100%;
+  height: 140px;
+  margin: 4em auto 2.5em;
+  object-fit: cover;
+  width: 140px;
+  
+  pointer
+}
+
+.matched-card-header .matched-nicName {
+  display: inline-block;
+  
+  font-family: 'GodoM', sans-serif;
+  font-size: 28px;
+  letter-spacing: -2px;
+
+  margin: 0 auto;
+
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.matched-location{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	width: 100%;
+	height: 120px;
+}
+
+.accom-location{
+	font-family: "Spoqa";
+	font-size: 20px;
+	
+	margin-bottom: 10px;
+}
+
+.accom-date{	
+	font-family: "Spoqa-Light";
+	font-size: 14px;
+}
+
+.btn-matched-message{
+	display: block;
+	position: relative;
+	
+	height: 40px;
+	width: 60%;
+	
+	margin: 20px auto;
+	
+	border: none;
+	border-radius: 20px;
+	background: #33b5e5;
+	
+	color: #fff;
+	font-family: "Spoqa";
+	font-size: 13px;
+	letter-spacing: 3px;
+  	line-height: 40px;
+	text-align: center;
+	vertical-align: middle;
+	
+	-webkit-transition: all .5s ease;
+	transition: all .5s ease;
+}
+
+.btn-matched-message:hover {
+  background: #0099d6;
+  color: #fff;
+}
+
+.matched-info {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	
+	justify-content: space-between;
+	
+  height: 70px;
+  
+  color: black;
+  border-top: 1px solid #efefef;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+
+.matched-info .matched-info-item {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+	height: 100%;
+	width: 33%;
+	padding: 20px 15px;
+}
+
+.matched-info .item-value {
+	font-family: 'GodoM';
+	font-size: 12px;
+	color: #999;
+	
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.slick-prev {
+  left: 0px !important;
+  z-index: 999;
+}
+
+.slick-next {
+  right: 0px !important;
+  z-index: 999;
+}
+
+
+
+
+
 /* ---------------Section 안의 요소들----------------- */
+.matching-info-form{
+	width: 100%;
+	height: 100%;
+	
+	padding-left: 30px;
+	padding-right: 30px;
+}
 .accompany-manage{
-	min-height:40%;
 	display:flex;
 	flex-direction:column;
-	background-color: #ffffff;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	padding:10px;
+	margin-bottom: 20px;
+	
+	border: 1px solid rgba(255,255,255,0.9);
+
+	height: 300px;
+	width: 100%;
 }
+
+.accompany-manage-title{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	
+	background: rgba(255,255,255,0.9);
+	
+	width: 100%;
+	height: 50px;
+}
+
+.accompany-manage-title span{
+	display: ;
+	
+	width: 100%;
+	height: 100%;
+	
+	padding: 15px;
+	
+	font-family: "GodoM";
+	font-size: 16px;
+	color: #444;
+	
+	vertical-align: middle;
+}
+
+.accompany-option{
+	display:flex;
+	flex-direction:column;
+	margin-bottom: 20px;
+	
+	border: 1px solid rgba(255,255,255,0.9);
+
+	height: 300px;
+	width: 100%;
+}
+
+.accompany-option-title{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	
+	background: rgba(255,255,255,0.9);
+	
+	width: 100%;
+	height: 50px;
+}
+
+.accompany-option-title span{
+	display: ;
+	
+	width: 100%;
+	height: 100%;
+	
+	padding: 15px;
+	
+	font-family: "GodoM";
+	font-size: 16px;
+	color: #444;
+	
+	vertical-align: middle;
+}
+
+
+.sex, .distance, .style{
+	height: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .accompany-info-list{
 	padding-left: 10px;
@@ -90,58 +434,9 @@ body{
 	align-items:center;;
 }
 
-.accompany-option{
-	margin-top:5%;
-	display:flex;
-	flex-direction:column;
-	background-color: #ffffff;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	padding:2%;
-}
 
-.sex, .distance, .style{
-	height: 35px;
-}
 
-.accompany-option div{
-	font-family: 'GodoM' !important;
-}
 
-.accompany-option>div{
-	display:flex;
-	margin-bottom:3%;
-	font-family: 'GodoM' !important;
-}
-
-h2{
-	font-family: 'GodoM' !important;
-	font-size: 22px;
-}
-
-.accompany-option>div label{
-	
-	flex-grow:1;
-}
-
-.accompany-option>div>select{
-	flex-grow:3;
-}
-
-.accompany-option>div>div{
-	flex-grow:3;
-}
-
-.accompany-option>div:first-child{
-	display:flex;
-	flex-direction:column;
-	margin-bottom: 20px;
-}
-.accompany-option>div:last-child{
-	display:flex;
-	justify-content:center;
-	margin-top:5%;
-}
 
 .matched-accompany-section{
 	display:flex;
@@ -209,12 +504,6 @@ h2{
     border : 1px solid black;
 }
 
-.circle-img{
-  display: inline;
-  margin: 0 auto;
-  height: 100%;
-  min-width: 100%;
-}
 /*--- --------------------------- */
 
 .matched-profile>div{
@@ -245,25 +534,6 @@ h2{
 	display:none;
 }
 
-.matched-info{
-	background-color: #ffffff;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;	
-	padding:10px;
-	display:flex;
-	flex-direction:column;
-	align-items:center;
-	justify-content:center;
-	height:300px;
-}
-
-.matched-info>div{
-	width:100%;
-	text-align: center;
-	margin-bottom:1%;
-	display:flex;
-	justify-content:center;
-}
 
 .member-info{
 	border:1px solid black;
@@ -275,10 +545,6 @@ h2{
 
 
 /* -------- 개별 요소들 -----------*/
-.accompany-option-section .btn{
-	width: 90%;
-	justify-content:center;
-}
 
 .distance{
 	flex-direction:column;
@@ -397,15 +663,10 @@ h2{
 }
 /*------------------- media쿼리--------------*/
 @media all and (max-width:480px){
-	.container1{
+	.matching-page-container{
 		margin-left:0px;
 		margin-right:0px;
 		flex-wrap:wrap;
-	}
-
-	.accompany-option-section{
-		margin:0px;
-		margin-bottom:5%;
 	}
 	
 	   .Col-sm-1{
@@ -434,13 +695,8 @@ h2{
 }
 
 @media all and (min-width:480px) and (max-width:1024px){
-	.container1{
+	.matching-page-container{
 		flex-wrap:wrap;
-	}
-	
-	.accompany-option-section{
-		margin:0px;
-		margin-bottom:30px;
 	}
 	
    .Col-sm-1{

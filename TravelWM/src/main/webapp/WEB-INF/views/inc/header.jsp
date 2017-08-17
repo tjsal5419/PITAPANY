@@ -214,7 +214,7 @@
 	    
 	    $(".navbar-transition").css("transition-duration", "0.4s");
 	  
-	    if (sc > 10){
+	    if (sc > 3){
 	     	$(".navbar").css("top", "0px");
 	    } else {
 	    		$(".navbar").css("top", "20px");

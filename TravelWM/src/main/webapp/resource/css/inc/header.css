@@ -78,7 +78,7 @@ ol, ul{
 	magin: 0;
 	
 	border: 0;
-	border-bottom: 1px solid #e4e4e4;
+	/* border-bottom: 1px solid #e4e4e4; */
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 	background: #fff;
 	
@@ -226,7 +226,7 @@ ol, ul{
 .navbar-main{
 	background: #fff !important;
 	border: none;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1) !important;
 }
 
 .logo-main{
