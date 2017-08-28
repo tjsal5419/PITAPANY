@@ -1222,11 +1222,15 @@ ol, ul{
 	border-radius: 0px;
 	border: none;
 	margin-top: 10px;
-	width: 497px;
+	width: 500px;
 }
 
 .daterangepicker .calendar {
 	float: left;
+}
+
+.daterangepicker>div:nth-child(2){
+	float: right;
 }
 
 .daterangepicker_input {
@@ -1274,27 +1278,28 @@ thead>tr:nth-child(2)>th {
 }
 
 .range_inputs button {
-	border-radius: 2px;
+	border-radius: 0;
 	animation: none;
 }
 
 .range_inputs>button:first-child {
-	border: 1px solid #e8f8ff;
+	border: none;
 	background: #33b5e5;
 }
 
 .range_inputs>button:first-child:hover {
 	background: #0099d6;
-	border: 1px solid #e8f8ff;
+	border: none;
 }
 
 .range_inputs>button:nth-child(2) {
-	border: 1px solid #eee;
+	border: none;
 	background: #eee;
 }
 
 .range_inputs>button:nth-child(2):hover {
-	border: 1px solid #dcdcdc;
+	border: none;
+	background: #dcdcdc;
 }
 
 @media all and (max-width: 890px) {

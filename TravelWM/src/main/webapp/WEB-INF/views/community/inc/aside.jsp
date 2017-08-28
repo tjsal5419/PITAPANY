@@ -21,17 +21,25 @@
 				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/tip')}">
    					<style>
 						.remote-controller li:nth-child(2){
+							font-weight: 100;
+							font-family: "Spoqa";
 							color: #33b5e5;
-							font-weight: bold;
-						
+							
 							border-top: 1px solid #e9e9e9;
 							border-bottom: 1px solid #e9e9e9;
+						}
+						
+						.remote-controller li:nth-child(2)>a{
+							color: #33b5e5;
+						}
+						
+						.remote-controller li:nth-child(2)>a:hover{
+							color: #33b5e5;
 						}
 						
 						.remote-controller li:nth-child(2)>span{
 							display: table-cell;
 							vertical-align: middle;
-							font-weight: 100;
 						}
 						
 						.aside-hidden div:nth-child(2){
@@ -49,17 +57,26 @@
 				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/faq')}">
    					<style>
 						.remote-controller li:nth-child(3){
+							font-weight: 100;
+							font-family: "Spoqa";
 							color: #33b5e5;
-							font-weight: bold;
-						
+							
 							border-top: 1px solid #e9e9e9;
 							border-bottom: 1px solid #e9e9e9;
+						}
+						
+						.remote-controller li:nth-child(3)>a{
+							color: #33b5e5;
+						}
+						
+						.remote-controller li:nth-child(3)>a:hover{
+							color: #33b5e5;
 						}
 						
 						.remote-controller li:nth-child(3)>span{
 							display: table-cell;
 							vertical-align: middle;
-							font-weight: 100;
+
 						}
 						
 						.aside-hidden div:nth-child(3){

@@ -213,11 +213,15 @@
 	    var sc = $(window).scrollTop()
 	    
 	    $(".navbar-transition").css("transition-duration", "0.4s");
+	    $(".daterangepicker").css("transition-duration", "0.4s");
 	  
 	    if (sc > 3){
 	     	$(".navbar").css("top", "0px");
+	     	$(".daterangepicker").css("top", "45px");
+	     	
 	    } else {
 	    		$(".navbar").css("top", "20px");
+	    		$(".daterangepicker").css("top", "65px");
 	    }
 	});
 </script>
@@ -311,8 +315,17 @@ $('body').click(function(e){
 <!-- Customized Calendar Javascript -->
 <script>
 $('input[name="datefilter"]').on("mousedown", function(){
+	 	var sc = $(window).scrollTop()
+	 
 		$('.daterangepicker').css({'position':'fixed'});
-		$('.daterangepicker').css({'top':'45px'});
+		
+		if (sc > 3){
+	     	$(".daterangepicker").css("top", "45px");
+	    } else {
+	    		$(".daterangepicker").css("top", "65px");
+	    }
+		
+		/* $('.daterangepicker').css({'top':'45px'}); */
 });
 
 

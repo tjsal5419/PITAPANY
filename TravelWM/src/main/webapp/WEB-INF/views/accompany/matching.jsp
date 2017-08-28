@@ -174,6 +174,46 @@ $(window).ready(function(){
 				<div class="matched-card">
 					
 					<div class="matched-card-header">
+						<img src="https://goo.gl/DM5s4f" alt="" />
+						<h2>딸기우유</h2>
+					</div>
+
+
+					<div class="matched-location">
+						<div class="accom-location">이음 장소</div>
+						<div class="accom-date">이음 날짜</div>
+					</div>
+
+
+					<div class="matched-message">
+						<a href="" class="btn-matched-message">대화하기</a>
+					</div>
+
+
+					<div
+						class="matched-info clearfix">
+
+						<div class="matched-info-item">
+							<div class="item-value">Training</div>
+						</div>
+
+						<div class="matched-info-item">
+							<div class="item-value">Speed</div>
+						</div>
+
+						<div class="matched-info-item">
+							<div class="item-value">Cost</div>
+						</div>
+
+					</div>
+					
+				</div>
+			</div> 
+			
+			<div class="wrapper">
+				<div class="matched-card">
+					
+					<div class="matched-card-header">
 						<img class="circle-img" src="https://goo.gl/DM5s4f" alt="" />
 						<c:choose>
 							<c:when test="${memberPrevMatchedListToday.size()} >0">				
