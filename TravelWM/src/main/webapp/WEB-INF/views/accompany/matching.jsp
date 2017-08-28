@@ -11,9 +11,9 @@
 
 <!-- For Matching Card Slider -->
 <script src='${root }/resource/js/matching/slick.min.js'></script>
-<link rel="stylesheet prefetch" href="${root }/resource/css/accompany/matching-slick.css"/>
+<%-- <link rel="stylesheet prefetch" href="${root }/resource/css/accompany/matching-slick.css"/>
 <link rel="stylesheet prefetch" href="${root }/resource/css/accompany/matching-slick-theme.css"/>
-
+ --%>
  <script>
  	window.addEventListener("load",function(event){
  		var matchedListButton = document.querySelector(".matched-list-button");
@@ -126,16 +126,17 @@ $(window).ready(function(){
   border: 1px solid rgba(0,0,0,0.15);
 } */
 </style>		
-
 		<div class="slide-container">
-
 
 			<div class="wrapper">
 				<div class="matched-card">
 					
 					<div class="matched-card-header">
-						<img src="https://goo.gl/DM5s4f" alt="" />
-						<h2>초코우유</h2>
+						<img class="circle-img" src="https://goo.gl/DM5s4f" alt="" />
+								
+						<div class="matched-nicName">
+							닉네임
+						</div>
 					</div>
 
 
@@ -146,31 +147,30 @@ $(window).ready(function(){
 
 
 					<div class="matched-message">
-						<a href="" class="btn-matched-message">대화하기</a>
+						<a href="" class="btn-matched-message" id="request-chatting">대화하기</a>
 					</div>
 
 
-					<div
-						class="matched-info clearfix">
-
+					<div class="matched-info clearfix">
 						<div class="matched-info-item">
-							<div class="item-value">Training</div>
+							<div class="item-value accom-age">나이</div>
 						</div>
-
 						<div class="matched-info-item">
-							<div class="item-value">Speed</div>
+							<div class="item-value accom-sex">성별</div>
 						</div>
-
 						<div class="matched-info-item">
-							<div class="item-value">Cost</div>
+							<div class="item-value accom-style">스타일</div>
 						</div>
-
 					</div>
-					
 				</div>
-			</div> 
-			
-			<div class="wrapper">
+			</div>			
+
+
+		</div>
+	
+				
+			<!-- --------------- Clone matched-card -------------------- -->
+			<div class="wrapper hidden clone-card">
 				<div class="matched-card">
 					
 					<div class="matched-card-header">
@@ -215,20 +215,11 @@ $(window).ready(function(){
 					
 					<div class="matched-card-header">
 						<img class="circle-img" src="https://goo.gl/DM5s4f" alt="" />
-						<c:choose>
-							<c:when test="${memberPrevMatchedListToday.size()} >0">				
-								<div class="matched-nicName">
-									닉네임
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="matched-nicName">
-									결과없음
-								</div>
-							</c:otherwise>
-						</c:choose>
+								
+						<div class="matched-nicName">
+							닉네임
+						</div>
 					</div>
-
 
 					<div class="matched-location">
 						<div class="accom-location">이음 장소</div>
@@ -260,9 +251,6 @@ $(window).ready(function(){
 					
 				</div>
 			</div>
-
-
-		</div>
 	
 	
 		<%-- 
@@ -451,8 +439,8 @@ $(window).ready(function(){
 </main>
 
 <script>
-window.addEventListener("load", function(e) {
-	var request = new window.XMLHttpRequest();
+window.addEventListener("DOMContentLoaded", function(e) {
+ */	var request = new window.XMLHttpRequest();
 	//request.setRequestHeader('Content-Type', 'application/json'); post의 경우 설정해줌.
 	var searchBtn = document.querySelector("#search-button");
 	var matchingInfoForm = document.forms['matching-info-form'];
@@ -504,9 +492,53 @@ window.addEventListener("load", function(e) {
 	}
 	
 
+	/*  하루 매칭된 횟수 2회 이상일 경우, 카드 추가해주기 */
 	if(${memberPrevMatchedListToday.size()>1 })
  	{
-			var currentCount = 0;
+			var slideContainer = document.querySelector(".slide-container");
+			
+			<c:forEach items="${memberPrevMatchedListToday}" var="li" varStatus="status">
+				<c:if test="${status.index>0}">
+				var matchedCard = document.querySelector(".clone-card");
+
+				var profImg = matchedCard.querySelector(".circle-img");
+				var nicName = matchedCard.querySelector(".matched-nicName");
+				var location = matchedCard.querySelector(".accom-location");
+				var date = matchedCard.querySelector(".accom-date");
+				var sex = matchedCard.querySelector(".accom-sex");
+				var age = matchedCard.querySelector(".accom-age");
+				var chattingButton = matchedCard.querySelector("#request-chatting");
+				
+				// 정보 교체
+
+				location.innerHTML = "${li.place}";
+				
+				date.innerHTML = "${li.startDate}";	
+				
+				if(${li.sex eq '0' })
+					sex.innerHTML = "남성";
+				else		
+					sex.innerHTML = "여성";
+					
+				age.innerHTML = "${li.age}세";
+				
+				profImg.src = "${root }${li.imgSrc}${li.imgName}";
+				nicName.innerHTML = "${li.nicName}";
+				
+				date.innerHTML =  '<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />';
+				
+				chattingButton.onclick = function(){ window.location.href=''; };
+				// 정보 교체 끝
+				
+				var clone = matchedCard.cloneNode(true);
+		
+				clone.classList.remove("hidden");
+				slideContainer.appendChild(clone);
+
+				</c:if>
+
+			</c:forEach>
+/* 			var currentCount = 0;
 			
  			nextButton.style.display = "flex";
  			
@@ -591,7 +623,7 @@ window.addEventListener("load", function(e) {
 						
 					}
 				</c:forEach>
-			}
+			} */
  	}
 
 });
@@ -616,7 +648,7 @@ window.addEventListener("load", function(e) {
 	var sex = document.querySelector(".accom-sex");
 	var age = document.querySelector(".accom-age");
 	var chattingButton = document.querySelector("#request-chatting");
-	var profiletitle = document.querySelector(".matched-profile-title");
+	//var profiletitle = document.querySelector(".matched-profile-title");
 	
  	//-----------------------동행 찾기 버튼 클릭 시 --------------------------
 	searchBtn.onclick = function(){

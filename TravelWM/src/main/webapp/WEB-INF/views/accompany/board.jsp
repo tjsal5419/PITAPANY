@@ -231,7 +231,7 @@
 <!-- 	-----------구글 맵 API이용하기--------------- -->
 
 
-<!-- <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
+<!--  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
  -->
 
 <script>
