@@ -45,12 +45,12 @@
 			<div class="login-logo">
 			</div>
 			<h2>Login</h2>
-			<form action="${root }/j_spring_security_check" method="POST">
+			<form action="${root }/j_spring_security_check" name="user-login" method="POST" onsubmit="return validateEmail()">
 				<fieldset class="login-form">
 					<c:if test="${not empty validate && not validate}">
 						<td colspan="2" style="color:red;">아이디 또는 비번이 유효하지 않습니다. </td>
 					</c:if>
-					<input type="email" aria-label="이메일을 입력하세요." autocomplete="username" placeholder="Username" class="login-input" name="j_username" value="test@naver.com" autofocus />
+					<input type="email" aria-label="이메일을 입력하세요." id="login-email" autocomplete="username" placeholder="Username" class="login-input" name="j_username" value="test@naver.com" autofocus />
 				</fieldset>
 				<fieldset style="position:relative;">
 				<input type="password" placeholder="Password" aria-label="비밀번호를 입력하세요." autocomplete="current-password" 
@@ -268,6 +268,28 @@ function validateForm(){
 		
 	return true;
 }
+</script>
+
+<!-- email check -->
+<script>
+	 function validateEmail(){
+  		 var email = document.forms["user-login"]["login-email"].value;
+		
+		 var request = new window.XMLHttpRequest();
+		 var url = "login-member-check?e="+email;
+		 request.open("GET",url, true);			
+	
+		 request.onload = function(){
+			 var result = JSON.parse(request.responseText);
+			 if(result === null)
+			 {
+				 alert("등록되지 않은 이메일입니다.");
+			 }
+			 
+		 }
+		 
+		 request.send();
+	 }
 </script>
 
 <script>

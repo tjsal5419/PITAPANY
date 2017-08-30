@@ -9,7 +9,6 @@
 
 	<beans:bean id="successHandler" class="com.pitapany.web.handler.LoginSuccessHandler"/>
 	<beans:bean id="customWebAuthenticationDetailsSource" class="com.pitapany.web.security.CustomWebAuthenticationDetailsSource"/>
-	
 <!--     <beans:bean id="myWebAuthenticationDetails" class="com.pitapany.web.security.CustomWebAuthenticationDetails"/>
         
     <beans:bean id="customWebAuthenticationDetailsSource" class="com.pitapany.web.security.CustomWebAuthenticationDetails">
@@ -24,7 +23,7 @@
 			authentication-details-source-ref="customWebAuthenticationDetailsSource" 
 			login-page="/joinus/login"
 			authentication-failure-url="/joinus/login?e=1"
-			authentication-success-handler-ref="successHandler" />
+			authentication-success-handler-ref="successHandler"/>
 		<logout logout-success-url="/joinus/login"/>
 		<intercept-url pattern="/index" access="hasRole('ROLE_USER')"/>
 		<intercept-url pattern="/joinus/mypage" access="hasRole('ROLE_USER')" />
@@ -43,13 +42,20 @@
         </session-management>
 	</http>
 
-	<authentication-manager>
-		<authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"
+
+	<beans:bean id="loginAuthenticationProvider" class="com.pitapany.web.security.LoginAuthenticationProvider"/>
+	<!-- userService db query -->
+	<jdbc-user-service id="userService" data-source-ref="dataSource"
 				users-by-username-query="SELECT email userid, password, 1 enabled FROM Member WHERE email=?"
-				authorities-by-username-query="SELECT email userid, role authorities FROM Member WHERE email=?"
-				
-			/>
+				authorities-by-username-query="SELECT email userid, role authorities FROM Member WHERE email=?"			
+	/>
+	
+	<!-- loginCheck(Bcrypt check) -->
+	<authentication-manager>
+		<authentication-provider ref="loginAuthenticationProvider"/>
+		<authentication-provider user-service-ref="userService"/>
+		<!-- 	<password-encoder ref="encoder"/> -->
+		
 <!-- 			<user-service>
 				<user name="유저" authorities="ROLE_USER"/>
 			</user-service> -->
@@ -57,6 +63,5 @@
 		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          		<user name="test@naver.com" password="1111" authorities="ROLE_USER" />
 				<user name="SAKURA@naver.com" password="1" authorities="ROLE_USER, ROLE_ADMIN" />
 			</user-service> -->
-		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

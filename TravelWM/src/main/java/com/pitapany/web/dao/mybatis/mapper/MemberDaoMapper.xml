@@ -22,6 +22,12 @@
 		WHERE id=#{id}
 	</select>
 	
+	<select id="getByEmail" resultType="com.pitapany.web.entity.Member">
+		SELECT * 
+		FROM `pitapanydb`.`Member`
+		WHERE email=#{email}
+	</select>
+	
 	<select id="getMatchCount" resultType="Integer">
 		SELECT matchCount
 		FROM `pitapanydb`.`Member`

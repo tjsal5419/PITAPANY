@@ -42,10 +42,13 @@
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberAccompanyMatchDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardDao" />
 	<bean class="com.pitapany.web.dao.mybatis.MybatisMemberProfileBoardReplyDao" />
-<bean class="com.pitapany.web.dao.mybatis.MybatisCommunityTipReplyDao" />
+	<bean class="com.pitapany.web.dao.mybatis.MybatisCommunityTipReplyDao" />
 	<context:annotation-config /> <!-- Autowired가 필요한 곳에서 설정함 -->
+	
 	<bean class="com.pitapany.web.service.AdminService" />
-
+	
+	<!-- Bcrypt Encoding Class -->	
+	<bean class="com.pitapany.web.security.BcryptPasswordEncoding" />
 
 
 </beans>

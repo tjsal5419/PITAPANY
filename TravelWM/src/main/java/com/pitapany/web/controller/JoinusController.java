@@ -13,9 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.pitapany.web.dao.MemberDao;
 import com.pitapany.web.entity.Member;
+import com.pitapany.web.security.BcryptPasswordEncoding;
 
 @Controller
 @RequestMapping("/joinus/*")
@@ -23,6 +26,9 @@ public class JoinusController {
 
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private BcryptPasswordEncoding bcryptPasswordEncoder;
 	
 	@RequestMapping(value="login", 
 			method=RequestMethod.GET)
@@ -54,8 +60,13 @@ public class JoinusController {
 			Date birthday = Date.valueOf(date);
 			Member member = new Member();
 			System.out.println(email);
+			
+			String encodedPassword = bcryptPasswordEncoder.encode(password);
+			
 			member.setEmail(email);
-			member.setPassword(password);
+			System.out.println(encodedPassword);
+			
+			member.setPassword(encodedPassword);
 			member.setName(name);
 			member.setSex(sex);
 			member.setBirthday(birthday);
@@ -64,6 +75,17 @@ public class JoinusController {
 			memberDao.add(member);
 			return "redirect:login";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="login-member-check")
+	public String MemberCheck(@RequestParam(value="e", defaultValue="0")String email){
+		Member member = memberDao.getByEmail(email);
+		Gson gson = new Gson();
+		String json=null;
+		json = gson.toJson(member);
+		
+		return json;
 	}
 	
 	@RequestMapping("mainpage")
