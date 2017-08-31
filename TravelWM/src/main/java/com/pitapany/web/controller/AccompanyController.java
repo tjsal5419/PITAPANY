@@ -688,7 +688,6 @@ public class AccompanyController {
 		
 		String json = null;
 		Gson gson = new Gson();
-		JsonParser parser = new JsonParser();
 
 		if (!isNotMatched) {
 			json = gson.toJson(resultList);

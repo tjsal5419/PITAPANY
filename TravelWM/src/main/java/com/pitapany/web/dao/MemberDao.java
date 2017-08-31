@@ -17,5 +17,6 @@ public interface MemberDao {
 	int add(Member member);
 	int update(Member member);
 	int updateAgeAll();
+	Member getByEmail(String email);
 	
 }

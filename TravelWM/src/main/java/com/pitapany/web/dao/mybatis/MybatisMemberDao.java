@@ -17,6 +17,11 @@ public class MybatisMemberDao implements MemberDao {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 		return memberDao.get(id);
 	}
+	
+	public Member getByEmail(String email) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.getByEmail(email);
+	}
 
 	public List<Member> getList() {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
