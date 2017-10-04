@@ -67,7 +67,8 @@
 			<div class="matched-accompany-info">
 				<div class="matched-accompany-info-container">
 					<div class="matched-accompany-title">
-						<span>오늘의 이음</span>
+						<span>오늘의 이음 </span> 
+						<span class="today-matched-count">(${memberPrevMatchedListToday.size() })</span>
 					</div>
 					
 					<div class="matched-list-wrapper">
@@ -92,45 +93,154 @@
 			</div>
 	
 	
-			<section class="regular slider">
-				<div>
-					<div class="wrapper">
-						<div class="matched-card">
-			
-							<div class="matched-card-header">
-								<img class="circle-img" src="https://goo.gl/DM5s4f" alt="" />
-								<div class="matched-nicName">닉네임</div>
-							</div>
+
 			
 			
-							<div class="matched-location">
-								<div class="accom-location">이음 장소</div>
-								<div class="accom-date">이음 날짜</div>
-							</div>
-			
-			
-							<div class="matched-message">
-								<a href="" class="btn-matched-message" id="request-chatting">대화하기</a>
-							</div>
-			
-			
-							<div class="matched-info clearfix">
-								<div class="matched-info-item">
-									<div class="item-value accom-age">나이</div>
+			<c:choose>
+				<c:when test="${memberPrevMatchedListToday.size()==0}">
+					<section class="regular slider slider-clone not-matched-section"> 
+						<div>
+							<div class="wrapper">
+								<div class="matched-card">
+					
+									<div class="matched-card-header">
+										<img class="circle-img" src="https://goo.gl/DM5s4f" alt="" />
+										<div class="matched-nicName">닉네임</div>
+									</div>
+					
+					
+									<div class="matched-location">
+										<div class="accom-location">이음 장소</div>
+										<div class="accom-date">이음 날짜</div>
+									</div>
+					
+					
+									<div class="matched-message">
+										<div class="btn-matched-message" id="request-chatting">매칭된 동행 없음</div>
+									</div>
+					
+					
+									<div class="matched-info clearfix">
+										<div class="matched-info-item">
+											<div class="item-value accom-age">나이</div>
+										</div>
+										<div class="matched-info-item">
+											<div class="item-value accom-sex">성별</div>
+										</div>
+										<div class="matched-info-item">
+											<div class="item-value accom-style">스타일</div>
+										</div>
+									</div>
+					
 								</div>
-								<div class="matched-info-item">
-									<div class="item-value accom-sex">성별</div>
-								</div>
-								<div class="matched-info-item">
-									<div class="item-value accom-style">스타일</div>
-								</div>
 							</div>
-			
 						</div>
-					</div>
-				</div>
-			</section>
-	
+					</section>
+				
+				</c:when>
+				
+				<c:otherwise>		
+					<section class="regular slider slider-clone matched-section"> 
+						<c:forEach items="${memberPrevMatchedListToday }" var="li" varStatus = "status">
+							<div>
+								<div class="wrapper">
+									<div class="matched-card">
+						
+										<div class="matched-card-header">
+											<img class="circle-img" src="${root }${li.imgSrc}${li.imgName}" alt="" />
+											<div class="matched-nicName">${li.nicName }</div>
+										</div>
+						
+						
+										<div class="matched-location">
+											<div class="accom-location">${li.place}</div>
+											<div class="accom-date"><fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" /></div>
+										</div>
+						
+						
+										<div class="matched-message">
+											<a href="" class="btn-matched-message" id="request-chatting" onclick = "window.location.href='';">대화하기</a>
+										</div>
+						
+						
+										<div class="matched-info clearfix">
+											<div class="matched-info-item">
+												<div class="item-value accom-age">${li.age}세</div>
+											</div>
+											<div class="matched-info-item">
+												<div class="item-value accom-sex">
+													<c:choose>
+														<c:when test="${li.sex eq '0' }">
+															남성
+														</c:when>
+														<c:otherwise>
+															여성
+														</c:otherwise>
+													</c:choose>
+												</div>
+											</div>
+											<div class="matched-info-item">
+												<div class="item-value accom-style">
+													<c:choose>
+														<c:when test="${li.styleId eq '1' }">Sharin'</c:when>
+														<c:when test="${li.styleId eq '2' }">Playin'</c:when>
+														<c:otherwise>Drinkin'</c:otherwise>
+													</c:choose>
+												
+												</div>
+											</div>
+										</div>
+						
+									</div>
+								</div>
+							</div>
+							
+							
+					
+					</c:forEach>
+					</section>
+				</c:otherwise>
+				
+			</c:choose>
+			
+<!-- ----------------------------clone section--------------------------------------------------- -->
+						<div id="clone-section" class="hidden">
+							<div class="wrapper">
+								<div class="matched-card">
+					
+									<div class="matched-card-header">
+										<img class="circle-img" src="https://goo.gl/DM5s4f" alt="" />
+										<div class="matched-nicName">닉네임</div>
+									</div>
+					
+					
+									<div class="matched-location">
+										<div class="accom-location">이음 장소</div>
+										<div class="accom-date">이음 날짜</div>
+									</div>
+					
+					
+									<div class="matched-message">
+										<div class="btn-matched-message" id="request-chatting">매칭된 동행 없음</div>
+									</div>
+					
+					
+									<div class="matched-info clearfix">
+										<div class="matched-info-item">
+											<div class="item-value accom-age">나이</div>
+										</div>
+										<div class="matched-info-item">
+											<div class="item-value accom-sex">성별</div>
+										</div>
+										<div class="matched-info-item">
+											<div class="item-value accom-style">스타일</div>
+										</div>
+									</div>
+					
+								</div>
+							</div>
+						</div>
+<!-- ---------------------------------------Slider End------------------------------------------------ -->	
 				<%-- 
 			<!-- 기존에 매치되었던 동행 목록 불러오기 -->
 			<div class="matched-list">
@@ -205,8 +315,8 @@
 	</div>
 	
 	
-	
-	
+<!-- -------------------------------------------Accompany Option Section------------------------------------------------- -->		
+<!-- -------------------------------------------Accompany Option Section------------------------------------------------- -->	
 	<div class="accompany-option-section">
 		<form name="matching-info-form" class="matching-info-form">
 			
@@ -233,7 +343,7 @@
 					<div class="accompany-info-list">
 						<c:forEach items="${memAccomInfoList }" var="li">
 							<div class="accompany-info-detail">
-								<input type="radio" id="${li.id }" name="accompany-info" value=${li.id } required/>
+								<input type="radio" id="${li.id }" name="accompany-info" value="${li.id }" />
 								<label class="label-for-accom-info" for="${li.id }"> 
 											${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
 									    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
@@ -293,14 +403,19 @@
 					});
 			 	
 					
-					var ageMarginMin = document.getElementById('age-min'),
-					ageMarginMax = document.getElementById('age-max');
+					var ageMarginMin = document.getElementById('age-min');
+					var ageMarginMax = document.getElementById('age-max');
+					
+					var ageMinInput = document.getElementById('min-age');
+					var ageMaxInput = document.getElementById('max-age');
 
 					ageSlider.noUiSlider.on('update', function ( values, handle ) {
 						if ( handle ) {
 							ageMarginMax.innerHTML = values[handle];
+							ageMaxInput.value = values[handle];
 						} else {
 							ageMarginMin.innerHTML = values[handle];
+							ageMinInput.value = values[handle];
 						}
 					});
 			 	});
@@ -324,16 +439,18 @@
 			 	
 					
 					var distanceMargin = document.getElementById('distance-margin');
+					var distance = document.getElementById('distance');
 
 					distanceSlider.noUiSlider.on('update', function ( values, handle ) {
 							distanceMargin.innerHTML = values[handle];
+							distance.value = values[handle];
 					});
 			 	});
 				
 				
 				</script>	
 				
-				<script>
+<!-- 				<script>
 $( function() {
 	$( "#slider-range" ).slider({
 		range: true,
@@ -343,13 +460,20 @@ $( function() {
 		slide: function( event, ui ) {
 			$( "#min-age" ).val(ui.values[ 0 ]);
 			$( "#max-age" ).val(ui.values[ 1 ]);
+			
+			$( "#age-min" ).val(ui.values[ 0 ]);
+			$( "#age-max" ).val(ui.values[ 1 ]);
 		}
 	});
 	
 	$( "#min-age" ).val( $( "#slider-range" ).slider( "values", 0 ));
 	$( "#max-age" ).val( $( "#slider-range" ).slider( "values", 1 ));
+	
+	$( "#age-min" ).val( $( "#slider-range" ).slider( "values", 0 ));
+	$( "#age-max" ).val( $( "#slider-range" ).slider( "values", 1 ));
+	
 });
-</script>
+</script> -->
 					
 					<style>
 					
@@ -384,6 +508,8 @@ $( function() {
 							<span id="age-min"></span><span>&nbsp;-&nbsp;</span><span id="age-max"></span>
 							</div>
 						</div>
+						<input type="text" class="hidden" value="15" id="min-age" name="age-min" readonly/>
+						<input type="text" class="hidden" value="45" id="max-age" name="age-max" readonly/>
 						
 						<!-- <div class="age" id="age-content-container">
 								<div id="age-content-wrapper">
@@ -407,9 +533,12 @@ $( function() {
 									</div>
 								</div>
 							<div class="distance-content-displayer">
-							<span id="distance-margin"></span><span>&nbsp;km</span>
+								<span id="distance-margin"></span><span>&nbsp;km</span>
+								<input type="text" value="10" id="distance" name="distance" class="hidden"/>
 							</div>
 							</div>
+							
+							
 						<!-- </div>
 							<select name="distance" id="distance-select">
 								<option value="default" selected>거리선택</option>
@@ -431,7 +560,7 @@ $( function() {
 					<script>
 					$(document).ready(function() {
 					
-						$('#check-all').change(function() {
+						$('#check-all').click(function() {
 							if($(this).is(':checked')) {
 								$("#check-item1").prop('checked', true);
 								$("#check-item2").prop('checked', true);
@@ -464,20 +593,20 @@ $( function() {
 						<div class="select-label"><span>스타일</span></div>
 						<div class="select-container">
 							<div class="select-box">
-								 <input type="checkbox" class="check-items" id="check-item1" name="accompany-style" value="0" checked/>
+								 <input type="checkbox" class="check-items" id="check-item1" name="style" value="1" checked/>
 								 <label for="check-item1">Sharin'</label>
 							 </div>
 							 <div class="select-box">
-								 <input type="checkbox" class="check-items" id="check-item2" name="accompany-style" value="1" checked/>
+								 <input type="checkbox" class="check-items" id="check-item2" name="style" value="2" checked/>
 								 <label for="check-item2">Playin'</label>
 							 </div>
 							 <div class="select-box">
-								 <input type="checkbox" class="check-items" id="check-item3" name="accompany-style" value="2" checked/>
+								 <input type="checkbox" class="check-items" id="check-item3" name="style" value="3" checked/>
 								 <label for="check-item3">Drinkin'</label>
 							 </div>
 							 <div class="select-box">
-								 <input type="checkbox" id="check-all" name="accompany-style" value="3" checked/>
-								 <label for="check-all">ALL</label>
+								 <input type="checkbox" id="check-all" name="style" value="0" checked/>
+								 <label for="check-all" id="check-all">ALL</label>
 							 </div>
 							<%-- <select name="style" id="style-select">
 								<option value="default" selected>스타일 무관</option>
@@ -499,10 +628,10 @@ $( function() {
 	
 </div>
 </main>
-
+<!-- 
 <script>
 window.addEventListener("DOMContentLoaded", function(e) {
- */	var request = new window.XMLHttpRequest();
+ 	var request = new window.XMLHttpRequest();
 	//request.setRequestHeader('Content-Type', 'application/json'); post의 경우 설정해줌.
 	var searchBtn = document.querySelector("#search-button");
 	var matchingInfoForm = document.forms['matching-info-form'];
@@ -517,20 +646,23 @@ window.addEventListener("DOMContentLoaded", function(e) {
 	var startDate = document.querySelector(".start-date");
 	var sex = document.querySelector(".accom-sex");
 	var age = document.querySelector(".accom-age");
+	var style = document.querySelector(".accom-style");
+	var slider = document.querySelector(".slider");
 	var chattingButton = document.querySelector("#request-chatting");
-	var profiletitle = document.querySelector(".matched-profile-title");
+	//var profiletitle = document.querySelector(".matched-profile-title");
 	
-	/* if(${memberAccomInfoId ne'default' })
-		profiletitle.innerHTML = "기존에 매칭된 동행"; */
 
 	// 초기 데이터 설정하기
 	if(${memberPrevMatchedListToday.size()} ==0 && ${memberAccomInfoId eq 'default'}){
 		chattingButton.style.background="gray";
-		chattingButton.textContent="대화상대없음";
+		chattingButton.textContent="매칭된 이음 없음";
 		chattingButton.style.pointerEvents="none";
+		slider.classList.remove("hidden");
 	}
+		
 	
 	if(${memberPrevMatchedListToday.size()} >0){
+		slider.classList.remove("hidden");
 		// 정보 교체
 
 		location.innerHTML = "${memberPrevMatchedListToday[0].place}";
@@ -549,19 +681,30 @@ window.addEventListener("DOMContentLoaded", function(e) {
 		
 		date.innerHTML =  '<fmt:formatDate value="${memberPrevMatchedListToday[0].startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${memberPrevMatchedListToday[0].endDate }" pattern="yy.MM.dd" />';
 		
+		if(${memberPrevMatchedListToday[0].styleId eq '1' })
+			style.innerHTML = "Sharin'";
+		else if(${memberPrevMatchedListToday[0].styleId eq '2' })		
+			style.innerHTML = "Playin'";
+		else
+			style.innerHTML = "Drinkin'";
+		
 		chattingButton.onclick = function(){ window.location.href=''; };
 		// 정보 교체 끝
+		
+		
 	}
 	
+ 
 
-	/*  하루 매칭된 횟수 2회 이상일 경우, 카드 추가해주기 */
 	if(${memberPrevMatchedListToday.size()>1 })
  	{
-			var slideContainer = document.querySelector(".slide-container");
+			var matchedAccompanyForm = document.querySelector(".matched-accompany-form");
+			
 			
 			<c:forEach items="${memberPrevMatchedListToday}" var="li" varStatus="status">
 				<c:if test="${status.index>0}">
-				var matchedCard = document.querySelector(".clone-card");
+				
+				var matchedCard = document.querySelector(".slider-clone");
 
 				var profImg = matchedCard.querySelector(".circle-img");
 				var nicName = matchedCard.querySelector(".matched-nicName");
@@ -569,6 +712,7 @@ window.addEventListener("DOMContentLoaded", function(e) {
 				var date = matchedCard.querySelector(".accom-date");
 				var sex = matchedCard.querySelector(".accom-sex");
 				var age = matchedCard.querySelector(".accom-age");
+				var style = matchedCard.querySelector(".accom-style");
 				var chattingButton = matchedCard.querySelector("#request-chatting");
 				
 				// 정보 교체
@@ -589,107 +733,31 @@ window.addEventListener("DOMContentLoaded", function(e) {
 				
 				date.innerHTML =  '<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${li.endDate }" pattern="yy.MM.dd" />';
 				
+				if(${li.styleId eq '1' })
+					style.innerHTML = "Sharin'";
+				else if(${li.styleId eq '2' })		
+					style.innerHTML = "Playin'";
+				else
+					style.innerHTML = "Drinkin'";
+				
 				chattingButton.onclick = function(){ window.location.href=''; };
 				// 정보 교체 끝
 				
+				//클론 추가해주기
 				var clone = matchedCard.cloneNode(true);
 		
 				clone.classList.remove("hidden");
-				slideContainer.appendChild(clone);
+				matchedAccompanyForm.appendChild(clone);
 
 				</c:if>
 
 			</c:forEach>
-/* 			var currentCount = 0;
 			
- 			nextButton.style.display = "flex";
- 			
-			nextButton.onclick=function(){
-
-				currentCount++;
-				
-				if(currentCount==1 ){
-					prevButton.style.display = "flex";
-				}
-				
-				if(currentCount == ${memberPrevMatchedListToday.size()-1 })
-				{
-					nextButton.style.display = "none";
-				}
-				
-				<c:forEach items="${memberPrevMatchedListToday}" var="li" varStatus="status">
-					if(${status.index }==currentCount)
-					{
-						
-						// 정보 교체
-						
-						location.innerHTML = "${memberPrevMatchedListToday[status.index].place}";
-						
-						date.innerHTML = "${memberPrevMatchedListToday[status.index].startDate}";	
-						
-						if(${memberPrevMatchedListToday[status.index].sex eq '0' })
-							sex.innerHTML = "남성";
-						else		
-							sex.innerHTML = "여성";
-							
-						age.innerHTML = "${memberPrevMatchedListToday[status.index].age}세";
-						
-						profImg.src = "${root }${memberPrevMatchedListToday[status.index].imgSrc}${memberPrevMatchedListToday[status.index].imgName}";
-						nicName.innerHTML = "${memberPrevMatchedListToday[status.index].nicName}";
-						date.innerHTML =  '<fmt:formatDate value="${memberPrevMatchedListToday[status.index].startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${memberPrevMatchedListToday[status.index].endDate }" pattern="yy.MM.dd" />';
-						
-						chattingButton.onclick = function(){ window.location.href=''; };
-						// 정보 교체 끝
-						
-					}
-				</c:forEach>
-	
-				
-			};
-			
-			
-			prevButton.onclick=function(){
-				
-				currentCount--;
-				
-				if(currentCount==0){
-					prevButton.style.display = "none";
-				}
-					
-				if(currentCount === ${memberPrevMatchedListToday.size()-2 }){
-					nextButton.style.display = "flex";
-				}
-				
-				<c:forEach items="${memberPrevMatchedListToday}" var="li" varStatus="status">
-					if(${status.index }==currentCount)
-					{						
-						// 정보 교체
-						
-						location.innerHTML = "${memberPrevMatchedListToday[status.index].place}";
-						
-						date.innerHTML = "${memberPrevMatchedListToday[status.index].startDate}";	
-						
-						if(${memberPrevMatchedListToday[status.index].sex eq '0' })
-							sex.innerHTML = "남성";
-						else		
-							sex.innerHTML = "여성";
-							
-						age.innerHTML = "${memberPrevMatchedListToday[status.index].age}세";
-						
-						profImg.src = "${root }${memberPrevMatchedListToday[status.index].imgSrc}${memberPrevMatchedListToday[status.index].imgName}";
-						nicName.innerHTML = "${memberPrevMatchedListToday[status.index].nicName}";
-						date.innerHTML =  '<fmt:formatDate value="${memberPrevMatchedListToday[status.index].startDate }" pattern="yy.MM.dd" /> - <fmt:formatDate value="${memberPrevMatchedListToday[status.index].endDate }" pattern="yy.MM.dd" />';
-						
-						chattingButton.onclick = function(){ window.location.href=''; };
-						// 정보 교체 끝
-						
-					}
-				</c:forEach>
-			} */
- 	}
+ 	} 
 
 });
-</script>
+</script> -->
+
 <!-- -----------------------동행 매칭하기--------------------------------------- -->
 <script>
 
@@ -698,8 +766,6 @@ window.addEventListener("load", function(e) {
 	//request.setRequestHeader('Content-Type', 'application/json'); post의 경우 설정해줌.
 	var searchBtn = document.querySelector("#search-button");
 	var matchingInfoForm = document.forms['matching-info-form'];
-	var prevButton = document.querySelector(".prev-button");
- 	var nextButton = document.querySelector(".next-button");
 	var profImg = document.querySelector(".circle-img");
 	var nicName = document.querySelector(".matched-nicName");
 	var location = document.querySelector(".accom-location");
@@ -711,238 +777,240 @@ window.addEventListener("load", function(e) {
 	var age = document.querySelector(".accom-age");
 	var chattingButton = document.querySelector("#request-chatting");
 	//var profiletitle = document.querySelector(".matched-profile-title");
+
+	var isMatched = false; // 부모 노드 판단
+	var parentSection; // 클론을 붙일 부모 노드 지정
 	
  	//-----------------------동행 찾기 버튼 클릭 시 --------------------------
 	searchBtn.onclick = function(){
-		/* nextButton.style.display = "none";
-		prevButton.style.display = "none"; */
 		
 		if(${size>0 }){
 	 		
-			var accomInfoId = matchingInfoForm.elements['accompany-info'].value;
+			//var accomInfoId = matchingInfoForm.elements['accompany-info'].value;
+			var accomInfoId = document.querySelector('input[name = "accompany-info"]:checked');
 			var sexV = matchingInfoForm.elements['sex'].value;
 			var min = matchingInfoForm.elements['age-min'].value;
 			var max = matchingInfoForm.elements['age-max'].value;
-			var dis = matchingInfoForm.elements['distance'].value;
-			var sty = matchingInfoForm.elements['style'].value;
-
+			var dis = matchingInfoForm.elements['distance'].value*1000;
+			var sty = document.querySelectorAll('input[name = "style"]:checked');
+			var styText = ""; 
 			
-			if(accomInfoId.length>0){
-				var url = "matching-ajax-data?a=" + accomInfoId + "&sx=" + sexV + "&min=" + min + "&max=" + max + "&dis=" + dis + "&sty=" + sty;
 			
+			if(accomInfoId != null){
+				accomInfoId = accomInfoId.value;
+				//alert(sty.length);
+				for(var idx=0 ; idx<sty.length ; idx++){
+					if(sty.length==4){
+						styText ="";
+						break;	  
+					}
+					else if(sty.length==1)
+						styText = sty[idx].value;
+					else{
+						if(idx==0)
+							styText = sty[idx].value;
+						else
+							styText = styText+" "+sty[idx].value;
+					}
+				}
+				
+				
+				var url = "matching-ajax-data?a=" + accomInfoId + "&sx=" + sexV + "&min=" + min + "&max=" + max + "&dis=" + dis + "&sty=" + styText;
+				//alert(url);
 				request.open("GET",url, true);			
 		
 				request.onload = function(){
 					var result = JSON.parse(request.responseText);
 					
+					
 					if(typeof result.error != 'undefined'){
 						alert(result.error);
 					}
-					else{
-						chattingButton.style.display="flex";
-						profiletitle.innerHTML = "매칭된 동행";
-						
-						profImg.src = '${root }' + result[0].imgSrc + result[0].imgName;
-						nicName.innerHTML =  result[0].nicName;
-						location.innerHTML = result[0].place;
-						
-						age.innerHTML = result[0].age + " 세";
-						
-						if(result[0].sex == '0')
-							sex.innerHTML = "남성";
-						
-						else
-							sex.innerHTML = "여성";
 					
-						/* --------------------------날 짜 ------------------------ */
-						var startDate = new Date(result[0].startDate);
-						var endDate = new Date(result[0].endDate);
-						var startDateMon = startDate.getMonth() +1;
-						var endDateMon = endDate.getMonth() + 1;
-						var startDateDay = startDate.getDate();
-						var endDateDay = endDate.getDate(); 
-						var startDateYear = startDate.getFullYear().toString().substring(2,4);
-						var endDateYear = endDate.getFullYear().toString().substring(2,4);
+//----------------------matched---------------------------
+					else{
+						document.querySelector(".today-matched-count").innerHTML = '('+result.length+')';
 						
-						if(startDateMon<10){
-							if(startDateDay<10)
-								startDate = startDateYear+ ".0"+ startDateMon + ".0" + startDateDay;
-							else
-								startDate = startDateYear+ ".0"+ startDateMon + "." + startDateDay;
-						}
-						else{
-							if(startDateDay<10)
-								startDate = startDateYear+ "."+startDateMon + ".0" + startDateDay;
-							else
-								startDate = startDateYear+ "."+ startDateMon + "." + startDateDay;
-						}	
+						
+						//처음 매칭된 경우, 기존 화면 바꿔주기
+						if(result.length==1){
+							parentSection = document.querySelector(".not-matched-section");
 							
-						if(endDateMon<10){
-							if(endDateDay<10)
-								endDate = endDateYear + ".0"+ endDateMon + ".0" + endDateDay;
+							
+							var profImg = parentSection.querySelector(".circle-img");
+							var nicName = parentSection.querySelector(".matched-nicName");
+							var location = parentSection.querySelector(".accom-location");
+							var date = parentSection.querySelector(".accom-date");
+							var sex = parentSection.querySelector(".accom-sex");
+							var age = parentSection.querySelector(".accom-age");
+							var style = parentSection.querySelector(".accom-style");
+						
+							// 정보 교체
+
+							location.innerHTML = result[0].place;
+							
+							date.innerHTML = result[0].startDate;
+							
+							
+							if(result[0].sex == '0')
+								sex.innerHTML = "남성";
+							else		
+								sex.innerHTML = "여성";
+								
+							age.innerHTML = result[0].age;
+							
+							profImg.src = '${root }' + result[0].imgSrc + result[0].imgName;
+							nicName.innerHTML = result[0].nicName;
+
+							
+							/* --------------------------날 짜 ------------------------ */
+							var startDate = new Date(result[0].startDate);
+							var endDate = new Date(result[0].endDate);
+							var startDateMon = startDate.getMonth() +1;
+							var endDateMon = endDate.getMonth() + 1;
+							var startDateDay = startDate.getDate();
+							var endDateDay = endDate.getDate(); 
+							var startDateYear = startDate.getFullYear().toString().substring(2,4);
+							var endDateYear = endDate.getFullYear().toString().substring(2,4);
+							
+							if(startDateMon<10){
+								if(startDateDay<10)
+									startDate = startDateYear+ ".0"+ startDateMon + ".0" + startDateDay;
+								else
+									startDate = startDateYear+ ".0"+ startDateMon + "." + startDateDay;
+							}
+							else{
+								if(startDateDay<10)
+									startDate = startDateYear+ "."+startDateMon + ".0" + startDateDay;
+								else
+									startDate = startDateYear+ "."+ startDateMon + "." + startDateDay;
+							}	
+								
+							if(endDateMon<10){
+								if(endDateDay<10)
+									endDate = endDateYear + ".0"+ endDateMon + ".0" + endDateDay;
+								else
+									endDate = endDateYear+ ".0"+ endDateMon + "." + endDateDay;
+							}
+							else{
+								if(endDateDay<10)
+									endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
+								else
+									endDate = endDateYear + endDateMon + "." + endDateDay;
+							}
+							
+							date.innerHTML = startDate+ "-" +endDate;
+							/* ----------------------------------------------------- */
+							
+							
+							if(result[0].styleId=='1')
+								style.innerHTML = "Sharin'";
+							else if(result[0].styleId=='2')		
+								style.innerHTML = "Playin'";
 							else
-								endDate = endDateYear+ ".0"+ endDateMon + "." + endDateDay;
-						}
-						else{
-							if(endDateDay<10)
-								endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
-							else
-								endDate = endDateYear + endDateMon + "." + endDateDay;
+								style.innerHTML = "Drinkin'";
+							
+							
+							// 정보 교체 끝	
+						
+							isMatched = true;
 						}
 						
-						date.innerHTML = startDate+ "-" +endDate;
-						/* ----------------------------------------------------- */
+						else{
+							if(isMatched==false){
+								parentSection = document.querySelector(".matched-section");
+								isMatched = true;
+							}
+							
+							var cloneSection = document.querySelector("#clone-section");
+							
+							var profImg = cloneSection.querySelector(".circle-img");
+							var nicName = cloneSection.querySelector(".matched-nicName");
+							var location = cloneSection.querySelector(".accom-location");
+							var date = cloneSection.querySelector(".accom-date");
+							var sex = cloneSection.querySelector(".accom-sex");
+							var age = cloneSection.querySelector(".accom-age");
+							var style = cloneSection.querySelector(".accom-style");
+						
+							// 정보 교체
+
+							location.innerHTML = result[0].place;
+							
+							date.innerHTML = result[0].startDate;
+							
+							
+							if(result[0].sex == '0')
+								sex.innerHTML = "남성";
+							else		
+								sex.innerHTML = "여성";
+								
+							age.innerHTML = result[0].age;
+							
+							profImg.src = '${root }' + result[0].imgSrc + result[0].imgName;
+							nicName.innerHTML = result[0].nicName;
+
+							
+							/* --------------------------날 짜 ------------------------ */
+							var startDate = new Date(result[0].startDate);
+							var endDate = new Date(result[0].endDate);
+							var startDateMon = startDate.getMonth() +1;
+							var endDateMon = endDate.getMonth() + 1;
+							var startDateDay = startDate.getDate();
+							var endDateDay = endDate.getDate(); 
+							var startDateYear = startDate.getFullYear().toString().substring(2,4);
+							var endDateYear = endDate.getFullYear().toString().substring(2,4);
+							
+							if(startDateMon<10){
+								if(startDateDay<10)
+									startDate = startDateYear+ ".0"+ startDateMon + ".0" + startDateDay;
+								else
+									startDate = startDateYear+ ".0"+ startDateMon + "." + startDateDay;
+							}
+							else{
+								if(startDateDay<10)
+									startDate = startDateYear+ "."+startDateMon + ".0" + startDateDay;
+								else
+									startDate = startDateYear+ "."+ startDateMon + "." + startDateDay;
+							}	
+								
+							if(endDateMon<10){
+								if(endDateDay<10)
+									endDate = endDateYear + ".0"+ endDateMon + ".0" + endDateDay;
+								else
+									endDate = endDateYear+ ".0"+ endDateMon + "." + endDateDay;
+							}
+							else{
+								if(endDateDay<10)
+									endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
+								else
+									endDate = endDateYear + endDateMon + "." + endDateDay;
+							}
+							
+							date.innerHTML = startDate+ "-" +endDate;
+							/* ----------------------------------------------------- */
+							
+							
+							if(result[0].styleId=='1')
+								style.innerHTML = "Sharin'";
+							else if(result[0].styleId=='2')		
+								style.innerHTML = "Playin'";
+							else
+								style.innerHTML = "Drinkin'";
+							
+							
+							// 정보 교체 끝	
+						
+							//클론 추가해주기
+							var clone = cloneSection.cloneNode(true);
+							
+							clone.classList.remove("hidden");
+							parentSection.appendChild(clone);
+							
+							
+						}
 
 						alert("매칭되었습니다.");
- 						
- 						if(result.length>1){
- 							var currentMatchInfo = 0;
- 							nextButton.style.display = "flex";
- 							
- 							nextButton.onclick=function(){
-								currentMatchInfo++;
- 								// 정보 교체
-								location.innerHTML = result[currentMatchInfo].place;
-								
-								/* --------------------------날 짜 ------------------------ */
-								startDate = new Date(result[currentMatchInfo].startDate);
-								endDate = new Date(result[currentMatchInfo].endDate);
-								startDateMon = startDate.getMonth() +1;
-								endDateMon = endDate.getMonth() + 1;
-								startDateDay = startDate.getDate();
-								endDateDay = endDate.getDate(); 
-								startDateYear = startDate.getFullYear().toString().substring(2,4);
-								endDateYear = endDate.getFullYear().toString().substring(2,4);
-								
-								if(startDateMon<10){
-									if(startDateDay<10)
-										startDate = startDateYear+ ".0"+ startDateMon + ".0" + startDateDay;
-									else
-										startDate = startDateYear+ ".0"+ startDateMon + "." + startDateDay;
-								}
-								else{
-									if(startDateDay<10)
-										startDate = startDateYear+ "."+startDateMon + ".0" + startDateDay;
-									else
-										startDate = startDateYear+ "."+ startDateMon + "." + startDateDay;
-								}	
-									
-								if(endDateMon<10){
-									if(endDateDay<10)
-										endDate = endDateYear + ".0"+ endDateMon + ".0" + endDateDay;
-									else
-										endDate = endDateYear+ ".0"+ endDateMon + "." + endDateDay;
-								}
-								else{
-									if(endDateDay<10)
-										endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
-									else
-										endDate = endDateYear + endDateMon + "." + endDateDay;
-								}
-								
-								date.innerHTML = startDate+ "-" +endDate;	
-								
-								/* ----------------------------------------------------- */
-
- 								
-								
-								if(result[currentMatchInfo].sex === '0')
-									sex.innerHTML = "남성";
-								else		
-									sex.innerHTML = "여성";
-									
-								age.innerHTML = result[currentMatchInfo].age+"세";
-								
-								profImg.src = "${root }"+result[currentMatchInfo].imgSrc+result[currentMatchInfo].imgName;
-								nicName.innerHTML = result[currentMatchInfo].nicName;
-								
-								chattingButton.onclick = function(){ window.location.href=''; };
-								// 정보 교체 끝
-								
-								if(currentMatchInfo==1){
-									prevButton.style.display = "flex";
-								}
-								
- 	 							if(currentMatchInfo == result.length-1)
- 	 							{
- 	 								nextButton.style.display = "none";
- 	 							}
- 	 							
- 							};
- 							
- 							prevButton.onclick=function(){
- 								
- 								currentMatchInfo--;
- 								
-								/* --------------------------날 짜 ------------------------ */
-								startDate = new Date(result[currentMatchInfo].startDate);
-								endDate = new Date(result[currentMatchInfo].endDate);
-								startDateMon = startDate.getMonth() +1;
-								endDateMon = endDate.getMonth() + 1;
-								startDateDay = startDate.getDate();
-								endDateDay = endDate.getDate(); 
-								startDateYear = startDate.getFullYear().toString().substring(2,4);
-								endDateYear = endDate.getFullYear().toString().substring(2,4);
-								
-								if(startDateMon<10){
-									if(startDateDay<10)
-										startDate = startDateYear+ ".0"+ startDateMon + ".0" + startDateDay;
-									else
-										startDate = startDateYear+ ".0"+ startDateMon + "." + startDateDay;
-								}
-								else{
-									if(startDateDay<10)
-										startDate = startDateYear+ "."+startDateMon + ".0" + startDateDay;
-									else
-										startDate = startDateYear+ "."+ startDateMon + "." + startDateDay;
-								}	
-									
-								if(endDateMon<10){
-									if(endDateDay<10)
-										endDate = endDateYear + ".0"+ endDateMon + ".0" + endDateDay;
-									else
-										endDate = endDateYear+ ".0"+ endDateMon + "." + endDateDay;
-								}
-								else{
-									if(endDateDay<10)
-										endDate = endDateYear + "." + endDateMon + ".0" + endDateDay;
-									else
-										endDate = endDateYear + endDateMon + "." + endDateDay;
-								}
-								
-								date.innerHTML = startDate+ "-" +endDate;	
-								
-								/* ----------------------------------------------------- */
-
-								
- 								// 정보 교체
-								location.innerHTML = result[currentMatchInfo].place;
-								
-								if(result[currentMatchInfo].sex === '0')
-									sex.innerHTML = "남성";
-								else		
-									sex.innerHTML = "여성";
-									
-								age.innerHTML = result[currentMatchInfo].age+"세";
-								
-								profImg.src = "${root }"+result[currentMatchInfo].imgSrc+result[currentMatchInfo].imgName;
-								nicName.innerHTML = result[currentMatchInfo].nicName;
-								
-								chattingButton.onclick = function(){ window.location.href=''; };
-								// 정보 교체 끝
-								
- 								if(currentMatchInfo==0){
-									prevButton.style.display = "none";
-								}
- 								
-								if(currentMatchInfo==result.length-2){
-									nextButton.style.display = "flex";
-								}
-								
- 							}
- 							
- 								
- 						}
+						
 						
 					  }
 						document.body.removeChild(screen);
@@ -968,7 +1036,7 @@ window.addEventListener("load", function(e) {
 			}
 			
 		}
-		/* --------------등록된 동행 정보가 없는 경우----------------- */ 
+		// --------------등록된 동행 정보가 없는 경우-----------------
 		else{
 			alert("회원님의 동행 정보 우선 등록 후 매칭 서비스를 이용해주세요.");
 			window.location.href="${root }/member/acc-setting";
@@ -982,7 +1050,7 @@ window.addEventListener("load", function(e) {
 
 
 <!-- --------------------------나이------------------------------------ -->
-<script>
+<!-- <script>
 $( function() {
 	$( "#slider-range" ).slider({
 		range: true,
@@ -990,7 +1058,7 @@ $( function() {
 		max: 45,
 		values: [ 25, 35 ],
 		slide: function( event, ui ) {
-			$( "#min-age" ).val(ui.values[ 0 ]);
+			$( "# " ).val(ui.values[ 0 ]);
 			$( "#max-age" ).val(ui.values[ 1 ]);
 		}
 	});
@@ -998,7 +1066,7 @@ $( function() {
 	$( "#min-age" ).val( $( "#slider-range" ).slider( "values", 0 ));
 	$( "#max-age" ).val( $( "#slider-range" ).slider( "values", 1 ));
 });
-</script>
+</script> -->
 
 <!-- ------------------------이전 동행 목록 불러오기-------------------------------------------------- -->
 <script>

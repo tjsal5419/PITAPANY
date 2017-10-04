@@ -124,14 +124,14 @@
 	    		
 	    		<div class="side-menu-container">
 	    			<button class="side-menu-mobile" onclick="location.href='${root}/accompany/board';">이음찾기</button>
-	    			<button class="side-menu-mobile">이음매칭</button>
-	    			<button class="side-menu-mobile side-menu-accordion">커뮤니티</button>
+	    			<button class="side-menu-mobile" onclick="location.href='${root}/accompany/matching';">이음매칭</button>
+	    			<button class="side-menu-mobile side-menu-accordion" >커뮤니티</button>
 	    				<div class="side-menu-panel">
-		    				<div>이음광장</div>
-		    				<div>이음팁게</div>
-		    				<div>이음질문</div>
+		    				<div onclick="location.href='${root}/community/rounge';">이음광장</div>
+		    				<div onclick="location.href='${root}/community/tip';">이음팁게</div>
+		    				<div onclick="location.href='${root}/community/faq';">이음질문</div>
 	    				</div>
-	    			<button class="side-menu-mobile">나의이음</button>
+	    			<button class="side-menu-mobile" onclick="location.href='${root}/member/acc-setting';">나의이음</button>
 	    		</div>
     		</div>
    		

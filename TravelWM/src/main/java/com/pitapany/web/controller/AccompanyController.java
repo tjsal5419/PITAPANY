@@ -624,8 +624,24 @@ public class AccompanyController {
 		if (styleId.equals("default")) {
 			styleEq = "LIKE";
 			styleId = "%%";
-		} else
+		} else if(styleId.contains(" ")) {
+			styleEq = "!=";
+			
+			if(!styleId.contains("1")) {
+				styleId = "1";
+			}
+			else if(!styleId.contains("2")) {
+				styleId = "2";
+			}
+			else {
+				styleId = "3";
+			}
+		}
+		else {
 			styleEq = "=";
+		}
+		System.out.println(styleEq);
+			
 
 		// 거리 무관인 경우
 		if (distance.equals("default"))

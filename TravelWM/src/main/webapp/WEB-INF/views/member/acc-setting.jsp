@@ -140,7 +140,7 @@
 									</div>
 								
 									<div class="edit-delete">
-										<button value="${li.id }" class="btn btn-info na delete-button">삭제</button>
+										<button value="${li.id }" class="btn btn-info na delete-button" onclick="window.location.href='${root }/member/matched-accom-delete?id=${li.id}'">삭제</button>
 									</div>
 								</div>
 								</c:forEach>
@@ -151,7 +151,7 @@
 						</c:choose>
 					
 					<div>
-						<button type="button" class="btn-add" id="btn-add" onclick="window.location.href='${root }/accompany/matching'">추가</button>
+						<button type="button" class="btn-add" id="btn-add" onclick="location.href='${root }/accompany/matching'">추가</button>
 						
 					</div>
 				</div>
