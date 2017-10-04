@@ -94,9 +94,9 @@
 								<div class="info-item item-nickname">${li.writerNicName }</div>
 								<div class="info-item item-country-date">
 								${li.country }</br>
-								<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
-								~
-								<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />		
+								<fmt:formatDate value="${li.startDate }" pattern="YY.MM.dd" />
+								-
+								<fmt:formatDate value="${li.endDate }" pattern="YY.MM.dd" />		
 								</div>
 							</div>
 						</div>

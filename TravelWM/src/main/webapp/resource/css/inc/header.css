@@ -65,6 +65,8 @@ ol, ul{
 }
 	
 .navbar{
+	z-index: 1030;
+	
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -178,11 +180,15 @@ ol, ul{
 	
 	.sub-menu-container li:first-child i {
 		margin-left: -1px;
-		padding-right: 7px;
+		padding-right: 12px;
 	}
 	
 	.sub-menu-container li:nth-child(2) i {
-		padding-right: 8px;
+		padding-right: 13px;
+	}
+	
+	.sub-menu-container li:last-child i {
+		padding-right: 10px;
 	}
 	 
 	.sub-menu-container li a:hover, .sub-menu-container .current-item a {

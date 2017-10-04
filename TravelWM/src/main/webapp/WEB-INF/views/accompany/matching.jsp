@@ -280,7 +280,7 @@
 					var ageSlider = document.getElementById('age-content-container');
 
 					noUiSlider.create(ageSlider, {
-						start: [25, 35],
+						start: [15, 45],
 						step: 1,
 						connect: true,
 						format: wNumb({
@@ -311,14 +311,14 @@
 					noUiSlider.create(distanceSlider, {
 						start: [10],
 						step: 1,
-						padding: 5,
+						padding: 0,
 						connect: [true, false],
 						format: wNumb({
 							decimals: 0
 						}),
 						range: {
-							'min': -4,
-							'max': 105
+							'min': 10,
+							'max': 100
 						}
 					});
 			 	
@@ -365,12 +365,20 @@ $( function() {
 					.noUi-connect{
 						background: #33b5e5;
 					}
+					
+					.content-wrapper{
+						width: 75%;
+						padding-left: 15px;
+						padding-right: 15px;
+					}
 					</style>
 					
 					<div class="age-container" id="test">
 						<div class="select-label"><span>나이</span></div>
 						<div class="select-container">
-							<div class="age" id="age-content-container">
+							<div class="content-wrapper">
+								<div class="age" id="age-content-container">
+								</div>
 							</div>
 							<div class="age-content-displayer">
 							<span id="age-min"></span><span>&nbsp;-&nbsp;</span><span id="age-max"></span>
@@ -394,8 +402,10 @@ $( function() {
 						
 							<div class="select-label"><span>거리</span></div>
 							<div class="select-container">
-							<div class="distance" id="distance-content-container">
-							</div>
+								<div class="content-wrapper">
+									<div class="distance" id="distance-content-container">
+									</div>
+								</div>
 							<div class="distance-content-displayer">
 							<span id="distance-margin"></span><span>&nbsp;km</span>
 							</div>
@@ -418,14 +428,64 @@ $( function() {
 					
 					</div>
 					
-					<div class="style">
+					<script>
+					$(document).ready(function() {
+					
+						$('#check-all').change(function() {
+							if($(this).is(':checked')) {
+								$("#check-item1").prop('checked', true);
+								$("#check-item2").prop('checked', true);
+								$("#check-item3").prop('checked', true);
+							} else {
+								$("#check-item1").prop('checked', false);
+								$("#check-item2").prop('checked', false);
+								$("#check-item3").prop('checked', false);
+							}
+						});
+						
+						$('.check-items').change(function() {
+							if(($("#check-item1").is(':checked'))&&($("#check-item2").is(':checked'))&&($("#check-item3").is(':checked'))) {
+								$("#check-all").prop('checked', true);
+							} else {
+								$("#check-all").prop('checked', false);
+							}
+						});
+					
+						
+					});
+
+					    
+					
+					
+					</script>
+					
+					
+					<div class="style-container">
 						<div class="select-label"><span>스타일</span></div>
-						<select name="style" id="style-select">
-							<option value="default" selected>스타일 무관</option>
-							<c:forEach items="${styles }" var="i">
-								<option value="${i.id }">${i.type }</option>
-							</c:forEach>
-						</select>
+						<div class="select-container">
+							<div class="select-box">
+								 <input type="checkbox" class="check-items" id="check-item1" name="accompany-style" value="0" checked/>
+								 <label for="check-item1">Sharin'</label>
+							 </div>
+							 <div class="select-box">
+								 <input type="checkbox" class="check-items" id="check-item2" name="accompany-style" value="1" checked/>
+								 <label for="check-item2">Playin'</label>
+							 </div>
+							 <div class="select-box">
+								 <input type="checkbox" class="check-items" id="check-item3" name="accompany-style" value="2" checked/>
+								 <label for="check-item3">Drinkin'</label>
+							 </div>
+							 <div class="select-box">
+								 <input type="checkbox" id="check-all" name="accompany-style" value="3" checked/>
+								 <label for="check-all">ALL</label>
+							 </div>
+							<%-- <select name="style" id="style-select">
+								<option value="default" selected>스타일 무관</option>
+								<c:forEach items="${styles }" var="i">
+									<option value="${i.id }">${i.type }</option>
+								</c:forEach>
+							</select> --%>
+						</div>
 					</div>
 				</div>
 			</div>

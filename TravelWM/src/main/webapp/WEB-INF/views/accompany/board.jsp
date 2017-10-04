@@ -82,10 +82,10 @@
 								<div class="board-accompany-info">
 									<div class="info-item item-nickname">${li.writerNicName }</div>
 									<div class="info-item item-country-date">
-									${li.country }&nbsp;${li.place }</br>
-									<fmt:formatDate value="${li.startDate }" pattern="yyyy-MM-dd" />
-									~
-									<fmt:formatDate value="${li.endDate }" pattern="yyyy-MM-dd" />		
+									${li.country}&nbsp;${li.place}</br>
+									<fmt:formatDate value="${li.startDate }" pattern="YY.MM.dd" />
+									-
+									<fmt:formatDate value="${li.endDate }" pattern="YY.MM.dd" />		
 									</div>
 								</div>
 							</div>
@@ -181,6 +181,29 @@
 <div id="map-container">
 	<div id="map-wrapper"></div>
 </div>
+
+
+<!-- Navbar-Top Related Javascript -->
+<script>
+	$(window).scroll(function () {
+	    var scAccBoard = $(window).scrollTop()
+	    
+	    $("#map-container").css("transition-duration", "0.4s");
+	    $("#filter-container").css("transition-duration", "0.4s");
+	  
+	    if (scAccBoard > 3){
+	     	$("#map-container").css("margin-top", "60px");
+	     	$("#filter-container").css("margin-top", "60px");
+	     	
+	    } else {
+	    		$("#map-container").css("margin-top", "80px");
+	    		$("#filter-container").css("margin-top", "80px");
+	    }
+	});
+</script>
+
+
+
 
 <!-- --------show current search filter in the button------- -->
 <script>
