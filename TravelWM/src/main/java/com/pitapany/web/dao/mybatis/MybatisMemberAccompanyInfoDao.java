@@ -1,5 +1,6 @@
 package com.pitapany.web.dao.mybatis;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -66,9 +67,9 @@ public class MybatisMemberAccompanyInfoDao implements MemberAccompanyInfoDao {
 	@Override
 	public List<MemberAccompanyInfoMatchingView> getListMemberAccompanyMatching(float latitude, float longitude,
 			String memberId, String styleEq, String styleId, String distance, String sexEq, String sex, int minAge,
-			int maxAge) {
+			int maxAge, String startDate, String endDate) {
 		MemberAccompanyInfoDao accInfoDao = sqlSession.getMapper(MemberAccompanyInfoDao.class);
-		return accInfoDao.getListMemberAccompanyMatching(latitude, longitude, memberId, styleEq, styleId, distance, sexEq, sex, minAge, maxAge);
+		return accInfoDao.getListMemberAccompanyMatching(latitude, longitude, memberId, styleEq, styleId, distance, sexEq, sex, minAge, maxAge,startDate,endDate);
 	}
 	
 

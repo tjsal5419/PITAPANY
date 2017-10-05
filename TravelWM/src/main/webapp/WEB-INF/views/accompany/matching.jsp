@@ -221,7 +221,7 @@
 					
 					
 									<div class="matched-message">
-										<div class="btn-matched-message" id="request-chatting">매칭된 동행 없음</div>
+										<div class="btn-matched-message" id="request-chatting">대화하기</div>
 									</div>
 					
 					
@@ -344,6 +344,7 @@
 						<c:forEach items="${memAccomInfoList }" var="li">
 							<div class="accompany-info-detail">
 								<input type="radio" id="${li.id }" name="accompany-info" value="${li.id }" />
+								
 								<label class="label-for-accom-info" for="${li.id }"> 
 											${li.country }&nbsp;${li.locality }&nbsp;${li.place }&nbsp;
 									    	<fmt:formatDate value="${li.startDate }" pattern="yy.MM.dd" />
@@ -450,30 +451,6 @@
 				
 				</script>	
 				
-<!-- 				<script>
-$( function() {
-	$( "#slider-range" ).slider({
-		range: true,
-		min: 15,
-		max: 45,
-		values: [ 25, 35 ],
-		slide: function( event, ui ) {
-			$( "#min-age" ).val(ui.values[ 0 ]);
-			$( "#max-age" ).val(ui.values[ 1 ]);
-			
-			$( "#age-min" ).val(ui.values[ 0 ]);
-			$( "#age-max" ).val(ui.values[ 1 ]);
-		}
-	});
-	
-	$( "#min-age" ).val( $( "#slider-range" ).slider( "values", 0 ));
-	$( "#max-age" ).val( $( "#slider-range" ).slider( "values", 1 ));
-	
-	$( "#age-min" ).val( $( "#slider-range" ).slider( "values", 0 ));
-	$( "#age-max" ).val( $( "#slider-range" ).slider( "values", 1 ));
-	
-});
-</script> -->
 					
 					<style>
 					
@@ -510,18 +487,7 @@ $( function() {
 						</div>
 						<input type="text" class="hidden" value="15" id="min-age" name="age-min" readonly/>
 						<input type="text" class="hidden" value="45" id="max-age" name="age-max" readonly/>
-						
-						<!-- <div class="age" id="age-content-container">
-								<div id="age-content-wrapper">
-									<p>
-										<input type="text" name="age-min" id="min-age" readonly/>
-									</p>
-									<div id="slider-range"></div>
-									<p>
-										<input type="text" name="age-max" id="max-age" readonly/>
-									</p>
-								</div>
-						</div> -->
+				
 					</div>
 					
 					<div class="distance-container">
@@ -537,24 +503,7 @@ $( function() {
 								<input type="text" value="10" id="distance" name="distance" class="hidden"/>
 							</div>
 							</div>
-							
-							
-						<!-- </div>
-							<select name="distance" id="distance-select">
-								<option value="default" selected>거리선택</option>
-								<option value="default">가까운 거리 순</option>
-								<option value="10">10m 이내</option>
-								<option value="50">50m 이내</option>
-								<option value="100">100m 이내</option>
-								<option value="200">200m 이내</option>
-								<option value="300">300m 이내</option>
-								<option value="500">500m 이내</option>
-								<option value="1000">1km 이내</option>
-								<option value="2000">2km 이내</option>					
-							</select>
-						</div>
-						<div class="temp">? 선택하신 여행지로부터의 거리를 선택하실 수 있습니다.</div> -->
-					
+						
 					</div>
 					
 					<script>
@@ -775,7 +724,6 @@ window.addEventListener("load", function(e) {
 	var startDate = document.querySelector(".start-date");
 	var sex = document.querySelector(".accom-sex");
 	var age = document.querySelector(".accom-age");
-	var chattingButton = document.querySelector("#request-chatting");
 	//var profiletitle = document.querySelector(".matched-profile-title");
 
 	var isMatched = false; // 부모 노드 판단
@@ -836,7 +784,7 @@ window.addEventListener("load", function(e) {
 						if(result.length==1){
 							parentSection = document.querySelector(".not-matched-section");
 							
-							
+							var chatButton = parentSection.querySelector("#request-chatting");
 							var profImg = parentSection.querySelector(".circle-img");
 							var nicName = parentSection.querySelector(".matched-nicName");
 							var location = parentSection.querySelector(".accom-location");
@@ -846,7 +794,12 @@ window.addEventListener("load", function(e) {
 							var style = parentSection.querySelector(".accom-style");
 						
 							// 정보 교체
-
+							
+							chatButton.innerHTML = "대화하기";
+							chatButton.onclick = function(){
+								window.location.href='';
+							};
+	
 							location.innerHTML = result[0].place;
 							
 							date.innerHTML = result[0].startDate;

@@ -55,6 +55,8 @@
 		Member.sex ${param7} #{param8}
 		AND
 		MemberAccompanyInfo.styleId ${param4} #{param5}
+		AND
+		MemberAccompanyInfo.startDate >= #{param11} AND MemberAccompanyInfo.endDate <= #{param12}
 		HAVING
 		distance<#{param6}
 		ORDER BY distance

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -613,8 +614,12 @@ public class AccompanyController {
 		MemberAccompanyInfo memAccomInfo = memberAccomInfoDao.get(memberAccomInfoId);
 		float latitude = memAccomInfo.getLatitude();
 		float longitude = memAccomInfo.getLongitude();
-
-
+		Date startDate = memAccomInfo.getStartDate();
+		Date endDate = memAccomInfo.getEndDate();
+		
+		String sD = new SimpleDateFormat("yyyy-MM-dd").format(startDate);
+		String eD = new SimpleDateFormat("yyyy-MM-dd").format(endDate);
+		
 		// 거리, 나이, 스타일, 성별로 조회해서 사람들 리스트 가져오기
 		List<MemberAccompanyInfoMatchingView> matchedMember = new ArrayList<MemberAccompanyInfoMatchingView>();
 
@@ -640,7 +645,6 @@ public class AccompanyController {
 		else {
 			styleEq = "=";
 		}
-		System.out.println(styleEq);
 			
 
 		// 거리 무관인 경우
@@ -658,7 +662,7 @@ public class AccompanyController {
 
 		// 동행 매칭 정보를 거리를 기준으로 100개 가져온다.
 		matchedMember = memberAccomInfoDao.getListMemberAccompanyMatching(latitude, longitude, memberId, styleEq,
-				styleId, distance, sexEq, sexString, minAge, maxAge);
+				styleId, distance, sexEq, sexString, minAge, maxAge, sD, eD);
 
 		// 가져온 데이터를 저장할 객체 생성
 		MemberAccompanyMatch memberMatch = null;
@@ -669,10 +673,10 @@ public class AccompanyController {
 		// 뷰로 매칭된 memAccomInfo ID로 조회해서 가져온다. )
 		List<MemberProfInfoMatchingResultView> resultList = new ArrayList<MemberProfInfoMatchingResultView>();
 
-		System.out.println(count);
+		//System.out.println(count);
 		// 매치 횟수 3회를 초과하였는지 비교하기
 		if (count >= 1 && matchedMember.size() > 0) {
-				System.out.println(matchedMember.get(0).getId());
+				//System.out.println(matchedMember.get(0).getId());
 				// 사람들 리스트 중 제일 매칭 조건에 적합한 사람(matchedMember.get(0))을 등록해주기
 				memberMatch = new MemberAccompanyMatch();
 				memberMatch.setMatchedMemberId(matchedMember.get(0).getMemberId());
