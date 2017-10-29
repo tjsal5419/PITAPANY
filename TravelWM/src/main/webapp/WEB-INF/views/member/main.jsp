@@ -29,7 +29,8 @@
 					<div class="carousel-caption">
 						<div class="caption-content caption-content-main">
 							<h2 class="animated fadeInDown"><span class="highlight">동행의 설레임이 시작되는 곳</span></h2>
-							<span class="animated fadeInDown"><span class="highlight">지금 바로 이음 등록하시고 새로운 인연을 만나보세요</span></span>
+							<span class="animated fadeInDown"><span class="highlight">지금 바로 이음 등록하시고 
+																						새로운 인연을 만나보세요</span></span>
 							<a href="#" class="btn btn-blue btn-effect">이음등록</a>
 						</div>
 					</div>
@@ -40,7 +41,8 @@
 					style="background-image: url('${root}/resource/images/wallpaper/TreeSky.jpg')">
 					<div class="carousel-caption">
 						<div class="caption-content caption-content-sub">
-							<h2 class="animated fadeInDown"><span class="highlight">여행이란 익숙한 것과의 작별, 낯선 것과의 설레는 만남</span></h2>
+							<h2 class="animated fadeInDown"><span class="highlight">여행이란 익숙한 것과의 작별, 
+																						낯선 것과의 설레는 만남</span></h2>
 							<span class="animated fadeInDown"><span class="highlight">공지영, &lt;수도원기행&gt; 중에서</span></span> 
 						</div>
 					</div>

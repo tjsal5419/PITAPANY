@@ -1,4 +1,11 @@
 @CHARSET "UTF-8";
+
+/* --현재 위치 표시----------------------------------------------- */
+.main-menu>li:nth-child(4) a {
+    color: #0099d6;
+    border-bottom: 3px solid #0099d6;
+}
+
 /* ---------------- 공통영역 ----------------- */
 .search .select, .search-option{
 	height:34px;

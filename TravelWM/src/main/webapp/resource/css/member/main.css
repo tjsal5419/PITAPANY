@@ -698,7 +698,84 @@ a, a:hover, a:focus, .btn:focus {
 
 
 
-/* --- Board Container Mobile Part ---------------------------------------------------------- */
+/* --- HEADER FOR MAIN TRANSPARENT ---------------------------------------------------------- */
+.navbar-top{
+	position: absolute;
+	background: transparent;
+	
+	top: 10px;
+}
+
+.navbar-top > ul > li:hover > a {
+	background: none !important;
+	color: #33b5e5 !important;
+}
+
+.sub-menu-container{
+	right: 5px;
+}
+
+.default-fa{
+	color: #eee !important;
+}
+
+.navbar{
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+.logo{
+	background:url("../../images/tripconn-logo/tripconn-logo-final-white.png") no-repeat center;
+	background-size: 90px;
+	background-position-y: 0px;
+	text-align: center;
+}
+
+.header-input{
+	border: 1px solid #fff !important;
+	border-right: none !important;
+	background: transparent;
+	color: #fff;
+}
+
+.header-input::placeholder{
+	color: #fff;
+}
+
+.search-button{
+	border: 1px solid #fff;
+
+    background: transparent url(../../images/ic_search_white_36dp_1x.png) center no-repeat;
+    background-size: 20px 20px;
+}
+
+.search-button:hover{
+	background: #33b5e5 url(../../images/ic_search_white_36dp_1x.png) center no-repeat;	
+	background-size: 20px 20px;
+}
+
+.default-font{
+	color: #fff !important;
+}
+
+.default-font:hover{
+	font-weight: 600;
+	color: #33b5e5 !important;
+	border-bottom: 3px solid transparent !important;
+}
+
+.fa-bars, .fa-search {
+	color: #fff;
+}
+
+
+
+
+
+/* -- Mobile Part ---------------------------------------------------------- */
+
+/* -- Board Container Mobile Part ---------------------------------------------------------- */
 @media all and (max-width: 1240px){
 	.service-container{
 		/* height: 820px; */
@@ -770,73 +847,30 @@ a, a:hover, a:focus, .btn:focus {
 
 
 
-/* --- HEADER FOR MAIN TRANSPARENT ---------------------------------------------------------- */
-.navbar-top{
-	position: absolute;
-	background: transparent;
+/* -- Main Image Mobile Part ---------------------------------------------------------- */
+@media all and (max-width: 890px){
+	.caption-content-main h2{
+		font-size: 30px;
+    		letter-spacing: 1px;
+	}
 	
-	top: 10px;
-}
-
-.navbar-top > ul > li:hover > a {
-	background: none !important;
-	color: #33b5e5 !important;
-}
-
-.sub-menu-container{
-	right: 5px;
-}
-
-.default-fa{
-	color: #eee !important;
-}
-
-.navbar{
-	background: transparent;
-	border: none;
-	box-shadow: none;
-}
-
-.logo{
-	background:url("../../images/tripconn-logo/tripconn-logo-final-white.png") no-repeat center;
-	background-size: 90px;
-	background-position-y: 0px;
-	text-align: center;
-}
-
-.header-input{
-	border: 1px solid #fff !important;
-	border-right: none !important;
-	background: transparent;
-	color: #fff;
-}
-
-.header-input::placeholder{
-	color: #fff;
-}
-
-.search-button{
-	border: 1px solid #fff;
-
-    background: transparent url(../../images/ic_search_white_36dp_1x.png) center no-repeat;
-    background-size: 20px 20px;
-}
-
-.search-button:hover{
-	background: #33b5e5 url(../../images/ic_search_white_36dp_1x.png) center no-repeat;	
-	background-size: 20px 20px;
-}
-
-.default-font{
-	color: #fff !important;
-}
-
-.default-font:hover{
-	font-weight: 600;
-	color: #33b5e5 !important;
-	border-bottom: 3px solid transparent !important;
-}
-
-.fa-bars, .fa-search {
-	color: #fff;
+	.caption-content-main > span{
+		font-size: 25px;
+    		letter-spacing: 1px;
+    		line-height: 40px;
+    		white-space: pre-line;
+	}
+	
+	.caption-content-sub h2{
+		font-size: 25px;
+		white-space: pre-line;
+    		letter-spacing: 1px;
+	}
+	
+	.caption-content-sub > span{
+		font-size: 20px;
+    		letter-spacing: 1px;
+    		white-space: pre-line;
+	}
+	
 }

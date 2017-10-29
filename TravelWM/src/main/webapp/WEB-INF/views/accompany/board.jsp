@@ -54,7 +54,7 @@
 			
 			<!-- ------검색 필터 취소 버튼(모든 동행)-------- -->		
 			<c:if test="${min_a ne '0' || max_a ne '100' || sty ne 'default' || sx ne 'default' }">
-				<button type="button" class="btn btn-filter" id="btn-see-all" onclick="window.location.href='${root }/accompany/board'" >모든 동행</button>
+				<button type="button" class="btn btn-filter" id="btn-see-all" onclick="window.location.href='${root }/accompany/board'" >초기화</button>
 			</c:if>
 			
 			<button type="button" class="btn btn-write" id="btn-write" onclick="window.location.href='${root}/accompany/reg'">글쓰기</button>
@@ -68,13 +68,59 @@
 	
 		<div class="board-wrapper">
 		
+		<!-- ----------좋아요 기능 (미완성) ------------ -->
+						<script>
+							window.addEventListener("load", function(e) {
+						
+								var hearts = document.querySelectorAll(".heart");
+								var emheart = document.querySelectorAll(".test1");
+								var heart = document.querySelectorAll(".test2");
+								
+								for (var i=0; i<hearts.length;i++) {
+								
+								hearts.item(i).addEventListener('click',function(i){
+									
+									
+									if (heart[i].style.display === "none") {
+										heart[i].style.display = "block";
+										emheart[i].style.display = "none";
+									} else if (emheart[i].style.display === "none") {
+										heart[i].style.display = "none";
+										emheart[i].style.display = "block";
+									}
+  
+
+    								}.bind(this,i));	
+									
+									
+								
+								}
+								    
+							
+								
+								
+									
+								
+							});
+						</script>
+		
+		
 		<!-- ----------동행 게시글 6개씩 반복하는 구간 ------------ -->
 			<c:forEach items="${accompanyBoardList }" var="li">
 				<div class="board-card">
 					<div class="board-content w3-card-2">
-						<div class="board-bookmark fa fa-bookmark">
+						<div class="board-bookmark">
+							<div class="heart hearts">
+									<img style="display: block;" id="emheart"
+										class="test1 heart-icon cursor"
+										src="${root}/resource/images/ic_favorite_border_black_24dp_1x.png" />
+									<img style="display: none;" id="heart" class="test2 heart-icon cursor"
+										src="${root}/resource/images/ic_favorite_black_24dp_1x.png" />
+							</div>
 						</div>
 						
+						
+												
 						<div class="board-detail">
 							<div class="board-detail-wrapper">
 								<div class="board-profile-pic" style="background-image: url('${root}${li.imgSrc }${li.imgName }');">
@@ -213,6 +259,9 @@
 		var searchAge = document.querySelector("#btn-age");
 		
 		if('${sx }' !== 'default'){
+			searchGender.style.background = '#33b5e5';
+			searchGender.style.color = '#fff';
+			
 			if('${sx }' === '0')
 				searchGender.innerHTML = '남성';
 			else if('${sx }' === '1')
@@ -222,9 +271,12 @@
 		}
 		
 		if('${sty }' !== 'default'){
+			searchStyle.style.background = '#33b5e5';
+			searchStyle.style.color = '#fff';
+			
 			<c:forEach items='${styleList }' var="li">
 				if('${li.id}' === '${sty }')
-					searchStyle.innerHTML = '${li.type }';
+					searchStyle.innerHTML = "${li.type }";
 			</c:forEach>	
 		}
 		

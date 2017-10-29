@@ -1,8 +1,14 @@
 @CHARSET "UTF-8";
 
+.main-menu>li:first-child a {
+    color: #0099d6;
+    border-bottom: 3px solid #0099d6;
+}
+
 .hidden{
 	display:none;
 }
+
 #main {
 	min-height: 0px;
 	padding-top: 60px;
@@ -10,13 +16,7 @@
 	justify-content:center;
 	align-items:center;
 	
-	background: #fafafa;
-}
-
-.search-bar-container-accom{
-	width:100%;
-	display:flex;
-	flex-wrap:nowrap;
+	background: #f5f5f5;
 }
 
 .frame {
@@ -37,56 +37,68 @@
 	text-align: left;		
 }
 
+.head-start-line{
+			display: block;
+			background: #33b5e5;
+			width: 10px;
+			height: 30px;
+			
+			margin-right: 10px;
+}
+
 .accboard-reg-title h2{
 	
 	padding-top: 0px;
 	display: table-cell;
 	vertical-align: bottom;
 	
+	letter-spacing: 1px;
 	font-family:'GodoM' !important;
 	font-size: 25px;
 }
 
-.head-line{
-    content: '';
-    margin-top: 15px;
-    margin-bottom: 35px;
-    width: 80px;
-    height: 2px;
-    background: rgba(51, 181, 229, 1);
-}
 
+
+
+
+/* --Main Content Part----------------------------------------------- */
 .content {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	
+	margin-top: 20px;
 	padding: 25px;
 	
 	background: #fff;
-	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
+	border: 1px solid rgba(0,0,0,0.1);
 }
 
 .content .form{
 	width:100%;
 }
 
+
+
+
+
+/* --Content Head Part----------------------------------------------- */
 .head {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	width: 100%;
+	align-items: center;
 }
 
-.title-logo {
+.head-title {
 	display: table;
-	
-	height:36px;
 	width: 100px;
 	text-align: center;
 }
 
-.title-logo>span{
+.head-title>span{
 	display: table-cell;
 	height: 100%;
 	font-size: 15px;
@@ -94,7 +106,7 @@
 	letter-spacing: 1px;
 }
 
-.title-content {
+.head-content {
 	width: 200px;
 	flex-grow: 2;
 	margin-left: 10px;
@@ -110,9 +122,61 @@
     box-shadow: none;
 }
 
-
 .calendar-reg{
 	border-left: none !important;
+}
+
+
+
+
+
+
+/* --Content Detail Part----------------------------------------------- */
+.selec-detail {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.detail-title {
+	display: table;
+	width: 100px;
+	text-align: center;
+}
+
+.detail-title>span{
+	display: table-cell;
+	height: 100%;
+	font-size: 15px;
+	vertical-align: middle;
+	letter-spacing: 1px;
+}
+
+.search-bar-container-accom{
+	width:200px;
+	display:flex;
+	flex-wrap:nowrap;
+	
+	flex-grow: 2;
+	margin-left: 10px;
+}
+
+
+
+
+
+/* --Content Text Part----------------------------------------------- */
+.text {
+	width: 100%;
+	height: 300px;
+}
+
+.text textarea {
+	width: 100%;
+	height: 100%;
+	padding: 15px;
 }
 
 .form-textarea{
@@ -123,108 +187,171 @@
     border: 1px solid #dddddd;
 }
 
-.sel {
+
+
+
+
+/* --Content Style Part----------------------------------------------- */
+.selec-style {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	width: 100%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.zone {
-	flex-grow: 1;
-	text-align: center;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	background: #D5D5D5;
-}
-
-.date {
-	flex-grow: 2;
-	text-align: center;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	background: #D5D5D5;
-}
-
-.text {
-	width: 100%;
-	height: 300px;
-}
-
-.text textarea {
-	width: 100%;
-	height: 100%;
-	padding: 5px;
-}
-
-
-.foot {
-	display: flex;
-	width: 100%;
-	margin-top: 15px;
-}
-
-.insert-pic {
-	display: flex;
 	align-items: center;
-	width:100%;
+	
+	margin-top: 20px;
 }
-.insert-pic span {
-	color: #fff;
+
+.style-title {
+	display: table;
+	width: 100px;
+	text-align: center;
+}
+
+.style-title>span{
+	display: table-cell;
+	height: 100%;
+	
+	color: #777777;
+	font-size: 13px;
+	vertical-align: middle;
+	letter-spacing: 1px;
+}
+
+.style-content{
+	display: block;
+    position: relative;
+    width: 200px;
+    
+    margin-left: 10px;
+    padding-left: 10px;
+    height: 35px;
+    box-sizing: border-box;
+    border: solid 1px #dcdcdc;
+}
+
+.style-content:hover{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.style-content select{
+	display: inline-block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    
+    font-family: 'Spoqa-Light';
+    font-size: 12px;
+    padding-left: 10px;
+    
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+.style-content-arrow{
+	position: absolute;
+    top: 14px;
+    right: 7px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 5px 3px 0 3px;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+
+
+
+
+
+/* --Content Attach Part----------------------------------------------- */
+.attach-file {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 100%;
+	align-items: center;
+	
+	margin-top: 20px;
+}
+
+.attach-title {
+	display: table;
+	width: 100px;
+	text-align: center;
+}
+
+.attach-title>span{
+	display: table-cell;
+	height: 100%;
+	
+	color: #777777;
+	font-size: 13px;
+	vertical-align: middle;
+	letter-spacing: 1px;
+}
+
+.attach-content{
+	display: block;
+    position: relative;
+    width: 200px;
+    
+    margin-left: 10px;
+
+    height: 35px;
+    box-sizing: border-box;
+}
+
+
+
+/* --Content Button Part----------------------------------------------- */
+.buttons {
+	display: flex;
+	justify-content: flex-end;
 	
 }
 
-
-
-.insert-pic label {
-	display: flex;
-	box-sizing: border-box;
-/* 	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-    background-color: #5bc0de;
-    border-color: #46b8da;
-    border-radius: 3px;
- */	/* vertical-align: middle; */
-	cursor: pointer;
-/* 	color:white;
- */	font-weight:normal;
-	margin-bottom:0px;
-	padding:5px;
-	height:24px;
-	align-items:center;
-	border-radius: 0px 4px 4px 0px;
-
+#cancel{
+	border-radius: 0;
+	outline: none;
+	border: none;
+	background: #eee;
+	
+	color: #777;
 }
 
-.insert-pic input[type="file"] {
-	position: absolute;
-	width: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
+#cancel:hover{
+	background: #dcdcdc;
 }
 
-.img-input-box{
-	height:24px;
-	border-radius: 4px 0px 0px 4px;
-	color:#eee;
-}
-
-.bottun {
-	display: flex;
-	flex-grow: 4;
-	justify-content: flex-end;
-}
-
-.reg {
+.submit {
 	margin-left: 10px;
-/* 	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	background: #D5D5D5; */
 }
 
+#submit{
+	border-radius: 0;
+	outline: none;
+	border: none;
+	
+	background: #33b5e5;
+}
+
+#submit:hover{
+	background: #009dd6;
+}
+
+
+
+
+
+/* --Mobile Version Part----------------------------------------------- */
 @media all and (min-width:480px) and (max-width:960px) {
 	#main {
 		display: flex;
@@ -256,8 +383,11 @@
 }
 }
 
-/* --파일업로드----------- */
 
+
+
+
+/* --File Upload API Part----------------------------------------------- */
 .js .inputfile {
     width: 0.1px;
     height: 0.1px;
@@ -266,7 +396,6 @@
     position: absolute;
     z-index: -1;
 }
-
 .inputfile + label {
     max-width: ;
     height: 33px;
@@ -281,22 +410,18 @@
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
 }
-
 .no-js .inputfile + label {
     display: none;
 }
-
 .inputfile:focus + label,
 .inputfile.has-focus + label {
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 5px;
 }
-
 .inputfile + label * {
     /* pointer-events: none; */
     /* in case of FastClick lib use */
 }
-
 .inputfile + label svg {
     width: 1em;
     height: 1em;
@@ -307,33 +432,28 @@
     margin-right: 0.25em;
     /* 4px */
 }
-
-
-
 /* style 6 */
-
 .inputfile-6 + label {
     color: #d3394c;
 }
-
 .inputfile-6 + label {
     border: 1px solid #dddddd;
     background-color: #fff;
     padding: 0;
 }
-
 .inputfile-6:focus + label,
 .inputfile-6.has-focus + label,
 .inputfile-6 + label:hover {
-    border-color: #aaa;
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
 }
-
 .inputfile-6 + label span,
 .inputfile-6 + label strong {
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
 }
-
 .inputfile-6 + label span {
     width: 200px;
     min-height: 2em;
@@ -343,7 +463,6 @@
     overflow: hidden;
     vertical-align: top;
 }
-
 .inputfile-6 + label strong {
 	line-height: 0;
     height: 100%;
@@ -351,133 +470,31 @@
     background-color: #dddddd;
     display: inline-block;
 }
-
 .inputfile-6:focus + label strong,
 .inputfile-6.has-focus + label strong,
 .inputfile-6 + label:hover strong {
-    background-color: #aaa;
+    background-color: #66afe9;
+}
+
+
+
+
+
+/* --File Upload API Customization Part----------------------------------------------- */
+.inputfile{
+	height: 0px !important;
+}
+.inputfile-6 + label span {
+    color: #33b5e5;
+    font-size: 0.75em;
+    line-height: 1;
+}
+input[type=file]:focus {
+	outline: none;
 }
 
 @media screen and (max-width: 50em) {
 	.inputfile-6 + label strong {
 		display: block;
 	}
-}
-
-.inputfile{
-	height: 0px !important;
-}
-
-.inputfile-6 + label span {
-	line-height: 0.8;
-    color: #33b5e5;
-}
-
-
-
-
-
-
-
-
-
-
-.select-char{
-	display: table;
-	
-	width: 100%;
-	height: 35px;
-	
-	margin-bottom: 20px;
-	
-	border: 1px solid transparent;
-}
-
-.select-char>span{
-	display: table-cell;
-
- 	color: #777777;
-	
-	width: 100px;
-	height: 100%;
-	
-	font-size: 13px;
-	padding-left: 10px;
-	padding-right: 20px;
-	
-	vertical-align: middle;
-	text-align: left;
-	
-	/* background: red; */
-}
-
-
-
-.select-char{
-	margin-top: 20px;
-}
-
-
-.select_style{
-	display: block;
-    position: relative;
-    padding-left: 10px;
-    width: 20%;
-    height: 35px;
-    box-sizing: border-box;
-    border: solid 1px #dcdcdc;
-}
-
-.select_style select{
-	display: inline-block;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    
-    font-family: 'NanumBarunGothicLight';
-    font-size: 12px;
-    padding-left: 10px;
-    
-    outline: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    -webkit-appearance: none;
-    box-sizing: border-box;
-}
-
-.select_arrow{
-	position: absolute;
-    top: 14px;
-    right: 7px;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    border-style: solid;
-    border-width: 5px 3px 0 3px;
-    border-color: #7b7b7b transparent transparent transparent;
-}
-
-.chat{
-	border-radius: 0;
-	outline: none;
-	border: none;
-	
-	background: #ddd;
-}
-
-.chat:hover{
-	background: #aaa;
-}
-
-#submit{
-	border-radius: 0;
-	outline: none;
-	border: none;
-	
-	background: #87deff;
-}
-
-#submit:hover{
-	background: #009ddb;
 }

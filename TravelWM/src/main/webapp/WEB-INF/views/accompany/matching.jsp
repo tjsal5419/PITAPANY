@@ -755,25 +755,25 @@ window.addEventListener("load", function(e) {
 					else if(sty.length==1)
 						styText = sty[idx].value;
 					else{
-						if(idx==0)
-							styText = sty[idx].value;
-						else
-							styText = styText+" "+sty[idx].value;
+							if(idx==0)
+								styText = sty[idx].value;
+							else
+								styText = styText+" "+sty[idx].value;
+						}
 					}
+				
+				
+			var url = "matching-ajax-data?a=" + accomInfoId + "&sx=" + sexV + "&min=" + min + "&max=" + max + "&dis=" + dis + "&sty=" + styText;
+			//alert(url);
+			request.open("GET",url, true);			
+	
+			request.onload = function(){
+				var result = JSON.parse(request.responseText);
+				
+				
+				if(typeof result.error != 'undefined'){
+					alert(result.error);
 				}
-				
-				
-				var url = "matching-ajax-data?a=" + accomInfoId + "&sx=" + sexV + "&min=" + min + "&max=" + max + "&dis=" + dis + "&sty=" + styText;
-				//alert(url);
-				request.open("GET",url, true);			
-		
-				request.onload = function(){
-					var result = JSON.parse(request.responseText);
-					
-					
-					if(typeof result.error != 'undefined'){
-						alert(result.error);
-					}
 					
 //----------------------matched---------------------------
 					else{

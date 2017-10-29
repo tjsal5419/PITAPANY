@@ -1,13 +1,17 @@
 @CHARSET "UTF-8";
 
-/* -----------------메인 ----------------------- */
+.main-menu>li:nth-child(3) a {
+    color: #0099d6;
+    border-bottom: 3px solid #0099d6;
+}
+
+/* --Main Frame Part----------------------- */
 .main{
 	margin-top:60px;
 	display:flex;
 	flex-wrap:wrap;
 	min-height:0px;
-	
-	background: #fafafa;
+	background: #fff;
 }
 
 .fake{
@@ -16,61 +20,42 @@
 	flex-grow:1;
 }
 
-h2{
-	margin:0px;
-	font-size:20px;	
-	
-}
-
 .frame {
 	background: #fff;
-	box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
 	
 	display: flex;
 	flex-grow:2;
-	margin-left:10%;
-	margin-right:10%;
 	height:500px;
-	margin-top:90px;
+	
+	margin-top:70px;
 	margin-bottom:60px;
 }
 
 .content {
 	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	margin: 10px;
-	justify-content:center;
+	padding-left: 40px;
 }
 
-.category .select{
-	width:100%
-}
 
-.frame .content .title{
-	font-size: 20px;
-	margin-bottom:20px;
-	align-self:flex-start;
-}
 
+
+
+/* --Content Head Part----------------------------------------------- */
 .head {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	width: 100%;
-	
+	align-items: center;
 }
 
-.title-logo {
+.head-title {
 	display: table;
-	
-	height:36px;
 	width: 100px;
 	text-align: center;
 }
 
-.title-logo>span{
+.head-title>span{
 	display: table-cell;
 	height: 100%;
 	font-size: 15px;
@@ -78,7 +63,7 @@ h2{
 	letter-spacing: 1px;
 }
 
-.title-content {
+.head-content {
 	width: 200px;
 	flex-grow: 2;
 	margin-left: 10px;
@@ -94,68 +79,196 @@ h2{
     box-shadow: none;
 }
 
-.content .category {
+
+
+
+
+/* --Content Category Part----------------------------------------------- */
+.selec-category {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	width: 100%;
+	align-items: center;
+	
+	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
+.category-title {
+	display: table;
+	width: 100px;
+	text-align: center;
+}
+
+.category-title>span{
+	display: table-cell;
+	height: 100%;
+	
+	font-size: 15px;
+	vertical-align: middle;
+	letter-spacing: 1px;
+}
+
+.category-content{
+	display: block;
+    position: relative;
+    width: 200px;
+    
+    margin-left: 10px;
+    padding-left: 10px;
+    height: 35px;
+    box-sizing: border-box;
+    border: solid 1px #dcdcdc;
+}
+
+.category-content:hover{
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+}
+
+.category-content select{
+	display: inline-block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    
+    font-family: 'Spoqa-Light';
+    font-size: 12px;
+    padding-left: 10px;
+    
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+.category-content-arrow{
+	position: absolute;
+    top: 14px;
+    right: 7px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    border-style: solid;
+    border-width: 5px 3px 0 3px;
+    border-color: #7b7b7b transparent transparent transparent;
+}
+
+
+
+
+
+/* --Content Text Part----------------------------------------------- */
 .text {
 	width: 100%;
 	height: 300px;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	
 }
 
 .text textarea {
 	width: 100%;
 	height: 100%;
-	padding: 5px;
+	padding: 15px;
 }
 
-.foot {
+.form-textarea{
+	padding: 10px;
+	outline: none;
+	border-radius: 0;
+    border: none;	
+    border: 1px solid #dddddd;
+}
+
+
+
+
+
+/* --Content Attach Part----------------------------------------------- */
+.attach-file {
 	display: flex;
-	margin-top: 10px;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	width: 100%;
+	align-items: center;
+	
+	margin-top: 20px;
 }
 
-.bottun {
+.attach-title {
+	display: table;
+	width: 100px;
+	text-align: center;
+}
+
+.attach-title>span{
+	display: table-cell;
+	height: 100%;
+	
+	color: #777777;
+	font-size: 13px;
+	vertical-align: middle;
+	letter-spacing: 1px;
+}
+
+.attach-content{
+	display: block;
+    position: relative;
+    width: 200px;
+    
+    margin-left: 10px;
+
+    height: 35px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+/* --Content Button Part----------------------------------------------- */
+.buttons {
 	display: flex;
-	flex-grow: 4;
 	justify-content: flex-end;
 }
 
-.cancel {
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	background: #D5D5D5;
+#cancel{
+	border-radius: 0;
+	outline: none;
+	border: none;
+	background: #eee;
+	
+	color: #777;
 }
 
-.reg {
+#cancel:hover{
+	background: #dcdcdc;
+}
+
+.submit {
 	margin-left: 10px;
-	box-shadow: 0 3px 3px 0 #e0e0e0;
-	border: 1px solid #dddddd;
-	background: #D5D5D5;
+}
+
+#submit{
+	border-radius: 0;
+	outline: none;
+	border: none;
+	
+	background: #33b5e5;
+}
+
+#submit:hover{
+	background: #009dd6;
 }
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* --File Upload API Part----------------------------------------------- */
 .js .inputfile {
     width: 0.1px;
     height: 0.1px;
@@ -164,7 +277,6 @@ h2{
     position: absolute;
     z-index: -1;
 }
-
 .inputfile + label {
     max-width: ;
     height: 33px;
@@ -179,22 +291,18 @@ h2{
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
 }
-
 .no-js .inputfile + label {
     display: none;
 }
-
 .inputfile:focus + label,
 .inputfile.has-focus + label {
     outline: 1px dotted #000;
     outline: -webkit-focus-ring-color auto 5px;
 }
-
 .inputfile + label * {
     /* pointer-events: none; */
     /* in case of FastClick lib use */
 }
-
 .inputfile + label svg {
     width: 1em;
     height: 1em;
@@ -205,33 +313,28 @@ h2{
     margin-right: 0.25em;
     /* 4px */
 }
-
-
-
 /* style 6 */
-
 .inputfile-6 + label {
     color: #d3394c;
 }
-
 .inputfile-6 + label {
     border: 1px solid #dddddd;
     background-color: #fff;
     padding: 0;
 }
-
 .inputfile-6:focus + label,
 .inputfile-6.has-focus + label,
 .inputfile-6 + label:hover {
-    border-color: #aaa;
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
 }
-
 .inputfile-6 + label span,
 .inputfile-6 + label strong {
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
 }
-
 .inputfile-6 + label span {
     width: 200px;
     min-height: 2em;
@@ -241,7 +344,6 @@ h2{
     overflow: hidden;
     vertical-align: top;
 }
-
 .inputfile-6 + label strong {
 	line-height: 0;
     height: 100%;
@@ -249,130 +351,31 @@ h2{
     background-color: #dddddd;
     display: inline-block;
 }
-
 .inputfile-6:focus + label strong,
 .inputfile-6.has-focus + label strong,
 .inputfile-6 + label:hover strong {
-    background-color: #aaa;
+    background-color: #66afe9;
+}
+
+
+
+
+
+/* --File Upload API Customization Part----------------------------------------------- */
+.inputfile{
+	height: 0px !important;
+}
+.inputfile-6 + label span {
+    color: #33b5e5;
+    font-size: 0.75em;
+    line-height: 1;
+}
+input[type=file]:focus {
+	outline: none;
 }
 
 @media screen and (max-width: 50em) {
 	.inputfile-6 + label strong {
 		display: block;
 	}
-}
-
-.inputfile{
-	height: 0px !important;
-}
-
-.inputfile-6 + label span {
-	line-height: 0.8;
-    color: #33b5e5;
-}
-
-
-
-
-
-
-
-
-
-
-.select-char{
-	display: table;
-	
-	width: 100%;
-	height: 35px;
-	
-	margin-bottom: 20px;
-	
-	border: 1px solid transparent;
-}
-
-.select-char>span{
-	display: table-cell;
-
- 	color: #777777;
-	
-	width: 100px;
-	height: 100%;
-	
-	font-size: 13px;
-	
-	vertical-align: middle;
-	text-align: center;
-	
-	/* background: red; */
-}
-
-
-.select-char{
-	margin-top: 20px;
-}
-
-
-.select_style{
-	display: block;
-    position: relative;
-    padding-left: 10px;
-    width: 20%;
-    height: 35px;
-    box-sizing: border-box;
-    border: solid 1px #dcdcdc;
-}
-
-.select_style select{
-	display: inline-block;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    
-    font-family: 'NanumBarunGothicLight';
-    font-size: 12px;
-    padding-left: 10px;
-    
-    outline: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    -webkit-appearance: none;
-    box-sizing: border-box;
-}
-
-.select_arrow{
-	position: absolute;
-    top: 14px;
-    right: 7px;
-    width: 0;
-    height: 0;
-    pointer-events: none;
-    border-style: solid;
-    border-width: 5px 3px 0 3px;
-    border-color: #7b7b7b transparent transparent transparent;
-}
-
-.chat{
-	border-radius: 0;
-	outline: none;
-	border: none;
-	
-	background: #ddd;
-}
-
-.chat:hover{
-	background: #aaa;
-}
-
-#submit{
-	border-radius: 0;
-	outline: none;
-	border: none;
-	
-	background: #87deff;
-}
-
-#submit:hover{
-	background: #009ddb;
 }

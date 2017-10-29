@@ -108,10 +108,10 @@ public class CommunityController {
 			@RequestParam(value = "categoryId", defaultValue = "1") String tipCategoryId) {
 
 		HttpSession session = request.getSession();
-		Member member = (Member) session.getAttribute("user");
-
-		System.out.println(member.getId());
-
+		// 로그인한 회원 정보 가져오기
+		Member member = ((CustomWebAuthenticationDetails) SecurityContextHolder.getContext().getAuthentication()
+				.getDetails()).getMember();
+		
 		CommunityTip communityTip = new CommunityTip();
 
 		communityTip.setHits("0");
@@ -174,7 +174,6 @@ public class CommunityController {
 		CommunityTip tipView = communitytipDao.get(id);
 
 		List<TipCategory> categoryList = tipCategoryDao.getList();
-		System.out.println(tipView.getId());
 		model.addAttribute("tipView", tipView);
 		model.addAttribute("categoryList", categoryList);
 		return "community.tip-update";

@@ -93,7 +93,7 @@
 		        		<li><a class="default-font" href='${root}/accompany/board'>이음찾기</a></li>
 		        		<li><a class="default-font" href='${root}/accompany/matching'>이음매칭</a></li>
 		        		<li><a class="default-font" href='${root}/community/tip'>커뮤니티</a></li>
-		        		<li><a class="default-font" href='${root}/profile/home'>나의이음</a></li>
+		        		<li><a class="default-font" href='${root}/member/acc-setting'>나의이음</a></li>
 		        </ul>        		
         		</div>
         </div>
@@ -145,9 +145,14 @@
 	</div>
 	
 	<div class="search-mobile-container">
+		<div class="mobile-container-name"><span>이음검색</span></div>
 		<input type="text" class="form-control form-control-header form-control-mobile" id="mobile-autocomplete" placeholder="동행 위치">
     		<input class="form-control form-control-header form-control-mobile" type="text" name="datefilter" value=""  placeholder="동행 날짜"/>
-		<input type="button" class="search-button search-button-mobile2" id="mob-search-loc-date" onclick="mobSearchLocDate();"  alt="Submit">
+    		
+    		<div class="mobile-button-container">
+		<input type="button" class="search-button search-button-mobile1" value="취소">
+    		<input type="button" class="search-button search-button-mobile2" id="mob-search-loc-date" onclick="mobSearchLocDate();"  alt="Submit">
+		</div>
 	</div>
 
 </nav>

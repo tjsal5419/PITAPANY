@@ -9,142 +9,135 @@
 
 
 <main id="main">
-<div class="frame">
-	<div class="accboard-reg-title">
-		<h2>이음 찾기</h2>
-	</div>
-	<div class="head-line"></div>
-
-
-	<div class="content">
-
-	<form class="form" method="post" enctype="multipart/form-data">
-
-
-		<div class="head">
-			<div class="title-logo">
-				<span>제목</span>
-			</div>
-			<div class="title-content">
-				<input class="ti form-control form-control-reg" type="text" name="title" placeholder="제목내용" required/>
-			</div>
+	<div class="frame">
+		<div class="accboard-reg-title">
+			<div class="head-start-line"></div>
+			<h2>이음찾기</h2>
 		</div>
-		
-		
-		<div class="sel">
-			<div class="search-bar-container-accom">
-				<!-- -------- 구글 지도 검색창 ------ -->
-			    <input class="form-control no-enter ti form-control-reg" id="autocomplete" name="form" placeholder="여행할 주소를 입력하세요." type="text" required/>
-
-			    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
-			    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
-			    <input class="hidden" type="text" value="" name="place" id="place"/>  
-			    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
-			    <input class="hidden" type="text" value="" name="country" id="country"/>  
-			    
-  				<!-- -------- 달력 ------ -->
-
-    	  		<input type="text" class="form-control calendar-reg ti form-control-reg" name="datefilter-reg" value="" placeholder="Search" required />
-    	  		<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" required />
-    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" required />
-	    	</div>
-		</div>
-		<div class="text">
-			<textarea name="content"  class="form-control form-textarea" placeholder="본문내용" required></textarea>
-		</div>
-		
-		
-		<div class="select-char">
-			<span>동행 스타일</span>
-			<div class="select_style">
-				<select class="select" name="style">
-					<c:forEach var="l" items="${styleList }">
-						<option value="${l.id}">${l.type } </option>	
-					</c:forEach>
-				</select>
-				<div class="select_arrow"></div>
-			</div>
-		</div>
-		
-		
-		<div class="select-char">
-			<span>첨부 파일</span>
-			<div>
- 				<input type="file" name="file" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
-				<label for="file-7"><strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></strong><span></span></label>
- 			</div>
 	
-		</div>
-		<div class="foot">
- 			<!-- <div class="insert-pic">
-				<div><input class="form-control img-input-box" placeholder="첨부된 파일이 없습니다." type="text" readonly/></div>
-				<div>
-					<label  class="btn btn-default" for="filebox">첨부</label>
-					<input type="file" name="img" id="filebox"/>
+		<div class="content">
+			<form class="form" method="post" enctype="multipart/form-data">
+				<div class="head">
+					<div class="head-title">
+						<span>제목</span>
+					</div>
+					<div class="head-content">
+						<input class="ti form-control form-control-reg" type="text" name="title" placeholder="제목내용" required/>
+					</div>
 				</div>
- 			</div> -->
- 			
- 			
- 			<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
- 			
- 			<script>
- 			/*
- 			By Osvaldas Valutis, www.osvaldas.info
- 			Available for use under the MIT License
- 		*/
-
- 		'use strict';
-
- 		;( function ( document, window, index )
- 		{
- 			var inputs = document.querySelectorAll( '.inputfile' );
- 			Array.prototype.forEach.call( inputs, function( input )
- 			{
- 				var label	 = input.nextElementSibling,
- 					labelVal = label.innerHTML;
-
- 				input.addEventListener( 'change', function( e )
- 				{
- 					var fileName = '';
- 					if( this.files && this.files.length > 1 )
- 						fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
- 					else
- 						fileName = e.target.value.split( '\\' ).pop();
-
- 					if( fileName )
- 						label.querySelector( 'span' ).innerHTML = fileName;
- 					else
- 						label.innerHTML = labelVal;
- 				});
-
- 				// Firefox bug fix
- 				input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
- 				input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
- 			});
- 		}( document, window, 0 ));
- 			</script>
- 			
 				
-    			
-    			
-			</div>
-			<div class="bottun">
-				<div class="cancel">
-					<button onclick="window.location.href='${root}/accompany/board'" class="btn btn-info chat">글 취소</button>	
-				</div>
-				<div class="reg">
-					<button class="btn btn-info chat" id="submit" type ="submit">글 등록</button>
-				</div>
-			</div>
+				<div class="selec-detail">
+					<div class="detail-title">
+						<span>정보</span>
+					</div>
+					<div class="search-bar-container-accom">
+						<!-- -------- 구글 지도 검색창 ------ -->
+					    <input class="form-control no-enter ti form-control-reg" id="autocomplete" name="form" placeholder="동행 할 위치" type="text" required/>
 	
-	</form>
+					    <input class="hidden" type="text" value="" name="lat" id="lat"/>			           
+					    <input class="hidden" type="text" value="" name="lng" id="lng"/>  
+					    <input class="hidden" type="text" value="" name="place" id="place"/>  
+					    <input class="hidden" type="text" value="" name="locality" id="locality"/>  
+					    <input class="hidden" type="text" value="" name="country" id="country"/>  
+					    
+		  				<!-- -------- 달력 ------ -->
+			    	  		<input type="text" class="form-control calendar-reg ti form-control-reg" name="datefilter-reg" value="" placeholder="동행 할 날짜" required />
+			    	  		<input type="text" class="hidden" id="hidden-startDate" name="startDate" value="" placeholder="Search" required />
+			    	  		<input type="text" class="hidden" id="hidden-endDate" name="endDate" value="" placeholder="Search" required />
+				    	</div>
+				</div>
+				
+				<div class="text">
+					<textarea name="content"  class="form-control form-textarea" placeholder="내용입력" required></textarea>
+				</div>
+				
+				<div class="selec-style">
+					<div class="style-title">
+						<span>동행유형</span>
+					</div>
+					<div class="style-content">
+						<select class="select" name="style">
+							<c:forEach var="l" items="${styleList }">
+								<option value="${l.id}">${l.type } </option>	
+							</c:forEach>
+						</select>
+						<div class="style-content-arrow"></div>
+					</div>
+				</div>		
+				
+				<div class="attach-file">
+					<div class="attach-title">
+						<span>첨부파일</span>
+					</div>
+					<div class="attach-content">
+		 				<input type="file" name="file" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
+						<label for="file-7"><strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></strong><span></span></label>
+		 			</div>
+				</div>
+					
+				<div class="buttons">
+					<div class="cancel">
+						<button onclick="window.location.href='${root}/accompany/board'" id="cancel" class="btn btn-info chat">글 취소</button>	
+					</div>
+					<div class="submit">
+						<button class="btn btn-info chat" id="submit" type ="submit">글 등록</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
 	</div>
-	
-</div>
-
 </main>
-<!-- ------------google map API------------------- -->
 
+
+
+
+
+<!-- --Attach File Related------------------------------------------------------- -->
+<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
+
+<script>
+/*
+By Osvaldas Valutis, www.osvaldas.info
+Available for use under the MIT License
+		 		*/
+
+	'use strict';
+	;(function(document, window, index) {
+		var inputs = document.querySelectorAll('.inputfile');
+		Array.prototype.forEach.call(inputs, function(input) {
+			var label = input.nextElementSibling,
+				labelVal = label.innerHTML;
+
+			input.addEventListener('change', function(e) {
+				var fileName = '';
+				if (this.files && this.files.length > 1)
+					fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+				else
+					fileName = e.target.value.split('\\').pop();
+
+				if (fileName)
+					label.querySelector('span').innerHTML = fileName;
+				else
+					label.innerHTML = labelVal;
+			});
+
+			// Firefox bug fix
+			input.addEventListener('focus', function() {
+				input.classList.add('has-focus');
+			});
+			input.addEventListener('blur', function() {
+				input.classList.remove('has-focus');
+			});
+		});
+	}(document, window, 0));
+</script>
+
+
+
+
+
+<!-- --Google Map API------------------------------------------------------- -->
 <script>
         var placeSearch, autocomplete,mobAutocomplete1;
         var location;
@@ -423,9 +416,14 @@
 
 </script>	              
 	                
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y&libraries=places&callback=initAutocomplete"
         async defer></script>
 
+
+
+
+
+<!-- --Calendar Related API------------------------------------------------------- -->
 <script>
 	$('.calendar-reg').on("mousedown", function(){
 		

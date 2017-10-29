@@ -12,9 +12,9 @@
 		<div class="main-container">
 			<div class="qna-container">
 				<div class="qna-title">
+					<div class="head-start-line"></div>
 					<h2>자주 하는 질문</h2>
 				</div>
-				<div class="head-line"></div>
 		
 				<div class="qna-content-wrapper">
 					
@@ -55,9 +55,9 @@
 
 			<div class="location-container">
 				<div class="location-title">
+					<div class="head-start-line"></div>
 					<h2>Location</h2>
 				</div>
-				<div class="head-line"></div>
 				<div id="map-wrapper"></div>
 					<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAiKSKx2BDNYeVofk9LM0-FuehS9qoXh6Y"></script>
 					<script>
@@ -78,10 +78,10 @@
 
 			
 				<div class="contact-title">
+					<div class="head-start-line"></div>
 					<h2>Contact Us</h2>
 				</div>
-				<div class="head-line"></div>
-				
+
 				<form action="" method="POST">
                     <div class="panel-body">
                         <div class="form-group">

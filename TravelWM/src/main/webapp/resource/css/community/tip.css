@@ -1,5 +1,11 @@
 
 @CHARSET "UTF-8";
+
+.main-menu>li:nth-child(3) a {
+    color: #0099d6;
+    border-bottom: 3px solid #0099d6;
+}
+
 /* ---------------- 공통영역 ----------------- */
 .search .select, .search-option{
 	height:34px;
@@ -9,10 +15,6 @@
 
 #footer{
 	margin-top:0px;
-}
-
-.form-control{
-	width:200px;
 }
 
 /* -----------------메인 ----------------------- */
@@ -40,7 +42,7 @@
 	display:flex;
 	flex-direction:column;
 	
-	padding-top: 45px !important;
+	padding-top: 40px !important;
 	padding:15px;
 	width:75%;
 	margin-left:1%;
@@ -124,13 +126,12 @@
 	border-bottom: 1px solid #efefef;	
 	color: #777777;
 	font-size: 12px;
-	font-family: 'NanumBarunGothicLight';
+	font-family: 'Spoqa-Light';
 }
 
 .table>tbody>tr>td.article-title{
 	font-size: 12px;
-	font-weight: 500;
-	font-family: 'NanumBarunGothic';
+	font-family: 'Spoqa';
 }
 
 
@@ -153,6 +154,7 @@
 	box-shadow: none;
 	border: 1px solid #efefef;
 	margin-left: 5px;
+	width:200px;
 }
 
 #tip-search-button{
@@ -174,11 +176,11 @@
     outline: none;
     border-radius: 0;
     
-    background: #87deff;
+    background: #33b5e5;
 }
 
 #write-btn:hover{
-	background: #009ddb;
+	background: #009dd6;
 }
 
 #write-btn>a{

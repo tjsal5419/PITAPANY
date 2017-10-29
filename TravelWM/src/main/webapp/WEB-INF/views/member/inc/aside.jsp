@@ -11,27 +11,35 @@
 		</div>
 		<div class="aside">
 			<div class="remote-controller">
-				<div class="title"><h3>계정설정</h3></div>
+				<div class="title"><h3>나의이음</h3></div>
 				<ul>
-					<li><a href="${root }/member/profile-setting">프로필 관리</a><span>></span></li>
-					<li><a href="${root }/member/acc-setting">나의 동행 관리</a><span>></span></li>
+					<li><a href="${root }/member/acc-setting">이음 관리</a><span>></span></li>
 					<li><a href="${root }/member/bookmark">북마크 관리</a><span>></span></li>
+					<li><a href="${root }/member/profile-setting">프로필 관리</a><span>></span></li>
 				</ul>
 				
-				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/profile-setting')}">
+				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/acc-setting')}">
    					<style>
 						.remote-controller li:nth-child(1){
+							font-weight: 100;
+							font-family: "Spoqa";
 							color: #33b5e5;
-							font-weight: bold;
-						
+							
 							border-top: 1px solid #e9e9e9;
 							border-bottom: 1px solid #e9e9e9;
+						}
+						
+						.remote-controller li:nth-child(1)>a{
+							color: #33b5e5;
+						}
+						
+						.remote-controller li:nth-child(1)>a:hover{
+							color: #33b5e5;
 						}
 						
 						.remote-controller li:nth-child(1)>span{
 							display: table-cell;
 							vertical-align: middle;
-							font-weight: 100;
 						}
 						
 						.aside-hidden div:nth-child(1){
@@ -45,21 +53,29 @@
 						
 					</style>
 				</c:if>
-				
-				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/acc-setting')}">
+						
+				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/bookmark')}">
    					<style>
 						.remote-controller li:nth-child(2){
+							font-weight: 100;
+							font-family: "Spoqa";
 							color: #33b5e5;
-							font-weight: bold;
-						
+							
 							border-top: 1px solid #e9e9e9;
 							border-bottom: 1px solid #e9e9e9;
+						}
+						
+						.remote-controller li:nth-child(2)>a{
+							color: #33b5e5;
+						}
+						
+						.remote-controller li:nth-child(2)>a:hover{
+							color: #33b5e5;
 						}
 						
 						.remote-controller li:nth-child(2)>span{
 							display: table-cell;
 							vertical-align: middle;
-							font-weight: 100;
 						}
 						
 						.aside-hidden div:nth-child(2){
@@ -70,24 +86,31 @@
 						.aside-hidden div:nth-child(2)>a:hover{
 							color: #fff;
 						}
-						
 					</style>
 				</c:if>
 				
-				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/bookmark')}">
+				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/profile-setting')}">
    					<style>
 						.remote-controller li:nth-child(3){
+							font-weight: 100;
+							font-family: "Spoqa";
 							color: #33b5e5;
-							font-weight: bold;
-						
+							
 							border-top: 1px solid #e9e9e9;
 							border-bottom: 1px solid #e9e9e9;
+						}
+						
+						.remote-controller li:nth-child(3)>a{
+							color: #33b5e5;
+						}
+						
+						.remote-controller li:nth-child(3)>a:hover{
+							color: #33b5e5;
 						}
 						
 						.remote-controller li:nth-child(3)>span{
 							display: table-cell;
 							vertical-align: middle;
-							font-weight: 100;
 						}
 						
 						.aside-hidden div:nth-child(3){
@@ -98,6 +121,7 @@
 						.aside-hidden div:nth-child(3)>a:hover{
 							color: #fff;
 						}
+						
 					</style>
 				</c:if>
 			</div>

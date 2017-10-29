@@ -7,53 +7,66 @@
 	type="text/css" />
 
 <main class="main">
-<%@ include file="inc/aside.jsp" %>
-<form class="frame" method="post">
-	
-	
-	<div class="content">
+	<%@ include file="inc/aside.jsp" %>
+	<form class="frame" method="post">
+		<div class="content">
+		
+			<div class="head">
+				<div class="head-title">
+					<span>제목</span>
+				</div>
+				<div class="head-content">
+					<input class="ti form-control form-control-reg" type="text" name="title" placeholder="제목내용" required/>
+				</div>
+			</div>
+		
+	        <div class="selec-category">
+				<div class="category-title">
+					<span>분류</span>
+				</div>
+				<div class="category-content">
+					<select class="select" name="categoryId">
+						<c:forEach var="l" items="${categoryList }">
+							<option value="${l.id}">${l.category }</option>	
+						</c:forEach>
+					</select>
+					<div class="category-content-arrow"></div>
+				</div>
+			</div>		
+		
+			
+		
 	
 		
-		<div class="head">
-			<div class="title-logo">
-				<span>제목</span>
-			</div>
-			<div class="title-content">
-				<input class="ti form-control form-control-reg" name="title" type="text" placeholder="제목내용" />
-			</div>
-		</div>
-	
-		<div class="select-char">
-			<span>카테고리</span>
-			<div class="select_style">
-				<select class="select" name="tipCategoryId">
-					<c:forEach var="l" items="${categoryList }">
-						<option value="${l.id}">${l.category } </option>	
-					</c:forEach>
-				</select>
-				<div class="select_arrow"></div>
-			</div>
-		</div>
-	
-	
 		
 		
-		<div class="text">
-			<textarea name="content" class="form-control" placeholder="본문내용"></textarea>
-		</div>
-		<input type="text" name="id" value="${tipView.id }" class="hidden"/>
-		<div class="foot">
-			<div class="bottun">
+			<div class="text">
+				<textarea name="content" class="form-control form-textarea" placeholder="내용입력" required></textarea>
+			</div>
+			
+			<div class="attach-file">
+				<div class="attach-title">
+					<span>첨부파일</span>
+				</div>
+				<div class="attach-content">
+	 				<input type="file" name="file" id="file-7" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
+					<label for="file-7"><strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"/></svg></strong><span></span></label>
+	 			</div>
+			</div>
+			
+			<input type="text" name="id" value="${tipView.id }" class="hidden"/>
+			
+			<div class="buttons">
 				<div class="cancel">
-					<button type="reset" onclick="location.href='${root}/community/tip'" class="btn btn-info chat">글 취소</button>
+					<button onclick="window.location.href='${root}/accompany/board'" id="cancel" class="btn btn-info chat">글 취소</button>	
 				</div>
-				<div class="reg">
-					<button class="btn btn-info chat"  type ="submit">글 등록</button>
+				<div class="submit">
+					<button class="btn btn-info chat" id="submit" type ="submit">글 등록</button>
 				</div>
 			</div>
+			
 		</div>
-	</div>
-</form>
+	</form>
 </main>
 <!-- 
 <table class="table">
