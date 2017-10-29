@@ -755,6 +755,28 @@ a, a:hover, a:focus, .btn:focus {
 	background-size: 20px 20px;
 }
 
+.search-button-mobile1{
+	border: none;
+}
+
+.search-button-mobile1:hover{
+	border: none;
+}
+
+.search-button-mobile2{
+	border: none;
+	
+	background: #33b5e5 url(../../images/ic_search_white_36dp_1x.png) center no-repeat;
+    background-size: 20px 20px;
+}
+
+.search-button-mobile2:hover{
+	border: none;
+	
+	background: #0099d6 url(../../images/ic_search_white_36dp_1x.png) center no-repeat;	
+	background-size: 20px 20px;
+}
+
 .default-font{
 	color: #fff !important;
 }

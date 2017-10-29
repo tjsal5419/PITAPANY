@@ -568,7 +568,7 @@ ol, ul{
     		justify-content: space-between;
     		
     		position: fixed;
-    		overflow: scroll;
+    		overflow: overlay;
     		
     		left: -100%;
     		top: 0px;

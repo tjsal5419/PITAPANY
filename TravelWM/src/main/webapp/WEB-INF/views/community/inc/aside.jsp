@@ -13,9 +13,9 @@
 			<div class="remote-controller">
 				<div class="title"><h3>커뮤니티</h3></div>
 				<ul>
-					<li><a href="${root }/community/rounge">라운지</a><span>></span></li>
-					<li><a href="${root }/community/tip">여행 Tip</a><span>></span></li>
-					<li><a href="${root }/community/faq">FAQ</a><span>></span></li>
+					<li><a href="${root }/community/rounge">이음광장</a><span>></span></li>
+					<li><a href="${root }/community/tip">이음팁게</a><span>></span></li>
+					<li><a href="${root }/community/faq">이음질문</a><span>></span></li>
 				</ul>
 				
 				<c:if test="${fn:contains(requestScope['javax.servlet.forward.request_uri'], '/tip')}">

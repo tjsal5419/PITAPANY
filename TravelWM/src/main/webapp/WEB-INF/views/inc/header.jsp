@@ -131,7 +131,12 @@
 		    				<div onclick="location.href='${root}/community/tip';">이음팁게</div>
 		    				<div onclick="location.href='${root}/community/faq';">이음질문</div>
 	    				</div>
-	    			<button class="side-menu-mobile" onclick="location.href='${root}/member/acc-setting';">나의이음</button>
+	    			<button class="side-menu-mobile side-menu-accordion" onclick="location.href='${root}/member/acc-setting';">나의이음</button>
+	    				<div class="side-menu-panel">
+		    				<div onclick="location.href='${root}/member/acc-setting';">이음 관리</div>
+		    				<div onclick="location.href='${root}/community/tip';">북마크 관리</div>
+		    				<div onclick="location.href='${root}/community/faq';">프로필 관리</div>
+	    				</div>
 	    		</div>
     		</div>
    		
@@ -192,6 +197,9 @@
 
 <!-- Side Menu Accordion Javascript -->
 <script>
+
+
+
 	var sideMenuAccordion = document.getElementsByClassName("side-menu-accordion");
 	var i;
 	
